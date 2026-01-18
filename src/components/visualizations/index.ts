@@ -5,3 +5,6 @@ export { Entity } from './Entity';
 
 // Diagram components
 export * from './diagrams';
+
+// Calculator components
+export * from './calculators';

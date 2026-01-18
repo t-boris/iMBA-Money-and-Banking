@@ -2,11 +2,11 @@
 
 ## Overview
 
-Build an interactive study web application for the Money and Banking course. Start with a solid foundation using modern web technologies, establish an award-winning design system, then progressively add interactive features: module navigation, animated visualizations, financial calculators, and learning tools. Deploy as a static site for easy access.
+Build an interactive study web application for the Money and Banking course. Foundation and design system are complete. Future phases will be defined based on actual course content provided by the user.
 
 ## Domain Expertise
 
-None
+Module 1: Money and Finance — course content provided
 
 ## Phases
 
@@ -17,10 +17,9 @@ None
 - [x] **Phase 1: Foundation** - Project setup with modern stack
 - [x] **Phase 2: Design System** - Award-winning UI components and theming
 - [x] **Phase 3: Module Navigation** - Card-based module selection for 8 modules
-- [ ] **Phase 4: Interactive Visualizations** - Animated diagrams for financial concepts
-- [ ] **Phase 5: Calculators** - Interactive finance calculators
-- [ ] **Phase 6: Learning Tools** - Quizzes, flashcards, progress tracking
-- [ ] **Phase 7: Polish & Deploy** - Performance, accessibility, deployment
+- [ ] **Phase 4: Module 1 Content** - Interactive visualizations for Money and Finance
+
+*Future modules to be added as course content is provided*
 
 ## Phase Details
 
@@ -59,65 +58,40 @@ Plans:
 - [x] 03-02: Build home page with module grid layout
 - [x] 03-03: Implement module page template and routing
 
-### Phase 4: Interactive Visualizations
-**Goal**: Create animated diagrams showing money flows, banking processes, and interest rate mechanics. Build reusable visualization components.
+### Phase 4: Module 1 Content
+**Goal**: Build interactive visualizations, concept exploration, and calculation tools for Module 1 (Money and Finance).
 **Depends on**: Phase 3
-**Research**: Likely (animation techniques for financial diagrams)
-**Research topics**: SVG animation patterns, interactive diagram best practices, data flow visualization techniques
-**Plans**: 4 plans
+**Research**: Unlikely (course content provided, implementation patterns established)
+**Plans**: 7 plans in 4 waves
 
 Plans:
-- [ ] 04-01: Build base animation components and utilities
-- [ ] 04-02: Create money flow diagram component
-- [ ] 04-03: Create banking process visualization component
-- [ ] 04-04: Create interest rate mechanics visualization
+- [x] 04-01: Visualization primitives (Slider, AnimatedValue, FlowArrow, Entity)
+- [ ] 04-02: Module 1 data & types (lessons, concepts)
+- [ ] 04-03: Financial System Flow diagram (Savers → Borrowers)
+- [ ] 04-04: Money Functions Triangle + Evolution Timeline
+- [ ] 04-05: Payment Methods Flow + M1/M2 Calculator
+- [ ] 04-06: Direct/Indirect Finance + Bank Balance Sheet
+- [ ] 04-07: Module page integration + visual verification
 
-### Phase 5: Calculators
-**Goal**: Build interactive financial calculators for compound interest, loan payments, present value, and other key concepts.
-**Depends on**: Phase 3
-**Research**: Unlikely (standard calculation logic, form handling)
-**Plans**: 3 plans
+Wave structure:
+- Wave 1 (parallel): 04-01, 04-02
+- Wave 2 (parallel): 04-03, 04-04
+- Wave 3 (parallel): 04-05, 04-06
+- Wave 4: 04-07 (integration + checkpoint)
 
-Plans:
-- [ ] 05-01: Create calculator UI component framework
-- [ ] 05-02: Implement compound interest and present value calculators
-- [ ] 05-03: Implement loan payment and amortization calculators
-
-### Phase 6: Learning Tools
-**Goal**: Build quiz system, flashcard component, and local progress tracking using localStorage.
-**Depends on**: Phase 3
-**Research**: Unlikely (localStorage patterns, quiz/flashcard UI)
-**Plans**: 4 plans
-
-Plans:
-- [ ] 06-01: Create progress tracking system with localStorage
-- [ ] 06-02: Build quiz component with multiple question types
-- [ ] 06-03: Build flashcard component with flip animation
-- [ ] 06-04: Implement progress dashboard and statistics
-
-### Phase 7: Polish & Deploy
-**Goal**: Optimize performance, ensure accessibility, configure static deployment to Vercel or Netlify.
-**Depends on**: Phases 4, 5, 6
-**Research**: Likely (deployment configuration)
-**Research topics**: Vercel/Netlify static deployment, performance optimization, SEO for static sites
-**Plans**: 3 plans
-
-Plans:
-- [ ] 07-01: Performance optimization (code splitting, image optimization)
-- [ ] 07-02: Accessibility audit and fixes
-- [ ] 07-03: Configure deployment and CI/CD
+Style: Playful animations, money particles flowing, pulsing entities, engaging micro-interactions.
 
 ## Progress
-
-**Execution Order:**
-Phases execute in numeric order: 1 → 2 → 3 → 4/5/6 (parallel possible) → 7
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 3/3 | Complete | 2026-01-18 |
 | 2. Design System | 4/4 | Complete | 2026-01-18 |
 | 3. Module Navigation | 3/3 | Complete | 2026-01-18 |
-| 4. Interactive Visualizations | 0/4 | Not started | - |
-| 5. Calculators | 0/3 | Not started | - |
-| 6. Learning Tools | 0/4 | Not started | - |
-| 7. Polish & Deploy | 0/3 | Not started | - |
+| 4. Module 1 Content | 1/7 | In progress | - |
+
+## Next Steps
+
+Phase 4 planned with 7 plans in 4 waves.
+
+Run `/gsd:execute-phase 4` to build Module 1 visualizations.

@@ -66,7 +66,7 @@ Plans:
 
 Plans:
 - [x] 04-01: Visualization primitives (Slider, AnimatedValue, FlowArrow, Entity)
-- [ ] 04-02: Module 1 data & types (lessons, concepts)
+- [x] 04-02: Module 1 data & types (lessons, concepts)
 - [ ] 04-03: Financial System Flow diagram (Savers → Borrowers)
 - [ ] 04-04: Money Functions Triangle + Evolution Timeline
 - [ ] 04-05: Payment Methods Flow + M1/M2 Calculator
@@ -88,7 +88,7 @@ Style: Playful animations, money particles flowing, pulsing entities, engaging m
 | 1. Foundation | 3/3 | Complete | 2026-01-18 |
 | 2. Design System | 4/4 | Complete | 2026-01-18 |
 | 3. Module Navigation | 3/3 | Complete | 2026-01-18 |
-| 4. Module 1 Content | 1/7 | In progress | - |
+| 4. Module 1 Content | 2/7 | In progress | - |
 
 ## Next Steps
 

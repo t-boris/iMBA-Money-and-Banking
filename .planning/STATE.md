@@ -68,6 +68,9 @@ Recent decisions affecting current work:
 - Spring physics (stiffness: 100, damping: 20) for value animations
 - Visualization components in src/components/visualizations/
 - SVG-based FlowArrow with motion-animated dot
+- Lesson IDs use dot notation for sub-lessons (1-1.1, 1-2.3)
+- Concept categories: money, payment, financial-system, institutions, economy
+- Module content organized in src/data/module{N}/ directories
 
 ### Deferred Issues
 
@@ -84,7 +87,7 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-01-18
-Stopped at: Completed 04-01-PLAN.md (Visualization Primitives)
+Stopped at: Completed 04-02-PLAN.md (Module 1 Data & Types)
 Resume file: None
 
 ## Notes

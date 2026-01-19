@@ -62,20 +62,25 @@ export default function Home() {
       {/* Module Grid Section */}
       <Section spacing="xl">
         <Container>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-2xl md:text-3xl font-bold text-text-primary mb-3">
+          <div className="text-center mb-12">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="text-2xl md:text-3xl font-bold text-text-primary mb-3"
+            >
               Course Modules
-            </h2>
-            <p className="text-text-secondary max-w-xl mx-auto">
-              Click any module to start learning. Each contains interactive diagrams,
-              calculators, quizzes, and more.
-            </p>
-          </motion.div>
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="text-text-secondary"
+              style={{ maxWidth: '600px', margin: '0 auto', lineHeight: '1.6' }}
+            >
+              Click any module to start learning. Each contains interactive diagrams, calculators, quizzes, and more.
+            </motion.p>
+          </div>
 
           <motion.div
             variants={staggerContainer}

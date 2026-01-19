@@ -1,8 +1,7 @@
 'use client';
 
-import { useState, useCallback, useMemo } from 'react';
-import { motion, AnimatePresence } from '@/lib/motion';
-import { AnimatedValue, Slider } from '@/components/visualizations';
+import { useState } from 'react';
+import { motion } from '@/lib/motion';
 import { cn } from '@/lib/utils';
 
 interface BankBalanceSheetProps {
@@ -10,11 +9,9 @@ interface BankBalanceSheetProps {
 }
 
 interface BalanceSheetState {
-  // Assets
   reserves: number;
   loans: number;
   securities: number;
-  // Liabilities
   deposits: number;
   borrowings: number;
   equity: number;
@@ -26,13 +23,15 @@ interface Scenario {
   description: string;
   icon: string;
   state: BalanceSheetState;
+  insight: string;
 }
 
+// All scenarios are balanced: Assets = Liabilities
 const scenarios: Scenario[] = [
   {
     id: 'normal',
-    name: 'Normal Bank',
-    description: 'Typical proportions',
+    name: 'Healthy Bank',
+    description: 'Typical well-managed bank',
     icon: '🏦',
     state: {
       reserves: 100,
@@ -42,483 +41,395 @@ const scenarios: Scenario[] = [
       borrowings: 100,
       equity: 100,
     },
+    insight: 'A healthy bank keeps about 10% reserves against deposits, maintains diverse assets, and has adequate equity capital.',
   },
   {
-    id: 'bank-run',
-    name: 'Bank Run',
-    description: 'Deposits flee rapidly',
-    icon: '🏃',
-    state: {
-      reserves: 20,
-      loans: 650,
-      securities: 130,
-      deposits: 400,
-      borrowings: 300,
-      equity: 100,
-    },
-  },
-  {
-    id: 'credit-boom',
-    name: 'Credit Boom',
+    id: 'aggressive',
+    name: 'Aggressive Lender',
     description: 'High loans, low reserves',
     icon: '📈',
     state: {
-      reserves: 50,
-      loans: 850,
+      reserves: 30,
+      loans: 870,
       securities: 100,
       deposits: 800,
       borrowings: 150,
       equity: 50,
     },
+    insight: 'This bank maximizes lending to earn more interest, but has low reserves and thin equity — vulnerable to loan defaults.',
+  },
+  {
+    id: 'conservative',
+    name: 'Conservative Bank',
+    description: 'High reserves, cautious lending',
+    icon: '🛡️',
+    state: {
+      reserves: 200,
+      loans: 500,
+      securities: 300,
+      deposits: 800,
+      borrowings: 50,
+      equity: 150,
+    },
+    insight: 'This bank prioritizes safety over profits. High reserves and equity provide a buffer, but lower lending means lower returns.',
   },
 ];
 
-const insights = [
-  {
-    icon: '💡',
-    text: 'Deposits are liabilities - the bank owes you this money',
-  },
-  {
-    icon: '📋',
-    text: 'Loans are assets - borrowers owe the bank',
-  },
-  {
-    icon: '💰',
-    text: 'Banks profit from the spread: loan rates > deposit rates',
-  },
-];
+export function BankBalanceSheet({ className }: BankBalanceSheetProps) {
+  const [activeScenario, setActiveScenario] = useState<string>('normal');
 
-// Value bar component for visual representation
-function ValueBar({
-  value,
-  maxValue,
-  color,
-  label,
-  className,
-}: {
-  value: number;
-  maxValue: number;
-  color: string;
-  label: string;
-  className?: string;
-}) {
-  const percentage = Math.min((value / maxValue) * 100, 100);
+  const currentScenario = scenarios.find(s => s.id === activeScenario) || scenarios[0];
+  const state = currentScenario.state;
+
+  // Calculate totals (always balanced)
+  const totalAssets = state.reserves + state.loans + state.securities;
+  const totalLiabilities = state.deposits + state.borrowings + state.equity;
+
+  // Calculate key ratios
+  const reserveRatio = (state.reserves / state.deposits) * 100;
+  const loanToDeposit = (state.loans / state.deposits) * 100;
+  const leverage = totalAssets / state.equity;
 
   return (
-    <div className={cn('space-y-1', className)}>
-      <div className="flex justify-between items-center">
-        <span className="text-sm text-text-secondary">{label}</span>
-        <span className="text-sm font-mono font-semibold text-text-primary">
-          ${value}B
-        </span>
+    <div className={cn('w-full', className)} style={{ maxWidth: '800px', margin: '0 auto' }}>
+      {/* Title */}
+      <div style={{ textAlign: 'center', marginBottom: '24px' }}>
+        <h3 style={{ fontSize: '20px', fontWeight: 600, color: 'var(--color-text-primary)', marginBottom: '8px' }}>
+          Bank Balance Sheet
+        </h3>
+        <p style={{ fontSize: '14px', color: 'var(--color-text-secondary)', lineHeight: '1.6' }}>
+          A bank's assets (what it owns) must always equal its liabilities (what it owes) plus equity.
+        </p>
       </div>
-      <div className="h-3 bg-surface-2 rounded-full overflow-hidden">
+
+      {/* Scenario buttons */}
+      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '12px', marginBottom: '24px' }}>
+        {scenarios.map((scenario) => (
+          <button
+            key={scenario.id}
+            onClick={() => setActiveScenario(scenario.id)}
+            style={{
+              padding: '10px 16px',
+              borderRadius: '8px',
+              border: activeScenario === scenario.id ? '2px solid rgb(99, 102, 241)' : '2px solid var(--color-surface-2)',
+              backgroundColor: activeScenario === scenario.id ? 'rgba(99, 102, 241, 0.1)' : 'var(--color-surface-1)',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              transition: 'all 0.2s',
+            }}
+          >
+            <span style={{ fontSize: '20px' }}>{scenario.icon}</span>
+            <div style={{ textAlign: 'left' }}>
+              <div style={{ fontSize: '14px', fontWeight: 500, color: activeScenario === scenario.id ? 'rgb(99, 102, 241)' : 'var(--color-text-primary)' }}>
+                {scenario.name}
+              </div>
+              <div style={{ fontSize: '11px', color: 'var(--color-text-muted)' }}>
+                {scenario.description}
+              </div>
+            </div>
+          </button>
+        ))}
+      </div>
+
+      {/* T-Account */}
+      <div style={{
+        borderRadius: '16px',
+        overflow: 'hidden',
+        backgroundColor: 'var(--color-surface-1)',
+        border: '1px solid var(--color-surface-2)',
+      }}>
+        {/* Header */}
+        <div style={{
+          backgroundColor: 'var(--color-surface-2)',
+          padding: '12px',
+          textAlign: 'center',
+          borderBottom: '1px solid var(--color-surface-2)',
+        }}>
+          <h4 style={{ fontSize: '16px', fontWeight: 600, color: 'var(--color-text-primary)', margin: 0 }}>
+            T-ACCOUNT
+          </h4>
+        </div>
+
+        {/* Body - Assets | Liabilities */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
+          {/* Assets (Left) */}
+          <div style={{ padding: '20px', borderRight: '2px solid var(--color-surface-2)' }}>
+            <div style={{ textAlign: 'center', marginBottom: '16px' }}>
+              <span style={{
+                display: 'inline-block',
+                padding: '4px 12px',
+                backgroundColor: 'rgba(16, 185, 129, 0.15)',
+                color: 'rgb(16, 185, 129)',
+                fontWeight: 600,
+                fontSize: '14px',
+                borderRadius: '6px',
+              }}>
+                ASSETS
+              </span>
+              <p style={{ fontSize: '12px', color: 'var(--color-text-muted)', marginTop: '4px' }}>
+                Uses of Funds
+              </p>
+            </div>
+
+            {/* Asset items */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <AssetItem label="Reserves" value={state.reserves} color="rgb(16, 185, 129)" total={totalAssets} />
+              <AssetItem label="Loans" value={state.loans} color="rgb(34, 197, 94)" total={totalAssets} />
+              <AssetItem label="Securities" value={state.securities} color="rgb(74, 222, 128)" total={totalAssets} />
+            </div>
+
+            {/* Total */}
+            <div style={{
+              marginTop: '16px',
+              paddingTop: '12px',
+              borderTop: '2px solid rgb(16, 185, 129)',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}>
+              <span style={{ fontSize: '14px', fontWeight: 600, color: 'var(--color-text-primary)' }}>TOTAL</span>
+              <span style={{ fontSize: '20px', fontWeight: 700, color: 'rgb(16, 185, 129)' }}>${totalAssets}B</span>
+            </div>
+          </div>
+
+          {/* Liabilities (Right) */}
+          <div style={{ padding: '20px' }}>
+            <div style={{ textAlign: 'center', marginBottom: '16px' }}>
+              <span style={{
+                display: 'inline-block',
+                padding: '4px 12px',
+                backgroundColor: 'rgba(99, 102, 241, 0.15)',
+                color: 'rgb(99, 102, 241)',
+                fontWeight: 600,
+                fontSize: '14px',
+                borderRadius: '6px',
+              }}>
+                LIABILITIES + EQUITY
+              </span>
+              <p style={{ fontSize: '12px', color: 'var(--color-text-muted)', marginTop: '4px' }}>
+                Sources of Funds
+              </p>
+            </div>
+
+            {/* Liability items */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <AssetItem label="Deposits" value={state.deposits} color="rgb(99, 102, 241)" total={totalLiabilities} />
+              <AssetItem label="Borrowings" value={state.borrowings} color="rgb(129, 140, 248)" total={totalLiabilities} />
+              <AssetItem label="Equity" value={state.equity} color="rgb(165, 180, 252)" total={totalLiabilities} isEquity />
+            </div>
+
+            {/* Total */}
+            <div style={{
+              marginTop: '16px',
+              paddingTop: '12px',
+              borderTop: '2px solid rgb(99, 102, 241)',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}>
+              <span style={{ fontSize: '14px', fontWeight: 600, color: 'var(--color-text-primary)' }}>TOTAL</span>
+              <span style={{ fontSize: '20px', fontWeight: 700, color: 'rgb(99, 102, 241)' }}>${totalLiabilities}B</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Balance indicator */}
+        <div style={{
+          padding: '12px',
+          backgroundColor: 'rgba(16, 185, 129, 0.1)',
+          borderTop: '1px solid rgba(16, 185, 129, 0.3)',
+          textAlign: 'center',
+        }}>
+          <span style={{ fontSize: '14px', fontWeight: 500, color: 'rgb(16, 185, 129)' }}>
+            Assets = Liabilities + Equity (Always Balanced)
+          </span>
+        </div>
+      </div>
+
+      {/* Key Ratios */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.1 }}
+        style={{
+          marginTop: '20px',
+          padding: '20px',
+          backgroundColor: 'var(--color-surface-1)',
+          borderRadius: '12px',
+          border: '1px solid var(--color-surface-2)',
+        }}
+      >
+        <h4 style={{ fontSize: '14px', fontWeight: 600, color: 'var(--color-text-primary)', marginBottom: '16px' }}>
+          Key Ratios
+        </h4>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
+          <RatioCard
+            label="Reserve Ratio"
+            value={reserveRatio}
+            suffix="%"
+            description="Reserves / Deposits"
+            color={reserveRatio < 5 ? 'rgb(239, 68, 68)' : reserveRatio < 10 ? 'rgb(245, 158, 11)' : 'rgb(16, 185, 129)'}
+          />
+          <RatioCard
+            label="Loan-to-Deposit"
+            value={loanToDeposit}
+            suffix="%"
+            description="Loans / Deposits"
+            color={loanToDeposit > 100 ? 'rgb(245, 158, 11)' : 'rgb(99, 102, 241)'}
+          />
+          <RatioCard
+            label="Leverage"
+            value={leverage}
+            suffix="x"
+            description="Assets / Equity"
+            color={leverage > 15 ? 'rgb(239, 68, 68)' : leverage > 10 ? 'rgb(245, 158, 11)' : 'rgb(16, 185, 129)'}
+          />
+        </div>
+      </motion.div>
+
+      {/* Scenario insight */}
+      <motion.div
+        key={activeScenario}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2 }}
+        style={{
+          marginTop: '20px',
+          padding: '16px',
+          backgroundColor: 'rgba(99, 102, 241, 0.1)',
+          borderRadius: '12px',
+          border: '1px solid rgba(99, 102, 241, 0.3)',
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+          <span style={{ fontSize: '24px' }}>{currentScenario.icon}</span>
+          <div>
+            <h4 style={{ fontSize: '14px', fontWeight: 600, color: 'rgb(99, 102, 241)', marginBottom: '4px' }}>
+              {currentScenario.name}
+            </h4>
+            <p style={{ fontSize: '13px', color: 'var(--color-text-secondary)', lineHeight: '1.6' }}>
+              {currentScenario.insight}
+            </p>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Maturity Mismatch */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3 }}
+        style={{
+          marginTop: '20px',
+          padding: '20px',
+          backgroundColor: 'rgba(245, 158, 11, 0.1)',
+          borderRadius: '12px',
+          border: '1px solid rgba(245, 158, 11, 0.3)',
+        }}
+      >
+        <h4 style={{ fontSize: '14px', fontWeight: 600, color: 'rgb(217, 119, 6)', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <span>⚠️</span>
+          The Fundamental Banking Risk: Maturity Mismatch
+        </h4>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '24px', marginBottom: '12px' }}>
+          <div style={{ textAlign: 'center' }}>
+            <div style={{
+              padding: '12px 20px',
+              backgroundColor: 'rgba(245, 158, 11, 0.15)',
+              borderRadius: '8px',
+              border: '1px dashed rgb(245, 158, 11)',
+              marginBottom: '8px',
+            }}>
+              <span style={{ fontSize: '14px', fontWeight: 500, color: 'rgb(217, 119, 6)' }}>Deposits</span>
+            </div>
+            <span style={{ fontSize: '12px', color: 'var(--color-text-muted)' }}>Can leave anytime</span>
+          </div>
+          <span style={{ fontSize: '24px', color: 'var(--color-text-muted)' }}>vs</span>
+          <div style={{ textAlign: 'center' }}>
+            <div style={{
+              padding: '12px 20px',
+              backgroundColor: 'rgba(99, 102, 241, 0.15)',
+              borderRadius: '8px',
+              border: '1px dashed rgb(99, 102, 241)',
+              marginBottom: '8px',
+            }}>
+              <span style={{ fontSize: '14px', fontWeight: 500, color: 'rgb(99, 102, 241)' }}>Loans</span>
+            </div>
+            <span style={{ fontSize: '12px', color: 'var(--color-text-muted)' }}>Locked for years</span>
+          </div>
+        </div>
+        <p style={{ fontSize: '13px', color: 'var(--color-text-secondary)', textAlign: 'center', lineHeight: '1.6' }}>
+          Banks borrow short (deposits) and lend long (mortgages, business loans). If too many depositors withdraw at once,
+          the bank can't quickly convert loans to cash — this is why bank runs happen.
+        </p>
+      </motion.div>
+
+      <p style={{ textAlign: 'center', fontSize: '12px', color: 'var(--color-text-muted)', marginTop: '16px' }}>
+        Click different bank types to see how balance sheet composition affects risk
+      </p>
+    </div>
+  );
+}
+
+// Helper component for asset/liability items
+function AssetItem({ label, value, color, total, isEquity }: {
+  label: string;
+  value: number;
+  color: string;
+  total: number;
+  isEquity?: boolean;
+}) {
+  const percentage = (value / total) * 100;
+
+  return (
+    <div>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
+        <span style={{ fontSize: '13px', color: 'var(--color-text-secondary)' }}>
+          {label} {isEquity && <span style={{ fontSize: '11px', color: 'var(--color-text-muted)' }}>(owner's stake)</span>}
+        </span>
+        <span style={{ fontSize: '14px', fontWeight: 600, color: 'var(--color-text-primary)' }}>${value}B</span>
+      </div>
+      <div style={{
+        height: '8px',
+        backgroundColor: 'var(--color-surface-2)',
+        borderRadius: '4px',
+        overflow: 'hidden',
+      }}>
         <motion.div
-          className={cn('h-full rounded-full', color)}
           initial={{ width: 0 }}
           animate={{ width: `${percentage}%` }}
-          transition={{ type: 'spring', stiffness: 100, damping: 20 }}
+          transition={{ duration: 0.5 }}
+          style={{
+            height: '100%',
+            backgroundColor: color,
+            borderRadius: '4px',
+          }}
         />
       </div>
     </div>
   );
 }
 
-// Maturity mismatch visualization
-function MaturityMismatch() {
+// Helper component for ratio cards
+function RatioCard({ label, value, suffix, description, color }: {
+  label: string;
+  value: number;
+  suffix: string;
+  description: string;
+  color: string;
+}) {
   return (
-    <div
-      className={cn(
-        'p-4 rounded-xl mt-6',
-        'bg-amber-500/5 border border-amber-500/20'
-      )}
-    >
-      <h4 className="text-sm font-semibold text-amber-500 mb-3 flex items-center gap-2">
-        <span>⚠️</span>
-        Maturity Mismatch
-      </h4>
-      <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
-        {/* Deposits timeline */}
-        <div className="flex flex-col items-center">
-          <div
-            className={cn(
-              'px-3 py-2 rounded-lg',
-              'bg-amber-500/10 border border-amber-500/30'
-            )}
-          >
-            <span className="text-xs text-amber-600 font-medium">Deposits</span>
-          </div>
-          <div className="h-8 w-px bg-amber-500/30 my-1" />
-          <span className="text-xs text-text-tertiary">Can leave anytime</span>
-        </div>
-
-        {/* VS divider */}
-        <div className="text-2xl text-text-tertiary">vs</div>
-
-        {/* Loans timeline */}
-        <div className="flex flex-col items-center">
-          <div
-            className={cn(
-              'px-3 py-2 rounded-lg',
-              'bg-primary-500/10 border border-primary-500/30'
-            )}
-          >
-            <span className="text-xs text-primary-500 font-medium">Loans</span>
-          </div>
-          <div className="h-8 w-px bg-primary-500/30 my-1" />
-          <span className="text-xs text-text-tertiary">Locked for years</span>
-        </div>
-      </div>
-      <p className="text-xs text-text-tertiary text-center mt-3">
-        This is the fundamental vulnerability of banking
-      </p>
-    </div>
-  );
-}
-
-export function BankBalanceSheet({ className }: BankBalanceSheetProps) {
-  const [state, setState] = useState<BalanceSheetState>(scenarios[0].state);
-  const [activeScenario, setActiveScenario] = useState<string>('normal');
-
-  // Calculate totals
-  const totalAssets = state.reserves + state.loans + state.securities;
-  const totalLiabilities = state.deposits + state.borrowings + state.equity;
-
-  // Check if balanced
-  const isBalanced = totalAssets === totalLiabilities;
-
-  // Calculate key ratios
-  const ratios = useMemo(
-    () => ({
-      reserveRatio: state.deposits > 0 ? (state.reserves / state.deposits) * 100 : 0,
-      loanToDeposit: state.deposits > 0 ? (state.loans / state.deposits) * 100 : 0,
-      leverage: state.equity > 0 ? totalAssets / state.equity : 0,
-    }),
-    [state.reserves, state.loans, state.deposits, state.equity, totalAssets]
-  );
-
-  // Handle scenario change
-  const handleScenarioChange = useCallback((scenarioId: string) => {
-    const scenario = scenarios.find((s) => s.id === scenarioId);
-    if (scenario) {
-      setActiveScenario(scenarioId);
-      setState(scenario.state);
-    }
-  }, []);
-
-  // Handle slider changes - adjust to maintain balance
-  const handleDepositChange = useCallback((newDeposits: number) => {
-    const diff = newDeposits - state.deposits;
-    setState((prev) => ({
-      ...prev,
-      deposits: newDeposits,
-      reserves: Math.max(0, prev.reserves + diff),
-    }));
-    setActiveScenario('');
-  }, [state.deposits]);
-
-  const handleLoanChange = useCallback((newLoans: number) => {
-    const diff = newLoans - state.loans;
-    setState((prev) => ({
-      ...prev,
-      loans: newLoans,
-      reserves: Math.max(0, prev.reserves - diff),
-    }));
-    setActiveScenario('');
-  }, [state.loans]);
-
-  const maxValue = 1000;
-
-  return (
-    <div className={cn('w-full', className)}>
-      {/* Title */}
-      <div className="text-center mb-6">
-        <h2 className="text-lg font-semibold text-text-primary mb-2">
-          Bank Balance Sheet
-        </h2>
-        <p className="text-sm text-text-tertiary">
-          Interactive T-account showing how banks hold assets and liabilities
-        </p>
-      </div>
-
-      {/* Scenario buttons */}
-      <div className="flex flex-wrap justify-center gap-2 mb-6">
-        {scenarios.map((scenario) => (
-          <motion.button
-            key={scenario.id}
-            onClick={() => handleScenarioChange(scenario.id)}
-            className={cn(
-              'px-4 py-2 rounded-lg flex items-center gap-2',
-              'border transition-all duration-200',
-              activeScenario === scenario.id
-                ? 'bg-primary-500/20 border-primary-500 text-primary-500'
-                : 'bg-glass-light border-glass-border text-text-secondary hover:border-primary-500/50'
-            )}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            <span>{scenario.icon}</span>
-            <span className="text-sm font-medium">{scenario.name}</span>
-          </motion.button>
-        ))}
-      </div>
-
-      {/* Main T-account */}
-      <div
-        className={cn(
-          'rounded-xl overflow-hidden',
-          'bg-glass-light backdrop-blur-md',
-          'border shadow-glass',
-          isBalanced ? 'border-glass-border' : 'border-red-500/50'
-        )}
-      >
-        {/* Header */}
-        <div className="bg-surface-2 p-3 text-center border-b border-glass-border">
-          <h3 className="text-base font-semibold text-text-primary">
-            BANK BALANCE SHEET
-          </h3>
-        </div>
-
-        {/* T-account body */}
-        <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-glass-border">
-          {/* Assets (Left Side) */}
-          <div className="p-6">
-            <h4 className="text-sm font-semibold text-emerald-500 mb-1 text-center">
-              ASSETS
-            </h4>
-            <p className="text-xs text-text-tertiary mb-4 text-center">
-              Uses of Funds
-            </p>
-
-            <div className="space-y-4">
-              <ValueBar
-                label="Reserves"
-                value={state.reserves}
-                maxValue={maxValue}
-                color="bg-emerald-400"
-              />
-              <ValueBar
-                label="Loans"
-                value={state.loans}
-                maxValue={maxValue}
-                color="bg-emerald-500"
-              />
-              <ValueBar
-                label="Securities"
-                value={state.securities}
-                maxValue={maxValue}
-                color="bg-emerald-600"
-              />
-            </div>
-
-            {/* Total Assets */}
-            <div className="mt-6 pt-4 border-t border-glass-border">
-              <div className="flex justify-between items-center">
-                <span className="text-sm font-semibold text-text-primary">
-                  TOTAL:
-                </span>
-                <AnimatedValue
-                  value={totalAssets}
-                  prefix="$"
-                  suffix="B"
-                  size="lg"
-                  className="text-emerald-500"
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* Liabilities (Right Side) */}
-          <div className="p-6">
-            <h4 className="text-sm font-semibold text-primary-500 mb-1 text-center">
-              LIABILITIES
-            </h4>
-            <p className="text-xs text-text-tertiary mb-4 text-center">
-              Sources of Funds
-            </p>
-
-            <div className="space-y-4">
-              <ValueBar
-                label="Deposits"
-                value={state.deposits}
-                maxValue={maxValue}
-                color="bg-primary-400"
-              />
-              <ValueBar
-                label="Borrowings"
-                value={state.borrowings}
-                maxValue={maxValue}
-                color="bg-primary-500"
-              />
-              <ValueBar
-                label="Equity (Capital)"
-                value={state.equity}
-                maxValue={maxValue}
-                color="bg-primary-600"
-              />
-            </div>
-
-            {/* Total Liabilities */}
-            <div className="mt-6 pt-4 border-t border-glass-border">
-              <div className="flex justify-between items-center">
-                <span className="text-sm font-semibold text-text-primary">
-                  TOTAL:
-                </span>
-                <AnimatedValue
-                  value={totalLiabilities}
-                  prefix="$"
-                  suffix="B"
-                  size="lg"
-                  className="text-primary-500"
-                />
-              </div>
-              <p
-                className={cn(
-                  'text-xs mt-1 text-center',
-                  isBalanced ? 'text-text-tertiary' : 'text-red-500 font-medium'
-                )}
-              >
-                {isBalanced ? '(Must Balance!)' : 'Out of Balance!'}
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Balance indicator */}
-        <AnimatePresence>
-          {!isBalanced && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 'auto', opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              className="bg-red-500/10 border-t border-red-500/30 p-3 text-center overflow-hidden"
-            >
-              <p className="text-sm text-red-500 font-medium">
-                Warning: Assets ({totalAssets}B) do not equal Liabilities (
-                {totalLiabilities}B)
-              </p>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-
-      {/* Interactive sliders */}
-      <div
-        className={cn(
-          'mt-6 p-6 rounded-xl',
-          'bg-glass-light backdrop-blur-md',
-          'border border-glass-border'
-        )}
-      >
-        <h4 className="text-sm font-semibold text-text-primary mb-4">
-          Adjust Values
-        </h4>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <Slider
-            label="Deposits"
-            value={state.deposits}
-            onChange={handleDepositChange}
-            min={100}
-            max={1000}
-            step={50}
-            formatValue={(v) => `$${v}B`}
-          />
-          <Slider
-            label="Loans"
-            value={state.loans}
-            onChange={handleLoanChange}
-            min={100}
-            max={900}
-            step={50}
-            formatValue={(v) => `$${v}B`}
-          />
-        </div>
-      </div>
-
-      {/* Key ratios */}
-      <div
-        className={cn(
-          'mt-6 p-6 rounded-xl',
-          'bg-glass-light backdrop-blur-md',
-          'border border-glass-border'
-        )}
-      >
-        <h4 className="text-sm font-semibold text-text-primary mb-4">
-          Key Ratios
-        </h4>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <div className="text-center p-3 rounded-lg bg-surface-2">
-            <p className="text-xs text-text-tertiary mb-1">Reserve Ratio</p>
-            <p className="text-lg font-mono font-semibold text-emerald-500">
-              <AnimatedValue
-                value={ratios.reserveRatio}
-                suffix="%"
-                decimals={1}
-              />
-            </p>
-            <p className="text-xs text-text-tertiary">Reserves / Deposits</p>
-          </div>
-          <div className="text-center p-3 rounded-lg bg-surface-2">
-            <p className="text-xs text-text-tertiary mb-1">Loan-to-Deposit</p>
-            <p className="text-lg font-mono font-semibold text-primary-500">
-              <AnimatedValue
-                value={ratios.loanToDeposit}
-                suffix="%"
-                decimals={1}
-              />
-            </p>
-            <p className="text-xs text-text-tertiary">Loans / Deposits</p>
-          </div>
-          <div className="text-center p-3 rounded-lg bg-surface-2">
-            <p className="text-xs text-text-tertiary mb-1">Leverage</p>
-            <p className="text-lg font-mono font-semibold text-amber-500">
-              <AnimatedValue value={ratios.leverage} suffix="x" decimals={1} />
-            </p>
-            <p className="text-xs text-text-tertiary">Assets / Equity</p>
-          </div>
-        </div>
-      </div>
-
-      {/* Educational insights */}
-      <div
-        className={cn(
-          'mt-6 p-6 rounded-xl',
-          'bg-glass-light backdrop-blur-md',
-          'border border-glass-border'
-        )}
-      >
-        <h4 className="text-sm font-semibold text-text-primary mb-4">
-          Key Insights
-        </h4>
-        <div className="space-y-3">
-          {insights.map((insight, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, x: -10 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: index * 0.1 }}
-              className="flex items-start gap-3"
-            >
-              <span className="text-lg">{insight.icon}</span>
-              <p className="text-sm text-text-secondary">{insight.text}</p>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-
-      {/* Maturity mismatch visualization */}
-      <MaturityMismatch />
-
-      {/* Instruction hint */}
-      <motion.p
-        className="text-center text-xs text-text-tertiary mt-6"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.5 }}
-      >
-        Use sliders to adjust values or click scenarios to see different bank
-        states
-      </motion.p>
+    <div style={{
+      padding: '12px',
+      backgroundColor: 'var(--color-surface-2)',
+      borderRadius: '8px',
+      textAlign: 'center',
+    }}>
+      <div style={{ fontSize: '12px', color: 'var(--color-text-muted)', marginBottom: '4px' }}>{label}</div>
+      <div style={{ fontSize: '20px', fontWeight: 700, color }}>{value.toFixed(1)}{suffix}</div>
+      <div style={{ fontSize: '11px', color: 'var(--color-text-muted)', marginTop: '4px' }}>{description}</div>
     </div>
   );
 }

@@ -33,7 +33,7 @@ export function ModuleCard({ module, index = 0 }: ModuleCardProps) {
         <Card
           variant="glass"
           hover
-          className="h-full group relative overflow-hidden"
+          className="h-full min-h-[200px] flex flex-col group relative overflow-hidden"
         >
           {/* Animated background gradient on hover */}
           <div
@@ -44,7 +44,7 @@ export function ModuleCard({ module, index = 0 }: ModuleCardProps) {
             )}
           />
 
-          <CardHeader className="relative">
+          <CardHeader className="relative flex-1">
             {/* Icon with pulse animation on hover */}
             <motion.span
               className="text-4xl mb-3 block"

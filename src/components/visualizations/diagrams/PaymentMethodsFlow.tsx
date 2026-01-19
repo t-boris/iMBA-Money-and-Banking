@@ -151,7 +151,7 @@ function BranchCard({
       <span className={cn('text-sm font-semibold', colorClasses.text)}>
         {name}
       </span>
-      <span className="text-xs text-text-tertiary text-center">
+      <span className="text-xs text-text-muted text-center" style={{ lineHeight: '1.4' }}>
         {description}
       </span>
     </motion.button>
@@ -206,23 +206,30 @@ function MethodCard({
 // Insight callout component
 function InsightCallout({ text }: { text: string }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 0.9 }}
-      className={cn(
-        'p-4 rounded-xl',
-        'bg-amber-500/10 border border-amber-500/30',
-        'backdrop-blur-md'
-      )}
+    <div
+      style={{
+        padding: '16px',
+        borderRadius: '12px',
+        marginTop: '12px',
+        backgroundColor: 'rgba(245, 158, 11, 0.1)',
+        border: '1px solid rgba(245, 158, 11, 0.3)',
+      }}
     >
-      <div className="flex items-start gap-2">
-        <span className="text-lg">💡</span>
-        <p className="text-sm text-amber-600 dark:text-amber-400 font-medium">
+      <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
+        <span style={{ fontSize: '18px', flexShrink: 0 }}>💡</span>
+        <p style={{
+          fontSize: '14px',
+          color: 'rgb(217, 119, 6)',
+          fontWeight: 500,
+          margin: 0,
+          lineHeight: '1.6',
+          display: 'block',
+          width: '100%',
+        }}>
           {text}
         </p>
       </div>
-    </motion.div>
+    </div>
   );
 }
 
@@ -235,83 +242,111 @@ function MethodDetailPanel({
   onClose: () => void;
 }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -10 }}
-      className={cn(
-        'p-4 rounded-xl',
-        'bg-glass-light backdrop-blur-md',
-        'border border-amber-500/30',
-        'shadow-lg shadow-amber-500/5'
-      )}
+    <div
+      style={{
+        padding: '16px',
+        borderRadius: '12px',
+        backgroundColor: 'var(--color-surface-1)',
+        border: '1px solid rgba(245, 158, 11, 0.3)',
+        boxShadow: '0 10px 15px rgba(245, 158, 11, 0.05)',
+      }}
     >
-      <div className="flex justify-between items-start mb-2">
-        <div className="flex items-center gap-2">
-          <span className="text-2xl">{method.icon}</span>
-          <h4 className="text-sm font-semibold text-amber-500">{method.name}</h4>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <span style={{ fontSize: '24px' }}>{method.icon}</span>
+          <h4 style={{ fontSize: '14px', fontWeight: 600, color: 'rgb(245, 158, 11)', margin: 0 }}>{method.name}</h4>
         </div>
         <button
           onClick={onClose}
-          className="text-text-tertiary hover:text-text-primary transition-colors text-lg leading-none"
+          style={{
+            background: 'none',
+            border: 'none',
+            color: 'var(--color-text-muted)',
+            fontSize: '18px',
+            cursor: 'pointer',
+            padding: '0',
+            lineHeight: 1,
+          }}
           aria-label="Close detail panel"
         >
-          x
+          ×
         </button>
       </div>
-      <p className="text-sm text-text-secondary mb-3">{method.description}</p>
+      <p style={{
+        fontSize: '14px',
+        color: 'var(--color-text-secondary)',
+        margin: 0,
+        lineHeight: '1.6',
+        display: 'block',
+        width: '100%',
+      }}>
+        {method.description}
+      </p>
       {method.insight && <InsightCallout text={method.insight} />}
-    </motion.div>
+    </div>
   );
 }
 
 // Cash detail panel
 function CashDetailPanel({ onClose }: { onClose: () => void }) {
+  const characteristics = [
+    { icon: '👤', text: 'Anonymous - no record of who paid' },
+    { icon: '⚡', text: 'Immediate - settlement is instant' },
+    { icon: '🔒', text: 'No intermediary - peer-to-peer' },
+    { icon: '📉', text: 'No trace - hard to track or audit' },
+  ];
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -10 }}
-      className={cn(
-        'p-4 rounded-xl',
-        'bg-glass-light backdrop-blur-md',
-        'border border-emerald-500/30',
-        'shadow-lg shadow-emerald-500/5'
-      )}
+    <div
+      style={{
+        padding: '16px',
+        borderRadius: '12px',
+        backgroundColor: 'var(--color-surface-1)',
+        border: '1px solid rgba(16, 185, 129, 0.3)',
+        boxShadow: '0 10px 15px rgba(16, 185, 129, 0.05)',
+      }}
     >
-      <div className="flex justify-between items-start mb-3">
-        <div className="flex items-center gap-2">
-          <span className="text-2xl">💵</span>
-          <h4 className="text-sm font-semibold text-emerald-500">Cash Characteristics</h4>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '12px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <span style={{ fontSize: '24px' }}>💵</span>
+          <h4 style={{ fontSize: '14px', fontWeight: 600, color: 'rgb(16, 185, 129)', margin: 0 }}>Cash Characteristics</h4>
         </div>
         <button
           onClick={onClose}
-          className="text-text-tertiary hover:text-text-primary transition-colors text-lg leading-none"
+          style={{
+            background: 'none',
+            border: 'none',
+            color: 'var(--color-text-muted)',
+            fontSize: '18px',
+            cursor: 'pointer',
+            padding: '0',
+            lineHeight: 1,
+          }}
           aria-label="Close detail panel"
         >
-          x
+          ×
         </button>
       </div>
-      <ul className="space-y-2">
-        {[
-          { icon: '👤', text: 'Anonymous - no record of who paid' },
-          { icon: '⚡', text: 'Immediate - settlement is instant' },
-          { icon: '🔒', text: 'No intermediary - peer-to-peer' },
-          { icon: '📉', text: 'No trace - hard to track or audit' },
-        ].map((item, index) => (
-          <motion.li
+      <ul style={{ listStyle: 'none', margin: 0, padding: 0 }}>
+        {characteristics.map((item) => (
+          <li
             key={item.text}
-            initial={{ opacity: 0, x: -10 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: index * 0.1 }}
-            className="text-sm text-text-secondary flex items-center gap-2"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              fontSize: '14px',
+              color: 'var(--color-text-secondary)',
+              marginBottom: '8px',
+              lineHeight: '1.5',
+            }}
           >
-            <span>{item.icon}</span>
-            {item.text}
-          </motion.li>
+            <span style={{ flexShrink: 0 }}>{item.icon}</span>
+            <span style={{ display: 'block', width: '100%' }}>{item.text}</span>
+          </li>
         ))}
       </ul>
-    </motion.div>
+    </div>
   );
 }
 
@@ -391,10 +426,10 @@ export function PaymentMethodsFlow({ className }: PaymentMethodsFlowProps) {
           {selectedBranch === 'cash' && (
             <motion.div
               key="cash-detail"
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className="w-full max-w-md overflow-hidden"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              style={{ width: '100%', maxWidth: '448px' }}
             >
               <CashDetailPanel onClose={() => setSelectedBranch(null)} />
             </motion.div>
@@ -403,16 +438,16 @@ export function PaymentMethodsFlow({ className }: PaymentMethodsFlowProps) {
           {selectedBranch === 'non-cash' && (
             <motion.div
               key="non-cash-detail"
-              className="flex flex-col items-center gap-4 w-full"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
+              style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px', width: '100%' }}
             >
               {/* Connection line to methods */}
               <ConnectionLine isActive={true} direction="down" />
 
               {/* Non-cash methods grid */}
-              <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
+              <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '12px' }}>
                 {nonCashMethods.map((method) => (
                   <MethodCard
                     key={method.id}
@@ -426,7 +461,7 @@ export function PaymentMethodsFlow({ className }: PaymentMethodsFlowProps) {
               {/* Selected method detail */}
               <AnimatePresence mode="wait">
                 {selectedMethodData && (
-                  <div className="w-full max-w-md">
+                  <div style={{ width: '100%', maxWidth: '448px' }}>
                     <MethodDetailPanel
                       method={selectedMethodData}
                       onClose={() => setSelectedMethod(null)}
@@ -440,18 +475,20 @@ export function PaymentMethodsFlow({ className }: PaymentMethodsFlowProps) {
       </div>
 
       {/* Instruction hint */}
-      <motion.p
-        className="text-center text-xs text-text-tertiary mt-6"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.5 }}
+      <p
+        style={{
+          textAlign: 'center',
+          fontSize: '12px',
+          color: 'var(--color-text-muted)',
+          marginTop: '24px',
+        }}
       >
         {selectedBranch === null
           ? 'Click on Cash or Non-Cash to explore payment methods'
           : selectedBranch === 'non-cash' && selectedMethod === null
           ? 'Click on a payment method to learn more'
           : ''}
-      </motion.p>
+      </p>
     </div>
   );
 }

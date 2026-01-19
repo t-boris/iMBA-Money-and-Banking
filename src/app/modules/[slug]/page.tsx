@@ -8,6 +8,7 @@ import {
   CardTitle,
   CardContent,
 } from '@/components/ui';
+import { Module1Content } from '@/components/modules';
 import Link from 'next/link';
 
 // Generate static params for all modules (required for static export)
@@ -68,15 +69,15 @@ export default async function ModulePage({
           </Link>
 
           <div className="flex items-start gap-6">
-            <span className="text-5xl">{module.icon}</span>
-            <div>
+            <span className="text-5xl flex-shrink-0">{module.icon}</span>
+            <div className="flex-1 min-w-0">
               <span className="text-sm font-medium text-text-muted uppercase tracking-wider">
                 Module {module.id} of {modules.length}
               </span>
               <h1 className="text-3xl md:text-4xl font-bold text-text-primary mt-1">
                 {module.title}
               </h1>
-              <p className="text-lg text-text-secondary mt-2 max-w-2xl">
+              <p className="text-lg text-text-secondary mt-2" style={{ maxWidth: '700px', lineHeight: '1.6' }}>
                 {module.description}
               </p>
             </div>
@@ -84,45 +85,25 @@ export default async function ModulePage({
         </Container>
       </Section>
 
-      {/* Content Placeholder */}
+      {/* Module Content */}
       <Section spacing="lg">
         <Container>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Placeholder cards for future content */}
-            <Card variant="default">
-              <CardHeader>
-                <CardTitle className="text-lg">Visualizations</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-text-secondary text-sm">
-                  Interactive diagrams and animations will appear here in Phase
-                  4.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card variant="default">
-              <CardHeader>
-                <CardTitle className="text-lg">Calculators</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-text-secondary text-sm">
-                  Financial calculators will appear here in Phase 5.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card variant="default">
-              <CardHeader>
-                <CardTitle className="text-lg">Quizzes & Flashcards</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-text-secondary text-sm">
-                  Learning tools will appear here in Phase 6.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
+          {module.id === 1 ? (
+            <Module1Content />
+          ) : (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <Card variant="default">
+                <CardHeader>
+                  <CardTitle className="text-lg">Coming Soon</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-text-secondary text-sm">
+                    Interactive content for this module is under development.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          )}
         </Container>
       </Section>
 

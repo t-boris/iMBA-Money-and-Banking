@@ -34,10 +34,11 @@ export function Slider({
   return (
     <div className={cn('w-full', className)}>
       {/* Label and value display */}
-      <div className="flex items-center justify-between mb-2">
+      <div className="flex items-center justify-between mb-2 gap-2">
         <label
           htmlFor={id}
-          className="text-sm font-medium text-text-secondary"
+          className="text-sm font-medium text-text-secondary flex-1"
+          style={{ whiteSpace: 'nowrap' }}
         >
           {label}
         </label>
@@ -46,7 +47,7 @@ export function Slider({
           initial={{ scale: 1.1, opacity: 0.7 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-          className="text-sm font-mono font-semibold text-primary-500 bg-primary-500/10 px-2 py-0.5 rounded"
+          className="text-sm font-mono font-semibold text-primary-500 bg-primary-500/10 px-2 py-0.5 rounded flex-shrink-0"
         >
           {displayValue}
         </motion.span>
@@ -105,10 +106,10 @@ export function Slider({
 
       {/* Min/Max labels */}
       <div className="flex justify-between mt-1">
-        <span className="text-xs text-text-tertiary">
+        <span className="text-xs text-text-muted" style={{ whiteSpace: 'nowrap' }}>
           {formatValue ? formatValue(min) : `${min}${unit}`}
         </span>
-        <span className="text-xs text-text-tertiary">
+        <span className="text-xs text-text-muted" style={{ whiteSpace: 'nowrap' }}>
           {formatValue ? formatValue(max) : `${max}${unit}`}
         </span>
       </div>

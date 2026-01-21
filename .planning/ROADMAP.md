@@ -7,6 +7,7 @@ Build an interactive study web application for the Money and Banking course. Fou
 ## Domain Expertise
 
 Module 1: Money and Finance — course content provided
+Module 2: Modern Banking — course content provided
 
 ## Phases
 
@@ -18,6 +19,7 @@ Module 1: Money and Finance — course content provided
 - [x] **Phase 2: Design System** - Award-winning UI components and theming
 - [x] **Phase 3: Module Navigation** - Card-based module selection for 8 modules
 - [x] **Phase 4: Module 1 Content** - Interactive visualizations for Money and Finance
+- [ ] **Phase 5.1: Module 2 Content** - Interactive visualizations for Modern Banking (INSERTED)
 
 *Future modules to be added as course content is provided*
 
@@ -81,6 +83,44 @@ Wave structure:
 
 Style: Playful animations, money particles flowing, pulsing entities, engaging micro-interactions.
 
+### Phase 5.1: Module 2 Content (INSERTED)
+**Goal**: Build interactive visualizations for Module 2 (History of Modern Banking) - banking evolution timeline, organization comparisons, interest spread calculator, and regulation impact flows.
+**Depends on**: Phase 4
+**Research**: Unlikely (course content provided, reuse existing visualization patterns)
+**Plans**: 7 plans in 4 waves
+
+Plans:
+- [ ] 05.1-01: Module 2 data & types (lessons, concepts)
+- [ ] 05.1-02: Banking Evolution Timeline (1870-2008)
+- [ ] 05.1-03: Bank Organization Comparison (Unit → FHC)
+- [ ] 05.1-04: Interest Spread Calculator
+- [ ] 05.1-05: Regulation Impact Flow (Glass-Steagall → GLB)
+- [ ] 05.1-06: Bank Consolidation Chart
+- [ ] 05.1-07: Module page integration + visual verification
+
+Wave structure:
+- Wave 1: 05.1-01 (data foundation)
+- Wave 2 (parallel): 05.1-02, 05.1-03, 05.1-04
+- Wave 3 (parallel): 05.1-05, 05.1-06
+- Wave 4: 05.1-07 (integration + checkpoint)
+
+**Key Content Areas:**
+- Lesson 2-0: Overview (Business Model, Commercial vs Investment Banking)
+- Lesson 2-1.1: Early Banking (Unit Bank, Branch Network, Glass-Steagall)
+- Lesson 2-1.2: Bank Holding Companies (3-6-3 Rule, Consolidation)
+- Lesson 2-1.3: Deregulation (Riegle-Neal, Gramm-Leach-Bliley, Too Big To Fail)
+
+**Visualization Ideas:**
+- Banking Evolution Timeline (1870-2008)
+- Bank Organization Comparison (Unit → Branch → BHC → FHC)
+- Interest Spread Calculator
+- Regulation Impact Flow
+- Consolidation Chart (animated bank count decline)
+- Modern Bank Structure (Financial Holding Company org chart)
+- Revenue Mix Comparison (then vs now)
+
+Style: Consistent with Module 1 - playful animations, interactive exploration.
+
 ## Progress
 
 | Phase | Plans Complete | Status | Completed |
@@ -89,9 +129,10 @@ Style: Playful animations, money particles flowing, pulsing entities, engaging m
 | 2. Design System | 4/4 | Complete | 2026-01-18 |
 | 3. Module Navigation | 3/3 | Complete | 2026-01-18 |
 | 4. Module 1 Content | 7/7 | Complete | 2026-01-20 |
+| 5.1. Module 2 Content | 0/7 | Planned | - |
 
 ## Next Steps
 
-Milestone 1 complete. All 4 phases finished.
+Phase 5.1 planned with 7 plans in 4 waves.
 
-To add content for Modules 2-8, provide course materials and run `/gsd:new-milestone`.
+Run `/gsd:execute-phase 5.1` to build Module 2 visualizations.

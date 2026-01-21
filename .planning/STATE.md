@@ -5,13 +5,13 @@
 See: .planning/PROJECT.md (updated 2026-01-17)
 
 **Core value:** Make complex financial and banking concepts crystal clear through interactive visualizations, animated diagrams, and engaging study tools.
-**Current focus:** Phase 4 Complete — Module 1 Content
+**Current focus:** Phase 5.1 — Module 2 Content (Modern Banking)
 
 ## Current Position
 
-Phase: 4 of 4 (Module 1 Content)
-Plan: 7 of 7 in current phase
-Status: Complete
+Phase: 5.1 of 5.1 (Module 2 Content)
+Plan: 0 of 7 in current phase
+Status: Planned
 Last activity: 2026-01-20 — Completed 04-07-PLAN.md (Module page integration + visual verification)
 
 Progress: ████████████████████ 100% (17/17 plans complete)
@@ -91,6 +91,10 @@ None yet.
 ### Blockers/Concerns
 
 None yet.
+
+### Roadmap Evolution
+
+- Phase 5.1 inserted after Phase 4: Module 2 Content - Modern Banking (INSERTED)
 
 ## Session Continuity
 

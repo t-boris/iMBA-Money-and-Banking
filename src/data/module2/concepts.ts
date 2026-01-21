@@ -1,0 +1,125 @@
+import { Concept } from '@/types';
+
+export const module2Concepts: Concept[] = [
+  // Organization Forms (Lesson 2-1: Early Banking in the US)
+  {
+    id: 'unit-bank',
+    term: 'Unit Bank',
+    definition: 'A bank that operates from only one physical location.',
+    category: 'institutions',
+    lessonId: '2-1',
+  },
+  {
+    id: 'branch-network',
+    term: 'Branch Network',
+    definition: 'A bank that operates many branches in a geographic area.',
+    category: 'institutions',
+    lessonId: '2-1',
+  },
+  {
+    id: 'glass-steagall',
+    term: 'Glass-Steagall Act',
+    definition: 'The 1933 law that separated commercial and investment banking and created deposit insurance.',
+    category: 'financial-system',
+    relatedConcepts: ['fdic', 'gramm-leach-bliley'],
+    lessonId: '2-1',
+  },
+  // Bank Holding Companies (Lesson 2-2)
+  {
+    id: 'bank-holding-company',
+    term: 'Bank Holding Company',
+    definition: 'A corporation that owns one or more banks and possibly other financial firms.',
+    category: 'institutions',
+    relatedConcepts: ['financial-holding-company'],
+    lessonId: '2-2',
+  },
+  {
+    id: '3-6-3-rule',
+    term: '3-6-3 Rule',
+    definition: 'Pay 3% on deposits, lend at 6%, and be on the golf course by 3 PM — the golden age of easy banking.',
+    category: 'money',
+    relatedConcepts: ['interest-spread'],
+    lessonId: '2-2',
+  },
+  {
+    id: 'regulatory-arbitrage',
+    term: 'Regulatory Arbitrage',
+    definition: 'Exploiting loopholes in regulations to achieve business goals.',
+    category: 'financial-system',
+    lessonId: '2-2',
+  },
+  // Deregulation and Modern Banking (Lesson 2-3)
+  {
+    id: 'riegle-neal',
+    term: 'Riegle-Neal Act',
+    definition: 'The 1994 law that allowed banks to operate across state borders.',
+    category: 'financial-system',
+    lessonId: '2-3',
+  },
+  {
+    id: 'gramm-leach-bliley',
+    term: 'Gramm-Leach-Bliley Act',
+    definition: 'The 1999 law that repealed Glass-Steagall separation between commercial banking, investment banking, and insurance.',
+    category: 'financial-system',
+    relatedConcepts: ['glass-steagall', 'financial-holding-company'],
+    lessonId: '2-3',
+  },
+  {
+    id: 'financial-holding-company',
+    term: 'Financial Holding Company',
+    definition: 'A corporation that owns banks, investment banks, and insurance firms under one roof.',
+    category: 'institutions',
+    relatedConcepts: ['bank-holding-company', 'gramm-leach-bliley'],
+    lessonId: '2-3',
+  },
+  // Bank Consolidation (Lesson 2-4)
+  {
+    id: 'bank-consolidation',
+    term: 'Bank Consolidation',
+    definition: 'The process where many small banks merge into fewer large banks.',
+    category: 'financial-system',
+    relatedConcepts: ['too-big-to-fail'],
+    lessonId: '2-4',
+  },
+  {
+    id: 'too-big-to-fail',
+    term: 'Too Big To Fail',
+    definition: 'Institutions whose failure would threaten the entire financial system.',
+    category: 'financial-system',
+    relatedConcepts: ['bank-consolidation', 'fdic'],
+    lessonId: '2-4',
+  },
+  {
+    id: 'bank-run',
+    term: 'Bank Run',
+    definition: 'A situation where many depositors withdraw money simultaneously due to fear of bank failure.',
+    category: 'financial-system',
+    relatedConcepts: ['fdic'],
+    lessonId: '2-4',
+  },
+  {
+    id: 'fdic',
+    term: 'FDIC',
+    definition: 'Federal Deposit Insurance Corporation — provides insurance to depositors up to $250,000.',
+    category: 'institutions',
+    relatedConcepts: ['bank-run', 'glass-steagall'],
+    lessonId: '2-4',
+  },
+  // Modern Bank Revenue (Lesson 2-5)
+  {
+    id: 'interest-spread',
+    term: 'Interest Spread',
+    definition: 'The difference between interest earned on loans and interest paid on deposits.',
+    category: 'money',
+    relatedConcepts: ['fee-income', '3-6-3-rule'],
+    lessonId: '2-5',
+  },
+  {
+    id: 'fee-income',
+    term: 'Fee Income',
+    definition: 'Revenue generated from providing financial services rather than lending.',
+    category: 'money',
+    relatedConcepts: ['interest-spread'],
+    lessonId: '2-5',
+  },
+];

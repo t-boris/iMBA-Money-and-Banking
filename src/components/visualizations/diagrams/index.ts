@@ -6,3 +6,8 @@ export { DirectIndirectFinance } from './DirectIndirectFinance';
 export { BankBalanceSheet } from './BankBalanceSheet';
 export { NonBanksOverview } from './NonBanksOverview';
 export { FinancialDevelopment } from './FinancialDevelopment';
+export { BankingEvolutionTimeline } from './BankingEvolutionTimeline';
+export { BankOrganizationComparison } from './BankOrganizationComparison';
+export { BankConsolidationChart } from './BankConsolidationChart';
+export { RegulationImpactFlow } from './RegulationImpactFlow';
+export { RevenueMixComparison } from './RevenueMixComparison';

@@ -11,11 +11,11 @@ export const modules: Module[] = [
   },
   {
     id: 2,
-    title: 'Interest Rates and Returns',
+    title: 'History of Modern Banking',
     description:
-      'Present value, yield to maturity, and the relationship between interest rates and bond prices.',
-    icon: '📈',
-    slug: 'interest-rates-returns',
+      'From unit banks to financial supermarkets: the evolution of banking organization, regulation, and how banks earn profit.',
+    icon: '🏦',
+    slug: 'history-modern-banking',
   },
   {
     id: 3,

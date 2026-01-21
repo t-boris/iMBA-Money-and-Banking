@@ -8,7 +8,7 @@ import {
   CardTitle,
   CardContent,
 } from '@/components/ui';
-import { Module1Content } from '@/components/modules';
+import { Module1Content, Module2Content } from '@/components/modules';
 import Link from 'next/link';
 
 // Generate static params for all modules (required for static export)
@@ -90,6 +90,8 @@ export default async function ModulePage({
         <Container>
           {module.id === 1 ? (
             <Module1Content />
+          ) : module.id === 2 ? (
+            <Module2Content />
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               <Card variant="default">

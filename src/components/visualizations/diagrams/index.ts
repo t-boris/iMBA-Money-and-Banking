@@ -11,3 +11,5 @@ export { BankOrganizationComparison } from './BankOrganizationComparison';
 export { BankConsolidationChart } from './BankConsolidationChart';
 export { RegulationImpactFlow } from './RegulationImpactFlow';
 export { RevenueMixComparison } from './RevenueMixComparison';
+export { BankTypesPyramid } from './BankTypesPyramid';
+export { FundingSourcesComparison } from './FundingSourcesComparison';

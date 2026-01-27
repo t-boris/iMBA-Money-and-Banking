@@ -10,11 +10,11 @@ See: .planning/PROJECT.md (updated 2026-01-17)
 ## Current Position
 
 Phase: 6 of 6 (Module 2 Complete)
-Plan: 4 of 6 in current phase
+Plan: 5 of 6 in current phase
 Status: In progress
-Last activity: 2026-01-27 — Completed 06-04-PLAN.md
+Last activity: 2026-01-27 — Completed 06-05-PLAN.md
 
-Progress: █████████████████████ 93% (28/30 plans complete)
+Progress: █████████████████████ 97% (29/30 plans complete)
 
 ## Performance Metrics
 
@@ -83,6 +83,9 @@ Recent decisions affecting current work:
 - Expandable tree pattern for investment bank org chart
 - Expandable category pattern for balance sheet drill-down
 - Striped pattern for trading book visual distinction
+- Iceberg SVG with bobbing animation for OBS visualization
+- Waterfall chart with running totals for income statement flow
+- Bank type toggle (JPMorgan vs Community Bank) for comparison
 
 ### Deferred Issues
 
@@ -104,7 +107,7 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-01-27
-Stopped at: Completed 06-04-PLAN.md (BankBalanceSheetDetailed visualization)
+Stopped at: Completed 06-05-PLAN.md (OffBalanceSheetIceberg and IncomeStatementWaterfall visualizations)
 Resume file: None
 
 ## Notes

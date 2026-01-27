@@ -11,6 +11,13 @@ import {
   RegulationImpactFlow,
   BankConsolidationChart,
   RevenueMixComparison,
+  BankTypesPyramid,
+  FundingSourcesComparison,
+  LendingProcessFlow,
+  InvestmentBankStructure,
+  BankBalanceSheetDetailed,
+  OffBalanceSheetIceberg,
+  IncomeStatementWaterfall,
 } from '@/components/visualizations';
 import { cn } from '@/lib/utils';
 
@@ -97,6 +104,62 @@ export function Module2Content({ className }: Module2ContentProps) {
       description:
         'From traditional interest spread to diversified fee income — how modern banks generate profits in a competitive environment.',
       visualizations: [<RevenueMixComparison key="rmc" />],
+    },
+    '2-6': {
+      id: '2-6',
+      title: 'Bank Types',
+      description:
+        'Three types of commercial banks: Community, Regional, and Money Center — differing in size, scope, and funding.',
+      visualizations: [<BankTypesPyramid key="btp" />],
+    },
+    '2-7': {
+      id: '2-7',
+      title: 'Bank Funding',
+      description:
+        'How banks raise money: retail deposits (stable, cheap), wholesale funding (volatile, expensive), and equity capital.',
+      visualizations: [<FundingSourcesComparison key="fsc" />],
+    },
+    '2-8': {
+      id: '2-8',
+      title: 'Bank Lending',
+      description:
+        'Consumer credit, commercial lending, and the importance of relationship banking for information-opaque borrowers.',
+      visualizations: [], // Text-based lesson - lending types overview
+    },
+    '2-9': {
+      id: '2-9',
+      title: 'Lending Process',
+      description:
+        'How bank lending evolved: from Originate-and-Hold to Originate-and-Distribute, and the rise of securitization.',
+      visualizations: [<LendingProcessFlow key="lpf" />],
+    },
+    '2-10': {
+      id: '2-10',
+      title: 'Investment Banking',
+      description:
+        'Underwriting, M&A advisory, and trading — how investment banks help firms access capital markets.',
+      visualizations: [<InvestmentBankStructure key="ibs" />],
+    },
+    '2-11': {
+      id: '2-11',
+      title: 'Balance Sheet',
+      description:
+        'What banks own (assets) and owe (liabilities): the banking book vs trading book distinction.',
+      visualizations: [<BankBalanceSheetDetailed key="bbsd" />],
+    },
+    '2-12': {
+      id: '2-12',
+      title: 'Off-Balance Sheet',
+      description:
+        "The hidden risks: loan commitments, guarantees, and derivatives that don't appear on the balance sheet.",
+      visualizations: [<OffBalanceSheetIceberg key="obsi" />],
+    },
+    '2-13': {
+      id: '2-13',
+      title: 'Income Statement',
+      description:
+        'How banks make money: net interest income plus fee income, minus expenses and loan loss provisions.',
+      visualizations: [<IncomeStatementWaterfall key="isw" />],
     },
   };
 
@@ -215,11 +278,22 @@ export function Module2Content({ className }: Module2ContentProps) {
 // Module Overview component for lesson 2-0
 function ModuleOverview({ onLessonChange }: { onLessonChange: (id: string) => void }) {
   const topics = [
+    // Lesson 2.1: History of Modern Banking
     { id: '2-1', icon: '🏛️', title: 'Early Banking in the US', desc: 'Unit banks, branches, and Glass-Steagall' },
     { id: '2-2', icon: '🏢', title: 'Bank Holding Companies', desc: 'The 3-6-3 rule and regulatory arbitrage' },
     { id: '2-3', icon: '⚖️', title: 'Deregulation', desc: 'Riegle-Neal and Gramm-Leach-Bliley' },
     { id: '2-4', icon: '📉', title: 'Bank Consolidation', desc: 'From 14,000 to under 5,000 banks' },
     { id: '2-5', icon: '💰', title: 'Modern Bank Revenue', desc: 'Interest spread and fee income' },
+    // Lesson 2.2: Bank Organization & Functions
+    { id: '2-6', icon: '🔺', title: 'Bank Types', desc: 'Community, Regional, and Money Center banks' },
+    { id: '2-7', icon: '💵', title: 'Bank Funding', desc: 'Deposits, wholesale funding, and capital' },
+    { id: '2-8', icon: '📋', title: 'Bank Lending', desc: 'Consumer credit and commercial loans' },
+    { id: '2-9', icon: '🔄', title: 'Lending Process', desc: 'Originate-and-Hold vs Originate-and-Distribute' },
+    { id: '2-10', icon: '🏦', title: 'Investment Banking', desc: 'Underwriting, M&A, and trading' },
+    // Lesson 2.3: Financial Statements
+    { id: '2-11', icon: '📊', title: 'Balance Sheet', desc: 'Assets, liabilities, and equity' },
+    { id: '2-12', icon: '🧊', title: 'Off-Balance Sheet', desc: 'Hidden commitments and derivatives' },
+    { id: '2-13', icon: '📈', title: 'Income Statement', desc: 'Net interest income and fee income' },
   ];
 
   return (

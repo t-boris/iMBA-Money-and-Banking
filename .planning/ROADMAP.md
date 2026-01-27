@@ -130,9 +130,9 @@ Style: Consistent with Module 1 - playful animations, interactive exploration.
 
 Plans:
 - [x] 06-01: Module 2 data extension (lessons 2-6 to 2-13, concepts)
-- [ ] 06-02: Bank Types Pyramid + Funding Sources Comparison
-- [ ] 06-03: Lending Process Flow + Investment Bank Structure
-- [ ] 06-04: Bank Balance Sheet Detailed
+- [x] 06-02: Bank Types Pyramid + Funding Sources Comparison
+- [x] 06-03: Lending Process Flow + Investment Bank Structure
+- [x] 06-04: Bank Balance Sheet Detailed
 - [ ] 06-05: Off-Balance Sheet Iceberg + Income Statement Waterfall
 - [ ] 06-06: Module page integration + visual verification
 
@@ -178,7 +178,7 @@ Style: Consistent with existing modules - playful animations, interactive explor
 | 3. Module Navigation | 3/3 | Complete | 2026-01-18 |
 | 4. Module 1 Content | 7/7 | Complete | 2026-01-20 |
 | 5.1. Module 2 Content | 7/7 | Complete | 2026-01-21 |
-| 6. Module 2 Complete | 1/6 | In progress | — |
+| 6. Module 2 Complete | 4/6 | In progress | — |
 
 ## Next Steps
 

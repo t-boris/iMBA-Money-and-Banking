@@ -20,6 +20,7 @@ Module 2: Modern Banking — course content provided
 - [x] **Phase 3: Module Navigation** - Card-based module selection for 8 modules
 - [x] **Phase 4: Module 1 Content** - Interactive visualizations for Money and Finance
 - [x] **Phase 5.1: Module 2 Content** - Interactive visualizations for Modern Banking (INSERTED)
+- [ ] **Phase 6: Module 2 Complete** - Bank organization, lending, investment banking, and financial statements
 
 *Future modules to be added as course content is provided*
 
@@ -121,6 +122,53 @@ Wave structure:
 
 Style: Consistent with Module 1 - playful animations, interactive exploration.
 
+### Phase 6: Module 2 Complete
+**Goal**: Complete Module 2 content with Lessons 2.2 (Organization and Functions) and 2.3 (Financial Statement Analysis). Build interactive visualizations for bank types, lending process, investment banking, and financial statement analysis.
+**Depends on**: Phase 5.1
+**Research**: Unlikely (course content provided, reuse existing visualization patterns)
+**Plans**: 6 plans in 4 waves
+
+Plans:
+- [ ] 06-01: Module 2 data extension (lessons 2-6 to 2-13, concepts)
+- [ ] 06-02: Bank Types Pyramid + Funding Sources Comparison
+- [ ] 06-03: Lending Process Flow + Investment Bank Structure
+- [ ] 06-04: Bank Balance Sheet Detailed
+- [ ] 06-05: Off-Balance Sheet Iceberg + Income Statement Waterfall
+- [ ] 06-06: Module page integration + visual verification
+
+Wave structure:
+- Wave 1: 06-01 (data foundation)
+- Wave 2 (parallel): 06-02, 06-03
+- Wave 3 (parallel): 06-04, 06-05
+- Wave 4: 06-06 (integration + checkpoint)
+
+**Key Content Areas:**
+
+*Lesson 2.2: Organization and Functions of Modern Banks*
+- 2-2.1: Bank Types and Borrowing (Community, Regional, Money Center banks; funding sources: deposits, wholesale, capital)
+- 2-2.2: Bank Lending (loan characteristics, consumer credit, C&I lending, relationship lending)
+- 2-2.3: Changes in Lending Process (Originate-and-Hold vs Originate-and-Distribute, securitization, fintech)
+- 2-2.4: Investment Bank Organization (financing, trading, advisory divisions)
+- 2-2.5: Investment Banking Activities (underwriting, M&A advisory, securities trading)
+
+*Lesson 2.3: Financial Statement Analysis*
+- 2-3.1: Balance Sheet (banking book vs trading book, assets and liabilities structure)
+- 2-3.2: Off-Balance Sheet (loan commitments, derivatives, notional vs market value)
+- 2-3.3: Income Statement (NII, non-interest income, loan loss provisions)
+
+**Visualization Ideas:**
+- Bank Types Pyramid (Community → Regional → Money Center)
+- Funding Sources Comparison (deposits vs wholesale vs capital)
+- Lending Process Flow (Originate-and-Hold vs Originate-and-Distribute)
+- Loan Types Explorer (consumer credit, C&I lending categories)
+- Investment Bank Structure (divisions and activities)
+- Underwriting Process Flow (IPO book building)
+- Bank Balance Sheet Visualizer (interactive assets/liabilities)
+- Off-Balance Sheet Iceberg (visible vs hidden risks)
+- Income Statement Waterfall (revenue → profit)
+
+Style: Consistent with existing modules - playful animations, interactive exploration, clear visual hierarchy.
+
 ## Progress
 
 | Phase | Plans Complete | Status | Completed |
@@ -130,9 +178,10 @@ Style: Consistent with Module 1 - playful animations, interactive exploration.
 | 3. Module Navigation | 3/3 | Complete | 2026-01-18 |
 | 4. Module 1 Content | 7/7 | Complete | 2026-01-20 |
 | 5.1. Module 2 Content | 7/7 | Complete | 2026-01-21 |
+| 6. Module 2 Complete | 0/6 | Planned | — |
 
 ## Next Steps
 
-Phase 5.1 planned with 7 plans in 4 waves.
+Phase 6 planned with 6 plans in 4 waves.
 
-Run `/gsd:execute-phase 5.1` to build Module 2 visualizations.
+Run `/gsd:execute-phase 6` to build remaining Module 2 visualizations.

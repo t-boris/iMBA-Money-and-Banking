@@ -16,3 +16,5 @@ export { FundingSourcesComparison } from './FundingSourcesComparison';
 export { LendingProcessFlow } from './LendingProcessFlow';
 export { InvestmentBankStructure } from './InvestmentBankStructure';
 export { BankBalanceSheetDetailed } from './BankBalanceSheetDetailed';
+export { OffBalanceSheetIceberg } from './OffBalanceSheetIceberg';
+export { IncomeStatementWaterfall } from './IncomeStatementWaterfall';

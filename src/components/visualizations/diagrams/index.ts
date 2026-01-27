@@ -15,3 +15,4 @@ export { BankTypesPyramid } from './BankTypesPyramid';
 export { FundingSourcesComparison } from './FundingSourcesComparison';
 export { LendingProcessFlow } from './LendingProcessFlow';
 export { InvestmentBankStructure } from './InvestmentBankStructure';
+export { BankBalanceSheetDetailed } from './BankBalanceSheetDetailed';

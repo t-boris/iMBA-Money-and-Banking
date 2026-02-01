@@ -183,8 +183,8 @@ Plans:
 - [x] 07-02: Risk-Return Tradeoff Curve + Bank Capital Structure
 - [x] 07-03: ROA/ROE/Leverage Calculator + Performance Decomposition
 - [x] 07-04: Credit Risk Flow (Rating → PD → Pricing) + FICO Scale
-- [ ] 07-05: Interest Rate Risk (Maturity Mismatch + Duration Gap)
-- [ ] 07-06: Liquidity Crisis Flow (Bank Run → Fire Sale) + VaR Distribution
+- [x] 07-05: Interest Rate Risk (Maturity Mismatch + Duration Gap)
+- [x] 07-06: Liquidity Crisis Flow (Bank Run → Fire Sale) + VaR Distribution
 - [ ] 07-07: Module page integration + visual verification
 
 Wave structure:
@@ -276,7 +276,7 @@ Style: Consistent with existing modules - glass morphism, playful animations, en
 | 4. Module 1 Content | 7/7 | Complete | 2026-01-20 |
 | 5.1. Module 2 Content | 7/7 | Complete | 2026-01-21 |
 | 6. Module 2 Complete | 6/6 | Complete | 2026-02-01 |
-| 7. Module 3 Content | 4/7 | In progress | — |
+| 7. Module 3 Content | 6/7 | In progress | — |
 | 8. Study Tools | 0/5 | Not started | — |
 
 ## Next Steps

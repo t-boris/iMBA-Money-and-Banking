@@ -86,11 +86,12 @@ export function ExamSetup({ onStart, totalQuestions }: ExamSetupProps) {
                 cursor: 'pointer',
                 transition: 'border-color 0.2s, background-color 0.2s',
               }}
-              onMouseEnter={e => {
+              onMouseEnter={(e) => {
                 e.currentTarget.style.borderColor = 'var(--color-primary)';
-                e.currentTarget.style.backgroundColor = 'color-mix(in srgb, var(--color-primary) 10%, transparent)';
+                e.currentTarget.style.backgroundColor =
+                  'color-mix(in srgb, var(--color-primary) 10%, transparent)';
               }}
-              onMouseLeave={e => {
+              onMouseLeave={(e) => {
                 e.currentTarget.style.borderColor = 'var(--color-glass-border)';
                 e.currentTarget.style.backgroundColor = 'var(--color-glass-light)';
               }}

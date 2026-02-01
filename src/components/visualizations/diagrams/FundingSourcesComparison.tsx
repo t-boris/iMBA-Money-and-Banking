@@ -80,13 +80,7 @@ interface FundingSourcesComparisonProps {
   className?: string;
 }
 
-function FundingBar({
-  mix,
-  isAnimating,
-}: {
-  mix: FundingMix;
-  isAnimating: boolean;
-}) {
+function FundingBar({ mix, isAnimating }: { mix: FundingMix; isAnimating: boolean }) {
   return (
     <div
       style={{
@@ -112,9 +106,7 @@ function FundingBar({
         }}
       >
         {mix.deposits >= 15 && (
-          <span style={{ fontSize: '13px', fontWeight: 600, color: 'white' }}>
-            {mix.deposits}%
-          </span>
+          <span style={{ fontSize: '13px', fontWeight: 600, color: 'white' }}>{mix.deposits}%</span>
         )}
       </motion.div>
 
@@ -153,9 +145,7 @@ function FundingBar({
         }}
       >
         {mix.capital >= 10 && (
-          <span style={{ fontSize: '13px', fontWeight: 600, color: 'white' }}>
-            {mix.capital}%
-          </span>
+          <span style={{ fontSize: '13px', fontWeight: 600, color: 'white' }}>{mix.capital}%</span>
         )}
       </motion.div>
     </div>
@@ -471,7 +461,9 @@ export function FundingSourcesComparison({ className }: FundingSourcesComparison
               backgroundColor: 'rgb(16, 185, 129)',
             }}
           />
-          <span style={{ fontSize: '12px', color: 'var(--color-text-muted)' }}>Retail Deposits</span>
+          <span style={{ fontSize: '12px', color: 'var(--color-text-muted)' }}>
+            Retail Deposits
+          </span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
           <div
@@ -578,9 +570,7 @@ export function FundingSourcesComparison({ className }: FundingSourcesComparison
           border: '1px solid var(--color-surface-2)',
         }}
       >
-        <div
-          style={{ fontSize: '13px', color: 'var(--color-text-secondary)', lineHeight: '1.7' }}
-        >
+        <div style={{ fontSize: '13px', color: 'var(--color-text-secondary)', lineHeight: '1.7' }}>
           <strong style={{ color: 'var(--color-text-primary)' }}>Key Insight:</strong>{' '}
           {selectedBankType === 'community'
             ? 'Community banks benefit from FDIC-insured deposits that are "sticky"—depositors rarely move accounts. This provides stable, low-cost funding but limits the bank\'s ability to grow quickly.'

@@ -236,7 +236,14 @@ function CategoryItem({
           transition: 'all 0.2s',
         }}
       >
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            marginBottom: '8px',
+          }}
+        >
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <motion.span
               animate={{ rotate: isExpanded ? 90 : 0 }}
@@ -244,24 +251,28 @@ function CategoryItem({
             >
               ▶
             </motion.span>
-            <span style={{
-              fontSize: '14px',
-              fontWeight: 600,
-              color: 'var(--color-text-primary)',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '6px',
-            }}>
+            <span
+              style={{
+                fontSize: '14px',
+                fontWeight: 600,
+                color: 'var(--color-text-primary)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+              }}
+            >
               {category.name}
               {category.isTradingBook && (
-                <span style={{
-                  fontSize: '10px',
-                  padding: '2px 6px',
-                  backgroundColor: 'rgba(99, 102, 241, 0.2)',
-                  color: 'rgb(99, 102, 241)',
-                  borderRadius: '4px',
-                  fontWeight: 500,
-                }}>
+                <span
+                  style={{
+                    fontSize: '10px',
+                    padding: '2px 6px',
+                    backgroundColor: 'rgba(99, 102, 241, 0.2)',
+                    color: 'rgb(99, 102, 241)',
+                    borderRadius: '4px',
+                    fontWeight: 500,
+                  }}
+                >
                   MTM
                 </span>
               )}
@@ -278,12 +289,14 @@ function CategoryItem({
         </div>
 
         {/* Progress bar */}
-        <div style={{
-          height: '6px',
-          backgroundColor: 'var(--color-surface-2)',
-          borderRadius: '3px',
-          overflow: 'hidden',
-        }}>
+        <div
+          style={{
+            height: '6px',
+            backgroundColor: 'var(--color-surface-2)',
+            borderRadius: '3px',
+            overflow: 'hidden',
+          }}
+        >
           <motion.div
             initial={{ width: 0 }}
             animate={{ width: `${category.percentage}%` }}
@@ -310,14 +323,16 @@ function CategoryItem({
             transition={{ duration: 0.2 }}
             style={{ overflow: 'hidden' }}
           >
-            <div style={{
-              marginTop: '8px',
-              marginLeft: '20px',
-              padding: '12px',
-              backgroundColor: 'var(--color-surface-1)',
-              borderRadius: '8px',
-              border: '1px dashed var(--color-surface-2)',
-            }}>
+            <div
+              style={{
+                marginTop: '8px',
+                marginLeft: '20px',
+                padding: '12px',
+                backgroundColor: 'var(--color-surface-1)',
+                borderRadius: '8px',
+                border: '1px dashed var(--color-surface-2)',
+              }}
+            >
               {category.subItems.map((item, idx) => (
                 <div
                   key={idx}
@@ -326,7 +341,10 @@ function CategoryItem({
                     justifyContent: 'space-between',
                     alignItems: 'center',
                     padding: '6px 0',
-                    borderBottom: idx < category.subItems.length - 1 ? '1px solid var(--color-surface-2)' : 'none',
+                    borderBottom:
+                      idx < category.subItems.length - 1
+                        ? '1px solid var(--color-surface-2)'
+                        : 'none',
                   }}
                 >
                   <span style={{ fontSize: '12px', color: 'var(--color-text-secondary)' }}>
@@ -376,7 +394,14 @@ export function BankBalanceSheetDetailed({ className }: BankBalanceSheetDetailed
     <div className={cn('w-full', className)} style={{ maxWidth: '1000px', margin: '0 auto' }}>
       {/* Title */}
       <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-        <h3 style={{ fontSize: '20px', fontWeight: 600, color: 'var(--color-text-primary)', marginBottom: '8px' }}>
+        <h3
+          style={{
+            fontSize: '20px',
+            fontWeight: 600,
+            color: 'var(--color-text-primary)',
+            marginBottom: '8px',
+          }}
+        >
           Detailed Bank Balance Sheet
         </h3>
         <p style={{ fontSize: '14px', color: 'var(--color-text-secondary)', lineHeight: '1.6' }}>
@@ -395,8 +420,12 @@ export function BankBalanceSheetDetailed({ className }: BankBalanceSheetDetailed
           style={{
             padding: '12px 20px',
             borderRadius: '10px',
-            border: bankType === 'money-center' ? '2px solid rgb(99, 102, 241)' : '2px solid var(--color-surface-2)',
-            backgroundColor: bankType === 'money-center' ? 'rgba(99, 102, 241, 0.1)' : 'var(--color-surface-1)',
+            border:
+              bankType === 'money-center'
+                ? '2px solid rgb(99, 102, 241)'
+                : '2px solid var(--color-surface-2)',
+            backgroundColor:
+              bankType === 'money-center' ? 'rgba(99, 102, 241, 0.1)' : 'var(--color-surface-1)',
             cursor: 'pointer',
             transition: 'all 0.2s',
           }}
@@ -404,11 +433,14 @@ export function BankBalanceSheetDetailed({ className }: BankBalanceSheetDetailed
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
             <span style={{ fontSize: '24px' }}>🏛️</span>
             <div style={{ textAlign: 'left' }}>
-              <div style={{
-                fontSize: '14px',
-                fontWeight: 600,
-                color: bankType === 'money-center' ? 'rgb(99, 102, 241)' : 'var(--color-text-primary)',
-              }}>
+              <div
+                style={{
+                  fontSize: '14px',
+                  fontWeight: 600,
+                  color:
+                    bankType === 'money-center' ? 'rgb(99, 102, 241)' : 'var(--color-text-primary)',
+                }}
+              >
                 Money Center Bank
               </div>
               <div style={{ fontSize: '11px', color: 'var(--color-text-muted)' }}>
@@ -427,8 +459,12 @@ export function BankBalanceSheetDetailed({ className }: BankBalanceSheetDetailed
           style={{
             padding: '12px 20px',
             borderRadius: '10px',
-            border: bankType === 'community' ? '2px solid rgb(16, 185, 129)' : '2px solid var(--color-surface-2)',
-            backgroundColor: bankType === 'community' ? 'rgba(16, 185, 129, 0.1)' : 'var(--color-surface-1)',
+            border:
+              bankType === 'community'
+                ? '2px solid rgb(16, 185, 129)'
+                : '2px solid var(--color-surface-2)',
+            backgroundColor:
+              bankType === 'community' ? 'rgba(16, 185, 129, 0.1)' : 'var(--color-surface-1)',
             cursor: 'pointer',
             transition: 'all 0.2s',
           }}
@@ -436,11 +472,14 @@ export function BankBalanceSheetDetailed({ className }: BankBalanceSheetDetailed
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
             <span style={{ fontSize: '24px' }}>🏘️</span>
             <div style={{ textAlign: 'left' }}>
-              <div style={{
-                fontSize: '14px',
-                fontWeight: 600,
-                color: bankType === 'community' ? 'rgb(16, 185, 129)' : 'var(--color-text-primary)',
-              }}>
+              <div
+                style={{
+                  fontSize: '14px',
+                  fontWeight: 600,
+                  color:
+                    bankType === 'community' ? 'rgb(16, 185, 129)' : 'var(--color-text-primary)',
+                }}
+              >
                 Community Bank
               </div>
               <div style={{ fontSize: '11px', color: 'var(--color-text-muted)' }}>
@@ -465,22 +504,26 @@ export function BankBalanceSheetDetailed({ className }: BankBalanceSheetDetailed
         }}
       >
         {/* Assets Column */}
-        <div style={{
-          padding: '20px',
-          backgroundColor: 'var(--color-surface-1)',
-          borderRadius: '16px',
-          border: '2px solid rgba(59, 130, 246, 0.3)',
-        }}>
+        <div
+          style={{
+            padding: '20px',
+            backgroundColor: 'var(--color-surface-1)',
+            borderRadius: '16px',
+            border: '2px solid rgba(59, 130, 246, 0.3)',
+          }}
+        >
           <div style={{ textAlign: 'center', marginBottom: '20px' }}>
-            <span style={{
-              display: 'inline-block',
-              padding: '6px 16px',
-              backgroundColor: 'rgba(59, 130, 246, 0.15)',
-              color: 'rgb(59, 130, 246)',
-              fontWeight: 700,
-              fontSize: '16px',
-              borderRadius: '8px',
-            }}>
+            <span
+              style={{
+                display: 'inline-block',
+                padding: '6px 16px',
+                backgroundColor: 'rgba(59, 130, 246, 0.15)',
+                color: 'rgb(59, 130, 246)',
+                fontWeight: 700,
+                fontSize: '16px',
+                borderRadius: '8px',
+              }}
+            >
               ASSETS
             </span>
             <p style={{ fontSize: '12px', color: 'var(--color-text-muted)', marginTop: '6px' }}>
@@ -500,40 +543,48 @@ export function BankBalanceSheetDetailed({ className }: BankBalanceSheetDetailed
           ))}
 
           {/* Total */}
-          <div style={{
-            marginTop: '16px',
-            paddingTop: '16px',
-            borderTop: '2px solid rgb(59, 130, 246)',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}>
+          <div
+            style={{
+              marginTop: '16px',
+              paddingTop: '16px',
+              borderTop: '2px solid rgb(59, 130, 246)',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}
+          >
             <span style={{ fontSize: '16px', fontWeight: 700, color: 'var(--color-text-primary)' }}>
               TOTAL ASSETS
             </span>
             <span style={{ fontSize: '22px', fontWeight: 700, color: 'rgb(59, 130, 246)' }}>
-              {data.totalAssets > 100 ? `$${(data.totalAssets / 1000).toFixed(1)}T` : `$${data.totalAssets}B`}
+              {data.totalAssets > 100
+                ? `$${(data.totalAssets / 1000).toFixed(1)}T`
+                : `$${data.totalAssets}B`}
             </span>
           </div>
         </div>
 
         {/* Liabilities + Equity Column */}
-        <div style={{
-          padding: '20px',
-          backgroundColor: 'var(--color-surface-1)',
-          borderRadius: '16px',
-          border: '2px solid rgba(245, 158, 11, 0.3)',
-        }}>
+        <div
+          style={{
+            padding: '20px',
+            backgroundColor: 'var(--color-surface-1)',
+            borderRadius: '16px',
+            border: '2px solid rgba(245, 158, 11, 0.3)',
+          }}
+        >
           <div style={{ textAlign: 'center', marginBottom: '20px' }}>
-            <span style={{
-              display: 'inline-block',
-              padding: '6px 16px',
-              backgroundColor: 'rgba(245, 158, 11, 0.15)',
-              color: 'rgb(245, 158, 11)',
-              fontWeight: 700,
-              fontSize: '16px',
-              borderRadius: '8px',
-            }}>
+            <span
+              style={{
+                display: 'inline-block',
+                padding: '6px 16px',
+                backgroundColor: 'rgba(245, 158, 11, 0.15)',
+                color: 'rgb(245, 158, 11)',
+                fontWeight: 700,
+                fontSize: '16px',
+                borderRadius: '8px',
+              }}
+            >
               LIABILITIES + EQUITY
             </span>
             <p style={{ fontSize: '12px', color: 'var(--color-text-muted)', marginTop: '6px' }}>
@@ -553,33 +604,39 @@ export function BankBalanceSheetDetailed({ className }: BankBalanceSheetDetailed
           ))}
 
           {/* Total */}
-          <div style={{
-            marginTop: '16px',
-            paddingTop: '16px',
-            borderTop: '2px solid rgb(245, 158, 11)',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}>
+          <div
+            style={{
+              marginTop: '16px',
+              paddingTop: '16px',
+              borderTop: '2px solid rgb(245, 158, 11)',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}
+          >
             <span style={{ fontSize: '16px', fontWeight: 700, color: 'var(--color-text-primary)' }}>
               TOTAL L + E
             </span>
             <span style={{ fontSize: '22px', fontWeight: 700, color: 'rgb(245, 158, 11)' }}>
-              {data.totalAssets > 100 ? `$${(data.totalAssets / 1000).toFixed(1)}T` : `$${data.totalAssets}B`}
+              {data.totalAssets > 100
+                ? `$${(data.totalAssets / 1000).toFixed(1)}T`
+                : `$${data.totalAssets}B`}
             </span>
           </div>
         </div>
       </motion.div>
 
       {/* Balance Indicator */}
-      <div style={{
-        padding: '12px 20px',
-        backgroundColor: 'rgba(16, 185, 129, 0.1)',
-        borderRadius: '10px',
-        border: '1px solid rgba(16, 185, 129, 0.3)',
-        textAlign: 'center',
-        marginBottom: '24px',
-      }}>
+      <div
+        style={{
+          padding: '12px 20px',
+          backgroundColor: 'rgba(16, 185, 129, 0.1)',
+          borderRadius: '10px',
+          border: '1px solid rgba(16, 185, 129, 0.3)',
+          textAlign: 'center',
+          marginBottom: '24px',
+        }}
+      >
         <span style={{ fontSize: '14px', fontWeight: 600, color: 'rgb(16, 185, 129)' }}>
           ✓ Assets = Liabilities + Equity (Balance Sheet Always Balances)
         </span>
@@ -593,38 +650,79 @@ export function BankBalanceSheetDetailed({ className }: BankBalanceSheetDetailed
         transition={{ delay: 0.2 }}
         style={{
           padding: '20px',
-          backgroundColor: bankType === 'money-center' ? 'rgba(99, 102, 241, 0.1)' : 'rgba(16, 185, 129, 0.1)',
+          backgroundColor:
+            bankType === 'money-center' ? 'rgba(99, 102, 241, 0.1)' : 'rgba(16, 185, 129, 0.1)',
           borderRadius: '12px',
           border: `1px solid ${bankType === 'money-center' ? 'rgba(99, 102, 241, 0.3)' : 'rgba(16, 185, 129, 0.3)'}`,
           marginBottom: '20px',
         }}
       >
-        <h4 style={{
-          fontSize: '15px',
-          fontWeight: 600,
-          color: bankType === 'money-center' ? 'rgb(99, 102, 241)' : 'rgb(16, 185, 129)',
-          marginBottom: '12px',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '8px',
-        }}>
+        <h4
+          style={{
+            fontSize: '15px',
+            fontWeight: 600,
+            color: bankType === 'money-center' ? 'rgb(99, 102, 241)' : 'rgb(16, 185, 129)',
+            marginBottom: '12px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+          }}
+        >
           <span>{bankType === 'money-center' ? '🏛️' : '🏘️'}</span>
-          {bankType === 'money-center' ? 'Money Center Bank Characteristics' : 'Community Bank Characteristics'}
+          {bankType === 'money-center'
+            ? 'Money Center Bank Characteristics'
+            : 'Community Bank Characteristics'}
         </h4>
 
         {bankType === 'money-center' ? (
-          <ul style={{ margin: 0, paddingLeft: '20px', fontSize: '13px', color: 'var(--color-text-secondary)', lineHeight: '1.8' }}>
-            <li><strong>Trading Book:</strong> Significant trading assets (marked to market daily) for market-making</li>
-            <li><strong>Wholesale Funding:</strong> Heavy reliance on repo and interbank borrowing (30% vs 5%)</li>
-            <li><strong>Diverse Loan Portfolio:</strong> Mix of retail, corporate, and international lending</li>
-            <li><strong>Complex Structure:</strong> Multiple business lines including investment banking</li>
+          <ul
+            style={{
+              margin: 0,
+              paddingLeft: '20px',
+              fontSize: '13px',
+              color: 'var(--color-text-secondary)',
+              lineHeight: '1.8',
+            }}
+          >
+            <li>
+              <strong>Trading Book:</strong> Significant trading assets (marked to market daily) for
+              market-making
+            </li>
+            <li>
+              <strong>Wholesale Funding:</strong> Heavy reliance on repo and interbank borrowing
+              (30% vs 5%)
+            </li>
+            <li>
+              <strong>Diverse Loan Portfolio:</strong> Mix of retail, corporate, and international
+              lending
+            </li>
+            <li>
+              <strong>Complex Structure:</strong> Multiple business lines including investment
+              banking
+            </li>
           </ul>
         ) : (
-          <ul style={{ margin: 0, paddingLeft: '20px', fontSize: '13px', color: 'var(--color-text-secondary)', lineHeight: '1.8' }}>
-            <li><strong>Deposit-Heavy:</strong> 85% funded by deposits (vs 60% for money center)</li>
-            <li><strong>Loan-Focused:</strong> 70% of assets in traditional loans (vs 55%)</li>
-            <li><strong>No Trading Book:</strong> Securities held for investment, not trading</li>
-            <li><strong>Local Focus:</strong> Residential mortgages and small business loans dominate</li>
+          <ul
+            style={{
+              margin: 0,
+              paddingLeft: '20px',
+              fontSize: '13px',
+              color: 'var(--color-text-secondary)',
+              lineHeight: '1.8',
+            }}
+          >
+            <li>
+              <strong>Deposit-Heavy:</strong> 85% funded by deposits (vs 60% for money center)
+            </li>
+            <li>
+              <strong>Loan-Focused:</strong> 70% of assets in traditional loans (vs 55%)
+            </li>
+            <li>
+              <strong>No Trading Book:</strong> Securities held for investment, not trading
+            </li>
+            <li>
+              <strong>Local Focus:</strong> Residential mortgages and small business loans dominate
+            </li>
           </ul>
         )}
       </motion.div>
@@ -642,28 +740,40 @@ export function BankBalanceSheetDetailed({ className }: BankBalanceSheetDetailed
             border: '1px solid var(--color-surface-2)',
           }}
         >
-          <h4 style={{ fontSize: '13px', fontWeight: 600, color: 'var(--color-text-primary)', marginBottom: '12px' }}>
+          <h4
+            style={{
+              fontSize: '13px',
+              fontWeight: 600,
+              color: 'var(--color-text-primary)',
+              marginBottom: '12px',
+            }}
+          >
             Banking Book vs Trading Book
           </h4>
           <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <div style={{
-                width: '24px',
-                height: '12px',
-                backgroundColor: 'rgb(59, 130, 246)',
-                borderRadius: '3px',
-              }} />
+              <div
+                style={{
+                  width: '24px',
+                  height: '12px',
+                  backgroundColor: 'rgb(59, 130, 246)',
+                  borderRadius: '3px',
+                }}
+              />
               <span style={{ fontSize: '12px', color: 'var(--color-text-secondary)' }}>
                 <strong>Banking Book:</strong> Held to maturity, recorded at cost
               </span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <div style={{
-                width: '24px',
-                height: '12px',
-                background: 'repeating-linear-gradient(45deg, rgb(99, 102, 241), rgb(99, 102, 241) 3px, rgba(255,255,255,0.3) 3px, rgba(255,255,255,0.3) 6px)',
-                borderRadius: '3px',
-              }} />
+              <div
+                style={{
+                  width: '24px',
+                  height: '12px',
+                  background:
+                    'repeating-linear-gradient(45deg, rgb(99, 102, 241), rgb(99, 102, 241) 3px, rgba(255,255,255,0.3) 3px, rgba(255,255,255,0.3) 6px)',
+                  borderRadius: '3px',
+                }}
+              />
               <span style={{ fontSize: '12px', color: 'var(--color-text-secondary)' }}>
                 <strong>Trading Book:</strong> Marked to market daily, profits/losses recognized
               </span>
@@ -672,7 +782,14 @@ export function BankBalanceSheetDetailed({ className }: BankBalanceSheetDetailed
         </motion.div>
       )}
 
-      <p style={{ textAlign: 'center', fontSize: '12px', color: 'var(--color-text-muted)', marginTop: '16px' }}>
+      <p
+        style={{
+          textAlign: 'center',
+          fontSize: '12px',
+          color: 'var(--color-text-muted)',
+          marginTop: '16px',
+        }}
+      >
         Click on each category to expand and see detailed breakdown
       </p>
     </div>

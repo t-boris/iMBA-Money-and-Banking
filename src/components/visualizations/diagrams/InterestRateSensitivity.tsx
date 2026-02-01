@@ -18,9 +18,24 @@ interface DurationInfo {
 }
 
 const durations: Record<Exclude<HighlightedDuration, 'all'>, DurationInfo> = {
-  '1-year': { label: '1-Year Bond', years: 1, color: 'rgb(16, 185, 129)', description: 'Nearly flat - minimal rate sensitivity' },
-  '5-year': { label: '5-Year Bond', years: 5, color: 'rgb(99, 102, 241)', description: 'Moderate curve - medium sensitivity' },
-  '30-year': { label: '30-Year Bond', years: 30, color: 'rgb(239, 68, 68)', description: 'Steep curve - high rate sensitivity' },
+  '1-year': {
+    label: '1-Year Bond',
+    years: 1,
+    color: 'rgb(16, 185, 129)',
+    description: 'Nearly flat - minimal rate sensitivity',
+  },
+  '5-year': {
+    label: '5-Year Bond',
+    years: 5,
+    color: 'rgb(99, 102, 241)',
+    description: 'Moderate curve - medium sensitivity',
+  },
+  '30-year': {
+    label: '30-Year Bond',
+    years: 30,
+    color: 'rgb(239, 68, 68)',
+    description: 'Steep curve - high rate sensitivity',
+  },
 };
 
 // Calculate bond price given yield change
@@ -31,13 +46,17 @@ function calculatePriceChange(duration: number, currentRate: number, newRate: nu
   const modifiedDuration = duration / (1 + currentRate / 100);
   const priceChange = -modifiedDuration * rateChange;
   // Add convexity effect for large changes
-  const convexity = duration * (duration + 1) / (2 * Math.pow(1 + currentRate / 100, 2));
+  const convexity = (duration * (duration + 1)) / (2 * Math.pow(1 + currentRate / 100, 2));
   const convexityAdjustment = 0.5 * convexity * Math.pow(rateChange / 100, 2) * 100;
   return priceChange + convexityAdjustment;
 }
 
 // Generate curve points for SVG
-function generateCurvePoints(duration: number, startRate: number = 0, endRate: number = 10): string {
+function generateCurvePoints(
+  duration: number,
+  startRate: number = 0,
+  endRate: number = 10
+): string {
   const points: string[] = [];
   const basePrice = 100;
 
@@ -83,12 +102,19 @@ function BondPriceCurve({ highlighted }: { highlighted: HighlightedDuration }) {
           {rate}%
         </text>
       ))}
-      <text x="300" y="345" textAnchor="middle" fill="var(--color-text-secondary)" fontSize="13" fontWeight="600">
+      <text
+        x="300"
+        y="345"
+        textAnchor="middle"
+        fill="var(--color-text-secondary)"
+        fontSize="13"
+        fontWeight="600"
+      >
         Interest Rate
       </text>
 
       {/* Y-axis labels */}
-      {[50, 75, 100, 125, 150].map((price, i) => (
+      {[50, 75, 100, 125, 150].map((price) => (
         <g key={price}>
           <text
             x="50"
@@ -124,8 +150,18 @@ function BondPriceCurve({ highlighted }: { highlighted: HighlightedDuration }) {
       </text>
 
       {/* Par value reference line */}
-      <line x1="60" y1="170" x2="540" y2="170" stroke="var(--color-text-muted)" strokeWidth="1" strokeDasharray="6,3" />
-      <text x="545" y="174" fill="var(--color-text-muted)" fontSize="10">Par</text>
+      <line
+        x1="60"
+        y1="170"
+        x2="540"
+        y2="170"
+        stroke="var(--color-text-muted)"
+        strokeWidth="1"
+        strokeDasharray="6,3"
+      />
+      <text x="545" y="174" fill="var(--color-text-muted)" fontSize="10">
+        Par
+      </text>
 
       {/* Price curves */}
       {(Object.keys(durations) as Exclude<HighlightedDuration, 'all'>[]).map((key) => {
@@ -164,7 +200,13 @@ function BondPriceCurve({ highlighted }: { highlighted: HighlightedDuration }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.5 }}
       />
-      <text x={60 + (4 / 10) * 480} y="35" textAnchor="middle" fill="var(--color-text-muted)" fontSize="11">
+      <text
+        x={60 + (4 / 10) * 480}
+        y="35"
+        textAnchor="middle"
+        fill="var(--color-text-muted)"
+        fontSize="11"
+      >
         Current (4%)
       </text>
     </svg>
@@ -204,32 +246,71 @@ function EquityImpactDemo({ currentRate, newRate }: { currentRate: number; newRa
         border: '1px solid var(--color-surface-2)',
       }}
     >
-      <h4 style={{ fontSize: '14px', fontWeight: 600, color: 'var(--color-text-primary)', marginBottom: '16px', textAlign: 'center' }}>
+      <h4
+        style={{
+          fontSize: '14px',
+          fontWeight: 600,
+          color: 'var(--color-text-primary)',
+          marginBottom: '16px',
+          textAlign: 'center',
+        }}
+      >
         Bank Equity Impact (Mark-to-Market)
       </h4>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', gap: '12px', alignItems: 'center' }}>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr auto 1fr',
+          gap: '12px',
+          alignItems: 'center',
+        }}
+      >
         {/* Before */}
-        <div style={{
-          padding: '12px',
-          backgroundColor: 'var(--color-surface-2)',
-          borderRadius: '8px',
-        }}>
-          <div style={{ fontSize: '11px', color: 'var(--color-text-muted)', marginBottom: '8px', textAlign: 'center' }}>
+        <div
+          style={{
+            padding: '12px',
+            backgroundColor: 'var(--color-surface-2)',
+            borderRadius: '8px',
+          }}
+        >
+          <div
+            style={{
+              fontSize: '11px',
+              color: 'var(--color-text-muted)',
+              marginBottom: '8px',
+              textAlign: 'center',
+            }}
+          >
             Before (at {currentRate}%)
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
               <span style={{ fontSize: '12px', color: 'rgb(59, 130, 246)' }}>Assets</span>
-              <span style={{ fontSize: '12px', fontWeight: 600, color: 'rgb(59, 130, 246)' }}>${assets}M</span>
+              <span style={{ fontSize: '12px', fontWeight: 600, color: 'rgb(59, 130, 246)' }}>
+                ${assets}M
+              </span>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
               <span style={{ fontSize: '12px', color: 'rgb(245, 158, 11)' }}>Liabilities</span>
-              <span style={{ fontSize: '12px', fontWeight: 600, color: 'rgb(245, 158, 11)' }}>${liabilities}M</span>
+              <span style={{ fontSize: '12px', fontWeight: 600, color: 'rgb(245, 158, 11)' }}>
+                ${liabilities}M
+              </span>
             </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', paddingTop: '6px', borderTop: '1px solid var(--color-surface-1)' }}>
-              <span style={{ fontSize: '12px', fontWeight: 600, color: 'rgb(16, 185, 129)' }}>Equity</span>
-              <span style={{ fontSize: '14px', fontWeight: 700, color: 'rgb(16, 185, 129)' }}>${initialEquity}M</span>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                paddingTop: '6px',
+                borderTop: '1px solid var(--color-surface-1)',
+              }}
+            >
+              <span style={{ fontSize: '12px', fontWeight: 600, color: 'rgb(16, 185, 129)' }}>
+                Equity
+              </span>
+              <span style={{ fontSize: '14px', fontWeight: 700, color: 'rgb(16, 185, 129)' }}>
+                ${initialEquity}M
+              </span>
             </div>
           </div>
         </div>
@@ -244,13 +325,29 @@ function EquityImpactDemo({ currentRate, newRate }: { currentRate: number; newRa
         </motion.div>
 
         {/* After */}
-        <div style={{
-          padding: '12px',
-          backgroundColor: isRateRise ? 'rgba(239, 68, 68, 0.1)' : isRateFall ? 'rgba(16, 185, 129, 0.1)' : 'var(--color-surface-2)',
-          borderRadius: '8px',
-          border: isRateRise || isRateFall ? `2px solid ${isRateRise ? 'rgba(239, 68, 68, 0.3)' : 'rgba(16, 185, 129, 0.3)'}` : 'none',
-        }}>
-          <div style={{ fontSize: '11px', color: 'var(--color-text-muted)', marginBottom: '8px', textAlign: 'center' }}>
+        <div
+          style={{
+            padding: '12px',
+            backgroundColor: isRateRise
+              ? 'rgba(239, 68, 68, 0.1)'
+              : isRateFall
+                ? 'rgba(16, 185, 129, 0.1)'
+                : 'var(--color-surface-2)',
+            borderRadius: '8px',
+            border:
+              isRateRise || isRateFall
+                ? `2px solid ${isRateRise ? 'rgba(239, 68, 68, 0.3)' : 'rgba(16, 185, 129, 0.3)'}`
+                : 'none',
+          }}
+        >
+          <div
+            style={{
+              fontSize: '11px',
+              color: 'var(--color-text-muted)',
+              marginBottom: '8px',
+              textAlign: 'center',
+            }}
+          >
             After (at {newRate}%)
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
@@ -258,8 +355,15 @@ function EquityImpactDemo({ currentRate, newRate }: { currentRate: number; newRa
               <span style={{ fontSize: '12px', color: 'rgb(59, 130, 246)' }}>Assets</span>
               <span style={{ fontSize: '12px', fontWeight: 600, color: 'rgb(59, 130, 246)' }}>
                 ${newAssetValue.toFixed(0)}M
-                <span style={{ fontSize: '10px', marginLeft: '4px', color: assetValueChange > 0 ? 'rgb(16, 185, 129)' : 'rgb(239, 68, 68)' }}>
-                  ({assetValueChange > 0 ? '+' : ''}{assetValueChange.toFixed(1)}%)
+                <span
+                  style={{
+                    fontSize: '10px',
+                    marginLeft: '4px',
+                    color: assetValueChange > 0 ? 'rgb(16, 185, 129)' : 'rgb(239, 68, 68)',
+                  }}
+                >
+                  ({assetValueChange > 0 ? '+' : ''}
+                  {assetValueChange.toFixed(1)}%)
                 </span>
               </span>
             </div>
@@ -267,13 +371,35 @@ function EquityImpactDemo({ currentRate, newRate }: { currentRate: number; newRa
               <span style={{ fontSize: '12px', color: 'rgb(245, 158, 11)' }}>Liabilities</span>
               <span style={{ fontSize: '12px', fontWeight: 600, color: 'rgb(245, 158, 11)' }}>
                 ${newLiabilityValue.toFixed(0)}M
-                <span style={{ fontSize: '10px', marginLeft: '4px', color: liabilityValueChange > 0 ? 'rgb(16, 185, 129)' : 'rgb(239, 68, 68)' }}>
-                  ({liabilityValueChange > 0 ? '+' : ''}{liabilityValueChange.toFixed(1)}%)
+                <span
+                  style={{
+                    fontSize: '10px',
+                    marginLeft: '4px',
+                    color: liabilityValueChange > 0 ? 'rgb(16, 185, 129)' : 'rgb(239, 68, 68)',
+                  }}
+                >
+                  ({liabilityValueChange > 0 ? '+' : ''}
+                  {liabilityValueChange.toFixed(1)}%)
                 </span>
               </span>
             </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', paddingTop: '6px', borderTop: '1px solid var(--color-surface-1)' }}>
-              <span style={{ fontSize: '12px', fontWeight: 600, color: equityChange >= 0 ? 'rgb(16, 185, 129)' : 'rgb(239, 68, 68)' }}>Equity</span>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                paddingTop: '6px',
+                borderTop: '1px solid var(--color-surface-1)',
+              }}
+            >
+              <span
+                style={{
+                  fontSize: '12px',
+                  fontWeight: 600,
+                  color: equityChange >= 0 ? 'rgb(16, 185, 129)' : 'rgb(239, 68, 68)',
+                }}
+              >
+                Equity
+              </span>
               <motion.span
                 initial={{ scale: 1 }}
                 animate={{ scale: [1, 1.15, 1] }}
@@ -286,7 +412,8 @@ function EquityImpactDemo({ currentRate, newRate }: { currentRate: number; newRa
               >
                 ${newEquity.toFixed(0)}M
                 <span style={{ fontSize: '10px', marginLeft: '4px' }}>
-                  ({equityChange > 0 ? '+' : ''}{equityChange.toFixed(1)}%)
+                  ({equityChange > 0 ? '+' : ''}
+                  {equityChange.toFixed(1)}%)
                 </span>
               </motion.span>
             </div>
@@ -294,18 +421,30 @@ function EquityImpactDemo({ currentRate, newRate }: { currentRate: number; newRa
         </div>
       </div>
 
-      <div style={{
-        marginTop: '12px',
-        padding: '10px',
-        backgroundColor: isRateRise ? 'rgba(239, 68, 68, 0.1)' : isRateFall ? 'rgba(16, 185, 129, 0.1)' : 'rgba(99, 102, 241, 0.1)',
-        borderRadius: '8px',
-        textAlign: 'center',
-      }}>
-        <span style={{
-          fontSize: '12px',
-          color: isRateRise ? 'rgb(239, 68, 68)' : isRateFall ? 'rgb(16, 185, 129)' : 'rgb(99, 102, 241)',
-          fontWeight: 500,
-        }}>
+      <div
+        style={{
+          marginTop: '12px',
+          padding: '10px',
+          backgroundColor: isRateRise
+            ? 'rgba(239, 68, 68, 0.1)'
+            : isRateFall
+              ? 'rgba(16, 185, 129, 0.1)'
+              : 'rgba(99, 102, 241, 0.1)',
+          borderRadius: '8px',
+          textAlign: 'center',
+        }}
+      >
+        <span
+          style={{
+            fontSize: '12px',
+            color: isRateRise
+              ? 'rgb(239, 68, 68)'
+              : isRateFall
+                ? 'rgb(16, 185, 129)'
+                : 'rgb(99, 102, 241)',
+            fontWeight: 500,
+          }}
+        >
           {isRateRise && 'Assets fall more than liabilities (longer duration) -> Equity shrinks'}
           {isRateFall && 'Assets rise more than liabilities (longer duration) -> Equity expands'}
           {!isRateRise && !isRateFall && 'No rate change - equity stable'}
@@ -332,7 +471,14 @@ export function InterestRateSensitivity({ className }: InterestRateSensitivityPr
     <div className={cn('w-full', className)} style={{ maxWidth: '900px', margin: '0 auto' }}>
       {/* Title */}
       <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-        <h3 style={{ fontSize: '20px', fontWeight: 600, color: 'var(--color-text-primary)', marginBottom: '8px' }}>
+        <h3
+          style={{
+            fontSize: '20px',
+            fontWeight: 600,
+            color: 'var(--color-text-primary)',
+            marginBottom: '8px',
+          }}
+        >
           Interest Rate Sensitivity
         </h3>
         <p style={{ fontSize: '14px', color: 'var(--color-text-secondary)', lineHeight: '1.6' }}>
@@ -341,15 +487,25 @@ export function InterestRateSensitivity({ className }: InterestRateSensitivityPr
       </div>
 
       {/* Duration Highlight Selector */}
-      <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', marginBottom: '20px', flexWrap: 'wrap' }}>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          gap: '8px',
+          marginBottom: '20px',
+          flexWrap: 'wrap',
+        }}
+      >
         <button
           onClick={() => setHighlighted('all')}
           style={{
             padding: '8px 16px',
             borderRadius: '8px',
             border: 'none',
-            backgroundColor: highlighted === 'all' ? 'var(--color-text-primary)' : 'var(--color-surface-1)',
-            color: highlighted === 'all' ? 'var(--color-bg-primary)' : 'var(--color-text-secondary)',
+            backgroundColor:
+              highlighted === 'all' ? 'var(--color-text-primary)' : 'var(--color-surface-1)',
+            color:
+              highlighted === 'all' ? 'var(--color-bg-primary)' : 'var(--color-text-secondary)',
             fontWeight: highlighted === 'all' ? 600 : 400,
             fontSize: '12px',
             cursor: 'pointer',
@@ -365,7 +521,8 @@ export function InterestRateSensitivity({ className }: InterestRateSensitivityPr
               padding: '8px 16px',
               borderRadius: '8px',
               border: 'none',
-              backgroundColor: highlighted === key ? durations[key].color : 'var(--color-surface-1)',
+              backgroundColor:
+                highlighted === key ? durations[key].color : 'var(--color-surface-1)',
               color: highlighted === key ? 'white' : 'var(--color-text-secondary)',
               fontWeight: highlighted === key ? 600 : 400,
               fontSize: '12px',
@@ -378,24 +535,36 @@ export function InterestRateSensitivity({ className }: InterestRateSensitivityPr
       </div>
 
       {/* Price-Rate Curve */}
-      <div style={{
-        padding: '20px',
-        backgroundColor: 'var(--color-surface-1)',
-        borderRadius: '16px',
-        marginBottom: '20px',
-      }}>
+      <div
+        style={{
+          padding: '20px',
+          backgroundColor: 'var(--color-surface-1)',
+          borderRadius: '16px',
+          marginBottom: '20px',
+        }}
+      >
         <BondPriceCurve highlighted={highlighted} />
 
         {/* Legend */}
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '24px', marginTop: '12px', flexWrap: 'wrap' }}>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            gap: '24px',
+            marginTop: '12px',
+            flexWrap: 'wrap',
+          }}
+        >
           {(Object.keys(durations) as Exclude<HighlightedDuration, 'all'>[]).map((key) => (
             <div key={key} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <div style={{
-                width: '24px',
-                height: '3px',
-                backgroundColor: durations[key].color,
-                borderRadius: '2px',
-              }} />
+              <div
+                style={{
+                  width: '24px',
+                  height: '3px',
+                  backgroundColor: durations[key].color,
+                  borderRadius: '2px',
+                }}
+              />
               <span style={{ fontSize: '12px', color: 'var(--color-text-secondary)' }}>
                 {durations[key].label}
               </span>
@@ -405,21 +574,46 @@ export function InterestRateSensitivity({ className }: InterestRateSensitivityPr
       </div>
 
       {/* Rate Change Simulator */}
-      <div style={{
-        padding: '20px',
-        backgroundColor: 'var(--color-surface-1)',
-        borderRadius: '16px',
-        marginBottom: '20px',
-      }}>
-        <h4 style={{ fontSize: '15px', fontWeight: 600, color: 'var(--color-text-primary)', marginBottom: '16px', textAlign: 'center' }}>
+      <div
+        style={{
+          padding: '20px',
+          backgroundColor: 'var(--color-surface-1)',
+          borderRadius: '16px',
+          marginBottom: '20px',
+        }}
+      >
+        <h4
+          style={{
+            fontSize: '15px',
+            fontWeight: 600,
+            color: 'var(--color-text-primary)',
+            marginBottom: '16px',
+            textAlign: 'center',
+          }}
+        >
           Rate Change Simulator
         </h4>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', marginBottom: '20px' }}>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            gap: '24px',
+            marginBottom: '20px',
+          }}
+        >
           {/* Current Rate Slider */}
           <div>
-            <label style={{ display: 'block', fontSize: '12px', color: 'var(--color-text-muted)', marginBottom: '8px' }}>
-              Current Rate: <strong style={{ color: 'var(--color-text-primary)' }}>{currentRate}%</strong>
+            <label
+              style={{
+                display: 'block',
+                fontSize: '12px',
+                color: 'var(--color-text-muted)',
+                marginBottom: '8px',
+              }}
+            >
+              Current Rate:{' '}
+              <strong style={{ color: 'var(--color-text-primary)' }}>{currentRate}%</strong>
             </label>
             <input
               type="range"
@@ -434,8 +628,27 @@ export function InterestRateSensitivity({ className }: InterestRateSensitivityPr
 
           {/* New Rate Slider */}
           <div>
-            <label style={{ display: 'block', fontSize: '12px', color: 'var(--color-text-muted)', marginBottom: '8px' }}>
-              New Rate: <strong style={{ color: newRate > currentRate ? 'rgb(239, 68, 68)' : newRate < currentRate ? 'rgb(16, 185, 129)' : 'var(--color-text-primary)' }}>{newRate}%</strong>
+            <label
+              style={{
+                display: 'block',
+                fontSize: '12px',
+                color: 'var(--color-text-muted)',
+                marginBottom: '8px',
+              }}
+            >
+              New Rate:{' '}
+              <strong
+                style={{
+                  color:
+                    newRate > currentRate
+                      ? 'rgb(239, 68, 68)'
+                      : newRate < currentRate
+                        ? 'rgb(16, 185, 129)'
+                        : 'var(--color-text-primary)',
+                }}
+              >
+                {newRate}%
+              </strong>
             </label>
             <input
               type="range"
@@ -450,19 +663,34 @@ export function InterestRateSensitivity({ className }: InterestRateSensitivityPr
         </div>
 
         {/* Rate Change Indicator */}
-        <div style={{
-          textAlign: 'center',
-          padding: '12px',
-          backgroundColor: newRate > currentRate ? 'rgba(239, 68, 68, 0.1)' : newRate < currentRate ? 'rgba(16, 185, 129, 0.1)' : 'var(--color-surface-2)',
-          borderRadius: '8px',
-          marginBottom: '16px',
-        }}>
-          <span style={{
-            fontSize: '16px',
-            fontWeight: 700,
-            color: newRate > currentRate ? 'rgb(239, 68, 68)' : newRate < currentRate ? 'rgb(16, 185, 129)' : 'var(--color-text-muted)',
-          }}>
-            Rate Change: {newRate > currentRate ? '+' : ''}{(newRate - currentRate).toFixed(1)}%
+        <div
+          style={{
+            textAlign: 'center',
+            padding: '12px',
+            backgroundColor:
+              newRate > currentRate
+                ? 'rgba(239, 68, 68, 0.1)'
+                : newRate < currentRate
+                  ? 'rgba(16, 185, 129, 0.1)'
+                  : 'var(--color-surface-2)',
+            borderRadius: '8px',
+            marginBottom: '16px',
+          }}
+        >
+          <span
+            style={{
+              fontSize: '16px',
+              fontWeight: 700,
+              color:
+                newRate > currentRate
+                  ? 'rgb(239, 68, 68)'
+                  : newRate < currentRate
+                    ? 'rgb(16, 185, 129)'
+                    : 'var(--color-text-muted)',
+            }}
+          >
+            Rate Change: {newRate > currentRate ? '+' : ''}
+            {(newRate - currentRate).toFixed(1)}%
           </span>
         </div>
 
@@ -482,7 +710,9 @@ export function InterestRateSensitivity({ className }: InterestRateSensitivityPr
                 border: `2px solid ${item.color}40`,
               }}
             >
-              <div style={{ fontSize: '11px', color: 'var(--color-text-muted)', marginBottom: '4px' }}>
+              <div
+                style={{ fontSize: '11px', color: 'var(--color-text-muted)', marginBottom: '4px' }}
+              >
                 {item.label}
               </div>
               <motion.div
@@ -492,40 +722,57 @@ export function InterestRateSensitivity({ className }: InterestRateSensitivityPr
                 style={{
                   fontSize: '28px',
                   fontWeight: 700,
-                  color: item.change > 0 ? 'rgb(16, 185, 129)' : item.change < 0 ? 'rgb(239, 68, 68)' : item.color,
+                  color:
+                    item.change > 0
+                      ? 'rgb(16, 185, 129)'
+                      : item.change < 0
+                        ? 'rgb(239, 68, 68)'
+                        : item.color,
                 }}
               >
-                {item.change > 0 ? '+' : ''}{item.change.toFixed(1)}%
+                {item.change > 0 ? '+' : ''}
+                {item.change.toFixed(1)}%
               </motion.div>
-              <div style={{ fontSize: '10px', color: 'var(--color-text-muted)' }}>
-                price change
-              </div>
+              <div style={{ fontSize: '10px', color: 'var(--color-text-muted)' }}>price change</div>
             </motion.div>
           ))}
         </div>
       </div>
 
       {/* Valuation Formula */}
-      <div style={{
-        padding: '16px',
-        backgroundColor: 'rgba(99, 102, 241, 0.05)',
-        borderRadius: '12px',
-        border: '1px dashed rgba(99, 102, 241, 0.3)',
-        marginBottom: '20px',
-      }}>
-        <h4 style={{ fontSize: '13px', fontWeight: 600, color: 'rgb(99, 102, 241)', marginBottom: '12px' }}>
+      <div
+        style={{
+          padding: '16px',
+          backgroundColor: 'rgba(99, 102, 241, 0.05)',
+          borderRadius: '12px',
+          border: '1px dashed rgba(99, 102, 241, 0.3)',
+          marginBottom: '20px',
+        }}
+      >
+        <h4
+          style={{
+            fontSize: '13px',
+            fontWeight: 600,
+            color: 'rgb(99, 102, 241)',
+            marginBottom: '12px',
+          }}
+        >
           Valuation Channel
         </h4>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '13px', color: 'var(--color-text-secondary)' }}>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '8px',
+            fontSize: '13px',
+            color: 'var(--color-text-secondary)',
+          }}
+        >
           <div>
             <strong>Bond Price</strong> = Sum of (Cash Flow / (1+r)^t)
           </div>
-          <div>
-            Higher r (rate) = Lower present value of future cash flows
-          </div>
-          <div>
-            Longer t (time) = More sensitive to r changes
-          </div>
+          <div>Higher r (rate) = Lower present value of future cash flows</div>
+          <div>Longer t (time) = More sensitive to r changes</div>
         </div>
       </div>
 
@@ -533,49 +780,100 @@ export function InterestRateSensitivity({ className }: InterestRateSensitivityPr
       <EquityImpactDemo currentRate={currentRate} newRate={newRate} />
 
       {/* Hedging Tools Panel */}
-      <div style={{
-        marginTop: '20px',
-        padding: '20px',
-        backgroundColor: 'var(--color-surface-1)',
-        borderRadius: '12px',
-        border: '1px solid var(--color-surface-2)',
-      }}>
-        <h4 style={{ fontSize: '15px', fontWeight: 600, color: 'var(--color-text-primary)', marginBottom: '16px' }}>
+      <div
+        style={{
+          marginTop: '20px',
+          padding: '20px',
+          backgroundColor: 'var(--color-surface-1)',
+          borderRadius: '12px',
+          border: '1px solid var(--color-surface-2)',
+        }}
+      >
+        <h4
+          style={{
+            fontSize: '15px',
+            fontWeight: 600,
+            color: 'var(--color-text-primary)',
+            marginBottom: '16px',
+          }}
+        >
           Hedging Interest Rate Risk
         </h4>
 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-          <div style={{
-            padding: '16px',
-            backgroundColor: 'rgba(16, 185, 129, 0.1)',
-            borderRadius: '10px',
-          }}>
-            <div style={{ fontSize: '14px', fontWeight: 600, color: 'rgb(16, 185, 129)', marginBottom: '8px' }}>
+          <div
+            style={{
+              padding: '16px',
+              backgroundColor: 'rgba(16, 185, 129, 0.1)',
+              borderRadius: '10px',
+            }}
+          >
+            <div
+              style={{
+                fontSize: '14px',
+                fontWeight: 600,
+                color: 'rgb(16, 185, 129)',
+                marginBottom: '8px',
+              }}
+            >
               Interest Rate Swap
             </div>
-            <div style={{ fontSize: '12px', color: 'var(--color-text-secondary)', lineHeight: '1.6' }}>
-              Exchange fixed-rate payments for floating-rate payments. Reduces duration mismatch by converting long-term fixed assets to floating.
+            <div
+              style={{ fontSize: '12px', color: 'var(--color-text-secondary)', lineHeight: '1.6' }}
+            >
+              Exchange fixed-rate payments for floating-rate payments. Reduces duration mismatch by
+              converting long-term fixed assets to floating.
             </div>
-            <div style={{ marginTop: '12px', padding: '8px', backgroundColor: 'var(--color-surface-1)', borderRadius: '6px' }}>
-              <div style={{ fontSize: '11px', color: 'var(--color-text-muted)', textAlign: 'center' }}>
+            <div
+              style={{
+                marginTop: '12px',
+                padding: '8px',
+                backgroundColor: 'var(--color-surface-1)',
+                borderRadius: '6px',
+              }}
+            >
+              <div
+                style={{ fontSize: '11px', color: 'var(--color-text-muted)', textAlign: 'center' }}
+              >
                 Pay Fixed (Long Assets) {'->'} Receive Floating {'->'} Reduced Duration
               </div>
             </div>
           </div>
 
-          <div style={{
-            padding: '16px',
-            backgroundColor: 'rgba(99, 102, 241, 0.1)',
-            borderRadius: '10px',
-          }}>
-            <div style={{ fontSize: '14px', fontWeight: 600, color: 'rgb(99, 102, 241)', marginBottom: '8px' }}>
+          <div
+            style={{
+              padding: '16px',
+              backgroundColor: 'rgba(99, 102, 241, 0.1)',
+              borderRadius: '10px',
+            }}
+          >
+            <div
+              style={{
+                fontSize: '14px',
+                fontWeight: 600,
+                color: 'rgb(99, 102, 241)',
+                marginBottom: '8px',
+              }}
+            >
               Duration Matching
             </div>
-            <div style={{ fontSize: '12px', color: 'var(--color-text-secondary)', lineHeight: '1.6' }}>
-              Align asset duration with liability duration. When asset duration = liability duration, equity is immunized from rate changes.
+            <div
+              style={{ fontSize: '12px', color: 'var(--color-text-secondary)', lineHeight: '1.6' }}
+            >
+              Align asset duration with liability duration. When asset duration = liability
+              duration, equity is immunized from rate changes.
             </div>
-            <div style={{ marginTop: '12px', padding: '8px', backgroundColor: 'var(--color-surface-1)', borderRadius: '6px' }}>
-              <div style={{ fontSize: '11px', color: 'var(--color-text-muted)', textAlign: 'center' }}>
+            <div
+              style={{
+                marginTop: '12px',
+                padding: '8px',
+                backgroundColor: 'var(--color-surface-1)',
+                borderRadius: '6px',
+              }}
+            >
+              <div
+                style={{ fontSize: '11px', color: 'var(--color-text-muted)', textAlign: 'center' }}
+              >
                 Duration Gap = 0 {'->'} Rate-Neutral Position
               </div>
             </div>
@@ -583,7 +881,14 @@ export function InterestRateSensitivity({ className }: InterestRateSensitivityPr
         </div>
       </div>
 
-      <p style={{ textAlign: 'center', fontSize: '12px', color: 'var(--color-text-muted)', marginTop: '16px' }}>
+      <p
+        style={{
+          textAlign: 'center',
+          fontSize: '12px',
+          color: 'var(--color-text-muted)',
+          marginTop: '16px',
+        }}
+      >
         Adjust the rate sliders to see how different durations respond to interest rate changes
       </p>
     </div>

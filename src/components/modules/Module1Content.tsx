@@ -64,10 +64,7 @@ export function Module1Content({ className }: Module1ContentProps) {
       title: 'Money and Its Functions',
       description:
         'What makes something "money"? Explore the three key functions: means of payment, unit of account, and store of value.',
-      visualizations: [
-        <MoneyFunctionsTriangle key="mft" />,
-        <MoneyEvolutionTimeline key="met" />,
-      ],
+      visualizations: [<MoneyFunctionsTriangle key="mft" />, <MoneyEvolutionTimeline key="met" />],
     },
     '1-2': {
       id: '1-2',
@@ -114,8 +111,7 @@ export function Module1Content({ className }: Module1ContentProps) {
     '1-8': {
       id: '1-8',
       title: 'Financial Development and Economic Activity',
-      description:
-        'The relationship between financial markets and real economic outcomes.',
+      description: 'The relationship between financial markets and real economic outcomes.',
       visualizations: [<FinancialDevelopment key="fd" />],
     },
   };
@@ -168,10 +164,19 @@ export function Module1Content({ className }: Module1ContentProps) {
             >
               {/* Lesson Header */}
               <header style={{ marginBottom: '32px' }}>
-                <h2 style={{ fontSize: '28px', fontWeight: 700, color: 'var(--color-text-primary)' }}>
+                <h2
+                  style={{ fontSize: '28px', fontWeight: 700, color: 'var(--color-text-primary)' }}
+                >
                   {currentContent.title}
                 </h2>
-                <p style={{ color: 'var(--color-text-secondary)', marginTop: '12px', maxWidth: '700px', lineHeight: '1.6' }}>
+                <p
+                  style={{
+                    color: 'var(--color-text-secondary)',
+                    marginTop: '12px',
+                    maxWidth: '700px',
+                    lineHeight: '1.6',
+                  }}
+                >
                   {currentContent.description}
                 </p>
               </header>
@@ -198,9 +203,7 @@ export function Module1Content({ className }: Module1ContentProps) {
               <div className="flex justify-between items-center mt-12 pt-8 border-t border-surface-2">
                 {getPreviousLesson(activeLesson) ? (
                   <button
-                    onClick={() =>
-                      handleLessonChange(getPreviousLesson(activeLesson)!)
-                    }
+                    onClick={() => handleLessonChange(getPreviousLesson(activeLesson)!)}
                     className="flex items-center gap-2 text-text-secondary hover:text-primary-500 transition-colors"
                   >
                     <span>&larr;</span>
@@ -212,9 +215,7 @@ export function Module1Content({ className }: Module1ContentProps) {
 
                 {getNextLesson(activeLesson) ? (
                   <button
-                    onClick={() =>
-                      handleLessonChange(getNextLesson(activeLesson)!)
-                    }
+                    onClick={() => handleLessonChange(getNextLesson(activeLesson)!)}
                     className="flex items-center gap-2 text-text-secondary hover:text-primary-500 transition-colors"
                   >
                     <span>Next Lesson</span>
@@ -235,22 +236,60 @@ export function Module1Content({ className }: Module1ContentProps) {
 // Module Overview component for lesson 1-0
 function ModuleOverview({ onLessonChange }: { onLessonChange: (id: string) => void }) {
   const topics = [
-    { id: '1-1', icon: '💵', title: 'Money and Its Functions', desc: 'What makes something "money"' },
-    { id: '1-2', icon: '💳', title: 'The Payments System', desc: 'How money moves through the economy' },
+    {
+      id: '1-1',
+      icon: '💵',
+      title: 'Money and Its Functions',
+      desc: 'What makes something "money"',
+    },
+    {
+      id: '1-2',
+      icon: '💳',
+      title: 'The Payments System',
+      desc: 'How money moves through the economy',
+    },
     { id: '1-3', icon: '📊', title: 'Money and Inflation', desc: 'M1, M2, and price stability' },
-    { id: '1-4', icon: '🔄', title: 'What Does the Financial System Do?', desc: 'Connecting savers and borrowers' },
-    { id: '1-5', icon: '🏛️', title: 'Financial Markets vs Institutions', desc: 'Direct vs indirect finance' },
+    {
+      id: '1-4',
+      icon: '🔄',
+      title: 'What Does the Financial System Do?',
+      desc: 'Connecting savers and borrowers',
+    },
+    {
+      id: '1-5',
+      icon: '🏛️',
+      title: 'Financial Markets vs Institutions',
+      desc: 'Direct vs indirect finance',
+    },
     { id: '1-6', icon: '🏦', title: 'Banks vs Non-Banks', desc: 'The unique role of banks' },
-    { id: '1-7', icon: '🏢', title: 'Overview of Non-Banks', desc: 'Insurance, pensions, and more' },
+    {
+      id: '1-7',
+      icon: '🏢',
+      title: 'Overview of Non-Banks',
+      desc: 'Insurance, pensions, and more',
+    },
     { id: '1-8', icon: '📈', title: 'Financial Development', desc: 'Finance and economic growth' },
   ];
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-      <h3 style={{ fontSize: '16px', fontWeight: 600, color: 'var(--color-text-primary)', marginBottom: '8px' }}>
+      <h3
+        style={{
+          fontSize: '16px',
+          fontWeight: 600,
+          color: 'var(--color-text-primary)',
+          marginBottom: '8px',
+        }}
+      >
         In This Module
       </h3>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '12px' }}>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gap: '12px',
+        }}
+      >
         {topics.map((topic, index) => (
           <motion.button
             key={topic.id}
@@ -273,7 +312,9 @@ function ModuleOverview({ onLessonChange }: { onLessonChange: (id: string) => vo
           >
             <span style={{ fontSize: '24px' }}>{topic.icon}</span>
             <div>
-              <div style={{ fontSize: '14px', fontWeight: 500, color: 'var(--color-text-primary)' }}>
+              <div
+                style={{ fontSize: '14px', fontWeight: 500, color: 'var(--color-text-primary)' }}
+              >
                 {topic.title}
               </div>
               <div style={{ fontSize: '12px', color: 'var(--color-text-muted)', marginTop: '4px' }}>

@@ -33,13 +33,28 @@ export function Header() {
             fontSize: '18px',
             color: 'var(--color-text-primary)',
             textDecoration: 'none',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
           }}
         >
           iMBA Money & Banking
+          <span
+            style={{
+              fontSize: '10px',
+              fontWeight: 500,
+              color: 'var(--color-text-muted)',
+              backgroundColor: 'var(--color-surface-2)',
+              padding: '2px 6px',
+              borderRadius: '4px',
+            }}
+          >
+            v1.0.0
+          </span>
         </Link>
         <nav style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
           <Link
-            href="/study-tools"
+            href="/study-tools/glossary"
             style={{
               fontSize: '14px',
               fontWeight: 500,
@@ -47,10 +62,24 @@ export function Header() {
               textDecoration: 'none',
               transition: 'color 0.2s',
             }}
-            onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-text-primary)'}
-            onMouseLeave={(e) => e.currentTarget.style.color = 'var(--color-text-secondary)'}
+            onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-text-primary)')}
+            onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--color-text-secondary)')}
           >
-            Study Tools
+            Glossary
+          </Link>
+          <Link
+            href="/study-tools/exam"
+            style={{
+              fontSize: '14px',
+              fontWeight: 500,
+              color: 'var(--color-text-secondary)',
+              textDecoration: 'none',
+              transition: 'color 0.2s',
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-text-primary)')}
+            onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--color-text-secondary)')}
+          >
+            Test
           </Link>
           <ThemeToggle />
         </nav>

@@ -5,7 +5,8 @@ export const module1Concepts: Concept[] = [
   {
     id: 'money',
     term: 'Money',
-    definition: 'A specialized asset that is generally accepted as a means of payment for goods and services and for the repayment of debts, including taxes.',
+    definition:
+      'A specialized asset that is generally accepted as a means of payment for goods and services and for the repayment of debts, including taxes.',
     category: 'money',
     relatedConcepts: ['means-of-payment', 'unit-of-account', 'store-of-value'],
     lessonId: '1-1.1',
@@ -37,7 +38,8 @@ export const module1Concepts: Concept[] = [
   {
     id: 'commodity-money',
     term: 'Commodity Money',
-    definition: 'Money that has intrinsic value because it is made from a physical good that is valuable in non-monetary uses.',
+    definition:
+      'Money that has intrinsic value because it is made from a physical good that is valuable in non-monetary uses.',
     category: 'money',
     relatedConcepts: ['representative-money', 'fiat-money'],
     lessonId: '1-1.1',
@@ -45,7 +47,8 @@ export const module1Concepts: Concept[] = [
   {
     id: 'representative-money',
     term: 'Representative Money',
-    definition: 'Money that is backed by a commodity and can be redeemed for that commodity on demand.',
+    definition:
+      'Money that is backed by a commodity and can be redeemed for that commodity on demand.',
     category: 'money',
     relatedConcepts: ['commodity-money', 'gold-standard'],
     lessonId: '1-1.1',
@@ -53,7 +56,8 @@ export const module1Concepts: Concept[] = [
   {
     id: 'fiat-money',
     term: 'Fiat Money',
-    definition: 'Money that has no intrinsic value and is not backed by any commodity; it is valuable because the government declares it legal tender.',
+    definition:
+      'Money that has no intrinsic value and is not backed by any commodity; it is valuable because the government declares it legal tender.',
     category: 'money',
     relatedConcepts: ['commodity-money', 'representative-money'],
     lessonId: '1-1.1',
@@ -62,7 +66,8 @@ export const module1Concepts: Concept[] = [
   {
     id: 'payment-system',
     term: 'Payment System',
-    definition: 'The network of arrangements that allows the transfer of money between individuals and institutions in exchange for goods, services, and assets.',
+    definition:
+      'The network of arrangements that allows the transfer of money between individuals and institutions in exchange for goods, services, and assets.',
     category: 'payment',
     lessonId: '1-1.2',
   },
@@ -85,7 +90,8 @@ export const module1Concepts: Concept[] = [
   {
     id: 'm1',
     term: 'M1',
-    definition: 'The narrowest definition of money, including currency in circulation and checking account deposits.',
+    definition:
+      'The narrowest definition of money, including currency in circulation and checking account deposits.',
     category: 'money',
     relatedConcepts: ['m2', 'money-supply'],
     lessonId: '1-1.3',
@@ -93,7 +99,8 @@ export const module1Concepts: Concept[] = [
   {
     id: 'm2',
     term: 'M2',
-    definition: 'A broader measure of money that includes M1 plus savings accounts and money market funds.',
+    definition:
+      'A broader measure of money that includes M1 plus savings accounts and money market funds.',
     category: 'money',
     relatedConcepts: ['m1', 'money-supply'],
     lessonId: '1-1.3',
@@ -101,7 +108,8 @@ export const module1Concepts: Concept[] = [
   {
     id: 'inflation',
     term: 'Inflation',
-    definition: 'The rate at which the general price level of goods and services rises, reducing the purchasing power of money.',
+    definition:
+      'The rate at which the general price level of goods and services rises, reducing the purchasing power of money.',
     category: 'money',
     relatedConcepts: ['cpi', 'store-of-value'],
     lessonId: '1-1.3',
@@ -109,7 +117,8 @@ export const module1Concepts: Concept[] = [
   {
     id: 'cpi',
     term: 'Consumer Price Index (CPI)',
-    definition: 'An index measuring the change in the price of a fixed basket of goods and services over time.',
+    definition:
+      'An index measuring the change in the price of a fixed basket of goods and services over time.',
     category: 'money',
     relatedConcepts: ['inflation'],
     lessonId: '1-1.3',
@@ -118,7 +127,8 @@ export const module1Concepts: Concept[] = [
   {
     id: 'financial-system',
     term: 'Financial System',
-    definition: 'The set of markets, institutions, and instruments that channel funds from savers to borrowers.',
+    definition:
+      'The set of markets, institutions, and instruments that channel funds from savers to borrowers.',
     category: 'financial-system',
     relatedConcepts: ['savers', 'borrowers'],
     lessonId: '1-2.1',
@@ -126,7 +136,8 @@ export const module1Concepts: Concept[] = [
   {
     id: 'savers',
     term: 'Savers',
-    definition: 'Economic agents that have income exceeding current consumption and are willing to defer spending into the future.',
+    definition:
+      'Economic agents that have income exceeding current consumption and are willing to defer spending into the future.',
     category: 'financial-system',
     relatedConcepts: ['borrowers', 'financial-system'],
     lessonId: '1-2.1',
@@ -134,7 +145,8 @@ export const module1Concepts: Concept[] = [
   {
     id: 'borrowers',
     term: 'Borrowers',
-    definition: 'Economic agents that need funds today in order to finance consumption or investment.',
+    definition:
+      'Economic agents that need funds today in order to finance consumption or investment.',
     category: 'financial-system',
     relatedConcepts: ['savers', 'financial-system'],
     lessonId: '1-2.1',
@@ -183,7 +195,8 @@ export const module1Concepts: Concept[] = [
   {
     id: 'financial-institutions',
     term: 'Financial Institutions',
-    definition: 'Firms that collect funds from savers and invest them in financial instruments issued by borrowers.',
+    definition:
+      'Firms that collect funds from savers and invest them in financial instruments issued by borrowers.',
     category: 'institutions',
     relatedConcepts: ['financial-markets', 'bank'],
     lessonId: '1-2.2',
@@ -191,7 +204,8 @@ export const module1Concepts: Concept[] = [
   {
     id: 'maturity-mismatch',
     term: 'Maturity Mismatch',
-    definition: 'Mismatch between the short-term preferences of savers and the long-term needs of borrowers.',
+    definition:
+      'Mismatch between the short-term preferences of savers and the long-term needs of borrowers.',
     category: 'institutions',
     relatedConcepts: ['bank'],
     lessonId: '1-2.2',
@@ -208,7 +222,8 @@ export const module1Concepts: Concept[] = [
   {
     id: 'bank',
     term: 'Bank',
-    definition: 'A financial institution that takes deposits from the public and uses them to make loans.',
+    definition:
+      'A financial institution that takes deposits from the public and uses them to make loans.',
     category: 'institutions',
     relatedConcepts: ['nbfi'],
     lessonId: '1-2.3',
@@ -216,7 +231,8 @@ export const module1Concepts: Concept[] = [
   {
     id: 'nbfi',
     term: 'Non-Bank Financial Institutions (NBFIs)',
-    definition: 'Financial institutions that do not take traditional deposits but perform financial intermediation.',
+    definition:
+      'Financial institutions that do not take traditional deposits but perform financial intermediation.',
     category: 'institutions',
     relatedConcepts: ['bank', 'insurance', 'pension-funds'],
     lessonId: '1-2.3',
@@ -225,7 +241,8 @@ export const module1Concepts: Concept[] = [
   {
     id: 'financial-development',
     term: 'Financial Development',
-    definition: 'Improvements in the efficiency, depth, and stability of financial markets and institutions.',
+    definition:
+      'Improvements in the efficiency, depth, and stability of financial markets and institutions.',
     category: 'economy',
     lessonId: '1-3.1',
   },
@@ -240,7 +257,8 @@ export const module1Concepts: Concept[] = [
   {
     id: 'bailout',
     term: 'Bailout',
-    definition: 'Government financial support given to failing financial institutions to prevent systemic collapse.',
+    definition:
+      'Government financial support given to failing financial institutions to prevent systemic collapse.',
     category: 'economy',
     relatedConcepts: ['financial-crisis', 'moral-hazard'],
     lessonId: '1-3.1',
@@ -248,7 +266,8 @@ export const module1Concepts: Concept[] = [
   {
     id: 'moral-hazard',
     term: 'Moral Hazard',
-    definition: 'When agents take more risk because they expect to be protected from the consequences.',
+    definition:
+      'When agents take more risk because they expect to be protected from the consequences.',
     category: 'economy',
     relatedConcepts: ['bailout'],
     lessonId: '1-3.1',

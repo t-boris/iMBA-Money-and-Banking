@@ -40,7 +40,8 @@ const drivers: Driver[] = [
   {
     id: 'technology',
     name: 'Technology',
-    description: 'ATMs, online banking, and mobile apps eliminated the need for physical branches, allowing banks to serve more customers with fewer locations.',
+    description:
+      'ATMs, online banking, and mobile apps eliminated the need for physical branches, allowing banks to serve more customers with fewer locations.',
     icon: '💻',
     period: [1985, 2020],
     color: 'rgb(99, 102, 241)',
@@ -48,7 +49,8 @@ const drivers: Driver[] = [
   {
     id: 'competition',
     name: 'Competition',
-    description: 'Money market funds and securitization challenged traditional banking, forcing consolidation to remain competitive.',
+    description:
+      'Money market funds and securitization challenged traditional banking, forcing consolidation to remain competitive.',
     icon: '⚔️',
     period: [1985, 2005],
     color: 'rgb(245, 158, 11)',
@@ -56,7 +58,8 @@ const drivers: Driver[] = [
   {
     id: 'deregulation',
     name: 'Deregulation',
-    description: 'Riegle-Neal (1994) enabled interstate banking; Gramm-Leach-Bliley (1999) allowed mergers across financial services.',
+    description:
+      'Riegle-Neal (1994) enabled interstate banking; Gramm-Leach-Bliley (1999) allowed mergers across financial services.',
     icon: '📜',
     period: [1994, 2005],
     color: 'rgb(16, 185, 129)',
@@ -64,7 +67,8 @@ const drivers: Driver[] = [
   {
     id: 'scale',
     name: 'Economies of Scale',
-    description: 'Larger banks have lower costs per customer due to shared IT infrastructure, compliance systems, and brand recognition.',
+    description:
+      'Larger banks have lower costs per customer due to shared IT infrastructure, compliance systems, and brand recognition.',
     icon: '📈',
     period: [1990, 2020],
     color: 'rgb(139, 92, 246)',
@@ -72,7 +76,8 @@ const drivers: Driver[] = [
   {
     id: 'crisis',
     name: 'Financial Crisis',
-    description: 'The 2008 crisis led to failures and forced mergers. Weak banks were acquired by stronger ones, accelerating consolidation.',
+    description:
+      'The 2008 crisis led to failures and forced mergers. Weak banks were acquired by stronger ones, accelerating consolidation.',
     icon: '⚠️',
     period: [2008, 2015],
     color: 'rgb(239, 68, 68)',
@@ -139,13 +144,11 @@ export function BankConsolidationChart({ className }: BankConsolidationChartProp
   }, []);
 
   // Get selected data point
-  const selectedData = selectedYear
-    ? consolidationData.find(d => d.year === selectedYear)
-    : null;
+  const selectedData = selectedYear ? consolidationData.find((d) => d.year === selectedYear) : null;
 
   // Check if year is within driver period
   const isYearInDriverPeriod = (year: number, driverId: string) => {
-    const driver = drivers.find(d => d.id === driverId);
+    const driver = drivers.find((d) => d.id === driverId);
     if (!driver) return false;
     return year >= driver.period[0] && year <= driver.period[1];
   };
@@ -154,13 +157,20 @@ export function BankConsolidationChart({ className }: BankConsolidationChartProp
   const yTicks = [0, 4000, 8000, 12000, 16000];
 
   // X-axis ticks (all data years)
-  const xTicks = consolidationData.map(d => d.year);
+  const xTicks = consolidationData.map((d) => d.year);
 
   return (
     <div className={cn('w-full', className)} style={{ maxWidth: '900px', margin: '0 auto' }}>
       {/* Title */}
       <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-        <h3 style={{ fontSize: '20px', fontWeight: 600, color: 'var(--color-text-primary)', marginBottom: '8px' }}>
+        <h3
+          style={{
+            fontSize: '20px',
+            fontWeight: 600,
+            color: 'var(--color-text-primary)',
+            marginBottom: '8px',
+          }}
+        >
           US Bank Consolidation (1985-2020)
         </h3>
         <p style={{ fontSize: '14px', color: 'var(--color-text-secondary)', lineHeight: '1.6' }}>
@@ -181,7 +191,13 @@ export function BankConsolidationChart({ className }: BankConsolidationChartProp
       >
         <svg
           viewBox={`0 0 ${CHART_WIDTH} ${CHART_HEIGHT}`}
-          style={{ width: '100%', maxWidth: CHART_WIDTH, height: 'auto', display: 'block', margin: '0 auto' }}
+          style={{
+            width: '100%',
+            maxWidth: CHART_WIDTH,
+            height: 'auto',
+            display: 'block',
+            margin: '0 auto',
+          }}
         >
           <defs>
             {/* Gradient for area fill */}
@@ -201,7 +217,7 @@ export function BankConsolidationChart({ className }: BankConsolidationChartProp
 
           <g transform={`translate(${PADDING.left}, ${PADDING.top})`}>
             {/* Grid lines */}
-            {yTicks.map(tick => (
+            {yTicks.map((tick) => (
               <line
                 key={tick}
                 x1={0}
@@ -225,7 +241,7 @@ export function BankConsolidationChart({ className }: BankConsolidationChartProp
             />
 
             {/* Y-axis labels */}
-            {yTicks.map(tick => (
+            {yTicks.map((tick) => (
               <text
                 key={tick}
                 x={-10}
@@ -263,7 +279,7 @@ export function BankConsolidationChart({ className }: BankConsolidationChartProp
             />
 
             {/* X-axis labels */}
-            {xTicks.map(year => (
+            {xTicks.map((year) => (
               <text
                 key={year}
                 x={xScale(year)}
@@ -318,8 +334,8 @@ export function BankConsolidationChart({ className }: BankConsolidationChartProp
                         point.eventType === 'crisis'
                           ? 'rgb(239, 68, 68)'
                           : point.eventType === 'legislation'
-                          ? 'rgb(16, 185, 129)'
-                          : 'rgb(245, 158, 11)'
+                            ? 'rgb(16, 185, 129)'
+                            : 'rgb(245, 158, 11)'
                       }
                       strokeWidth={1}
                       strokeDasharray="4,4"
@@ -341,8 +357,8 @@ export function BankConsolidationChart({ className }: BankConsolidationChartProp
                         point.eventType === 'crisis'
                           ? 'rgb(239, 68, 68)'
                           : point.eventType === 'legislation'
-                          ? 'rgb(16, 185, 129)'
-                          : 'rgb(245, 158, 11)'
+                            ? 'rgb(16, 185, 129)'
+                            : 'rgb(245, 158, 11)'
                       }
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: animated ? 1 : 0, y: animated ? 0 : -10 }}
@@ -366,7 +382,10 @@ export function BankConsolidationChart({ className }: BankConsolidationChartProp
                       opacity: isHighlighted ? 1 : 0.3,
                     }}
                     initial={{ scale: 0, opacity: 0 }}
-                    animate={{ scale: animated ? 1 : 0, opacity: animated ? (isHighlighted ? 1 : 0.3) : 0 }}
+                    animate={{
+                      scale: animated ? 1 : 0,
+                      opacity: animated ? (isHighlighted ? 1 : 0.3) : 0,
+                    }}
                     transition={{ delay: index * 0.15 + 1.8, type: 'spring' }}
                     whileHover={{ scale: 1.3 }}
                     onClick={() => setSelectedYear(selectedYear === point.year ? null : point.year)}
@@ -395,42 +414,73 @@ export function BankConsolidationChart({ className }: BankConsolidationChartProp
               textAlign: 'center',
             }}
           >
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '16px', flexWrap: 'wrap' }}>
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '16px',
+                flexWrap: 'wrap',
+              }}
+            >
               <div>
-                <div style={{ fontSize: '14px', color: 'var(--color-text-secondary)', marginBottom: '4px' }}>
+                <div
+                  style={{
+                    fontSize: '14px',
+                    color: 'var(--color-text-secondary)',
+                    marginBottom: '4px',
+                  }}
+                >
                   Year
                 </div>
                 <div style={{ fontSize: '32px', fontWeight: 700, color: 'rgb(99, 102, 241)' }}>
                   {selectedData.year}
                 </div>
               </div>
-              <div style={{ width: '1px', height: '50px', backgroundColor: 'rgba(99, 102, 241, 0.3)' }} />
+              <div
+                style={{ width: '1px', height: '50px', backgroundColor: 'rgba(99, 102, 241, 0.3)' }}
+              />
               <div>
-                <div style={{ fontSize: '14px', color: 'var(--color-text-secondary)', marginBottom: '4px' }}>
+                <div
+                  style={{
+                    fontSize: '14px',
+                    color: 'var(--color-text-secondary)',
+                    marginBottom: '4px',
+                  }}
+                >
                   Number of Banks
                 </div>
-                <AnimatedValue
-                  value={selectedData.banks}
-                  size="xl"
-                  suffix=" banks"
-                />
+                <AnimatedValue value={selectedData.banks} size="xl" suffix=" banks" />
               </div>
               {selectedData.event && (
                 <>
-                  <div style={{ width: '1px', height: '50px', backgroundColor: 'rgba(99, 102, 241, 0.3)' }} />
+                  <div
+                    style={{
+                      width: '1px',
+                      height: '50px',
+                      backgroundColor: 'rgba(99, 102, 241, 0.3)',
+                    }}
+                  />
                   <div>
-                    <div style={{ fontSize: '14px', color: 'var(--color-text-secondary)', marginBottom: '4px' }}>
+                    <div
+                      style={{
+                        fontSize: '14px',
+                        color: 'var(--color-text-secondary)',
+                        marginBottom: '4px',
+                      }}
+                    >
                       Key Event
                     </div>
                     <div
                       style={{
                         fontSize: '16px',
                         fontWeight: 600,
-                        color: selectedData.eventType === 'crisis'
-                          ? 'rgb(239, 68, 68)'
-                          : selectedData.eventType === 'legislation'
-                          ? 'rgb(16, 185, 129)'
-                          : 'rgb(245, 158, 11)'
+                        color:
+                          selectedData.eventType === 'crisis'
+                            ? 'rgb(239, 68, 68)'
+                            : selectedData.eventType === 'legislation'
+                              ? 'rgb(16, 185, 129)'
+                              : 'rgb(245, 158, 11)',
                       }}
                     >
                       {selectedData.event}
@@ -444,12 +494,16 @@ export function BankConsolidationChart({ className }: BankConsolidationChartProp
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.3 }}
-                style={{ marginTop: '16px', fontSize: '14px', color: 'var(--color-text-secondary)' }}
+                style={{
+                  marginTop: '16px',
+                  fontSize: '14px',
+                  color: 'var(--color-text-secondary)',
+                }}
               >
                 <span style={{ fontWeight: 600, color: 'rgb(239, 68, 68)' }}>
                   -{Math.round(((14400 - selectedData.banks) / 14400) * 100)}%
-                </span>
-                {' '}decline from 1985 peak
+                </span>{' '}
+                decline from 1985 peak
               </motion.div>
             )}
           </motion.div>
@@ -458,13 +512,26 @@ export function BankConsolidationChart({ className }: BankConsolidationChartProp
 
       {/* Consolidation Drivers */}
       <div style={{ marginBottom: '16px' }}>
-        <h4 style={{ fontSize: '16px', fontWeight: 600, color: 'var(--color-text-primary)', marginBottom: '16px' }}>
+        <h4
+          style={{
+            fontSize: '16px',
+            fontWeight: 600,
+            color: 'var(--color-text-primary)',
+            marginBottom: '16px',
+          }}
+        >
           Drivers of Consolidation
         </h4>
         <p style={{ fontSize: '13px', color: 'var(--color-text-secondary)', marginBottom: '16px' }}>
           Click on a driver to highlight its active period on the chart
         </p>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '12px' }}>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: '12px',
+          }}
+        >
           {drivers.map((driver, index) => {
             const isSelected = selectedDriver === driver.id;
 
@@ -488,10 +555,23 @@ export function BankConsolidationChart({ className }: BankConsolidationChartProp
                   transition: 'all 0.2s',
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '10px',
+                    marginBottom: '8px',
+                  }}
+                >
                   <span style={{ fontSize: '24px' }}>{driver.icon}</span>
                   <div style={{ flex: 1 }}>
-                    <span style={{ fontSize: '14px', fontWeight: 600, color: 'var(--color-text-primary)' }}>
+                    <span
+                      style={{
+                        fontSize: '14px',
+                        fontWeight: 600,
+                        color: 'var(--color-text-primary)',
+                      }}
+                    >
                       {driver.name}
                     </span>
                     <div style={{ fontSize: '11px', color: driver.color, marginTop: '2px' }}>
@@ -499,7 +579,14 @@ export function BankConsolidationChart({ className }: BankConsolidationChartProp
                     </div>
                   </div>
                 </div>
-                <p style={{ fontSize: '12px', color: 'var(--color-text-secondary)', margin: 0, lineHeight: '1.5' }}>
+                <p
+                  style={{
+                    fontSize: '12px',
+                    color: 'var(--color-text-secondary)',
+                    margin: 0,
+                    lineHeight: '1.5',
+                  }}
+                >
                   {driver.description}
                 </p>
               </motion.button>
@@ -524,13 +611,28 @@ export function BankConsolidationChart({ className }: BankConsolidationChartProp
         <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
           <span style={{ fontSize: '24px' }}>💡</span>
           <div>
-            <h4 style={{ fontSize: '14px', fontWeight: 600, color: 'rgb(99, 102, 241)', marginBottom: '8px' }}>
+            <h4
+              style={{
+                fontSize: '14px',
+                fontWeight: 600,
+                color: 'rgb(99, 102, 241)',
+                marginBottom: '8px',
+              }}
+            >
               Key Takeaway
             </h4>
-            <p style={{ fontSize: '14px', color: 'var(--color-text-secondary)', lineHeight: '1.6', margin: 0 }}>
-              Bank consolidation reflects the shift from a fragmented, locally-focused banking system to one dominated by
-              large national and regional banks. While this brings efficiency gains, it also raises concerns about
-              "too big to fail" institutions and reduced access to banking in rural communities.
+            <p
+              style={{
+                fontSize: '14px',
+                color: 'var(--color-text-secondary)',
+                lineHeight: '1.6',
+                margin: 0,
+              }}
+            >
+              Bank consolidation reflects the shift from a fragmented, locally-focused banking
+              system to one dominated by large national and regional banks. While this brings
+              efficiency gains, it also raises concerns about &quot;too big to fail&quot;
+              institutions and reduced access to banking in rural communities.
             </p>
           </div>
         </div>
@@ -538,7 +640,14 @@ export function BankConsolidationChart({ className }: BankConsolidationChartProp
 
       {/* Instruction */}
       {!selectedYear && !selectedDriver && (
-        <p style={{ textAlign: 'center', fontSize: '12px', color: 'var(--color-text-muted)', marginTop: '16px' }}>
+        <p
+          style={{
+            textAlign: 'center',
+            fontSize: '12px',
+            color: 'var(--color-text-muted)',
+            marginTop: '16px',
+          }}
+        >
           Click on data points to see details, or click on drivers to highlight their impact period
         </p>
       )}

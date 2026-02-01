@@ -33,10 +33,10 @@ export interface UserProgress {
 
 // Lesson structure
 export interface Lesson {
-  id: string;           // e.g., "1-0", "1-1", "1-1.1"
+  id: string; // e.g., "1-0", "1-1", "1-1.1"
   title: string;
   description: string;
-  parentId?: string;    // for sub-lessons
+  parentId?: string; // for sub-lessons
   order: number;
 }
 
@@ -44,10 +44,17 @@ export interface Lesson {
 export interface Concept {
   id: string;
   term: string;
-  definition: string;   // English definition
-  category: 'money' | 'payment' | 'financial-system' | 'institutions' | 'economy' | 'risk' | 'capital';
-  relatedConcepts?: string[];  // IDs of related concepts
-  lessonId: string;     // which lesson this concept belongs to
+  definition: string; // English definition
+  category:
+    | 'money'
+    | 'payment'
+    | 'financial-system'
+    | 'institutions'
+    | 'economy'
+    | 'risk'
+    | 'capital';
+  relatedConcepts?: string[]; // IDs of related concepts
+  lessonId: string; // which lesson this concept belongs to
 }
 
 // Module content bundle
@@ -62,6 +69,7 @@ export interface GlossaryTerm {
   id: string;
   term: string;
   definition: string;
+  example?: string;
   category: Concept['category'];
   type: 'term' | 'concept' | 'formula' | 'regulation';
   moduleId: number;

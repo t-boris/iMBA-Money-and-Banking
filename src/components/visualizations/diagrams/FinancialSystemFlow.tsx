@@ -30,11 +30,7 @@ const detailContent: Record<Exclude<EntityType, null>, DetailContent> = {
   },
   borrowers: {
     title: 'Who are borrowers?',
-    items: [
-      'Homebuyers (mortgages)',
-      'Businesses (investment)',
-      'Government (infrastructure)',
-    ],
+    items: ['Homebuyers (mortgages)', 'Businesses (investment)', 'Government (infrastructure)'],
     description: 'They need funds today for future projects',
   },
 };
@@ -63,19 +59,11 @@ function MoneyParticle({ delay, duration }: { delay: number; duration: number })
 }
 
 // Animated flow connection with money particles
-function AnimatedFlow({
-  label,
-  className,
-}: {
-  label: string;
-  className?: string;
-}) {
+function AnimatedFlow({ label, className }: { label: string; className?: string }) {
   return (
     <div className={cn('relative flex flex-col items-center gap-1', className)}>
       {/* Label above */}
-      <span className="text-xs font-medium text-text-secondary mb-1">
-        {label}
-      </span>
+      <span className="text-xs font-medium text-text-secondary mb-1">{label}</span>
 
       {/* Flow arrow with particles */}
       <div className="relative">
@@ -93,19 +81,11 @@ function AnimatedFlow({
 }
 
 // Vertical animated flow for mobile
-function AnimatedFlowVertical({
-  label,
-  className,
-}: {
-  label: string;
-  className?: string;
-}) {
+function AnimatedFlowVertical({ label, className }: { label: string; className?: string }) {
   return (
     <div className={cn('relative flex flex-col items-center gap-1', className)}>
       {/* Label */}
-      <span className="text-xs font-medium text-text-secondary">
-        {label}
-      </span>
+      <span className="text-xs font-medium text-text-secondary">{label}</span>
 
       {/* Flow arrow with particles */}
       <div className="relative">
@@ -193,10 +173,7 @@ export function FinancialSystemFlow({ className }: FinancialSystemFlowProps) {
             />
             <AnimatePresence mode="wait">
               {selectedEntity === 'savers' && (
-                <DetailPanel
-                  entityType="savers"
-                  onClose={() => setSelectedEntity(null)}
-                />
+                <DetailPanel entityType="savers" onClose={() => setSelectedEntity(null)} />
               )}
             </AnimatePresence>
           </div>
@@ -239,10 +216,7 @@ export function FinancialSystemFlow({ className }: FinancialSystemFlowProps) {
             />
             <AnimatePresence mode="wait">
               {selectedEntity === 'borrowers' && (
-                <DetailPanel
-                  entityType="borrowers"
-                  onClose={() => setSelectedEntity(null)}
-                />
+                <DetailPanel entityType="borrowers" onClose={() => setSelectedEntity(null)} />
               )}
             </AnimatePresence>
           </div>
@@ -264,10 +238,7 @@ export function FinancialSystemFlow({ className }: FinancialSystemFlowProps) {
             />
             <AnimatePresence mode="wait">
               {selectedEntity === 'savers' && (
-                <DetailPanel
-                  entityType="savers"
-                  onClose={() => setSelectedEntity(null)}
-                />
+                <DetailPanel entityType="savers" onClose={() => setSelectedEntity(null)} />
               )}
             </AnimatePresence>
           </div>
@@ -310,10 +281,7 @@ export function FinancialSystemFlow({ className }: FinancialSystemFlowProps) {
             />
             <AnimatePresence mode="wait">
               {selectedEntity === 'borrowers' && (
-                <DetailPanel
-                  entityType="borrowers"
-                  onClose={() => setSelectedEntity(null)}
-                />
+                <DetailPanel entityType="borrowers" onClose={() => setSelectedEntity(null)} />
               )}
             </AnimatePresence>
           </div>

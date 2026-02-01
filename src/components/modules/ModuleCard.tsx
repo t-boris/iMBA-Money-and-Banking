@@ -1,13 +1,7 @@
 'use client';
 
 import { motion } from '@/lib/motion';
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
-} from '@/components/ui';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui';
 import { Module } from '@/types';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';

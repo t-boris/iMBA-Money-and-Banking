@@ -197,10 +197,7 @@ export function CreditRiskFlow({ className }: CreditRiskFlowProps) {
                 onClick={() => setSelectedStep(selectedStep === step.id ? null : step.id)}
                 style={{
                   padding: '12px 16px',
-                  backgroundColor:
-                    selectedStep === step.id
-                      ? step.color
-                      : `${step.color}15`,
+                  backgroundColor: selectedStep === step.id ? step.color : `${step.color}15`,
                   borderRadius: '12px',
                   border: `2px solid ${step.color}`,
                   textAlign: 'center',
@@ -223,7 +220,8 @@ export function CreditRiskFlow({ className }: CreditRiskFlowProps) {
                       width: '20px',
                       height: '20px',
                       borderRadius: '50%',
-                      backgroundColor: selectedStep === step.id ? 'rgba(255,255,255,0.3)' : step.color,
+                      backgroundColor:
+                        selectedStep === step.id ? 'rgba(255,255,255,0.3)' : step.color,
                       color: selectedStep === step.id ? 'white' : 'white',
                       fontSize: '11px',
                       fontWeight: 700,

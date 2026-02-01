@@ -15,7 +15,8 @@ const tools = [
   {
     id: 'exam',
     title: 'Exam Practice',
-    description: 'Test your knowledge with practice questions. Track your progress and earn badges.',
+    description:
+      'Test your knowledge with practice questions. Track your progress and earn badges.',
     icon: '📝',
     href: '/study-tools/exam',
     color: 'var(--color-emerald)',

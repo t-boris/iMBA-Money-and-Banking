@@ -40,9 +40,7 @@ export function AnimatedValue({
   }, [value, springValue]);
 
   // Transform the spring value to a formatted string
-  const displayValue = useTransform(springValue, (latest) =>
-    latest.toFixed(decimals)
-  );
+  const displayValue = useTransform(springValue, (latest) => latest.toFixed(decimals));
 
   return (
     <span

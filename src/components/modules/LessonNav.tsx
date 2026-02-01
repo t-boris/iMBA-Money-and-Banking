@@ -12,12 +12,7 @@ interface LessonNavProps {
   className?: string;
 }
 
-export function LessonNav({
-  lessons,
-  activeLesson,
-  onLessonChange,
-  className,
-}: LessonNavProps) {
+export function LessonNav({ lessons, activeLesson, onLessonChange, className }: LessonNavProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleLessonClick = (lessonId: string) => {
@@ -58,12 +53,14 @@ export function LessonNav({
                   >
                     <span>{lesson.title}</span>
                     {isActive && (
-                      <span style={{
-                        width: '8px',
-                        height: '8px',
-                        borderRadius: '50%',
-                        backgroundColor: 'var(--color-primary-500)',
-                      }} />
+                      <span
+                        style={{
+                          width: '8px',
+                          height: '8px',
+                          borderRadius: '50%',
+                          backgroundColor: 'var(--color-primary-500)',
+                        }}
+                      />
                     )}
                   </button>
                 </li>
@@ -93,12 +90,15 @@ export function LessonNav({
           }}
         >
           <span>{currentLesson?.title || 'Select Lesson'}</span>
-          <motion.span
-            animate={{ rotate: mobileOpen ? 180 : 0 }}
-            transition={{ duration: 0.2 }}
-          >
+          <motion.span animate={{ rotate: mobileOpen ? 180 : 0 }} transition={{ duration: 0.2 }}>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M4 6L8 10L12 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              <path
+                d="M4 6L8 10L12 6"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </svg>
           </motion.span>
         </button>
@@ -112,16 +112,18 @@ export function LessonNav({
               transition={{ duration: 0.2 }}
               style={{ overflow: 'hidden' }}
             >
-              <ul style={{
-                listStyle: 'none',
-                margin: '8px 0 0 0',
-                padding: '8px 0',
-                backgroundColor: 'var(--color-surface-1)',
-                borderRadius: '8px',
-                border: '1px solid var(--color-surface-2)',
-                maxHeight: '60vh',
-                overflowY: 'auto',
-              }}>
+              <ul
+                style={{
+                  listStyle: 'none',
+                  margin: '8px 0 0 0',
+                  padding: '8px 0',
+                  backgroundColor: 'var(--color-surface-1)',
+                  borderRadius: '8px',
+                  border: '1px solid var(--color-surface-2)',
+                  maxHeight: '60vh',
+                  overflowY: 'auto',
+                }}
+              >
                 {lessons.map((lesson) => {
                   const isActive = activeLesson === lesson.id;
                   return (
@@ -134,7 +136,9 @@ export function LessonNav({
                           padding: '12px 16px',
                           border: 'none',
                           background: isActive ? 'rgba(99, 102, 241, 0.1)' : 'transparent',
-                          color: isActive ? 'var(--color-primary-500)' : 'var(--color-text-secondary)',
+                          color: isActive
+                            ? 'var(--color-primary-500)'
+                            : 'var(--color-text-secondary)',
                           fontWeight: isActive ? 500 : 400,
                           fontSize: '14px',
                           cursor: 'pointer',

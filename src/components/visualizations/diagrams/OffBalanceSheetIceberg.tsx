@@ -91,17 +91,20 @@ const balanceSheetItems: BalanceSheetItem[] = [
 const insights = [
   {
     title: 'Credit Cards: The Hidden Obligation',
-    content: 'Your credit limit is $10,000 but you only owe $2,000. That $8,000 undrawn? It\'s nowhere on the bank\'s balance sheet - but they MUST fund it if you charge.',
+    content:
+      "Your credit limit is $10,000 but you only owe $2,000. That $8,000 undrawn? It's nowhere on the bank's balance sheet - but they MUST fund it if you charge.",
     icon: '💳',
   },
   {
     title: 'Notional vs Actual Risk',
-    content: 'Like home insurance: $300,000 coverage (notional) but your premium risk is tiny. A $50T derivative book might have only $200B actual exposure after netting.',
+    content:
+      'Like home insurance: $300,000 coverage (notional) but your premium risk is tiny. A $50T derivative book might have only $200B actual exposure after netting.',
     icon: '📊',
   },
   {
     title: 'Concentration Risk',
-    content: '7 largest US banks hold ~95% of all derivatives. JPMorgan alone: ~$50T notional. "Too big to fail" meets "too complex to understand."',
+    content:
+      '7 largest US banks hold ~95% of all derivatives. JPMorgan alone: ~$50T notional. "Too big to fail" meets "too complex to understand."',
     icon: '🏦',
   },
 ];
@@ -119,20 +122,27 @@ export function OffBalanceSheetIceberg({ className }: OffBalanceSheetIcebergProp
     return () => clearInterval(interval);
   }, []);
 
-  const aboveItems = balanceSheetItems.filter((item) => item.position === 'above');
-  const belowItems = balanceSheetItems.filter((item) => item.position === 'below');
-
-  const selectedItemData = selectedItem ? balanceSheetItems.find((item) => item.id === selectedItem) : null;
+  const selectedItemData = selectedItem
+    ? balanceSheetItems.find((item) => item.id === selectedItem)
+    : null;
 
   return (
     <div className={cn('w-full max-w-4xl mx-auto', className)}>
       {/* Header */}
       <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-        <h3 style={{ fontSize: '20px', fontWeight: 600, color: 'var(--color-text-primary)', marginBottom: '8px' }}>
+        <h3
+          style={{
+            fontSize: '20px',
+            fontWeight: 600,
+            color: 'var(--color-text-primary)',
+            marginBottom: '8px',
+          }}
+        >
           Off-Balance Sheet: The Hidden Iceberg
         </h3>
         <p style={{ fontSize: '14px', color: 'var(--color-text-secondary)', lineHeight: '1.6' }}>
-          What you see on a bank&apos;s balance sheet is just the tip - massive obligations lurk beneath
+          What you see on a bank&apos;s balance sheet is just the tip - massive obligations lurk
+          beneath
         </p>
       </div>
 
@@ -187,7 +197,9 @@ export function OffBalanceSheetIceberg({ className }: OffBalanceSheetIcebergProp
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               style={{ cursor: 'pointer' }}
-              onClick={() => setSelectedItem(selectedItem === 'total-assets' ? null : 'total-assets')}
+              onClick={() =>
+                setSelectedItem(selectedItem === 'total-assets' ? null : 'total-assets')
+              }
             />
 
             {/* Below waterline - Hidden portion (much larger) */}
@@ -202,14 +214,34 @@ export function OffBalanceSheetIceberg({ className }: OffBalanceSheetIcebergProp
             />
 
             {/* Labels on iceberg */}
-            <text x="200" y="70" textAnchor="middle" fill="rgb(99, 102, 241)" fontSize="11" fontWeight="600">
+            <text
+              x="200"
+              y="70"
+              textAnchor="middle"
+              fill="rgb(99, 102, 241)"
+              fontSize="11"
+              fontWeight="600"
+            >
               $3.4T
             </text>
-            <text x="200" y="85" textAnchor="middle" fill="var(--color-text-secondary)" fontSize="9">
+            <text
+              x="200"
+              y="85"
+              textAnchor="middle"
+              fill="var(--color-text-secondary)"
+              fontSize="9"
+            >
               On-Balance Sheet
             </text>
 
-            <text x="200" y="180" textAnchor="middle" fill="rgba(255,255,255,0.9)" fontSize="11" fontWeight="600">
+            <text
+              x="200"
+              y="180"
+              textAnchor="middle"
+              fill="rgba(255,255,255,0.9)"
+              fontSize="11"
+              fontWeight="600"
+            >
               $50T+ Notional
             </text>
             <text x="200" y="195" textAnchor="middle" fill="rgba(255,255,255,0.7)" fontSize="9">
@@ -242,7 +274,14 @@ export function OffBalanceSheetIceberg({ className }: OffBalanceSheetIcebergProp
       </div>
 
       {/* Interactive Categories */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '12px', marginBottom: '24px' }}>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(2, 1fr)',
+          gap: '12px',
+          marginBottom: '24px',
+        }}
+      >
         {balanceSheetItems.map((item, index) => (
           <motion.button
             key={item.id}
@@ -252,42 +291,66 @@ export function OffBalanceSheetIceberg({ className }: OffBalanceSheetIcebergProp
             onClick={() => setSelectedItem(selectedItem === item.id ? null : item.id)}
             style={{
               padding: '16px',
-              backgroundColor: selectedItem === item.id ? `rgba(${item.color}, 0.15)` : 'var(--color-surface-1)',
+              backgroundColor:
+                selectedItem === item.id ? `rgba(${item.color}, 0.15)` : 'var(--color-surface-1)',
               borderRadius: '12px',
-              border: selectedItem === item.id ? `2px solid rgba(${item.color}, 0.5)` : '2px solid transparent',
+              border:
+                selectedItem === item.id
+                  ? `2px solid rgba(${item.color}, 0.5)`
+                  : '2px solid transparent',
               cursor: 'pointer',
               textAlign: 'left',
               transition: 'all 0.2s',
             }}
           >
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '4px' }}>
-              <span style={{ fontSize: '13px', fontWeight: 500, color: 'var(--color-text-primary)' }}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'flex-start',
+                marginBottom: '4px',
+              }}
+            >
+              <span
+                style={{ fontSize: '13px', fontWeight: 500, color: 'var(--color-text-primary)' }}
+              >
                 {item.name}
               </span>
-              <span style={{
-                fontSize: '12px',
-                fontWeight: 700,
-                color: `rgb(${item.color})`,
-                padding: '2px 8px',
-                backgroundColor: `rgba(${item.color}, 0.1)`,
-                borderRadius: '6px',
-              }}>
+              <span
+                style={{
+                  fontSize: '12px',
+                  fontWeight: 700,
+                  color: `rgb(${item.color})`,
+                  padding: '2px 8px',
+                  backgroundColor: `rgba(${item.color}, 0.1)`,
+                  borderRadius: '6px',
+                }}
+              >
                 {item.value}
               </span>
             </div>
-            <p style={{ fontSize: '11px', color: 'var(--color-text-muted)', margin: 0, lineHeight: '1.4' }}>
+            <p
+              style={{
+                fontSize: '11px',
+                color: 'var(--color-text-muted)',
+                margin: 0,
+                lineHeight: '1.4',
+              }}
+            >
               {item.description}
             </p>
             {item.position === 'below' && (
-              <span style={{
-                display: 'inline-block',
-                marginTop: '8px',
-                fontSize: '10px',
-                color: 'var(--color-text-muted)',
-                backgroundColor: 'var(--color-surface-2)',
-                padding: '2px 6px',
-                borderRadius: '4px',
-              }}>
+              <span
+                style={{
+                  display: 'inline-block',
+                  marginTop: '8px',
+                  fontSize: '10px',
+                  color: 'var(--color-text-muted)',
+                  backgroundColor: 'var(--color-surface-2)',
+                  padding: '2px 6px',
+                  borderRadius: '4px',
+                }}
+              >
                 Hidden
               </span>
             )}
@@ -309,12 +372,14 @@ export function OffBalanceSheetIceberg({ className }: OffBalanceSheetIcebergProp
             border: `1px solid rgba(${selectedItemData.color}, 0.2)`,
           }}
         >
-          <h4 style={{
-            fontSize: '16px',
-            fontWeight: 600,
-            color: `rgb(${selectedItemData.color})`,
-            marginBottom: '12px',
-          }}>
+          <h4
+            style={{
+              fontSize: '16px',
+              fontWeight: 600,
+              color: `rgb(${selectedItemData.color})`,
+              marginBottom: '12px',
+            }}
+          >
             {selectedItemData.name} Details
           </h4>
           <ul style={{ margin: 0, paddingLeft: '20px' }}>
@@ -339,15 +404,24 @@ export function OffBalanceSheetIceberg({ className }: OffBalanceSheetIcebergProp
       )}
 
       {/* Rotating Insights */}
-      <div style={{
-        backgroundColor: 'var(--color-surface-1)',
-        borderRadius: '12px',
-        padding: '20px',
-        marginBottom: '20px',
-      }}>
+      <div
+        style={{
+          backgroundColor: 'var(--color-surface-1)',
+          borderRadius: '12px',
+          padding: '20px',
+          marginBottom: '20px',
+        }}
+      >
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
           <span style={{ fontSize: '24px' }}>{insights[insightIndex].icon}</span>
-          <h4 style={{ fontSize: '14px', fontWeight: 600, color: 'var(--color-text-primary)', margin: 0 }}>
+          <h4
+            style={{
+              fontSize: '14px',
+              fontWeight: 600,
+              color: 'var(--color-text-primary)',
+              margin: 0,
+            }}
+          >
             {insights[insightIndex].title}
           </h4>
         </div>
@@ -355,7 +429,12 @@ export function OffBalanceSheetIceberg({ className }: OffBalanceSheetIcebergProp
           key={insightIndex}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          style={{ fontSize: '13px', color: 'var(--color-text-secondary)', lineHeight: '1.6', margin: 0 }}
+          style={{
+            fontSize: '13px',
+            color: 'var(--color-text-secondary)',
+            lineHeight: '1.6',
+            margin: 0,
+          }}
         >
           {insights[insightIndex].content}
         </motion.p>
@@ -369,7 +448,8 @@ export function OffBalanceSheetIceberg({ className }: OffBalanceSheetIcebergProp
                 height: '8px',
                 borderRadius: '50%',
                 border: 'none',
-                backgroundColor: i === insightIndex ? 'rgb(99, 102, 241)' : 'var(--color-surface-2)',
+                backgroundColor:
+                  i === insightIndex ? 'rgb(99, 102, 241)' : 'var(--color-surface-2)',
                 cursor: 'pointer',
                 transition: 'background-color 0.2s',
               }}
@@ -379,12 +459,22 @@ export function OffBalanceSheetIceberg({ className }: OffBalanceSheetIcebergProp
       </div>
 
       {/* Scale Comparison */}
-      <div style={{
-        backgroundColor: 'var(--color-surface-1)',
-        borderRadius: '12px',
-        padding: '20px',
-      }}>
-        <h4 style={{ fontSize: '14px', fontWeight: 600, color: 'var(--color-text-primary)', marginBottom: '16px', textAlign: 'center' }}>
+      <div
+        style={{
+          backgroundColor: 'var(--color-surface-1)',
+          borderRadius: '12px',
+          padding: '20px',
+        }}
+      >
+        <h4
+          style={{
+            fontSize: '14px',
+            fontWeight: 600,
+            color: 'var(--color-text-primary)',
+            marginBottom: '16px',
+            textAlign: 'center',
+          }}
+        >
           The Scale Problem (JPMorgan Example)
         </h4>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
@@ -394,27 +484,60 @@ export function OffBalanceSheetIceberg({ className }: OffBalanceSheetIcebergProp
             { label: 'Derivatives (Notional)', value: '$50T+', width: 100, color: '245, 158, 11' },
           ].map((item, i) => (
             <div key={i}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
-                <span style={{ fontSize: '12px', color: 'var(--color-text-secondary)' }}>{item.label}</span>
-                <span style={{ fontSize: '12px', fontWeight: 600, color: `rgb(${item.color})` }}>{item.value}</span>
+              <div
+                style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}
+              >
+                <span style={{ fontSize: '12px', color: 'var(--color-text-secondary)' }}>
+                  {item.label}
+                </span>
+                <span style={{ fontSize: '12px', fontWeight: 600, color: `rgb(${item.color})` }}>
+                  {item.value}
+                </span>
               </div>
-              <div style={{ height: '8px', backgroundColor: 'var(--color-surface-2)', borderRadius: '4px', overflow: 'hidden' }}>
+              <div
+                style={{
+                  height: '8px',
+                  backgroundColor: 'var(--color-surface-2)',
+                  borderRadius: '4px',
+                  overflow: 'hidden',
+                }}
+              >
                 <motion.div
                   initial={{ width: 0 }}
                   animate={{ width: `${item.width}%` }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
-                  style={{ height: '100%', backgroundColor: `rgb(${item.color})`, borderRadius: '4px' }}
+                  style={{
+                    height: '100%',
+                    backgroundColor: `rgb(${item.color})`,
+                    borderRadius: '4px',
+                  }}
                 />
               </div>
             </div>
           ))}
         </div>
-        <p style={{ fontSize: '11px', color: 'var(--color-text-muted)', marginTop: '12px', textAlign: 'center', fontStyle: 'italic' }}>
-          Note: Derivatives bar shows relative notional scale - actual risk exposure is much smaller after netting
+        <p
+          style={{
+            fontSize: '11px',
+            color: 'var(--color-text-muted)',
+            marginTop: '12px',
+            textAlign: 'center',
+            fontStyle: 'italic',
+          }}
+        >
+          Note: Derivatives bar shows relative notional scale - actual risk exposure is much smaller
+          after netting
         </p>
       </div>
 
-      <p style={{ textAlign: 'center', fontSize: '12px', color: 'var(--color-text-muted)', marginTop: '16px' }}>
+      <p
+        style={{
+          textAlign: 'center',
+          fontSize: '12px',
+          color: 'var(--color-text-muted)',
+          marginTop: '16px',
+        }}
+      >
         Click on any category above to see detailed breakdown
       </p>
     </div>

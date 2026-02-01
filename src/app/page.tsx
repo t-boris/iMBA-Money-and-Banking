@@ -26,14 +26,12 @@ export default function Home() {
             </motion.span>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-text-primary mb-6">
-              Master{' '}
-              <span className="text-gradient">Money & Banking</span>
+              Master <span className="text-gradient">Money & Banking</span>
             </h1>
 
             <p className="text-xl md:text-2xl text-text-secondary leading-relaxed">
-              Interactive study guide designed for visual learners.
-              Explore complex financial concepts through animations,
-              calculators, and engaging exercises.
+              Interactive study guide designed for visual learners. Explore complex financial
+              concepts through animations, calculators, and engaging exercises.
             </p>
 
             <motion.div
@@ -43,8 +41,7 @@ export default function Home() {
               transition={{ delay: 0.5 }}
             >
               <span className="flex items-center gap-2">
-                <span className="w-2 h-2 bg-primary-500 rounded-full" />
-                8 Modules
+                <span className="w-2 h-2 bg-primary-500 rounded-full" />8 Modules
               </span>
               <span className="flex items-center gap-2">
                 <span className="w-2 h-2 bg-primary-500 rounded-full" />
@@ -78,22 +75,15 @@ export default function Home() {
               className="text-text-secondary"
               style={{ maxWidth: '600px', margin: '0 auto', lineHeight: '1.6' }}
             >
-              Click any module to start learning. Each contains interactive diagrams, calculators, quizzes, and more.
+              Click any module to start learning. Each contains interactive diagrams, calculators,
+              quizzes, and more.
             </motion.p>
           </div>
 
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            animate="visible"
-          >
+          <motion.div variants={staggerContainer} initial="hidden" animate="visible">
             <Grid cols={4} gap="lg">
               {modules.map((module, index) => (
-                <ModuleCard
-                  key={module.id}
-                  module={module}
-                  index={index}
-                />
+                <ModuleCard key={module.id} module={module} index={index} />
               ))}
             </Grid>
           </motion.div>
@@ -113,11 +103,10 @@ export default function Home() {
               Ready to start learning?
             </h3>
             <p className="text-text-secondary mb-6">
-              Begin with Module 1 for a structured approach, or jump to any topic that interests you.
+              Begin with Module 1 for a structured approach, or jump to any topic that interests
+              you.
             </p>
-            <div className="text-4xl">
-              👆
-            </div>
+            <div className="text-4xl">👆</div>
           </motion.div>
         </Container>
       </Section>

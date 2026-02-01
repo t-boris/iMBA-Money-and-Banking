@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState, startTransition } from 'react';
 
 type Theme = 'light' | 'dark';
 
@@ -16,14 +16,17 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
-    // Check localStorage or system preference
-    const stored = localStorage.getItem('theme') as Theme | null;
-    if (stored) {
-      setTheme(stored);
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      setTheme('dark');
-    }
+    // Use startTransition for non-urgent state updates to avoid React Compiler warnings
+    startTransition(() => {
+      setMounted(true);
+      // Check localStorage or system preference
+      const stored = localStorage.getItem('theme') as Theme | null;
+      if (stored) {
+        setTheme(stored);
+      } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        setTheme('dark');
+      }
+    });
   }, []);
 
   useEffect(() => {
@@ -39,7 +42,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   }, [theme, mounted]);
 
   const toggleTheme = () => {
-    setTheme(prev => prev === 'light' ? 'dark' : 'light');
+    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
   };
 
   // Prevent flash of wrong theme
@@ -47,11 +50,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     return <>{children}</>;
   }
 
-  return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {children}
-    </ThemeContext.Provider>
-  );
+  return <ThemeContext.Provider value={{ theme, toggleTheme }}>{children}</ThemeContext.Provider>;
 }
 
 export function useTheme() {
@@ -67,14 +66,14 @@ export function ThemeToggle() {
   const context = useContext(ThemeContext);
 
   useEffect(() => {
-    setMounted(true);
+    startTransition(() => {
+      setMounted(true);
+    });
   }, []);
 
   // Don't render during SSR or before mount
   if (!mounted || !context) {
-    return (
-      <div style={{ width: '85px', height: '36px' }} />
-    );
+    return <div style={{ width: '85px', height: '36px' }} />;
   }
 
   const { theme, toggleTheme } = context;

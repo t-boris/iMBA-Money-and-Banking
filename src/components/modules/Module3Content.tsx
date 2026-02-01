@@ -80,10 +80,7 @@ export function Module3Content({ className }: Module3ContentProps) {
       title: 'Measuring Bank Performance',
       description:
         'ROA measures how efficiently a bank uses its assets. ROE shows returns to shareholders. Leverage amplifies both gains and losses. Understanding these metrics is key to evaluating bank health.',
-      visualizations: [
-        <ROECalculator key="roe" />,
-        <LeverageDecomposition key="ld" />,
-      ],
+      visualizations: [<ROECalculator key="roe" />, <LeverageDecomposition key="ld" />],
     },
     '3-2': {
       id: '3-2',
@@ -104,10 +101,7 @@ export function Module3Content({ className }: Module3ContentProps) {
       title: 'Credit Risk',
       description:
         'Credit risk is the possibility that a borrower will default on their obligation. Banks use credit ratings, FICO scores, collateral requirements, and loan covenants to assess and manage this risk.',
-      visualizations: [
-        <CreditRiskFlow key="crf" />,
-        <FICOScoreScale key="fss" />,
-      ],
+      visualizations: [<CreditRiskFlow key="crf" />, <FICOScoreScale key="fss" />],
     },
     '3-2.3': {
       id: '3-2.3',
@@ -190,10 +184,19 @@ export function Module3Content({ className }: Module3ContentProps) {
             >
               {/* Lesson Header */}
               <header style={{ marginBottom: '32px' }}>
-                <h2 style={{ fontSize: '28px', fontWeight: 700, color: 'var(--color-text-primary)' }}>
+                <h2
+                  style={{ fontSize: '28px', fontWeight: 700, color: 'var(--color-text-primary)' }}
+                >
                   {currentContent.title}
                 </h2>
-                <p style={{ color: 'var(--color-text-secondary)', marginTop: '12px', maxWidth: '700px', lineHeight: '1.6' }}>
+                <p
+                  style={{
+                    color: 'var(--color-text-secondary)',
+                    marginTop: '12px',
+                    maxWidth: '700px',
+                    lineHeight: '1.6',
+                  }}
+                >
                   {currentContent.description}
                 </p>
               </header>
@@ -222,9 +225,7 @@ export function Module3Content({ className }: Module3ContentProps) {
               <div className="flex justify-between items-center mt-12 pt-8 border-t border-surface-2">
                 {getPreviousLesson(activeLesson) ? (
                   <button
-                    onClick={() =>
-                      handleLessonChange(getPreviousLesson(activeLesson)!)
-                    }
+                    onClick={() => handleLessonChange(getPreviousLesson(activeLesson)!)}
                     className="flex items-center gap-2 text-text-secondary hover:text-primary-500 transition-colors"
                   >
                     <span>&larr;</span>
@@ -236,9 +237,7 @@ export function Module3Content({ className }: Module3ContentProps) {
 
                 {getNextLesson(activeLesson) ? (
                   <button
-                    onClick={() =>
-                      handleLessonChange(getNextLesson(activeLesson)!)
-                    }
+                    onClick={() => handleLessonChange(getNextLesson(activeLesson)!)}
                     className="flex items-center gap-2 text-text-secondary hover:text-primary-500 transition-colors"
                   >
                     <span>Next Lesson</span>
@@ -260,23 +259,51 @@ export function Module3Content({ className }: Module3ContentProps) {
 function ModuleOverview({ onLessonChange }: { onLessonChange: (id: string) => void }) {
   const topics = [
     // Lesson 3.1: Bank Capital and Profitability
-    { id: '3-1.1', icon: '🏦', title: 'Bank Equity Capital', desc: 'The loss absorber protecting depositors' },
+    {
+      id: '3-1.1',
+      icon: '🏦',
+      title: 'Bank Equity Capital',
+      desc: 'The loss absorber protecting depositors',
+    },
     { id: '3-1.2', icon: '📊', title: 'Measuring Performance', desc: 'ROA, ROE, and leverage' },
     // Lesson 3.2: Overview of Bank Risks
     { id: '3-2.1', icon: '⚠️', title: 'Overview of Risk', desc: 'Risk types and management' },
     { id: '3-2.2', icon: '💳', title: 'Credit Risk', desc: 'Default, ratings, and FICO scores' },
-    { id: '3-2.3', icon: '📈', title: 'Interest Rate Risk', desc: 'Maturity mismatch and duration' },
+    {
+      id: '3-2.3',
+      icon: '📈',
+      title: 'Interest Rate Risk',
+      desc: 'Maturity mismatch and duration',
+    },
     { id: '3-2.4', icon: '💧', title: 'Liquidity Risk', desc: 'Bank runs and fire sales' },
     { id: '3-2.5', icon: '📉', title: 'Market Risk', desc: 'Trading book and VaR' },
-    { id: '3-2.6', icon: '⚙️', title: 'Operational Risk', desc: 'System failures and cyber threats' },
+    {
+      id: '3-2.6',
+      icon: '⚙️',
+      title: 'Operational Risk',
+      desc: 'System failures and cyber threats',
+    },
   ];
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-      <h3 style={{ fontSize: '16px', fontWeight: 600, color: 'var(--color-text-primary)', marginBottom: '8px' }}>
+      <h3
+        style={{
+          fontSize: '16px',
+          fontWeight: 600,
+          color: 'var(--color-text-primary)',
+          marginBottom: '8px',
+        }}
+      >
         In This Module
       </h3>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '12px' }}>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gap: '12px',
+        }}
+      >
         {topics.map((topic, index) => (
           <motion.button
             key={topic.id}
@@ -299,7 +326,9 @@ function ModuleOverview({ onLessonChange }: { onLessonChange: (id: string) => vo
           >
             <span style={{ fontSize: '24px' }}>{topic.icon}</span>
             <div>
-              <div style={{ fontSize: '14px', fontWeight: 500, color: 'var(--color-text-primary)' }}>
+              <div
+                style={{ fontSize: '14px', fontWeight: 500, color: 'var(--color-text-primary)' }}
+              >
                 {topic.title}
               </div>
               <div style={{ fontSize: '12px', color: 'var(--color-text-muted)', marginTop: '4px' }}>
@@ -348,10 +377,23 @@ function OperationalRiskContent() {
           border: '1px solid var(--color-surface-2)',
         }}
       >
-        <h3 style={{ fontSize: '16px', fontWeight: 600, color: 'var(--color-text-primary)', marginBottom: '12px' }}>
+        <h3
+          style={{
+            fontSize: '16px',
+            fontWeight: 600,
+            color: 'var(--color-text-primary)',
+            marginBottom: '12px',
+          }}
+        >
           Categories of Operational Risk
         </h3>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px' }}>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+            gap: '16px',
+          }}
+        >
           {riskCategories.map((category) => (
             <div
               key={category.title}
@@ -362,13 +404,26 @@ function OperationalRiskContent() {
                 border: '1px solid var(--color-surface-2)',
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
+              <div
+                style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}
+              >
                 <span style={{ fontSize: '20px' }}>{category.icon}</span>
-                <span style={{ fontWeight: 500, color: 'var(--color-text-primary)' }}>{category.title}</span>
+                <span style={{ fontWeight: 500, color: 'var(--color-text-primary)' }}>
+                  {category.title}
+                </span>
               </div>
-              <ul style={{ paddingLeft: '20px', margin: 0, color: 'var(--color-text-secondary)', fontSize: '14px' }}>
+              <ul
+                style={{
+                  paddingLeft: '20px',
+                  margin: 0,
+                  color: 'var(--color-text-secondary)',
+                  fontSize: '14px',
+                }}
+              >
                 {category.items.map((item) => (
-                  <li key={item} style={{ marginBottom: '4px' }}>{item}</li>
+                  <li key={item} style={{ marginBottom: '4px' }}>
+                    {item}
+                  </li>
                 ))}
               </ul>
             </div>
@@ -384,13 +439,28 @@ function OperationalRiskContent() {
           border: '1px solid rgba(245, 158, 11, 0.3)',
         }}
       >
-        <h4 style={{ fontSize: '14px', fontWeight: 600, color: 'var(--color-text-primary)', marginBottom: '8px' }}>
+        <h4
+          style={{
+            fontSize: '14px',
+            fontWeight: 600,
+            color: 'var(--color-text-primary)',
+            marginBottom: '8px',
+          }}
+        >
           Why Operational Risk is Hard to Quantify
         </h4>
-        <p style={{ fontSize: '14px', color: 'var(--color-text-secondary)', lineHeight: '1.6', margin: 0 }}>
-          Unlike credit or market risk, operational risk events are often rare but severe. Historical data is limited,
-          and many risks (like novel cyber attacks) have no precedent. Banks typically use scenario analysis and
-          key risk indicators (KRIs) rather than statistical models to manage these risks.
+        <p
+          style={{
+            fontSize: '14px',
+            color: 'var(--color-text-secondary)',
+            lineHeight: '1.6',
+            margin: 0,
+          }}
+        >
+          Unlike credit or market risk, operational risk events are often rare but severe.
+          Historical data is limited, and many risks (like novel cyber attacks) have no precedent.
+          Banks typically use scenario analysis and key risk indicators (KRIs) rather than
+          statistical models to manage these risks.
         </p>
       </div>
     </div>

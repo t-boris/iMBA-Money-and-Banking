@@ -43,9 +43,9 @@ export function GlossaryModal({ term, onClose, allTerms }: GlossaryModalProps) {
 
   if (!term) return null;
 
-  const module = modules.find(m => m.id === term.moduleId);
+  const termModule = modules.find((m) => m.id === term.moduleId);
   const relatedTerms = term.relatedTerms
-    ?.map(id => allTerms.find(t => t.id === id))
+    ?.map((id) => allTerms.find((t) => t.id === id))
     .filter(Boolean) as GlossaryTerm[];
 
   return (
@@ -79,15 +79,17 @@ export function GlossaryModal({ term, onClose, allTerms }: GlossaryModalProps) {
               left: '50%',
               transform: 'translate(-50%, -50%)',
               width: '90%',
-              maxWidth: '500px',
-              maxHeight: '80vh',
-              backgroundColor: 'var(--color-bg-primary)',
-              border: '1px solid var(--color-glass-border)',
+              maxWidth: '560px',
+              maxHeight: '85vh',
+              backgroundColor: '#ffffff',
+              border: '1px solid #e5e7eb',
               borderRadius: '1rem',
               padding: '2rem',
               zIndex: 101,
               overflow: 'auto',
+              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
             }}
+            className="dark:!bg-[#1a1a2e] dark:!border-[#2d2d44]"
           >
             {/* Close button */}
             <button
@@ -150,8 +152,44 @@ export function GlossaryModal({ term, onClose, allTerms }: GlossaryModalProps) {
               {term.definition}
             </p>
 
+            {/* Example */}
+            {term.example && (
+              <div
+                style={{
+                  marginBottom: '1.5rem',
+                  padding: '1rem',
+                  backgroundColor: 'var(--color-surface-2)',
+                  borderRadius: '0.5rem',
+                  borderLeft: '3px solid var(--color-primary)',
+                }}
+              >
+                <div
+                  style={{
+                    fontSize: '0.75rem',
+                    fontWeight: 600,
+                    color: 'var(--color-primary)',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.05em',
+                    marginBottom: '0.5rem',
+                  }}
+                >
+                  Example
+                </div>
+                <p
+                  style={{
+                    fontSize: '0.95rem',
+                    color: 'var(--color-text-secondary)',
+                    lineHeight: 1.6,
+                    margin: 0,
+                  }}
+                >
+                  {term.example}
+                </p>
+              </div>
+            )}
+
             {/* Source link */}
-            {module && (
+            {termModule && (
               <div style={{ marginBottom: '1.5rem' }}>
                 <div
                   style={{
@@ -166,7 +204,7 @@ export function GlossaryModal({ term, onClose, allTerms }: GlossaryModalProps) {
                   Source
                 </div>
                 <Link
-                  href={`/modules/${module.slug}`}
+                  href={`/modules/${termModule.slug}`}
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
@@ -177,9 +215,9 @@ export function GlossaryModal({ term, onClose, allTerms }: GlossaryModalProps) {
                   }}
                   onClick={onClose}
                 >
-                  <span>{module.icon}</span>
+                  <span>{termModule.icon}</span>
                   <span>
-                    Module {module.id}: {module.title}
+                    Module {termModule.id}: {termModule.title}
                   </span>
                   <span style={{ fontSize: '0.8rem' }}>→</span>
                 </Link>
@@ -202,7 +240,7 @@ export function GlossaryModal({ term, onClose, allTerms }: GlossaryModalProps) {
                   Related Terms
                 </div>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                  {relatedTerms.map(related => (
+                  {relatedTerms.map((related) => (
                     <span
                       key={related.id}
                       style={{

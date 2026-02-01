@@ -60,7 +60,12 @@ const divisions: Division[] = [
       {
         name: 'Fixed Income',
         description: 'Bond and derivative trading',
-        examples: ['Bonds trading', 'Interest rate derivatives', 'FX/Commodities', 'Credit products'],
+        examples: [
+          'Bonds trading',
+          'Interest rate derivatives',
+          'FX/Commodities',
+          'Credit products',
+        ],
       },
       {
         name: 'Prime Brokerage',
@@ -296,9 +301,7 @@ export function InvestmentBankStructure({ className }: InvestmentBankStructurePr
                           style={{
                             padding: '10px 12px',
                             backgroundColor:
-                              selectedActivity === activity.name
-                                ? division.bgColor
-                                : 'transparent',
+                              selectedActivity === activity.name ? division.bgColor : 'transparent',
                             borderRadius: '8px',
                             marginBottom: actIndex < division.activities.length - 1 ? '8px' : 0,
                             cursor: 'pointer',

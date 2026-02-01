@@ -84,9 +84,21 @@ const crisisSteps: CrisisStep[] = [
 ];
 
 const keyConcepts = [
-  { label: 'Cash Shortfall', formula: 'Outflows - Inflows', description: 'When more money leaves than enters' },
-  { label: 'Fire Sale Loss', formula: 'Book Value - Sale Price', description: 'Discount from forced selling' },
-  { label: 'Liquidity to Solvency', formula: 'Contagion Risk', description: 'Cash problem becomes capital problem' },
+  {
+    label: 'Cash Shortfall',
+    formula: 'Outflows - Inflows',
+    description: 'When more money leaves than enters',
+  },
+  {
+    label: 'Fire Sale Loss',
+    formula: 'Book Value - Sale Price',
+    description: 'Discount from forced selling',
+  },
+  {
+    label: 'Liquidity to Solvency',
+    formula: 'Contagion Risk',
+    description: 'Cash problem becomes capital problem',
+  },
 ];
 
 export function LiquidityCrisisFlow({ className }: LiquidityCrisisFlowProps) {
@@ -131,14 +143,22 @@ export function LiquidityCrisisFlow({ className }: LiquidityCrisisFlowProps) {
     });
   }, []);
 
-  const totalAssets = step.balanceSheet.cash + step.balanceSheet.securities + step.balanceSheet.loans;
+  const totalAssets =
+    step.balanceSheet.cash + step.balanceSheet.securities + step.balanceSheet.loans;
   const totalLiabilities = step.balanceSheet.deposits + step.balanceSheet.equity;
 
   return (
     <div className={cn('w-full max-w-4xl mx-auto', className)}>
       {/* Header */}
       <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-        <h3 style={{ fontSize: '20px', fontWeight: 600, color: 'var(--color-text-primary)', marginBottom: '8px' }}>
+        <h3
+          style={{
+            fontSize: '20px',
+            fontWeight: 600,
+            color: 'var(--color-text-primary)',
+            marginBottom: '8px',
+          }}
+        >
           Liquidity Crisis: From Cash Crunch to Insolvency
         </h3>
         <p style={{ fontSize: '14px', color: 'var(--color-text-secondary)' }}>
@@ -207,7 +227,8 @@ export function LiquidityCrisisFlow({ className }: LiquidityCrisisFlowProps) {
             height: '36px',
             borderRadius: '8px',
             border: 'none',
-            backgroundColor: currentStep === 0 ? 'var(--color-surface-1)' : 'var(--color-surface-2)',
+            backgroundColor:
+              currentStep === 0 ? 'var(--color-surface-1)' : 'var(--color-surface-2)',
             color: currentStep === 0 ? 'var(--color-text-muted)' : 'var(--color-text-primary)',
             cursor: currentStep === 0 ? 'not-allowed' : 'pointer',
             fontSize: '18px',
@@ -227,7 +248,8 @@ export function LiquidityCrisisFlow({ className }: LiquidityCrisisFlowProps) {
               height: '36px',
               borderRadius: '8px',
               border: i === currentStep ? `2px solid rgb(${step.color})` : 'none',
-              backgroundColor: i <= currentStep ? `rgba(${crisisSteps[i].color}, 0.2)` : 'var(--color-surface-1)',
+              backgroundColor:
+                i <= currentStep ? `rgba(${crisisSteps[i].color}, 0.2)` : 'var(--color-surface-1)',
               color: i === currentStep ? `rgb(${step.color})` : 'var(--color-text-muted)',
               fontWeight: i === currentStep ? 700 : 500,
               cursor: 'pointer',
@@ -245,8 +267,14 @@ export function LiquidityCrisisFlow({ className }: LiquidityCrisisFlowProps) {
             height: '36px',
             borderRadius: '8px',
             border: 'none',
-            backgroundColor: currentStep === crisisSteps.length - 1 ? 'var(--color-surface-1)' : 'var(--color-surface-2)',
-            color: currentStep === crisisSteps.length - 1 ? 'var(--color-text-muted)' : 'var(--color-text-primary)',
+            backgroundColor:
+              currentStep === crisisSteps.length - 1
+                ? 'var(--color-surface-1)'
+                : 'var(--color-surface-2)',
+            color:
+              currentStep === crisisSteps.length - 1
+                ? 'var(--color-text-muted)'
+                : 'var(--color-text-primary)',
             cursor: currentStep === crisisSteps.length - 1 ? 'not-allowed' : 'pointer',
             fontSize: '18px',
           }}
@@ -271,22 +299,31 @@ export function LiquidityCrisisFlow({ className }: LiquidityCrisisFlowProps) {
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
-            <div style={{
-              width: '40px',
-              height: '40px',
-              borderRadius: '50%',
-              backgroundColor: `rgb(${step.color})`,
-              color: 'white',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontWeight: 700,
-              fontSize: '18px',
-            }}>
+            <div
+              style={{
+                width: '40px',
+                height: '40px',
+                borderRadius: '50%',
+                backgroundColor: `rgb(${step.color})`,
+                color: 'white',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontWeight: 700,
+                fontSize: '18px',
+              }}
+            >
               {step.id}
             </div>
             <div>
-              <h4 style={{ fontSize: '18px', fontWeight: 600, color: `rgb(${step.color})`, margin: 0 }}>
+              <h4
+                style={{
+                  fontSize: '18px',
+                  fontWeight: 600,
+                  color: `rgb(${step.color})`,
+                  margin: 0,
+                }}
+              >
                 {step.title}
               </h4>
               <p style={{ fontSize: '13px', color: 'var(--color-text-muted)', margin: 0 }}>
@@ -294,35 +331,55 @@ export function LiquidityCrisisFlow({ className }: LiquidityCrisisFlowProps) {
               </p>
             </div>
           </div>
-          <div style={{
-            padding: '12px 16px',
-            backgroundColor: `rgba(${step.color}, 0.08)`,
-            borderRadius: '8px',
-            fontSize: '14px',
-            color: 'var(--color-text-primary)',
-            fontWeight: 500,
-            lineHeight: '1.6',
-          }}>
+          <div
+            style={{
+              padding: '12px 16px',
+              backgroundColor: `rgba(${step.color}, 0.08)`,
+              borderRadius: '8px',
+              fontSize: '14px',
+              color: 'var(--color-text-primary)',
+              fontWeight: 500,
+              lineHeight: '1.6',
+            }}
+          >
             {step.message}
           </div>
         </motion.div>
       </AnimatePresence>
 
       {/* Balance Sheet Visualization */}
-      <div style={{
-        backgroundColor: 'var(--color-surface-1)',
-        borderRadius: '16px',
-        padding: '24px',
-        marginBottom: '24px',
-      }}>
-        <h4 style={{ fontSize: '16px', fontWeight: 600, color: 'var(--color-text-primary)', marginBottom: '20px', textAlign: 'center' }}>
+      <div
+        style={{
+          backgroundColor: 'var(--color-surface-1)',
+          borderRadius: '16px',
+          padding: '24px',
+          marginBottom: '24px',
+        }}
+      >
+        <h4
+          style={{
+            fontSize: '16px',
+            fontWeight: 600,
+            color: 'var(--color-text-primary)',
+            marginBottom: '20px',
+            textAlign: 'center',
+          }}
+        >
           Balance Sheet
         </h4>
 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
           {/* Assets Side */}
           <div>
-            <div style={{ fontSize: '14px', fontWeight: 600, color: 'var(--color-text-primary)', marginBottom: '12px', textAlign: 'center' }}>
+            <div
+              style={{
+                fontSize: '14px',
+                fontWeight: 600,
+                color: 'var(--color-text-primary)',
+                marginBottom: '12px',
+                textAlign: 'center',
+              }}
+            >
               Assets
             </div>
             {[
@@ -332,14 +389,19 @@ export function LiquidityCrisisFlow({ className }: LiquidityCrisisFlowProps) {
             ].map((asset) => {
               const value = step.balanceSheet[asset.key as keyof BalanceSheetState];
               const isHighlighted = step.highlight.includes(asset.key);
-              const prevValue = currentStep > 0 ? crisisSteps[currentStep - 1].balanceSheet[asset.key as keyof BalanceSheetState] : value;
+              const prevValue =
+                currentStep > 0
+                  ? crisisSteps[currentStep - 1].balanceSheet[asset.key as keyof BalanceSheetState]
+                  : value;
               const change = value - prevValue;
 
               return (
                 <motion.div
                   key={asset.key}
                   animate={{
-                    backgroundColor: isHighlighted ? `rgba(${step.color}, 0.15)` : 'var(--color-surface-2)',
+                    backgroundColor: isHighlighted
+                      ? `rgba(${step.color}, 0.15)`
+                      : 'var(--color-surface-2)',
                     borderColor: isHighlighted ? `rgba(${step.color}, 0.5)` : 'transparent',
                   }}
                   style={{
@@ -352,7 +414,9 @@ export function LiquidityCrisisFlow({ className }: LiquidityCrisisFlowProps) {
                     alignItems: 'center',
                   }}
                 >
-                  <span style={{ fontSize: '13px', color: 'var(--color-text-secondary)' }}>{asset.label}</span>
+                  <span style={{ fontSize: '13px', color: 'var(--color-text-secondary)' }}>
+                    {asset.label}
+                  </span>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                     {change !== 0 && (
                       <motion.span
@@ -364,7 +428,8 @@ export function LiquidityCrisisFlow({ className }: LiquidityCrisisFlowProps) {
                           fontWeight: 500,
                         }}
                       >
-                        {change > 0 ? '+' : ''}{change}
+                        {change > 0 ? '+' : ''}
+                        {change}
                       </motion.span>
                     )}
                     <motion.span
@@ -385,23 +450,39 @@ export function LiquidityCrisisFlow({ className }: LiquidityCrisisFlowProps) {
                 </motion.div>
               );
             })}
-            <div style={{
-              padding: '12px 16px',
-              borderRadius: '10px',
-              backgroundColor: 'rgba(99, 102, 241, 0.1)',
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              marginTop: '12px',
-            }}>
-              <span style={{ fontSize: '14px', fontWeight: 600, color: 'var(--color-text-primary)' }}>Total Assets</span>
-              <span style={{ fontSize: '20px', fontWeight: 700, color: 'rgb(99, 102, 241)' }}>{totalAssets}</span>
+            <div
+              style={{
+                padding: '12px 16px',
+                borderRadius: '10px',
+                backgroundColor: 'rgba(99, 102, 241, 0.1)',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                marginTop: '12px',
+              }}
+            >
+              <span
+                style={{ fontSize: '14px', fontWeight: 600, color: 'var(--color-text-primary)' }}
+              >
+                Total Assets
+              </span>
+              <span style={{ fontSize: '20px', fontWeight: 700, color: 'rgb(99, 102, 241)' }}>
+                {totalAssets}
+              </span>
             </div>
           </div>
 
           {/* Liabilities Side */}
           <div>
-            <div style={{ fontSize: '14px', fontWeight: 600, color: 'var(--color-text-primary)', marginBottom: '12px', textAlign: 'center' }}>
+            <div
+              style={{
+                fontSize: '14px',
+                fontWeight: 600,
+                color: 'var(--color-text-primary)',
+                marginBottom: '12px',
+                textAlign: 'center',
+              }}
+            >
               Liabilities + Equity
             </div>
             {[
@@ -410,14 +491,21 @@ export function LiquidityCrisisFlow({ className }: LiquidityCrisisFlowProps) {
             ].map((liability) => {
               const value = step.balanceSheet[liability.key as keyof BalanceSheetState];
               const isHighlighted = step.highlight.includes(liability.key);
-              const prevValue = currentStep > 0 ? crisisSteps[currentStep - 1].balanceSheet[liability.key as keyof BalanceSheetState] : value;
+              const prevValue =
+                currentStep > 0
+                  ? crisisSteps[currentStep - 1].balanceSheet[
+                      liability.key as keyof BalanceSheetState
+                    ]
+                  : value;
               const change = value - prevValue;
 
               return (
                 <motion.div
                   key={liability.key}
                   animate={{
-                    backgroundColor: isHighlighted ? `rgba(${step.color}, 0.15)` : 'var(--color-surface-2)',
+                    backgroundColor: isHighlighted
+                      ? `rgba(${step.color}, 0.15)`
+                      : 'var(--color-surface-2)',
                     borderColor: isHighlighted ? `rgba(${step.color}, 0.5)` : 'transparent',
                   }}
                   style={{
@@ -430,7 +518,9 @@ export function LiquidityCrisisFlow({ className }: LiquidityCrisisFlowProps) {
                     alignItems: 'center',
                   }}
                 >
-                  <span style={{ fontSize: '13px', color: 'var(--color-text-secondary)' }}>{liability.label}</span>
+                  <span style={{ fontSize: '13px', color: 'var(--color-text-secondary)' }}>
+                    {liability.label}
+                  </span>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                     {change !== 0 && (
                       <motion.span
@@ -442,7 +532,8 @@ export function LiquidityCrisisFlow({ className }: LiquidityCrisisFlowProps) {
                           fontWeight: 500,
                         }}
                       >
-                        {change > 0 ? '+' : ''}{change}
+                        {change > 0 ? '+' : ''}
+                        {change}
                       </motion.span>
                     )}
                     <motion.span
@@ -463,17 +554,25 @@ export function LiquidityCrisisFlow({ className }: LiquidityCrisisFlowProps) {
                 </motion.div>
               );
             })}
-            <div style={{
-              padding: '12px 16px',
-              borderRadius: '10px',
-              backgroundColor: 'rgba(99, 102, 241, 0.1)',
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              marginTop: '12px',
-            }}>
-              <span style={{ fontSize: '14px', fontWeight: 600, color: 'var(--color-text-primary)' }}>Total L+E</span>
-              <span style={{ fontSize: '20px', fontWeight: 700, color: 'rgb(99, 102, 241)' }}>{totalLiabilities}</span>
+            <div
+              style={{
+                padding: '12px 16px',
+                borderRadius: '10px',
+                backgroundColor: 'rgba(99, 102, 241, 0.1)',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                marginTop: '12px',
+              }}
+            >
+              <span
+                style={{ fontSize: '14px', fontWeight: 600, color: 'var(--color-text-primary)' }}
+              >
+                Total L+E
+              </span>
+              <span style={{ fontSize: '20px', fontWeight: 700, color: 'rgb(99, 102, 241)' }}>
+                {totalLiabilities}
+              </span>
             </div>
           </div>
         </div>
@@ -492,12 +591,17 @@ export function LiquidityCrisisFlow({ className }: LiquidityCrisisFlowProps) {
               textAlign: 'center',
             }}
           >
-            <div style={{ fontSize: '14px', fontWeight: 600, color: 'rgb(239, 68, 68)', marginBottom: '4px' }}>
+            <div
+              style={{
+                fontSize: '14px',
+                fontWeight: 600,
+                color: 'rgb(239, 68, 68)',
+                marginBottom: '4px',
+              }}
+            >
               Fire Sale Loss
             </div>
-            <div style={{ fontSize: '28px', fontWeight: 700, color: 'rgb(239, 68, 68)' }}>
-              -5
-            </div>
+            <div style={{ fontSize: '28px', fontWeight: 700, color: 'rgb(239, 68, 68)' }}>-5</div>
             <div style={{ fontSize: '12px', color: 'var(--color-text-muted)' }}>
               Book value 20 sold for 15
             </div>
@@ -525,7 +629,12 @@ export function LiquidityCrisisFlow({ className }: LiquidityCrisisFlowProps) {
           }}
         >
           <span>Key Concepts</span>
-          <span style={{ transform: showConcepts ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.2s' }}>
+          <span
+            style={{
+              transform: showConcepts ? 'rotate(180deg)' : 'rotate(0deg)',
+              transition: 'transform 0.2s',
+            }}
+          >
             &#9660;
           </span>
         </button>
@@ -537,12 +646,14 @@ export function LiquidityCrisisFlow({ className }: LiquidityCrisisFlowProps) {
               exit={{ opacity: 0, height: 0 }}
               style={{ overflow: 'hidden' }}
             >
-              <div style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(3, 1fr)',
-                gap: '12px',
-                marginTop: '12px',
-              }}>
+              <div
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(3, 1fr)',
+                  gap: '12px',
+                  marginTop: '12px',
+                }}
+              >
                 {keyConcepts.map((concept, i) => (
                   <motion.div
                     key={concept.label}
@@ -556,10 +667,24 @@ export function LiquidityCrisisFlow({ className }: LiquidityCrisisFlowProps) {
                       textAlign: 'center',
                     }}
                   >
-                    <div style={{ fontSize: '13px', fontWeight: 600, color: 'var(--color-text-primary)', marginBottom: '4px' }}>
+                    <div
+                      style={{
+                        fontSize: '13px',
+                        fontWeight: 600,
+                        color: 'var(--color-text-primary)',
+                        marginBottom: '4px',
+                      }}
+                    >
                       {concept.label}
                     </div>
-                    <div style={{ fontSize: '14px', fontWeight: 700, color: 'rgb(99, 102, 241)', marginBottom: '8px' }}>
+                    <div
+                      style={{
+                        fontSize: '14px',
+                        fontWeight: 700,
+                        color: 'rgb(99, 102, 241)',
+                        marginBottom: '8px',
+                      }}
+                    >
                       {concept.formula}
                     </div>
                     <div style={{ fontSize: '11px', color: 'var(--color-text-muted)' }}>
@@ -574,12 +699,22 @@ export function LiquidityCrisisFlow({ className }: LiquidityCrisisFlowProps) {
       </div>
 
       {/* Crisis Timeline Progress */}
-      <div style={{
-        backgroundColor: 'var(--color-surface-1)',
-        borderRadius: '12px',
-        padding: '16px',
-      }}>
-        <div style={{ fontSize: '12px', fontWeight: 600, color: 'var(--color-text-muted)', marginBottom: '12px', textAlign: 'center' }}>
+      <div
+        style={{
+          backgroundColor: 'var(--color-surface-1)',
+          borderRadius: '12px',
+          padding: '16px',
+        }}
+      >
+        <div
+          style={{
+            fontSize: '12px',
+            fontWeight: 600,
+            color: 'var(--color-text-muted)',
+            marginBottom: '12px',
+            textAlign: 'center',
+          }}
+        >
           Crisis Timeline
         </div>
         <div style={{ display: 'flex', gap: '4px' }}>
@@ -590,20 +725,36 @@ export function LiquidityCrisisFlow({ className }: LiquidityCrisisFlowProps) {
                 flex: 1,
                 height: '8px',
                 backgroundColor: i <= currentStep ? `rgb(${s.color})` : 'var(--color-surface-2)',
-                borderRadius: i === 0 ? '4px 0 0 4px' : i === crisisSteps.length - 1 ? '0 4px 4px 0' : '0',
+                borderRadius:
+                  i === 0 ? '4px 0 0 4px' : i === crisisSteps.length - 1 ? '0 4px 4px 0' : '0',
                 transition: 'background-color 0.3s',
               }}
             />
           ))}
         </div>
-        <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '8px', fontSize: '10px', color: 'var(--color-text-muted)' }}>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            marginTop: '8px',
+            fontSize: '10px',
+            color: 'var(--color-text-muted)',
+          }}
+        >
           <span>Normal</span>
           <span>Crisis</span>
           <span>Insolvency Risk</span>
         </div>
       </div>
 
-      <p style={{ textAlign: 'center', fontSize: '12px', color: 'var(--color-text-muted)', marginTop: '16px' }}>
+      <p
+        style={{
+          textAlign: 'center',
+          fontSize: '12px',
+          color: 'var(--color-text-muted)',
+          marginTop: '16px',
+        }}
+      >
         Click &quot;Play Crisis&quot; to animate through all 6 steps, or navigate step-by-step
       </p>
     </div>

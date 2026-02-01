@@ -32,7 +32,10 @@ const assets: MaturityItem[] = [
 ];
 
 // Calculate weighted average duration
-const liabilityDuration = liabilities.reduce((sum, item) => sum + item.years * (item.percentage / 100), 0);
+const liabilityDuration = liabilities.reduce(
+  (sum, item) => sum + item.years * (item.percentage / 100),
+  0
+);
 const assetDuration = assets.reduce((sum, item) => sum + item.years * (item.percentage / 100), 0);
 const durationGap = assetDuration - liabilityDuration;
 
@@ -59,7 +62,8 @@ const scenarioImpacts: Record<RateScenario, ScenarioImpact> = {
     niiChange: '-15%',
     assetValueChange: '-12%',
     equityImpact: 'Squeezed',
-    explanation: 'Liabilities reprice quickly (expense up), assets reprice slowly (income lags). Net Interest Income squeezed. Asset market values fall.',
+    explanation:
+      'Liabilities reprice quickly (expense up), assets reprice slowly (income lags). Net Interest Income squeezed. Asset market values fall.',
     color: 'rgb(239, 68, 68)', // red
   },
   fall: {
@@ -67,12 +71,18 @@ const scenarioImpacts: Record<RateScenario, ScenarioImpact> = {
     niiChange: '+12%',
     assetValueChange: '+10%',
     equityImpact: 'Expanded',
-    explanation: 'Liabilities reprice quickly (expense down), assets reprice slowly (income stable). NII expands. But: prepayment risk on mortgages increases.',
+    explanation:
+      'Liabilities reprice quickly (expense down), assets reprice slowly (income stable). NII expands. But: prepayment risk on mortgages increases.',
     color: 'rgb(16, 185, 129)', // green
   },
 };
 
-function MaturityBar({ item, maxYears, color, delay }: {
+function MaturityBar({
+  item,
+  maxYears,
+  color,
+  delay,
+}: {
   item: MaturityItem;
   maxYears: number;
   color: string;
@@ -82,26 +92,28 @@ function MaturityBar({ item, maxYears, color, delay }: {
 
   return (
     <div style={{ marginBottom: '12px' }}>
-      <div style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        marginBottom: '4px',
-      }}>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          marginBottom: '4px',
+        }}
+      >
         <span style={{ fontSize: '13px', fontWeight: 500, color: 'var(--color-text-primary)' }}>
           {item.name}
         </span>
-        <span style={{ fontSize: '11px', color: 'var(--color-text-muted)' }}>
-          {item.maturity}
-        </span>
+        <span style={{ fontSize: '11px', color: 'var(--color-text-muted)' }}>{item.maturity}</span>
       </div>
-      <div style={{
-        height: '20px',
-        backgroundColor: 'var(--color-surface-2)',
-        borderRadius: '4px',
-        overflow: 'hidden',
-        position: 'relative',
-      }}>
+      <div
+        style={{
+          height: '20px',
+          backgroundColor: 'var(--color-surface-2)',
+          borderRadius: '4px',
+          overflow: 'hidden',
+          position: 'relative',
+        }}
+      >
         <motion.div
           initial={{ width: 0 }}
           animate={{ width: `${barWidth}%` }}
@@ -116,11 +128,13 @@ function MaturityBar({ item, maxYears, color, delay }: {
             paddingRight: '8px',
           }}
         >
-          <span style={{
-            fontSize: '10px',
-            fontWeight: 600,
-            color: 'white',
-          }}>
+          <span
+            style={{
+              fontSize: '10px',
+              fontWeight: 600,
+              color: 'white',
+            }}
+          >
             {item.percentage}%
           </span>
         </motion.div>
@@ -133,7 +147,6 @@ function CashFlowAnimation({ scenario }: { scenario: RateScenario }) {
   const impact = scenarioImpacts[scenario];
 
   // Mock NII values - Year 1 baseline, Year 2 after repricing
-  const baseNII = 100;
   const year1Income = 60;
   const year1Expense = scenario === 'rise' ? 35 : scenario === 'fall' ? 22 : 28;
   const year2Income = scenario === 'rise' ? 62 : scenario === 'fall' ? 58 : 60;
@@ -155,55 +168,87 @@ function CashFlowAnimation({ scenario }: { scenario: RateScenario }) {
         border: `2px solid ${impact.color}`,
       }}
     >
-      <h4 style={{
-        fontSize: '14px',
-        fontWeight: 600,
-        color: impact.color,
-        marginBottom: '16px',
-        textAlign: 'center',
-      }}>
+      <h4
+        style={{
+          fontSize: '14px',
+          fontWeight: 600,
+          color: impact.color,
+          marginBottom: '16px',
+          textAlign: 'center',
+        }}
+      >
         Cash Flow Impact: {impact.title}
       </h4>
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
         {/* Year 1 */}
-        <div style={{
-          padding: '12px',
-          backgroundColor: 'var(--color-surface-2)',
-          borderRadius: '8px',
-        }}>
-          <div style={{ fontSize: '12px', fontWeight: 600, color: 'var(--color-text-primary)', marginBottom: '8px' }}>
+        <div
+          style={{
+            padding: '12px',
+            backgroundColor: 'var(--color-surface-2)',
+            borderRadius: '8px',
+          }}
+        >
+          <div
+            style={{
+              fontSize: '12px',
+              fontWeight: 600,
+              color: 'var(--color-text-primary)',
+              marginBottom: '8px',
+            }}
+          >
             Year 1
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
               <span style={{ fontSize: '11px', color: 'rgb(16, 185, 129)' }}>Interest Income</span>
-              <span style={{ fontSize: '11px', fontWeight: 600, color: 'rgb(16, 185, 129)' }}>${year1Income}</span>
+              <span style={{ fontSize: '11px', fontWeight: 600, color: 'rgb(16, 185, 129)' }}>
+                ${year1Income}
+              </span>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
               <span style={{ fontSize: '11px', color: 'rgb(239, 68, 68)' }}>Interest Expense</span>
-              <span style={{ fontSize: '11px', fontWeight: 600, color: 'rgb(239, 68, 68)' }}>-${year1Expense}</span>
+              <span style={{ fontSize: '11px', fontWeight: 600, color: 'rgb(239, 68, 68)' }}>
+                -${year1Expense}
+              </span>
             </div>
-            <div style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              paddingTop: '4px',
-              borderTop: '1px solid var(--color-surface-1)',
-              marginTop: '4px',
-            }}>
-              <span style={{ fontSize: '12px', fontWeight: 600, color: 'var(--color-text-primary)' }}>NII</span>
-              <span style={{ fontSize: '12px', fontWeight: 700, color: 'rgb(99, 102, 241)' }}>${year1NII}</span>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                paddingTop: '4px',
+                borderTop: '1px solid var(--color-surface-1)',
+                marginTop: '4px',
+              }}
+            >
+              <span
+                style={{ fontSize: '12px', fontWeight: 600, color: 'var(--color-text-primary)' }}
+              >
+                NII
+              </span>
+              <span style={{ fontSize: '12px', fontWeight: 700, color: 'rgb(99, 102, 241)' }}>
+                ${year1NII}
+              </span>
             </div>
           </div>
         </div>
 
         {/* Year 2 */}
-        <div style={{
-          padding: '12px',
-          backgroundColor: 'var(--color-surface-2)',
-          borderRadius: '8px',
-        }}>
-          <div style={{ fontSize: '12px', fontWeight: 600, color: 'var(--color-text-primary)', marginBottom: '8px' }}>
+        <div
+          style={{
+            padding: '12px',
+            backgroundColor: 'var(--color-surface-2)',
+            borderRadius: '8px',
+          }}
+        >
+          <div
+            style={{
+              fontSize: '12px',
+              fontWeight: 600,
+              color: 'var(--color-text-primary)',
+              marginBottom: '8px',
+            }}
+          >
             Year 2 (After Repricing)
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
@@ -227,14 +272,20 @@ function CashFlowAnimation({ scenario }: { scenario: RateScenario }) {
                 -${year2Expense}
               </motion.span>
             </div>
-            <div style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              paddingTop: '4px',
-              borderTop: '1px solid var(--color-surface-1)',
-              marginTop: '4px',
-            }}>
-              <span style={{ fontSize: '12px', fontWeight: 600, color: 'var(--color-text-primary)' }}>NII</span>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                paddingTop: '4px',
+                borderTop: '1px solid var(--color-surface-1)',
+                marginTop: '4px',
+              }}
+            >
+              <span
+                style={{ fontSize: '12px', fontWeight: 600, color: 'var(--color-text-primary)' }}
+              >
+                NII
+              </span>
               <motion.span
                 initial={{ scale: 1 }}
                 animate={{ scale: [1, 1.2, 1] }}
@@ -242,7 +293,12 @@ function CashFlowAnimation({ scenario }: { scenario: RateScenario }) {
                 style={{
                   fontSize: '12px',
                   fontWeight: 700,
-                  color: year2NII > year1NII ? 'rgb(16, 185, 129)' : year2NII < year1NII ? 'rgb(239, 68, 68)' : 'rgb(99, 102, 241)',
+                  color:
+                    year2NII > year1NII
+                      ? 'rgb(16, 185, 129)'
+                      : year2NII < year1NII
+                        ? 'rgb(239, 68, 68)'
+                        : 'rgb(99, 102, 241)',
                 }}
               >
                 ${year2NII}
@@ -253,19 +309,29 @@ function CashFlowAnimation({ scenario }: { scenario: RateScenario }) {
       </div>
 
       {/* NII Change Indicator */}
-      <div style={{
-        marginTop: '12px',
-        padding: '10px',
-        backgroundColor: scenario === 'rise' ? 'rgba(239, 68, 68, 0.1)' : scenario === 'fall' ? 'rgba(16, 185, 129, 0.1)' : 'rgba(99, 102, 241, 0.1)',
-        borderRadius: '8px',
-        textAlign: 'center',
-      }}>
-        <span style={{
-          fontSize: '13px',
-          fontWeight: 600,
-          color: impact.color,
-        }}>
-          NII Change: {year2NII > year1NII ? '+' : ''}{Math.round((year2NII - year1NII) / year1NII * 100)}%
+      <div
+        style={{
+          marginTop: '12px',
+          padding: '10px',
+          backgroundColor:
+            scenario === 'rise'
+              ? 'rgba(239, 68, 68, 0.1)'
+              : scenario === 'fall'
+                ? 'rgba(16, 185, 129, 0.1)'
+                : 'rgba(99, 102, 241, 0.1)',
+          borderRadius: '8px',
+          textAlign: 'center',
+        }}
+      >
+        <span
+          style={{
+            fontSize: '13px',
+            fontWeight: 600,
+            color: impact.color,
+          }}
+        >
+          NII Change: {year2NII > year1NII ? '+' : ''}
+          {Math.round(((year2NII - year1NII) / year1NII) * 100)}%
           {scenario === 'rise' && ' (Margin Squeeze)'}
           {scenario === 'fall' && ' (Margin Expansion)'}
         </span>
@@ -284,7 +350,14 @@ export function MaturityMismatchDiagram({ className }: MaturityMismatchDiagramPr
     <div className={cn('w-full', className)} style={{ maxWidth: '900px', margin: '0 auto' }}>
       {/* Title */}
       <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-        <h3 style={{ fontSize: '20px', fontWeight: 600, color: 'var(--color-text-primary)', marginBottom: '8px' }}>
+        <h3
+          style={{
+            fontSize: '20px',
+            fontWeight: 600,
+            color: 'var(--color-text-primary)',
+            marginBottom: '8px',
+          }}
+        >
           Bank Maturity Mismatch
         </h3>
         <p style={{ fontSize: '14px', color: 'var(--color-text-secondary)', lineHeight: '1.6' }}>
@@ -293,13 +366,15 @@ export function MaturityMismatchDiagram({ className }: MaturityMismatchDiagramPr
       </div>
 
       {/* Rate Scenario Toggle */}
-      <div style={{
-        display: 'flex',
-        justifyContent: 'center',
-        gap: '8px',
-        marginBottom: '24px',
-        flexWrap: 'wrap',
-      }}>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          gap: '8px',
+          marginBottom: '24px',
+          flexWrap: 'wrap',
+        }}
+      >
         {(['stable', 'rise', 'fall'] as RateScenario[]).map((s) => (
           <button
             key={s}
@@ -324,29 +399,35 @@ export function MaturityMismatchDiagram({ className }: MaturityMismatchDiagramPr
       </div>
 
       {/* Main Two-Column Layout */}
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: '1fr 1fr',
-        gap: '20px',
-        marginBottom: '20px',
-      }}>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gap: '20px',
+          marginBottom: '20px',
+        }}
+      >
         {/* Liabilities Column */}
-        <div style={{
-          padding: '20px',
-          backgroundColor: 'var(--color-surface-1)',
-          borderRadius: '16px',
-          border: '2px solid rgba(245, 158, 11, 0.3)',
-        }}>
+        <div
+          style={{
+            padding: '20px',
+            backgroundColor: 'var(--color-surface-1)',
+            borderRadius: '16px',
+            border: '2px solid rgba(245, 158, 11, 0.3)',
+          }}
+        >
           <div style={{ textAlign: 'center', marginBottom: '16px' }}>
-            <span style={{
-              display: 'inline-block',
-              padding: '6px 16px',
-              backgroundColor: 'rgba(245, 158, 11, 0.15)',
-              color: 'rgb(245, 158, 11)',
-              fontWeight: 700,
-              fontSize: '14px',
-              borderRadius: '8px',
-            }}>
+            <span
+              style={{
+                display: 'inline-block',
+                padding: '6px 16px',
+                backgroundColor: 'rgba(245, 158, 11, 0.15)',
+                color: 'rgb(245, 158, 11)',
+                fontWeight: 700,
+                fontSize: '14px',
+                borderRadius: '8px',
+              }}
+            >
               LIABILITIES (Short-term)
             </span>
             <p style={{ fontSize: '11px', color: 'var(--color-text-muted)', marginTop: '6px' }}>
@@ -364,13 +445,17 @@ export function MaturityMismatchDiagram({ className }: MaturityMismatchDiagramPr
             />
           ))}
 
-          <div style={{
-            marginTop: '16px',
-            paddingTop: '12px',
-            borderTop: '2px solid rgb(245, 158, 11)',
-            textAlign: 'center',
-          }}>
-            <div style={{ fontSize: '12px', color: 'var(--color-text-muted)' }}>Average Duration</div>
+          <div
+            style={{
+              marginTop: '16px',
+              paddingTop: '12px',
+              borderTop: '2px solid rgb(245, 158, 11)',
+              textAlign: 'center',
+            }}
+          >
+            <div style={{ fontSize: '12px', color: 'var(--color-text-muted)' }}>
+              Average Duration
+            </div>
             <div style={{ fontSize: '24px', fontWeight: 700, color: 'rgb(245, 158, 11)' }}>
               {liabilityDuration.toFixed(1)} years
             </div>
@@ -378,22 +463,26 @@ export function MaturityMismatchDiagram({ className }: MaturityMismatchDiagramPr
         </div>
 
         {/* Assets Column */}
-        <div style={{
-          padding: '20px',
-          backgroundColor: 'var(--color-surface-1)',
-          borderRadius: '16px',
-          border: '2px solid rgba(59, 130, 246, 0.3)',
-        }}>
+        <div
+          style={{
+            padding: '20px',
+            backgroundColor: 'var(--color-surface-1)',
+            borderRadius: '16px',
+            border: '2px solid rgba(59, 130, 246, 0.3)',
+          }}
+        >
           <div style={{ textAlign: 'center', marginBottom: '16px' }}>
-            <span style={{
-              display: 'inline-block',
-              padding: '6px 16px',
-              backgroundColor: 'rgba(59, 130, 246, 0.15)',
-              color: 'rgb(59, 130, 246)',
-              fontWeight: 700,
-              fontSize: '14px',
-              borderRadius: '8px',
-            }}>
+            <span
+              style={{
+                display: 'inline-block',
+                padding: '6px 16px',
+                backgroundColor: 'rgba(59, 130, 246, 0.15)',
+                color: 'rgb(59, 130, 246)',
+                fontWeight: 700,
+                fontSize: '14px',
+                borderRadius: '8px',
+              }}
+            >
               ASSETS (Long-term)
             </span>
             <p style={{ fontSize: '11px', color: 'var(--color-text-muted)', marginTop: '6px' }}>
@@ -411,13 +500,17 @@ export function MaturityMismatchDiagram({ className }: MaturityMismatchDiagramPr
             />
           ))}
 
-          <div style={{
-            marginTop: '16px',
-            paddingTop: '12px',
-            borderTop: '2px solid rgb(59, 130, 246)',
-            textAlign: 'center',
-          }}>
-            <div style={{ fontSize: '12px', color: 'var(--color-text-muted)' }}>Average Duration</div>
+          <div
+            style={{
+              marginTop: '16px',
+              paddingTop: '12px',
+              borderTop: '2px solid rgb(59, 130, 246)',
+              textAlign: 'center',
+            }}
+          >
+            <div style={{ fontSize: '12px', color: 'var(--color-text-muted)' }}>
+              Average Duration
+            </div>
             <div style={{ fontSize: '24px', fontWeight: 700, color: 'rgb(59, 130, 246)' }}>
               {assetDuration.toFixed(1)} years
             </div>
@@ -443,12 +536,18 @@ export function MaturityMismatchDiagram({ className }: MaturityMismatchDiagramPr
       >
         <div style={{ textAlign: 'center' }}>
           <div style={{ fontSize: '11px', color: 'var(--color-text-muted)' }}>Asset Duration</div>
-          <div style={{ fontSize: '18px', fontWeight: 600, color: 'rgb(59, 130, 246)' }}>{assetDuration.toFixed(1)}y</div>
+          <div style={{ fontSize: '18px', fontWeight: 600, color: 'rgb(59, 130, 246)' }}>
+            {assetDuration.toFixed(1)}y
+          </div>
         </div>
         <div style={{ fontSize: '20px', color: 'var(--color-text-muted)' }}>-</div>
         <div style={{ textAlign: 'center' }}>
-          <div style={{ fontSize: '11px', color: 'var(--color-text-muted)' }}>Liability Duration</div>
-          <div style={{ fontSize: '18px', fontWeight: 600, color: 'rgb(245, 158, 11)' }}>{liabilityDuration.toFixed(1)}y</div>
+          <div style={{ fontSize: '11px', color: 'var(--color-text-muted)' }}>
+            Liability Duration
+          </div>
+          <div style={{ fontSize: '18px', fontWeight: 600, color: 'rgb(245, 158, 11)' }}>
+            {liabilityDuration.toFixed(1)}y
+          </div>
         </div>
         <div style={{ fontSize: '20px', color: 'var(--color-text-muted)' }}>=</div>
         <div style={{ textAlign: 'center' }}>
@@ -481,33 +580,67 @@ export function MaturityMismatchDiagram({ className }: MaturityMismatchDiagramPr
           border: '1px solid var(--color-surface-2)',
         }}
       >
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', marginBottom: '16px' }}>
-          <div style={{
-            padding: '12px',
-            backgroundColor: scenario === 'rise' ? 'rgba(239, 68, 68, 0.1)' : scenario === 'fall' ? 'rgba(16, 185, 129, 0.1)' : 'rgba(99, 102, 241, 0.1)',
-            borderRadius: '8px',
-            textAlign: 'center',
-          }}>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: '16px',
+            marginBottom: '16px',
+          }}
+        >
+          <div
+            style={{
+              padding: '12px',
+              backgroundColor:
+                scenario === 'rise'
+                  ? 'rgba(239, 68, 68, 0.1)'
+                  : scenario === 'fall'
+                    ? 'rgba(16, 185, 129, 0.1)'
+                    : 'rgba(99, 102, 241, 0.1)',
+              borderRadius: '8px',
+              textAlign: 'center',
+            }}
+          >
             <div style={{ fontSize: '10px', color: 'var(--color-text-muted)' }}>NII Impact</div>
-            <div style={{ fontSize: '20px', fontWeight: 700, color: impact.color }}>{impact.niiChange}</div>
+            <div style={{ fontSize: '20px', fontWeight: 700, color: impact.color }}>
+              {impact.niiChange}
+            </div>
           </div>
-          <div style={{
-            padding: '12px',
-            backgroundColor: scenario === 'rise' ? 'rgba(239, 68, 68, 0.1)' : scenario === 'fall' ? 'rgba(16, 185, 129, 0.1)' : 'rgba(99, 102, 241, 0.1)',
-            borderRadius: '8px',
-            textAlign: 'center',
-          }}>
+          <div
+            style={{
+              padding: '12px',
+              backgroundColor:
+                scenario === 'rise'
+                  ? 'rgba(239, 68, 68, 0.1)'
+                  : scenario === 'fall'
+                    ? 'rgba(16, 185, 129, 0.1)'
+                    : 'rgba(99, 102, 241, 0.1)',
+              borderRadius: '8px',
+              textAlign: 'center',
+            }}
+          >
             <div style={{ fontSize: '10px', color: 'var(--color-text-muted)' }}>Asset Value</div>
-            <div style={{ fontSize: '20px', fontWeight: 700, color: impact.color }}>{impact.assetValueChange}</div>
+            <div style={{ fontSize: '20px', fontWeight: 700, color: impact.color }}>
+              {impact.assetValueChange}
+            </div>
           </div>
-          <div style={{
-            padding: '12px',
-            backgroundColor: scenario === 'rise' ? 'rgba(239, 68, 68, 0.1)' : scenario === 'fall' ? 'rgba(16, 185, 129, 0.1)' : 'rgba(99, 102, 241, 0.1)',
-            borderRadius: '8px',
-            textAlign: 'center',
-          }}>
+          <div
+            style={{
+              padding: '12px',
+              backgroundColor:
+                scenario === 'rise'
+                  ? 'rgba(239, 68, 68, 0.1)'
+                  : scenario === 'fall'
+                    ? 'rgba(16, 185, 129, 0.1)'
+                    : 'rgba(99, 102, 241, 0.1)',
+              borderRadius: '8px',
+              textAlign: 'center',
+            }}
+          >
             <div style={{ fontSize: '10px', color: 'var(--color-text-muted)' }}>Equity</div>
-            <div style={{ fontSize: '20px', fontWeight: 700, color: impact.color }}>{impact.equityImpact}</div>
+            <div style={{ fontSize: '20px', fontWeight: 700, color: impact.color }}>
+              {impact.equityImpact}
+            </div>
           </div>
         </div>
 
@@ -518,14 +651,23 @@ export function MaturityMismatchDiagram({ className }: MaturityMismatchDiagramPr
       </motion.div>
 
       {/* Key Formulas */}
-      <div style={{
-        marginTop: '20px',
-        padding: '16px',
-        backgroundColor: 'rgba(99, 102, 241, 0.05)',
-        borderRadius: '12px',
-        border: '1px dashed rgba(99, 102, 241, 0.3)',
-      }}>
-        <h4 style={{ fontSize: '13px', fontWeight: 600, color: 'rgb(99, 102, 241)', marginBottom: '12px' }}>
+      <div
+        style={{
+          marginTop: '20px',
+          padding: '16px',
+          backgroundColor: 'rgba(99, 102, 241, 0.05)',
+          borderRadius: '12px',
+          border: '1px dashed rgba(99, 102, 241, 0.3)',
+        }}
+      >
+        <h4
+          style={{
+            fontSize: '13px',
+            fontWeight: 600,
+            color: 'rgb(99, 102, 241)',
+            marginBottom: '12px',
+          }}
+        >
           Key Formulas
         </h4>
         <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap' }}>
@@ -538,7 +680,14 @@ export function MaturityMismatchDiagram({ className }: MaturityMismatchDiagramPr
         </div>
       </div>
 
-      <p style={{ textAlign: 'center', fontSize: '12px', color: 'var(--color-text-muted)', marginTop: '16px' }}>
+      <p
+        style={{
+          textAlign: 'center',
+          fontSize: '12px',
+          color: 'var(--color-text-muted)',
+          marginTop: '16px',
+        }}
+      >
         Toggle rate scenarios to see how maturity mismatch creates interest rate risk
       </p>
     </div>

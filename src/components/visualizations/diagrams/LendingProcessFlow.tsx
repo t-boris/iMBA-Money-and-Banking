@@ -46,12 +46,7 @@ const stepDetails: Record<string, StepDetail> = {
   servicing: {
     title: 'Servicing',
     description: 'Ongoing loan administration',
-    details: [
-      'Payment collection',
-      'Customer service',
-      'Default monitoring',
-      'Escrow management',
-    ],
+    details: ['Payment collection', 'Customer service', 'Default monitoring', 'Escrow management'],
   },
 };
 
@@ -153,15 +148,9 @@ export function LendingProcessFlow({ className }: LendingProcessFlowProps) {
           }}
         >
           {isHold ? (
-            <OriginateAndHold
-              selectedStep={selectedStep}
-              onSelectStep={setSelectedStep}
-            />
+            <OriginateAndHold selectedStep={selectedStep} onSelectStep={setSelectedStep} />
           ) : (
-            <OriginateAndDistribute
-              selectedStep={selectedStep}
-              onSelectStep={setSelectedStep}
-            />
+            <OriginateAndDistribute selectedStep={selectedStep} onSelectStep={setSelectedStep} />
           )}
         </motion.div>
       </AnimatePresence>
@@ -255,9 +244,7 @@ export function LendingProcessFlow({ className }: LendingProcessFlowProps) {
             padding: '16px',
             backgroundColor: 'var(--color-surface-1)',
             borderRadius: '12px',
-            border: isHold
-              ? '2px solid rgb(99, 102, 241)'
-              : '1px solid var(--color-surface-2)',
+            border: isHold ? '2px solid rgb(99, 102, 241)' : '1px solid var(--color-surface-2)',
             opacity: isHold ? 1 : 0.7,
             transition: 'all 0.2s',
           }}
@@ -299,9 +286,7 @@ export function LendingProcessFlow({ className }: LendingProcessFlowProps) {
             padding: '16px',
             backgroundColor: 'var(--color-surface-1)',
             borderRadius: '12px',
-            border: !isHold
-              ? '2px solid rgb(16, 185, 129)'
-              : '1px solid var(--color-surface-2)',
+            border: !isHold ? '2px solid rgb(16, 185, 129)' : '1px solid var(--color-surface-2)',
             opacity: !isHold ? 1 : 0.7,
             transition: 'all 0.2s',
           }}
@@ -387,7 +372,15 @@ function OriginateAndHold({ selectedStep, onSelectStep }: ModelProps) {
       </div>
 
       {/* Flow */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', justifyContent: 'center' }}>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
+        }}
+      >
         {/* Borrower */}
         <FlowEntity
           icon="👤"
@@ -492,7 +485,15 @@ function OriginateAndDistribute({ selectedStep, onSelectStep }: ModelProps) {
       </div>
 
       {/* Flow - Top row */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', justifyContent: 'center' }}>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
+        }}
+      >
         {/* Borrower */}
         <FlowEntity
           icon="👤"

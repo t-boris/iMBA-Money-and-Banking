@@ -79,18 +79,14 @@ export function Module2Content({ className }: Module2ContentProps) {
       title: 'Bank Holding Companies',
       description:
         'How regulatory arbitrage led to bank holding companies and the "golden age" of simple, profitable banking under the 3-6-3 rule.',
-      visualizations: [
-        <InterestSpreadCalculator key="isc" />,
-      ],
+      visualizations: [<InterestSpreadCalculator key="isc" />],
     },
     '2-3': {
       id: '2-3',
       title: 'Deregulation and Modern Banking',
       description:
         'The dramatic transformation from Riegle-Neal to Gramm-Leach-Bliley: how deregulation created financial supermarkets and financial holding companies.',
-      visualizations: [
-        <RegulationImpactFlow key="rif" />,
-      ],
+      visualizations: [<RegulationImpactFlow key="rif" />],
     },
     '2-4': {
       id: '2-4',
@@ -212,10 +208,19 @@ export function Module2Content({ className }: Module2ContentProps) {
             >
               {/* Lesson Header */}
               <header style={{ marginBottom: '32px' }}>
-                <h2 style={{ fontSize: '28px', fontWeight: 700, color: 'var(--color-text-primary)' }}>
+                <h2
+                  style={{ fontSize: '28px', fontWeight: 700, color: 'var(--color-text-primary)' }}
+                >
                   {currentContent.title}
                 </h2>
-                <p style={{ color: 'var(--color-text-secondary)', marginTop: '12px', maxWidth: '700px', lineHeight: '1.6' }}>
+                <p
+                  style={{
+                    color: 'var(--color-text-secondary)',
+                    marginTop: '12px',
+                    maxWidth: '700px',
+                    lineHeight: '1.6',
+                  }}
+                >
                   {currentContent.description}
                 </p>
               </header>
@@ -242,9 +247,7 @@ export function Module2Content({ className }: Module2ContentProps) {
               <div className="flex justify-between items-center mt-12 pt-8 border-t border-surface-2">
                 {getPreviousLesson(activeLesson) ? (
                   <button
-                    onClick={() =>
-                      handleLessonChange(getPreviousLesson(activeLesson)!)
-                    }
+                    onClick={() => handleLessonChange(getPreviousLesson(activeLesson)!)}
                     className="flex items-center gap-2 text-text-secondary hover:text-primary-500 transition-colors"
                   >
                     <span>&larr;</span>
@@ -256,9 +259,7 @@ export function Module2Content({ className }: Module2ContentProps) {
 
                 {getNextLesson(activeLesson) ? (
                   <button
-                    onClick={() =>
-                      handleLessonChange(getNextLesson(activeLesson)!)
-                    }
+                    onClick={() => handleLessonChange(getNextLesson(activeLesson)!)}
                     className="flex items-center gap-2 text-text-secondary hover:text-primary-500 transition-colors"
                   >
                     <span>Next Lesson</span>
@@ -280,29 +281,82 @@ export function Module2Content({ className }: Module2ContentProps) {
 function ModuleOverview({ onLessonChange }: { onLessonChange: (id: string) => void }) {
   const topics = [
     // Lesson 2.1: History of Modern Banking
-    { id: '2-1', icon: '🏛️', title: 'Early Banking in the US', desc: 'Unit banks, branches, and Glass-Steagall' },
-    { id: '2-2', icon: '🏢', title: 'Bank Holding Companies', desc: 'The 3-6-3 rule and regulatory arbitrage' },
+    {
+      id: '2-1',
+      icon: '🏛️',
+      title: 'Early Banking in the US',
+      desc: 'Unit banks, branches, and Glass-Steagall',
+    },
+    {
+      id: '2-2',
+      icon: '🏢',
+      title: 'Bank Holding Companies',
+      desc: 'The 3-6-3 rule and regulatory arbitrage',
+    },
     { id: '2-3', icon: '⚖️', title: 'Deregulation', desc: 'Riegle-Neal and Gramm-Leach-Bliley' },
-    { id: '2-4', icon: '📉', title: 'Bank Consolidation', desc: 'From 14,000 to under 5,000 banks' },
+    {
+      id: '2-4',
+      icon: '📉',
+      title: 'Bank Consolidation',
+      desc: 'From 14,000 to under 5,000 banks',
+    },
     { id: '2-5', icon: '💰', title: 'Modern Bank Revenue', desc: 'Interest spread and fee income' },
     // Lesson 2.2: Bank Organization & Functions
-    { id: '2-6', icon: '🔺', title: 'Bank Types', desc: 'Community, Regional, and Money Center banks' },
-    { id: '2-7', icon: '💵', title: 'Bank Funding', desc: 'Deposits, wholesale funding, and capital' },
+    {
+      id: '2-6',
+      icon: '🔺',
+      title: 'Bank Types',
+      desc: 'Community, Regional, and Money Center banks',
+    },
+    {
+      id: '2-7',
+      icon: '💵',
+      title: 'Bank Funding',
+      desc: 'Deposits, wholesale funding, and capital',
+    },
     { id: '2-8', icon: '📋', title: 'Bank Lending', desc: 'Consumer credit and commercial loans' },
-    { id: '2-9', icon: '🔄', title: 'Lending Process', desc: 'Originate-and-Hold vs Originate-and-Distribute' },
+    {
+      id: '2-9',
+      icon: '🔄',
+      title: 'Lending Process',
+      desc: 'Originate-and-Hold vs Originate-and-Distribute',
+    },
     { id: '2-10', icon: '🏦', title: 'Investment Banking', desc: 'Underwriting, M&A, and trading' },
     // Lesson 2.3: Financial Statements
     { id: '2-11', icon: '📊', title: 'Balance Sheet', desc: 'Assets, liabilities, and equity' },
-    { id: '2-12', icon: '🧊', title: 'Off-Balance Sheet', desc: 'Hidden commitments and derivatives' },
-    { id: '2-13', icon: '📈', title: 'Income Statement', desc: 'Net interest income and fee income' },
+    {
+      id: '2-12',
+      icon: '🧊',
+      title: 'Off-Balance Sheet',
+      desc: 'Hidden commitments and derivatives',
+    },
+    {
+      id: '2-13',
+      icon: '📈',
+      title: 'Income Statement',
+      desc: 'Net interest income and fee income',
+    },
   ];
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-      <h3 style={{ fontSize: '16px', fontWeight: 600, color: 'var(--color-text-primary)', marginBottom: '8px' }}>
+      <h3
+        style={{
+          fontSize: '16px',
+          fontWeight: 600,
+          color: 'var(--color-text-primary)',
+          marginBottom: '8px',
+        }}
+      >
         In This Module
       </h3>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '12px' }}>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gap: '12px',
+        }}
+      >
         {topics.map((topic, index) => (
           <motion.button
             key={topic.id}
@@ -325,7 +379,9 @@ function ModuleOverview({ onLessonChange }: { onLessonChange: (id: string) => vo
           >
             <span style={{ fontSize: '24px' }}>{topic.icon}</span>
             <div>
-              <div style={{ fontSize: '14px', fontWeight: 500, color: 'var(--color-text-primary)' }}>
+              <div
+                style={{ fontSize: '14px', fontWeight: 500, color: 'var(--color-text-primary)' }}
+              >
                 {topic.title}
               </div>
               <div style={{ fontSize: '12px', color: 'var(--color-text-muted)', marginTop: '4px' }}>

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import { motion } from '@/lib/motion';
 import { cn } from '@/lib/utils';
 
@@ -32,7 +32,8 @@ const investmentPoints: InvestmentPoint[] = [
     risk: 15,
     return: 5.5,
     color: 'rgb(20, 184, 166)', // teal
-    description: 'Longer-term government securities. Higher duration risk but still no default risk.',
+    description:
+      'Longer-term government securities. Higher duration risk but still no default risk.',
   },
   {
     id: 'corpbonds',
@@ -48,7 +49,8 @@ const investmentPoints: InvestmentPoint[] = [
     risk: 45,
     return: 9,
     color: 'rgb(99, 102, 241)', // indigo
-    description: 'Where banks operate. Earn spread through credit assessment and relationship lending.',
+    description:
+      'Where banks operate. Earn spread through credit assessment and relationship lending.',
   },
   {
     id: 'equities',
@@ -56,7 +58,8 @@ const investmentPoints: InvestmentPoint[] = [
     risk: 75,
     return: 12,
     color: 'rgb(239, 68, 68)', // red
-    description: 'Stock market investments. Highest volatility but highest long-term expected returns.',
+    description:
+      'Stock market investments. Highest volatility but highest long-term expected returns.',
   },
 ];
 
@@ -127,20 +130,35 @@ export function RiskReturnTradeoff({ className }: RiskReturnTradeoffProps) {
   // SVG dimensions
   const width = 600;
   const height = 350;
-  const padding = { top: 40, right: 40, bottom: 60, left: 70 };
-  const chartWidth = width - padding.left - padding.right;
-  const chartHeight = height - padding.top - padding.bottom;
+  const paddingTop = 40;
+  const paddingRight = 40;
+  const paddingBottom = 60;
+  const paddingLeft = 70;
+  const padding = {
+    top: paddingTop,
+    right: paddingRight,
+    bottom: paddingBottom,
+    left: paddingLeft,
+  };
+  const chartWidth = width - paddingLeft - paddingRight;
+  const chartHeight = height - paddingTop - paddingBottom;
 
-  // Scale functions
-  const xScale = (risk: number) => padding.left + (risk / 100) * chartWidth;
-  const yScale = (ret: number) => height - padding.bottom - ((ret - 3) / 12) * chartHeight;
+  // Scale functions (memoized for stable references)
+  const xScale = useCallback(
+    (risk: number) => paddingLeft + (risk / 100) * chartWidth,
+    [chartWidth, paddingLeft]
+  );
+  const yScale = useCallback(
+    (ret: number) => height - paddingBottom - ((ret - 3) / 12) * chartHeight,
+    [chartHeight, paddingBottom]
+  );
 
   // Generate curve path
   const curvePath = useMemo(() => {
     return curvePoints
       .map((p, i) => `${i === 0 ? 'M' : 'L'} ${xScale(p.x)} ${yScale(p.y)}`)
       .join(' ');
-  }, [curvePoints]);
+  }, [curvePoints, xScale, yScale]);
 
   // Risk-free rate line
   const riskFreeLine = `M ${padding.left} ${yScale(4.5)} L ${width - padding.right} ${yScale(4.5)}`;
@@ -149,7 +167,14 @@ export function RiskReturnTradeoff({ className }: RiskReturnTradeoffProps) {
     <div className={cn('w-full', className)} style={{ maxWidth: '700px', margin: '0 auto' }}>
       {/* Header */}
       <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-        <h3 style={{ fontSize: '20px', fontWeight: 600, color: 'var(--color-text-primary)', marginBottom: '8px' }}>
+        <h3
+          style={{
+            fontSize: '20px',
+            fontWeight: 600,
+            color: 'var(--color-text-primary)',
+            marginBottom: '8px',
+          }}
+        >
           Risk-Return Tradeoff
         </h3>
         <p style={{ fontSize: '14px', color: 'var(--color-text-secondary)', lineHeight: '1.6' }}>
@@ -158,12 +183,14 @@ export function RiskReturnTradeoff({ className }: RiskReturnTradeoffProps) {
       </div>
 
       {/* Main Chart */}
-      <div style={{
-        backgroundColor: 'var(--color-surface-1)',
-        borderRadius: '16px',
-        padding: '20px',
-        marginBottom: '20px',
-      }}>
+      <div
+        style={{
+          backgroundColor: 'var(--color-surface-1)',
+          borderRadius: '16px',
+          padding: '20px',
+          marginBottom: '20px',
+        }}
+      >
         <svg width="100%" viewBox={`0 0 ${width} ${height}`} style={{ overflow: 'visible' }}>
           {/* Grid lines */}
           <g opacity={0.3}>
@@ -400,29 +427,35 @@ export function RiskReturnTradeoff({ className }: RiskReturnTradeoffProps) {
       </div>
 
       {/* Risk Slider */}
-      <div style={{
-        backgroundColor: 'var(--color-surface-1)',
-        borderRadius: '12px',
-        padding: '20px',
-        marginBottom: '20px',
-      }}>
-        <div style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          marginBottom: '12px',
-        }}>
+      <div
+        style={{
+          backgroundColor: 'var(--color-surface-1)',
+          borderRadius: '12px',
+          padding: '20px',
+          marginBottom: '20px',
+        }}
+      >
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            marginBottom: '12px',
+          }}
+        >
           <span style={{ fontSize: '14px', fontWeight: 600, color: 'var(--color-text-primary)' }}>
             Adjust Risk Tolerance
           </span>
-          <span style={{
-            fontSize: '14px',
-            fontWeight: 700,
-            color: currentZone.color,
-            padding: '4px 12px',
-            backgroundColor: `${currentZone.color}20`,
-            borderRadius: '6px',
-          }}>
+          <span
+            style={{
+              fontSize: '14px',
+              fontWeight: 700,
+              color: currentZone.color,
+              padding: '4px 12px',
+              backgroundColor: `${currentZone.color}20`,
+              borderRadius: '6px',
+            }}
+          >
             {currentZone.name}
           </span>
         </div>
@@ -447,13 +480,15 @@ export function RiskReturnTradeoff({ className }: RiskReturnTradeoffProps) {
           }}
         />
 
-        <div style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          marginTop: '8px',
-          fontSize: '11px',
-          color: 'var(--color-text-muted)',
-        }}>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            marginTop: '8px',
+            fontSize: '11px',
+            color: 'var(--color-text-muted)',
+          }}
+        >
           <span>Low Risk</span>
           <span>High Risk</span>
         </div>
@@ -471,72 +506,76 @@ export function RiskReturnTradeoff({ className }: RiskReturnTradeoffProps) {
           marginBottom: '20px',
         }}
       >
-        <div style={{
-          padding: '16px',
-          backgroundColor: 'rgba(59, 130, 246, 0.1)',
-          borderRadius: '12px',
-          textAlign: 'center',
-        }}>
+        <div
+          style={{
+            padding: '16px',
+            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+            borderRadius: '12px',
+            textAlign: 'center',
+          }}
+        >
           <div style={{ fontSize: '11px', color: 'var(--color-text-muted)', marginBottom: '4px' }}>
             Risk Level
           </div>
           <div style={{ fontSize: '24px', fontWeight: 700, color: 'rgb(59, 130, 246)' }}>
             {riskLevel}%
           </div>
-          <div style={{ fontSize: '10px', color: 'var(--color-text-muted)' }}>
-            volatility
-          </div>
+          <div style={{ fontSize: '10px', color: 'var(--color-text-muted)' }}>volatility</div>
         </div>
 
-        <div style={{
-          padding: '16px',
-          backgroundColor: 'rgba(16, 185, 129, 0.1)',
-          borderRadius: '12px',
-          textAlign: 'center',
-        }}>
+        <div
+          style={{
+            padding: '16px',
+            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+            borderRadius: '12px',
+            textAlign: 'center',
+          }}
+        >
           <div style={{ fontSize: '11px', color: 'var(--color-text-muted)', marginBottom: '4px' }}>
             Expected Return
           </div>
           <div style={{ fontSize: '24px', fontWeight: 700, color: 'rgb(16, 185, 129)' }}>
             {currentPoint.return.toFixed(1)}%
           </div>
-          <div style={{ fontSize: '10px', color: 'var(--color-text-muted)' }}>
-            annual
-          </div>
+          <div style={{ fontSize: '10px', color: 'var(--color-text-muted)' }}>annual</div>
         </div>
 
-        <div style={{
-          padding: '16px',
-          backgroundColor: 'rgba(245, 158, 11, 0.1)',
-          borderRadius: '12px',
-          textAlign: 'center',
-        }}>
+        <div
+          style={{
+            padding: '16px',
+            backgroundColor: 'rgba(245, 158, 11, 0.1)',
+            borderRadius: '12px',
+            textAlign: 'center',
+          }}
+        >
           <div style={{ fontSize: '11px', color: 'var(--color-text-muted)', marginBottom: '4px' }}>
             Risk Premium
           </div>
           <div style={{ fontSize: '24px', fontWeight: 700, color: 'rgb(245, 158, 11)' }}>
             {(currentPoint.return - 4.5).toFixed(1)}%
           </div>
-          <div style={{ fontSize: '10px', color: 'var(--color-text-muted)' }}>
-            above risk-free
-          </div>
+          <div style={{ fontSize: '10px', color: 'var(--color-text-muted)' }}>above risk-free</div>
         </div>
       </motion.div>
 
       {/* Example Investments */}
-      <div style={{
-        padding: '16px 20px',
-        backgroundColor: `${currentZone.color}15`,
-        borderRadius: '12px',
-        border: `1px solid ${currentZone.color}40`,
-        marginBottom: '20px',
-      }}>
-        <div style={{
-          fontSize: '13px',
-          fontWeight: 600,
-          color: currentZone.color,
-          marginBottom: '8px',
-        }}>
+      <div
+        style={{
+          padding: '16px 20px',
+          backgroundColor: `${currentZone.color}15`,
+          borderRadius: '12px',
+          border: `1px solid ${currentZone.color}40`,
+          marginBottom: '20px',
+        }}
+      >
+        <div
+          style={{
+            fontSize: '13px',
+            fontWeight: 600,
+            color: currentZone.color,
+            marginBottom: '8px',
+          }}
+        >
           Example Investments at This Risk Level:
         </div>
         <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
@@ -566,21 +605,23 @@ export function RiskReturnTradeoff({ className }: RiskReturnTradeoffProps) {
             padding: '16px 20px',
             backgroundColor: 'var(--color-surface-1)',
             borderRadius: '12px',
-            border: `2px solid ${investmentPoints.find(p => p.id === selectedPoint)?.color || 'var(--color-surface-2)'}`,
+            border: `2px solid ${investmentPoints.find((p) => p.id === selectedPoint)?.color || 'var(--color-surface-2)'}`,
             marginBottom: '20px',
           }}
         >
           {(() => {
-            const point = investmentPoints.find(p => p.id === selectedPoint);
+            const point = investmentPoints.find((p) => p.id === selectedPoint);
             if (!point) return null;
             return (
               <>
-                <div style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  marginBottom: '8px',
-                }}>
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    marginBottom: '8px',
+                  }}
+                >
                   <span style={{ fontSize: '15px', fontWeight: 600, color: point.color }}>
                     {point.name}
                   </span>
@@ -588,7 +629,14 @@ export function RiskReturnTradeoff({ className }: RiskReturnTradeoffProps) {
                     Risk: {point.risk}% | Return: {point.return}%
                   </span>
                 </div>
-                <p style={{ fontSize: '13px', color: 'var(--color-text-secondary)', margin: 0, lineHeight: '1.6' }}>
+                <p
+                  style={{
+                    fontSize: '13px',
+                    color: 'var(--color-text-secondary)',
+                    margin: 0,
+                    lineHeight: '1.6',
+                  }}
+                >
                   {point.description}
                 </p>
               </>
@@ -598,22 +646,31 @@ export function RiskReturnTradeoff({ className }: RiskReturnTradeoffProps) {
       )}
 
       {/* Key Insight */}
-      <div style={{
-        padding: '16px 20px',
-        backgroundColor: 'rgba(99, 102, 241, 0.1)',
-        borderRadius: '12px',
-        border: '1px solid rgba(99, 102, 241, 0.3)',
-      }}>
+      <div
+        style={{
+          padding: '16px 20px',
+          backgroundColor: 'rgba(99, 102, 241, 0.1)',
+          borderRadius: '12px',
+          border: '1px solid rgba(99, 102, 241, 0.3)',
+        }}
+      >
         <div style={{ fontSize: '13px', color: 'var(--color-text-secondary)', lineHeight: '1.7' }}>
-          <strong style={{ color: 'rgb(99, 102, 241)' }}>Where Banks Operate:</strong>{' '}
-          Banks typically operate in the medium-risk zone through lending activities. They earn the{' '}
-          <strong>risk premium</strong> (the return above the risk-free rate) by assessing credit risk,
-          managing loan portfolios, and maintaining relationships with borrowers. This is why banking is
-          fundamentally about <em>risk management</em>.
+          <strong style={{ color: 'rgb(99, 102, 241)' }}>Where Banks Operate:</strong> Banks
+          typically operate in the medium-risk zone through lending activities. They earn the{' '}
+          <strong>risk premium</strong> (the return above the risk-free rate) by assessing credit
+          risk, managing loan portfolios, and maintaining relationships with borrowers. This is why
+          banking is fundamentally about <em>risk management</em>.
         </div>
       </div>
 
-      <p style={{ textAlign: 'center', fontSize: '12px', color: 'var(--color-text-muted)', marginTop: '16px' }}>
+      <p
+        style={{
+          textAlign: 'center',
+          fontSize: '12px',
+          color: 'var(--color-text-muted)',
+          marginTop: '16px',
+        }}
+      >
         Click on investment points for details. Use the slider to explore different risk levels.
       </p>
     </div>

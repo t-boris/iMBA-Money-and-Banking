@@ -19,7 +19,8 @@ export const module2Concepts: Concept[] = [
   {
     id: 'glass-steagall',
     term: 'Glass-Steagall Act',
-    definition: 'The 1933 law that separated commercial and investment banking and created deposit insurance.',
+    definition:
+      'The 1933 law that separated commercial and investment banking and created deposit insurance.',
     category: 'financial-system',
     relatedConcepts: ['fdic', 'gramm-leach-bliley'],
     lessonId: '2-1',
@@ -36,7 +37,8 @@ export const module2Concepts: Concept[] = [
   {
     id: '3-6-3-rule',
     term: '3-6-3 Rule',
-    definition: 'Pay 3% on deposits, lend at 6%, and be on the golf course by 3 PM — the golden age of easy banking.',
+    definition:
+      'Pay 3% on deposits, lend at 6%, and be on the golf course by 3 PM — the golden age of easy banking.',
     category: 'money',
     relatedConcepts: ['interest-spread'],
     lessonId: '2-2',
@@ -59,7 +61,8 @@ export const module2Concepts: Concept[] = [
   {
     id: 'gramm-leach-bliley',
     term: 'Gramm-Leach-Bliley Act',
-    definition: 'The 1999 law that repealed Glass-Steagall separation between commercial banking, investment banking, and insurance.',
+    definition:
+      'The 1999 law that repealed Glass-Steagall separation between commercial banking, investment banking, and insurance.',
     category: 'financial-system',
     relatedConcepts: ['glass-steagall', 'financial-holding-company'],
     lessonId: '2-3',
@@ -67,7 +70,8 @@ export const module2Concepts: Concept[] = [
   {
     id: 'financial-holding-company',
     term: 'Financial Holding Company',
-    definition: 'A corporation that owns banks, investment banks, and insurance firms under one roof.',
+    definition:
+      'A corporation that owns banks, investment banks, and insurance firms under one roof.',
     category: 'institutions',
     relatedConcepts: ['bank-holding-company', 'gramm-leach-bliley'],
     lessonId: '2-3',
@@ -92,7 +96,8 @@ export const module2Concepts: Concept[] = [
   {
     id: 'bank-run',
     term: 'Bank Run',
-    definition: 'A situation where many depositors withdraw money simultaneously due to fear of bank failure.',
+    definition:
+      'A situation where many depositors withdraw money simultaneously due to fear of bank failure.',
     category: 'financial-system',
     relatedConcepts: ['fdic'],
     lessonId: '2-4',
@@ -100,7 +105,8 @@ export const module2Concepts: Concept[] = [
   {
     id: 'fdic',
     term: 'FDIC',
-    definition: 'Federal Deposit Insurance Corporation — provides insurance to depositors up to $250,000.',
+    definition:
+      'Federal Deposit Insurance Corporation — provides insurance to depositors up to $250,000.',
     category: 'institutions',
     relatedConcepts: ['bank-run', 'glass-steagall'],
     lessonId: '2-4',
@@ -126,7 +132,8 @@ export const module2Concepts: Concept[] = [
   {
     id: 'community-bank',
     term: 'Community Bank',
-    definition: 'A small local bank serving households and small businesses in a specific geographic area.',
+    definition:
+      'A small local bank serving households and small businesses in a specific geographic area.',
     category: 'institutions',
     relatedConcepts: ['regional-bank', 'retail-banking'],
     lessonId: '2-6',
@@ -134,7 +141,8 @@ export const module2Concepts: Concept[] = [
   {
     id: 'regional-bank',
     term: 'Regional Bank',
-    definition: 'A bank operating across a large region or several states, larger than community banks but smaller than money center banks.',
+    definition:
+      'A bank operating across a large region or several states, larger than community banks but smaller than money center banks.',
     category: 'institutions',
     relatedConcepts: ['community-bank', 'money-center-bank'],
     lessonId: '2-6',
@@ -142,7 +150,8 @@ export const module2Concepts: Concept[] = [
   {
     id: 'money-center-bank',
     term: 'Money Center Bank',
-    definition: 'A large bank relying heavily on wholesale funding in global financial markets rather than retail deposits.',
+    definition:
+      'A large bank relying heavily on wholesale funding in global financial markets rather than retail deposits.',
     category: 'institutions',
     relatedConcepts: ['regional-bank', 'wholesale-banking'],
     lessonId: '2-6',
@@ -158,7 +167,8 @@ export const module2Concepts: Concept[] = [
   {
     id: 'wholesale-banking',
     term: 'Wholesale Banking',
-    definition: 'Banking services focused on large institutional clients, corporations, and governments.',
+    definition:
+      'Banking services focused on large institutional clients, corporations, and governments.',
     category: 'institutions',
     relatedConcepts: ['retail-banking', 'money-center-bank'],
     lessonId: '2-6',
@@ -175,7 +185,8 @@ export const module2Concepts: Concept[] = [
   {
     id: 'certificate-of-deposit',
     term: 'Certificate of Deposit',
-    definition: 'A time deposit with a fixed term and penalty for early withdrawal, offering higher interest rates.',
+    definition:
+      'A time deposit with a fixed term and penalty for early withdrawal, offering higher interest rates.',
     category: 'money',
     relatedConcepts: ['transaction-account'],
     lessonId: '2-7',
@@ -183,7 +194,8 @@ export const module2Concepts: Concept[] = [
   {
     id: 'federal-funds-market',
     term: 'Federal Funds Market',
-    definition: 'The market where banks lend reserves to each other overnight to meet reserve requirements.',
+    definition:
+      'The market where banks lend reserves to each other overnight to meet reserve requirements.',
     category: 'financial-system',
     relatedConcepts: ['repurchase-agreement'],
     lessonId: '2-7',
@@ -191,7 +203,8 @@ export const module2Concepts: Concept[] = [
   {
     id: 'repurchase-agreement',
     term: 'Repurchase Agreement',
-    definition: 'A short-term loan where securities are sold with an agreement to repurchase them at a higher price (repo).',
+    definition:
+      'A short-term loan where securities are sold with an agreement to repurchase them at a higher price (repo).',
     category: 'financial-system',
     relatedConcepts: ['federal-funds-market'],
     lessonId: '2-7',
@@ -199,7 +212,8 @@ export const module2Concepts: Concept[] = [
   {
     id: 'bank-capital',
     term: 'Bank Capital',
-    definition: 'Equity funding from shareholders that absorbs losses and provides a cushion against insolvency.',
+    definition:
+      'Equity funding from shareholders that absorbs losses and provides a cushion against insolvency.',
     category: 'money',
     relatedConcepts: ['too-big-to-fail'],
     lessonId: '2-7',
@@ -208,7 +222,8 @@ export const module2Concepts: Concept[] = [
   {
     id: 'collateral',
     term: 'Collateral',
-    definition: 'Assets pledged by a borrower to secure a loan, which the lender can seize if the borrower defaults.',
+    definition:
+      'Assets pledged by a borrower to secure a loan, which the lender can seize if the borrower defaults.',
     category: 'money',
     relatedConcepts: ['mortgage', 'covenants'],
     lessonId: '2-8',
@@ -248,7 +263,8 @@ export const module2Concepts: Concept[] = [
   {
     id: 'relationship-lending',
     term: 'Relationship Lending',
-    definition: 'Lending decisions based on long-term private information gathered through ongoing business relationships.',
+    definition:
+      'Lending decisions based on long-term private information gathered through ongoing business relationships.',
     category: 'institutions',
     relatedConcepts: ['commercial-lending', 'community-bank'],
     lessonId: '2-8',
@@ -265,7 +281,8 @@ export const module2Concepts: Concept[] = [
   {
     id: 'servicing',
     term: 'Servicing',
-    definition: 'Managing a loan after issuance, including collecting payments, managing escrow, and monitoring performance.',
+    definition:
+      'Managing a loan after issuance, including collecting payments, managing escrow, and monitoring performance.',
     category: 'financial-system',
     relatedConcepts: ['origination'],
     lessonId: '2-9',
@@ -273,7 +290,8 @@ export const module2Concepts: Concept[] = [
   {
     id: 'originate-and-hold',
     term: 'Originate-and-Hold',
-    definition: 'The traditional lending model where banks keep loans on their balance sheet until maturity.',
+    definition:
+      'The traditional lending model where banks keep loans on their balance sheet until maturity.',
     category: 'institutions',
     relatedConcepts: ['originate-and-distribute', 'origination', 'banking-book'],
     lessonId: '2-9',
@@ -281,7 +299,8 @@ export const module2Concepts: Concept[] = [
   {
     id: 'originate-and-distribute',
     term: 'Originate-and-Distribute',
-    definition: 'The modern lending model where banks sell loans to investors shortly after origination.',
+    definition:
+      'The modern lending model where banks sell loans to investors shortly after origination.',
     category: 'institutions',
     relatedConcepts: ['originate-and-hold', 'securitization'],
     lessonId: '2-9',
@@ -289,7 +308,8 @@ export const module2Concepts: Concept[] = [
   {
     id: 'securitization',
     term: 'Securitization',
-    definition: 'The process of pooling loans into tradable securities that can be sold to investors.',
+    definition:
+      'The process of pooling loans into tradable securities that can be sold to investors.',
     category: 'financial-system',
     relatedConcepts: ['originate-and-distribute', 'mortgage'],
     lessonId: '2-9',
@@ -298,7 +318,8 @@ export const module2Concepts: Concept[] = [
   {
     id: 'securities-underwriting',
     term: 'Securities Underwriting',
-    definition: 'Creating and selling new securities (stocks or bonds) to investors on behalf of issuers.',
+    definition:
+      'Creating and selling new securities (stocks or bonds) to investors on behalf of issuers.',
     category: 'financial-system',
     relatedConcepts: ['ipo', 'book-building', 'underwriting-spread'],
     lessonId: '2-10',
@@ -306,7 +327,7 @@ export const module2Concepts: Concept[] = [
   {
     id: 'ipo',
     term: 'IPO',
-    definition: 'Initial Public Offering — the first public sale of a company\'s stock.',
+    definition: "Initial Public Offering — the first public sale of a company's stock.",
     category: 'financial-system',
     relatedConcepts: ['securities-underwriting', 'book-building'],
     lessonId: '2-10',
@@ -314,7 +335,8 @@ export const module2Concepts: Concept[] = [
   {
     id: 'book-building',
     term: 'Book-Building',
-    definition: 'The process of gauging investor demand and setting the issue price for new securities.',
+    definition:
+      'The process of gauging investor demand and setting the issue price for new securities.',
     category: 'financial-system',
     relatedConcepts: ['ipo', 'securities-underwriting'],
     lessonId: '2-10',
@@ -322,7 +344,8 @@ export const module2Concepts: Concept[] = [
   {
     id: 'underwriting-spread',
     term: 'Underwriting Spread',
-    definition: 'The difference between the price paid to the issuer and the price charged to investors.',
+    definition:
+      'The difference between the price paid to the issuer and the price charged to investors.',
     category: 'money',
     relatedConcepts: ['securities-underwriting'],
     lessonId: '2-10',
@@ -338,7 +361,8 @@ export const module2Concepts: Concept[] = [
   {
     id: 'market-making',
     term: 'Market-Making',
-    definition: 'Providing liquidity to markets by continuously quoting buy and sell prices for securities.',
+    definition:
+      'Providing liquidity to markets by continuously quoting buy and sell prices for securities.',
     category: 'institutions',
     relatedConcepts: ['proprietary-trading', 'trading-book'],
     lessonId: '2-10',
@@ -346,7 +370,7 @@ export const module2Concepts: Concept[] = [
   {
     id: 'proprietary-trading',
     term: 'Proprietary Trading',
-    definition: 'Trading securities using the bank\'s own capital to generate profits.',
+    definition: "Trading securities using the bank's own capital to generate profits.",
     category: 'institutions',
     relatedConcepts: ['market-making', 'trading-book'],
     lessonId: '2-10',
@@ -355,7 +379,8 @@ export const module2Concepts: Concept[] = [
   {
     id: 'banking-book',
     term: 'Banking Book',
-    definition: 'Assets and liabilities held for traditional lending activities, valued at historical cost.',
+    definition:
+      'Assets and liabilities held for traditional lending activities, valued at historical cost.',
     category: 'financial-system',
     relatedConcepts: ['trading-book', 'originate-and-hold'],
     lessonId: '2-11',
@@ -363,7 +388,8 @@ export const module2Concepts: Concept[] = [
   {
     id: 'trading-book',
     term: 'Trading Book',
-    definition: 'Assets held for short-term trading, valued at current market prices (mark-to-market).',
+    definition:
+      'Assets held for short-term trading, valued at current market prices (mark-to-market).',
     category: 'financial-system',
     relatedConcepts: ['banking-book', 'mark-to-market', 'market-making'],
     lessonId: '2-11',
@@ -380,7 +406,8 @@ export const module2Concepts: Concept[] = [
   {
     id: 'loan-commitment',
     term: 'Loan Commitment',
-    definition: 'A binding promise to provide funds up to a specified limit when requested by the borrower.',
+    definition:
+      'A binding promise to provide funds up to a specified limit when requested by the borrower.',
     category: 'financial-system',
     relatedConcepts: ['contingent-liability'],
     lessonId: '2-12',
@@ -388,7 +415,8 @@ export const module2Concepts: Concept[] = [
   {
     id: 'contingent-liability',
     term: 'Contingent Liability',
-    definition: 'A potential obligation that may become a real liability depending on future events.',
+    definition:
+      'A potential obligation that may become a real liability depending on future events.',
     category: 'financial-system',
     relatedConcepts: ['loan-commitment', 'credit-default-swap'],
     lessonId: '2-12',
@@ -396,7 +424,8 @@ export const module2Concepts: Concept[] = [
   {
     id: 'notional-amount',
     term: 'Notional Amount',
-    definition: 'The face value used for calculating payments on a derivative contract, not the actual amount at risk.',
+    definition:
+      'The face value used for calculating payments on a derivative contract, not the actual amount at risk.',
     category: 'money',
     relatedConcepts: ['credit-default-swap'],
     lessonId: '2-12',
@@ -413,7 +442,8 @@ export const module2Concepts: Concept[] = [
   {
     id: 'net-interest-income',
     term: 'Net Interest Income',
-    definition: 'Interest earned on loans and securities minus interest paid on deposits and borrowings.',
+    definition:
+      'Interest earned on loans and securities minus interest paid on deposits and borrowings.',
     category: 'money',
     relatedConcepts: ['net-interest-margin', 'interest-spread'],
     lessonId: '2-13',
@@ -421,7 +451,8 @@ export const module2Concepts: Concept[] = [
   {
     id: 'net-interest-margin',
     term: 'Net Interest Margin',
-    definition: 'Net interest income divided by average interest-earning assets, measuring lending profitability.',
+    definition:
+      'Net interest income divided by average interest-earning assets, measuring lending profitability.',
     category: 'money',
     relatedConcepts: ['net-interest-income'],
     lessonId: '2-13',
@@ -429,7 +460,8 @@ export const module2Concepts: Concept[] = [
   {
     id: 'non-interest-income',
     term: 'Non-Interest Income',
-    definition: 'Revenue from fees, trading, and services rather than traditional lending activities.',
+    definition:
+      'Revenue from fees, trading, and services rather than traditional lending activities.',
     category: 'money',
     relatedConcepts: ['fee-income'],
     lessonId: '2-13',

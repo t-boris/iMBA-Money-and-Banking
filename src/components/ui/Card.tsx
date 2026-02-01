@@ -23,19 +23,13 @@ export const Card = forwardRef<HTMLDivElement, CardProps & MotionProps>(
           // Base styles
           'rounded-xl p-6',
           // Variants
-          variant === 'default' && [
-            'bg-surface-1 border border-surface-2',
-            'shadow-sm',
-          ],
+          variant === 'default' && ['bg-surface-1 border border-surface-2', 'shadow-sm'],
           variant === 'glass' && [
             'bg-glass-light backdrop-blur-md',
             'border border-glass-border',
             'shadow-glass',
           ],
-          variant === 'elevated' && [
-            'bg-surface-1',
-            'shadow-lg',
-          ],
+          variant === 'elevated' && ['bg-surface-1', 'shadow-lg'],
           // Hover effect
           hover && 'cursor-pointer transition-shadow hover:shadow-lg',
           className
@@ -60,7 +54,10 @@ export const CardTitle = ({ className, ...props }: HTMLAttributes<HTMLHeadingEle
 );
 
 export const CardDescription = ({ className, ...props }: HTMLAttributes<HTMLParagraphElement>) => (
-  <p className={cn('text-text-secondary text-sm leading-relaxed mt-1 block w-full', className)} {...props} />
+  <p
+    className={cn('text-text-secondary text-sm leading-relaxed mt-1 block w-full', className)}
+    {...props}
+  />
 );
 
 export const CardContent = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => (

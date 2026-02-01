@@ -13,11 +13,41 @@ interface ScoreRange {
 }
 
 const scoreRanges: ScoreRange[] = [
-  { min: 300, max: 579, label: 'Poor', color: 'rgb(239, 68, 68)', bgColor: 'rgba(239, 68, 68, 0.15)' },
-  { min: 580, max: 669, label: 'Fair', color: 'rgb(245, 158, 11)', bgColor: 'rgba(245, 158, 11, 0.15)' },
-  { min: 670, max: 739, label: 'Good', color: 'rgb(234, 179, 8)', bgColor: 'rgba(234, 179, 8, 0.15)' },
-  { min: 740, max: 799, label: 'Very Good', color: 'rgb(34, 197, 94)', bgColor: 'rgba(34, 197, 94, 0.15)' },
-  { min: 800, max: 850, label: 'Exceptional', color: 'rgb(16, 185, 129)', bgColor: 'rgba(16, 185, 129, 0.15)' },
+  {
+    min: 300,
+    max: 579,
+    label: 'Poor',
+    color: 'rgb(239, 68, 68)',
+    bgColor: 'rgba(239, 68, 68, 0.15)',
+  },
+  {
+    min: 580,
+    max: 669,
+    label: 'Fair',
+    color: 'rgb(245, 158, 11)',
+    bgColor: 'rgba(245, 158, 11, 0.15)',
+  },
+  {
+    min: 670,
+    max: 739,
+    label: 'Good',
+    color: 'rgb(234, 179, 8)',
+    bgColor: 'rgba(234, 179, 8, 0.15)',
+  },
+  {
+    min: 740,
+    max: 799,
+    label: 'Very Good',
+    color: 'rgb(34, 197, 94)',
+    bgColor: 'rgba(34, 197, 94, 0.15)',
+  },
+  {
+    min: 800,
+    max: 850,
+    label: 'Exceptional',
+    color: 'rgb(16, 185, 129)',
+    bgColor: 'rgba(16, 185, 129, 0.15)',
+  },
 ];
 
 // PD values at specific score points for interpolation
@@ -214,7 +244,9 @@ export function FICOScoreScale({ className }: FICOScoreScaleProps) {
               borderRadius: '12px',
             }}
           >
-            <div style={{ fontSize: '12px', color: 'var(--color-text-muted)', marginBottom: '4px' }}>
+            <div
+              style={{ fontSize: '12px', color: 'var(--color-text-muted)', marginBottom: '4px' }}
+            >
               Probability of Default
             </div>
             <motion.div
@@ -235,7 +267,9 @@ export function FICOScoreScale({ className }: FICOScoreScaleProps) {
               borderRadius: '12px',
             }}
           >
-            <div style={{ fontSize: '12px', color: 'var(--color-text-muted)', marginBottom: '4px' }}>
+            <div
+              style={{ fontSize: '12px', color: 'var(--color-text-muted)', marginBottom: '4px' }}
+            >
               Interest Rate Impact
             </div>
             <motion.div
@@ -256,7 +290,9 @@ export function FICOScoreScale({ className }: FICOScoreScaleProps) {
               borderRadius: '12px',
             }}
           >
-            <div style={{ fontSize: '12px', color: 'var(--color-text-muted)', marginBottom: '4px' }}>
+            <div
+              style={{ fontSize: '12px', color: 'var(--color-text-muted)', marginBottom: '4px' }}
+            >
               Approval Likelihood
             </div>
             <motion.div
@@ -318,7 +354,8 @@ export function FICOScoreScale({ className }: FICOScoreScaleProps) {
             position: 'relative',
             height: '24px',
             borderRadius: '12px',
-            background: 'linear-gradient(to right, rgb(239, 68, 68), rgb(245, 158, 11), rgb(234, 179, 8), rgb(34, 197, 94), rgb(16, 185, 129))',
+            background:
+              'linear-gradient(to right, rgb(239, 68, 68), rgb(245, 158, 11), rgb(234, 179, 8), rgb(34, 197, 94), rgb(16, 185, 129))',
             marginBottom: '8px',
           }}
         >

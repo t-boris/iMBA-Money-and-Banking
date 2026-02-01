@@ -29,19 +29,10 @@ export function FlowArrow({
   const isVertical = direction === 'up' || direction === 'down';
 
   return (
-    <div
-      className={cn(
-        'flex items-center gap-2',
-        isVertical && 'flex-col',
-        className
-      )}
-    >
+    <div className={cn('flex items-center gap-2', isVertical && 'flex-col', className)}>
       {/* Arrow SVG */}
       <div
-        className={cn(
-          'relative',
-          isVertical ? 'h-16 w-8' : 'w-16 h-8'
-        )}
+        className={cn('relative', isVertical ? 'h-16 w-8' : 'w-16 h-8')}
         style={{ transform: `rotate(${rotation}deg)` }}
       >
         <svg
@@ -93,22 +84,9 @@ export function FlowArrow({
 
       {/* Label and value */}
       {(label || value) && (
-        <div
-          className={cn(
-            'flex flex-col items-center text-center',
-            isVertical && 'order-first'
-          )}
-        >
-          {label && (
-            <span className="text-xs font-medium text-text-secondary">
-              {label}
-            </span>
-          )}
-          {value && (
-            <span className="text-sm font-semibold text-primary-500">
-              {value}
-            </span>
-          )}
+        <div className={cn('flex flex-col items-center text-center', isVertical && 'order-first')}>
+          {label && <span className="text-xs font-medium text-text-secondary">{label}</span>}
+          {value && <span className="text-sm font-semibold text-primary-500">{value}</span>}
         </div>
       )}
     </div>

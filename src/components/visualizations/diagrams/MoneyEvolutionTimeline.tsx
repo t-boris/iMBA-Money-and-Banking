@@ -27,19 +27,14 @@ const moneyEras: MoneyEra[] = [
     icon: '🪙',
     period: 'Ancient - 1600s',
     definition: 'Money with intrinsic value',
-    examples: [
-      'Arrowheads',
-      'Shells',
-      'Salt',
-      'Gold coins',
-      'Copper plates (Sweden)',
-    ],
+    examples: ['Arrowheads', 'Shells', 'Salt', 'Gold coins', 'Copper plates (Sweden)'],
     characteristics: [
       'Has value even if not used as money',
       'Limited supply creates scarcity',
       'Difficult to transport in large quantities',
     ],
-    tradeoff: 'Has intrinsic value but heavy, hard to divide, and inconvenient for large transactions',
+    tradeoff:
+      'Has intrinsic value but heavy, hard to divide, and inconvenient for large transactions',
     color: 'amber',
   },
   {
@@ -68,12 +63,7 @@ const moneyEras: MoneyEra[] = [
     icon: '💵',
     period: '1930s - Present',
     definition: 'Value by government decree',
-    examples: [
-      'US Dollar (post-1971)',
-      'Euro',
-      'Japanese Yen',
-      'All modern currencies',
-    ],
+    examples: ['US Dollar (post-1971)', 'Euro', 'Japanese Yen', 'All modern currencies'],
     characteristics: [
       'No intrinsic value',
       'Declared legal tender by government',
@@ -85,9 +75,7 @@ const moneyEras: MoneyEra[] = [
   },
 ];
 
-export function MoneyEvolutionTimeline({
-  className,
-}: MoneyEvolutionTimelineProps) {
+export function MoneyEvolutionTimeline({ className }: MoneyEvolutionTimelineProps) {
   const [activeEra, setActiveEra] = useState<number>(0);
 
   const getColorClasses = (color: string, isActive: boolean) => {
@@ -173,20 +161,12 @@ export function MoneyEvolutionTimeline({
                         }
                       : {}
                   }
-                  transition={
-                    isActive
-                      ? { duration: 2, repeat: Infinity, ease: 'easeInOut' }
-                      : {}
-                  }
+                  transition={isActive ? { duration: 2, repeat: Infinity, ease: 'easeInOut' } : {}}
                 >
                   <motion.span
                     className="text-2xl"
                     animate={isActive ? { scale: [1, 1.15, 1] } : {}}
-                    transition={
-                      isActive
-                        ? { duration: 1, repeat: Infinity, repeatDelay: 0.5 }
-                        : {}
-                    }
+                    transition={isActive ? { duration: 1, repeat: Infinity, repeatDelay: 0.5 } : {}}
                   >
                     {era.icon}
                   </motion.span>
@@ -194,10 +174,7 @@ export function MoneyEvolutionTimeline({
                   {/* Active indicator dot */}
                   {isActive && (
                     <motion.div
-                      className={cn(
-                        'absolute -bottom-1 w-2 h-2 rounded-full',
-                        colors.fill
-                      )}
+                      className={cn('absolute -bottom-1 w-2 h-2 rounded-full', colors.fill)}
                       layoutId="activeIndicator"
                       transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                     />
@@ -214,9 +191,7 @@ export function MoneyEvolutionTimeline({
                   >
                     {era.name}
                   </p>
-                  <p className="text-xs text-text-tertiary mt-0.5">
-                    {era.period}
-                  </p>
+                  <p className="text-xs text-text-tertiary mt-0.5">{era.period}</p>
                 </div>
 
                 {/* Arrow connector (except last) */}
@@ -271,9 +246,7 @@ export function MoneyEvolutionTimeline({
                 >
                   {moneyEras[activeEra].name}
                 </h3>
-                <p className="text-text-secondary">
-                  {moneyEras[activeEra].definition}
-                </p>
+                <p className="text-text-secondary">{moneyEras[activeEra].definition}</p>
               </div>
             </div>
           </div>
@@ -282,9 +255,7 @@ export function MoneyEvolutionTimeline({
           <div className="p-5 space-y-5">
             {/* Examples */}
             <div>
-              <h4 className="text-sm font-semibold text-text-primary mb-2">
-                Historical Examples
-              </h4>
+              <h4 className="text-sm font-semibold text-text-primary mb-2">Historical Examples</h4>
               <div className="flex flex-wrap gap-2">
                 {moneyEras[activeEra].examples.map((example, index) => (
                   <motion.span
@@ -305,9 +276,7 @@ export function MoneyEvolutionTimeline({
 
             {/* Characteristics */}
             <div>
-              <h4 className="text-sm font-semibold text-text-primary mb-2">
-                Key Characteristics
-              </h4>
+              <h4 className="text-sm font-semibold text-text-primary mb-2">Key Characteristics</h4>
               <ul className="space-y-1.5">
                 {moneyEras[activeEra].characteristics.map((char, index) => (
                   <motion.li
@@ -331,10 +300,7 @@ export function MoneyEvolutionTimeline({
 
             {/* Tradeoff insight */}
             <motion.div
-              className={cn(
-                'p-4 rounded-lg',
-                'bg-surface-secondary/50 border border-glass-border'
-              )}
+              className={cn('p-4 rounded-lg', 'bg-surface-secondary/50 border border-glass-border')}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
@@ -342,12 +308,8 @@ export function MoneyEvolutionTimeline({
               <div className="flex items-start gap-3">
                 <span className="text-lg">💡</span>
                 <div>
-                  <p className="text-sm font-medium text-text-primary mb-1">
-                    The Tradeoff
-                  </p>
-                  <p className="text-sm text-text-secondary">
-                    {moneyEras[activeEra].tradeoff}
-                  </p>
+                  <p className="text-sm font-medium text-text-primary mb-1">The Tradeoff</p>
+                  <p className="text-sm text-text-secondary">{moneyEras[activeEra].tradeoff}</p>
                 </div>
               </div>
             </motion.div>

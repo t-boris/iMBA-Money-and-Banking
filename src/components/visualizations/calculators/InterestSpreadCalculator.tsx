@@ -80,17 +80,32 @@ export function InterestSpreadCalculator({ className }: InterestSpreadCalculator
     <div className={cn('w-full', className)} style={{ maxWidth: '800px', margin: '0 auto' }}>
       {/* Title */}
       <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-        <h3 style={{ fontSize: '20px', fontWeight: 600, color: 'var(--color-text-primary)', marginBottom: '8px' }}>
+        <h3
+          style={{
+            fontSize: '20px',
+            fontWeight: 600,
+            color: 'var(--color-text-primary)',
+            marginBottom: '8px',
+          }}
+        >
           Interest Spread Calculator
         </h3>
         <p style={{ fontSize: '14px', color: 'var(--color-text-secondary)', lineHeight: '1.6' }}>
-          Banks profit from the spread between what they charge borrowers and pay depositors.
-          Adjust the sliders to see how different rates affect bank profitability.
+          Banks profit from the spread between what they charge borrowers and pay depositors. Adjust
+          the sliders to see how different rates affect bank profitability.
         </p>
       </div>
 
       {/* Preset Buttons */}
-      <div style={{ display: 'flex', gap: '12px', marginBottom: '24px', flexWrap: 'wrap', justifyContent: 'center' }}>
+      <div
+        style={{
+          display: 'flex',
+          gap: '12px',
+          marginBottom: '24px',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
+        }}
+      >
         {presets.map((preset) => (
           <motion.button
             key={preset.name}
@@ -117,7 +132,14 @@ export function InterestSpreadCalculator({ className }: InterestSpreadCalculator
       </div>
 
       {/* Main Content Grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px', marginBottom: '24px' }}>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+          gap: '24px',
+          marginBottom: '24px',
+        }}
+      >
         {/* Left: Sliders */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
@@ -129,7 +151,14 @@ export function InterestSpreadCalculator({ className }: InterestSpreadCalculator
             border: '1px solid var(--color-surface-2)',
           }}
         >
-          <h4 style={{ fontSize: '16px', fontWeight: 600, color: 'var(--color-text-primary)', marginBottom: '20px' }}>
+          <h4
+            style={{
+              fontSize: '16px',
+              fontWeight: 600,
+              color: 'var(--color-text-primary)',
+              marginBottom: '20px',
+            }}
+          >
             Bank Parameters
           </h4>
 
@@ -187,56 +216,97 @@ export function InterestSpreadCalculator({ className }: InterestSpreadCalculator
             border: '1px solid var(--color-surface-2)',
           }}
         >
-          <h4 style={{ fontSize: '16px', fontWeight: 600, color: 'var(--color-text-primary)', marginBottom: '20px' }}>
+          <h4
+            style={{
+              fontSize: '16px',
+              fontWeight: 600,
+              color: 'var(--color-text-primary)',
+              marginBottom: '20px',
+            }}
+          >
             Bank Performance
           </h4>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
             {/* Total Loans */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span style={{ fontSize: '14px', color: 'var(--color-text-secondary)' }}>Total Loans</span>
+              <span style={{ fontSize: '14px', color: 'var(--color-text-secondary)' }}>
+                Total Loans
+              </span>
               <AnimatedValue value={totalLoans} prefix="$" suffix="B" decimals={1} size="md" />
             </div>
 
             {/* Interest Income */}
-            <div style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              padding: '12px',
-              backgroundColor: 'rgba(16, 185, 129, 0.1)',
-              borderRadius: '8px',
-              border: '1px solid rgba(16, 185, 129, 0.2)',
-            }}>
-              <span style={{ fontSize: '14px', color: 'rgb(16, 185, 129)', fontWeight: 500 }}>Interest Income</span>
-              <AnimatedValue value={interestIncome} prefix="$" suffix="B" decimals={2} size="md" className="text-emerald-500" />
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                padding: '12px',
+                backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                borderRadius: '8px',
+                border: '1px solid rgba(16, 185, 129, 0.2)',
+              }}
+            >
+              <span style={{ fontSize: '14px', color: 'rgb(16, 185, 129)', fontWeight: 500 }}>
+                Interest Income
+              </span>
+              <AnimatedValue
+                value={interestIncome}
+                prefix="$"
+                suffix="B"
+                decimals={2}
+                size="md"
+                className="text-emerald-500"
+              />
             </div>
 
             {/* Interest Expense */}
-            <div style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              padding: '12px',
-              backgroundColor: 'rgba(245, 158, 11, 0.1)',
-              borderRadius: '8px',
-              border: '1px solid rgba(245, 158, 11, 0.2)',
-            }}>
-              <span style={{ fontSize: '14px', color: 'rgb(245, 158, 11)', fontWeight: 500 }}>Interest Expense</span>
-              <AnimatedValue value={interestExpense} prefix="$" suffix="B" decimals={2} size="md" className="text-amber-500" />
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                padding: '12px',
+                backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                borderRadius: '8px',
+                border: '1px solid rgba(245, 158, 11, 0.2)',
+              }}
+            >
+              <span style={{ fontSize: '14px', color: 'rgb(245, 158, 11)', fontWeight: 500 }}>
+                Interest Expense
+              </span>
+              <AnimatedValue
+                value={interestExpense}
+                prefix="$"
+                suffix="B"
+                decimals={2}
+                size="md"
+                className="text-amber-500"
+              />
             </div>
 
             {/* Interest Spread */}
-            <div style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              padding: '8px 12px',
-              backgroundColor: isLowSpread ? 'rgba(239, 68, 68, 0.1)' : 'rgba(99, 102, 241, 0.1)',
-              borderRadius: '8px',
-              border: isLowSpread ? '1px solid rgba(239, 68, 68, 0.3)' : '1px solid rgba(99, 102, 241, 0.2)',
-            }}>
-              <span style={{ fontSize: '14px', color: isLowSpread ? 'rgb(239, 68, 68)' : 'rgb(99, 102, 241)', fontWeight: 500 }}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                padding: '8px 12px',
+                backgroundColor: isLowSpread ? 'rgba(239, 68, 68, 0.1)' : 'rgba(99, 102, 241, 0.1)',
+                borderRadius: '8px',
+                border: isLowSpread
+                  ? '1px solid rgba(239, 68, 68, 0.3)'
+                  : '1px solid rgba(99, 102, 241, 0.2)',
+              }}
+            >
+              <span
+                style={{
+                  fontSize: '14px',
+                  color: isLowSpread ? 'rgb(239, 68, 68)' : 'rgb(99, 102, 241)',
+                  fontWeight: 500,
+                }}
+              >
                 Interest Spread
               </span>
               <AnimatedValue
@@ -249,21 +319,29 @@ export function InterestSpreadCalculator({ className }: InterestSpreadCalculator
             </div>
 
             {/* Net Interest Income - Hero metric */}
-            <div style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              padding: '16px',
-              backgroundColor: netInterestIncome > 0 ? 'rgba(99, 102, 241, 0.15)' : 'rgba(239, 68, 68, 0.15)',
-              borderRadius: '12px',
-              border: netInterestIncome > 0 ? '2px solid rgba(99, 102, 241, 0.4)' : '2px solid rgba(239, 68, 68, 0.4)',
-              marginTop: '8px',
-            }}>
-              <span style={{
-                fontSize: '16px',
-                fontWeight: 600,
-                color: netInterestIncome > 0 ? 'rgb(99, 102, 241)' : 'rgb(239, 68, 68)',
-              }}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                padding: '16px',
+                backgroundColor:
+                  netInterestIncome > 0 ? 'rgba(99, 102, 241, 0.15)' : 'rgba(239, 68, 68, 0.15)',
+                borderRadius: '12px',
+                border:
+                  netInterestIncome > 0
+                    ? '2px solid rgba(99, 102, 241, 0.4)'
+                    : '2px solid rgba(239, 68, 68, 0.4)',
+                marginTop: '8px',
+              }}
+            >
+              <span
+                style={{
+                  fontSize: '16px',
+                  fontWeight: 600,
+                  color: netInterestIncome > 0 ? 'rgb(99, 102, 241)' : 'rgb(239, 68, 68)',
+                }}
+              >
                 Net Interest Income
               </span>
               <AnimatedValue
@@ -292,20 +370,40 @@ export function InterestSpreadCalculator({ className }: InterestSpreadCalculator
           marginBottom: '16px',
         }}
       >
-        <h4 style={{ fontSize: '14px', fontWeight: 600, color: 'var(--color-text-primary)', marginBottom: '16px' }}>
+        <h4
+          style={{
+            fontSize: '14px',
+            fontWeight: 600,
+            color: 'var(--color-text-primary)',
+            marginBottom: '16px',
+          }}
+        >
           Income vs Expense Comparison
         </h4>
 
         {/* Income Bar */}
         <div style={{ marginBottom: '12px' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
-            <span style={{ fontSize: '12px', color: 'rgb(16, 185, 129)', fontWeight: 500 }}>Interest Income</span>
-            <span style={{ fontSize: '12px', color: 'var(--color-text-muted)' }}>${interestIncome.toFixed(2)}B</span>
+            <span style={{ fontSize: '12px', color: 'rgb(16, 185, 129)', fontWeight: 500 }}>
+              Interest Income
+            </span>
+            <span style={{ fontSize: '12px', color: 'var(--color-text-muted)' }}>
+              ${interestIncome.toFixed(2)}B
+            </span>
           </div>
-          <div style={{ height: '24px', backgroundColor: 'var(--color-surface-2)', borderRadius: '6px', overflow: 'hidden' }}>
+          <div
+            style={{
+              height: '24px',
+              backgroundColor: 'var(--color-surface-2)',
+              borderRadius: '6px',
+              overflow: 'hidden',
+            }}
+          >
             <motion.div
               initial={{ width: 0 }}
-              animate={{ width: `${Math.min((interestIncome / Math.max(interestIncome, interestExpense)) * 100, 100)}%` }}
+              animate={{
+                width: `${Math.min((interestIncome / Math.max(interestIncome, interestExpense)) * 100, 100)}%`,
+              }}
               transition={{ duration: 0.5 }}
               style={{
                 height: '100%',
@@ -319,13 +417,26 @@ export function InterestSpreadCalculator({ className }: InterestSpreadCalculator
         {/* Expense Bar */}
         <div style={{ marginBottom: '12px' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
-            <span style={{ fontSize: '12px', color: 'rgb(245, 158, 11)', fontWeight: 500 }}>Interest Expense</span>
-            <span style={{ fontSize: '12px', color: 'var(--color-text-muted)' }}>${interestExpense.toFixed(2)}B</span>
+            <span style={{ fontSize: '12px', color: 'rgb(245, 158, 11)', fontWeight: 500 }}>
+              Interest Expense
+            </span>
+            <span style={{ fontSize: '12px', color: 'var(--color-text-muted)' }}>
+              ${interestExpense.toFixed(2)}B
+            </span>
           </div>
-          <div style={{ height: '24px', backgroundColor: 'var(--color-surface-2)', borderRadius: '6px', overflow: 'hidden' }}>
+          <div
+            style={{
+              height: '24px',
+              backgroundColor: 'var(--color-surface-2)',
+              borderRadius: '6px',
+              overflow: 'hidden',
+            }}
+          >
             <motion.div
               initial={{ width: 0 }}
-              animate={{ width: `${Math.min((interestExpense / Math.max(interestIncome, interestExpense)) * 100, 100)}%` }}
+              animate={{
+                width: `${Math.min((interestExpense / Math.max(interestIncome, interestExpense)) * 100, 100)}%`,
+              }}
               transition={{ duration: 0.5 }}
               style={{
                 height: '100%',
@@ -337,21 +448,25 @@ export function InterestSpreadCalculator({ className }: InterestSpreadCalculator
         </div>
 
         {/* Net Result */}
-        <div style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          paddingTop: '12px',
-          borderTop: '1px solid var(--color-surface-2)',
-        }}>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            paddingTop: '12px',
+            borderTop: '1px solid var(--color-surface-2)',
+          }}
+        >
           <span style={{ fontSize: '14px', fontWeight: 600, color: 'var(--color-text-primary)' }}>
             Net Profit Margin
           </span>
-          <span style={{
-            fontSize: '14px',
-            fontWeight: 600,
-            color: netInterestIncome > 0 ? 'rgb(16, 185, 129)' : 'rgb(239, 68, 68)',
-          }}>
+          <span
+            style={{
+              fontSize: '14px',
+              fontWeight: 600,
+              color: netInterestIncome > 0 ? 'rgb(16, 185, 129)' : 'rgb(239, 68, 68)',
+            }}
+          >
             {interestIncome > 0 ? ((netInterestIncome / interestIncome) * 100).toFixed(1) : 0}%
           </span>
         </div>
@@ -364,8 +479,12 @@ export function InterestSpreadCalculator({ className }: InterestSpreadCalculator
           animate={{ opacity: 1, scale: 1 }}
           style={{
             padding: '16px',
-            backgroundColor: isNegativeSpread ? 'rgba(239, 68, 68, 0.15)' : 'rgba(245, 158, 11, 0.15)',
-            border: isNegativeSpread ? '1px solid rgba(239, 68, 68, 0.3)' : '1px solid rgba(245, 158, 11, 0.3)',
+            backgroundColor: isNegativeSpread
+              ? 'rgba(239, 68, 68, 0.15)'
+              : 'rgba(245, 158, 11, 0.15)',
+            border: isNegativeSpread
+              ? '1px solid rgba(239, 68, 68, 0.3)'
+              : '1px solid rgba(245, 158, 11, 0.3)',
             borderRadius: '12px',
             display: 'flex',
             alignItems: 'flex-start',
@@ -374,15 +493,19 @@ export function InterestSpreadCalculator({ className }: InterestSpreadCalculator
         >
           <span style={{ fontSize: '24px' }}>{isNegativeSpread ? '🚨' : '⚠️'}</span>
           <div>
-            <div style={{
-              fontWeight: 600,
-              fontSize: '14px',
-              color: isNegativeSpread ? 'rgb(239, 68, 68)' : 'rgb(217, 119, 6)',
-              marginBottom: '4px',
-            }}>
+            <div
+              style={{
+                fontWeight: 600,
+                fontSize: '14px',
+                color: isNegativeSpread ? 'rgb(239, 68, 68)' : 'rgb(217, 119, 6)',
+                marginBottom: '4px',
+              }}
+            >
               {isNegativeSpread ? 'Negative Spread - Bank Losing Money!' : 'Low Spread Warning'}
             </div>
-            <div style={{ fontSize: '13px', color: 'var(--color-text-secondary)', lineHeight: '1.6' }}>
+            <div
+              style={{ fontSize: '13px', color: 'var(--color-text-secondary)', lineHeight: '1.6' }}
+            >
               {isNegativeSpread
                 ? 'The bank is paying more to depositors than it earns from loans. This is unsustainable and would lead to bank failure.'
                 : 'A spread below 1% makes it difficult for banks to cover operating costs, loan losses, and generate profit. Most profitable banks maintain spreads of 2-4%.'}

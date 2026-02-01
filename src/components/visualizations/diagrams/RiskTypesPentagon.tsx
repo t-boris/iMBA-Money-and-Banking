@@ -32,7 +32,12 @@ const riskTypes: RiskType[] = [
     name: 'Credit Risk',
     definition: 'Risk that borrowers fail to repay loans or meet obligations',
     keyMetric: 'Probability of Default (PD)',
-    tools: ['Screening & due diligence', 'Risk-based pricing', 'Loan covenants', 'Credit Default Swaps (CDS)'],
+    tools: [
+      'Screening & due diligence',
+      'Risk-based pricing',
+      'Loan covenants',
+      'Credit Default Swaps (CDS)',
+    ],
     color: '239, 68, 68', // red
     angle: 270, // top
   },
@@ -41,7 +46,12 @@ const riskTypes: RiskType[] = [
     name: 'Interest Rate Risk',
     definition: 'Risk that interest rate changes adversely affect profits',
     keyMetric: 'Duration Gap',
-    tools: ['Interest rate swaps', 'Asset-liability matching', 'Repricing gap analysis', 'Duration hedging'],
+    tools: [
+      'Interest rate swaps',
+      'Asset-liability matching',
+      'Repricing gap analysis',
+      'Duration hedging',
+    ],
     color: '245, 158, 11', // amber
     angle: 342, // top-right
   },
@@ -128,7 +138,8 @@ export function RiskTypesPentagon({ className }: RiskTypesPentagonProps) {
 
   // Pentagon vertices
   const pentagonPoints = riskTypes.map((risk) => getPoint(risk.angle, radius));
-  const pentagonPath = pentagonPoints.map((p, i) => `${i === 0 ? 'M' : 'L'} ${p.x} ${p.y}`).join(' ') + ' Z';
+  const pentagonPath =
+    pentagonPoints.map((p, i) => `${i === 0 ? 'M' : 'L'} ${p.x} ${p.y}`).join(' ') + ' Z';
 
   // Radar chart points for bank profile
   const getRadarPoints = (bankRisks: Record<string, number>) => {
@@ -140,14 +151,23 @@ export function RiskTypesPentagon({ className }: RiskTypesPentagonProps) {
   };
 
   const radarPath = selectedBankData
-    ? getRadarPoints(selectedBankData.risks).map((p, i) => `${i === 0 ? 'M' : 'L'} ${p.x} ${p.y}`).join(' ') + ' Z'
+    ? getRadarPoints(selectedBankData.risks)
+        .map((p, i) => `${i === 0 ? 'M' : 'L'} ${p.x} ${p.y}`)
+        .join(' ') + ' Z'
     : '';
 
   return (
     <div className={cn('w-full max-w-4xl mx-auto', className)}>
       {/* Header */}
       <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-        <h3 style={{ fontSize: '20px', fontWeight: 600, color: 'var(--color-text-primary)', marginBottom: '8px' }}>
+        <h3
+          style={{
+            fontSize: '20px',
+            fontWeight: 600,
+            color: 'var(--color-text-primary)',
+            marginBottom: '8px',
+          }}
+        >
           The Five Bank Risks
         </h3>
         <p style={{ fontSize: '14px', color: 'var(--color-text-secondary)' }}>
@@ -163,7 +183,9 @@ export function RiskTypesPentagon({ className }: RiskTypesPentagonProps) {
             padding: '10px 20px',
             borderRadius: '10px',
             border: 'none',
-            backgroundColor: !showBankProfile ? 'rgba(99, 102, 241, 0.15)' : 'var(--color-surface-1)',
+            backgroundColor: !showBankProfile
+              ? 'rgba(99, 102, 241, 0.15)'
+              : 'var(--color-surface-1)',
             color: !showBankProfile ? 'rgb(99, 102, 241)' : 'var(--color-text-secondary)',
             fontWeight: !showBankProfile ? 600 : 400,
             fontSize: '13px',
@@ -178,7 +200,9 @@ export function RiskTypesPentagon({ className }: RiskTypesPentagonProps) {
             padding: '10px 20px',
             borderRadius: '10px',
             border: 'none',
-            backgroundColor: showBankProfile ? 'rgba(99, 102, 241, 0.15)' : 'var(--color-surface-1)',
+            backgroundColor: showBankProfile
+              ? 'rgba(99, 102, 241, 0.15)'
+              : 'var(--color-surface-1)',
             color: showBankProfile ? 'rgb(99, 102, 241)' : 'var(--color-text-secondary)',
             fontWeight: showBankProfile ? 600 : 400,
             fontSize: '13px',
@@ -191,7 +215,9 @@ export function RiskTypesPentagon({ className }: RiskTypesPentagonProps) {
 
       {/* Bank Selector (when in profile mode) */}
       {showBankProfile && (
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', marginBottom: '24px' }}>
+        <div
+          style={{ display: 'flex', justifyContent: 'center', gap: '12px', marginBottom: '24px' }}
+        >
           {bankProfiles.map((bank) => (
             <button
               key={bank.id}
@@ -199,9 +225,14 @@ export function RiskTypesPentagon({ className }: RiskTypesPentagonProps) {
               style={{
                 padding: '8px 16px',
                 borderRadius: '8px',
-                border: selectedBank === bank.id ? '2px solid rgba(99, 102, 241, 0.5)' : '2px solid transparent',
-                backgroundColor: selectedBank === bank.id ? 'rgba(99, 102, 241, 0.08)' : 'var(--color-surface-1)',
-                color: selectedBank === bank.id ? 'rgb(99, 102, 241)' : 'var(--color-text-secondary)',
+                border:
+                  selectedBank === bank.id
+                    ? '2px solid rgba(99, 102, 241, 0.5)'
+                    : '2px solid transparent',
+                backgroundColor:
+                  selectedBank === bank.id ? 'rgba(99, 102, 241, 0.08)' : 'var(--color-surface-1)',
+                color:
+                  selectedBank === bank.id ? 'rgb(99, 102, 241)' : 'var(--color-text-secondary)',
                 fontWeight: selectedBank === bank.id ? 600 : 400,
                 fontSize: '12px',
                 cursor: 'pointer',
@@ -216,12 +247,14 @@ export function RiskTypesPentagon({ className }: RiskTypesPentagonProps) {
 
       <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap', justifyContent: 'center' }}>
         {/* Pentagon Visualization */}
-        <div style={{
-          backgroundColor: 'var(--color-surface-1)',
-          borderRadius: '16px',
-          padding: '24px',
-          flexShrink: 0,
-        }}>
+        <div
+          style={{
+            backgroundColor: 'var(--color-surface-1)',
+            borderRadius: '16px',
+            padding: '24px',
+            flexShrink: 0,
+          }}
+        >
           <svg
             viewBox={`0 0 ${size} ${size}`}
             style={{ width: '340px', height: '340px', display: 'block' }}
@@ -300,6 +333,7 @@ export function RiskTypesPentagon({ className }: RiskTypesPentagonProps) {
               cy={center}
               r={innerRadius}
               fill="url(#insolvencyGradient)"
+              initial={{ r: innerRadius }}
               animate={{
                 r: [innerRadius, innerRadius + 3, innerRadius],
               }}
@@ -319,13 +353,7 @@ export function RiskTypesPentagon({ className }: RiskTypesPentagonProps) {
             >
               INSOLVENCY
             </text>
-            <text
-              x={center}
-              y={center + 8}
-              textAnchor="middle"
-              fill="white"
-              fontSize="8"
-            >
+            <text x={center} y={center + 8} textAnchor="middle" fill="white" fontSize="8">
               RISK
             </text>
 
@@ -419,51 +447,97 @@ export function RiskTypesPentagon({ className }: RiskTypesPentagonProps) {
                   border: `2px solid rgba(${selectedRiskData.color}, 0.2)`,
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
-                  <div style={{
-                    width: '48px',
-                    height: '48px',
-                    borderRadius: '12px',
-                    backgroundColor: `rgb(${selectedRiskData.color})`,
+                <div
+                  style={{
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'center',
-                  }}>
+                    gap: '12px',
+                    marginBottom: '16px',
+                  }}
+                >
+                  <div
+                    style={{
+                      width: '48px',
+                      height: '48px',
+                      borderRadius: '12px',
+                      backgroundColor: `rgb(${selectedRiskData.color})`,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}
+                  >
                     <span style={{ color: 'white', fontSize: '20px', fontWeight: 700 }}>
                       {selectedRiskData.name.charAt(0)}
                     </span>
                   </div>
                   <div>
-                    <h4 style={{ fontSize: '18px', fontWeight: 600, color: `rgb(${selectedRiskData.color})`, margin: 0 }}>
+                    <h4
+                      style={{
+                        fontSize: '18px',
+                        fontWeight: 600,
+                        color: `rgb(${selectedRiskData.color})`,
+                        margin: 0,
+                      }}
+                    >
                       {selectedRiskData.name}
                     </h4>
                   </div>
                 </div>
 
                 <div style={{ marginBottom: '16px' }}>
-                  <div style={{ fontSize: '12px', fontWeight: 600, color: 'var(--color-text-muted)', marginBottom: '4px' }}>
+                  <div
+                    style={{
+                      fontSize: '12px',
+                      fontWeight: 600,
+                      color: 'var(--color-text-muted)',
+                      marginBottom: '4px',
+                    }}
+                  >
                     Definition
                   </div>
-                  <p style={{ fontSize: '14px', color: 'var(--color-text-secondary)', margin: 0, lineHeight: '1.6' }}>
+                  <p
+                    style={{
+                      fontSize: '14px',
+                      color: 'var(--color-text-secondary)',
+                      margin: 0,
+                      lineHeight: '1.6',
+                    }}
+                  >
                     {selectedRiskData.definition}
                   </p>
                 </div>
 
                 <div style={{ marginBottom: '16px' }}>
-                  <div style={{ fontSize: '12px', fontWeight: 600, color: 'var(--color-text-muted)', marginBottom: '4px' }}>
+                  <div
+                    style={{
+                      fontSize: '12px',
+                      fontWeight: 600,
+                      color: 'var(--color-text-muted)',
+                      marginBottom: '4px',
+                    }}
+                  >
                     Key Metric
                   </div>
-                  <div style={{
-                    fontSize: '15px',
-                    fontWeight: 600,
-                    color: `rgb(${selectedRiskData.color})`,
-                  }}>
+                  <div
+                    style={{
+                      fontSize: '15px',
+                      fontWeight: 600,
+                      color: `rgb(${selectedRiskData.color})`,
+                    }}
+                  >
                     {selectedRiskData.keyMetric}
                   </div>
                 </div>
 
                 <div>
-                  <div style={{ fontSize: '12px', fontWeight: 600, color: 'var(--color-text-muted)', marginBottom: '8px' }}>
+                  <div
+                    style={{
+                      fontSize: '12px',
+                      fontWeight: 600,
+                      color: 'var(--color-text-muted)',
+                      marginBottom: '8px',
+                    }}
+                  >
                     Risk Management Tools
                   </div>
                   <ul style={{ margin: 0, paddingLeft: '20px' }}>
@@ -497,21 +571,37 @@ export function RiskTypesPentagon({ className }: RiskTypesPentagonProps) {
                 }}
               >
                 <div style={{ fontSize: '40px', marginBottom: '16px' }}>&#9888;</div>
-                <h4 style={{ fontSize: '16px', fontWeight: 600, color: 'var(--color-text-primary)', marginBottom: '8px' }}>
+                <h4
+                  style={{
+                    fontSize: '16px',
+                    fontWeight: 600,
+                    color: 'var(--color-text-primary)',
+                    marginBottom: '8px',
+                  }}
+                >
                   All Risks Lead to Insolvency
                 </h4>
-                <p style={{ fontSize: '13px', color: 'var(--color-text-secondary)', margin: 0, lineHeight: '1.6' }}>
-                  Any single risk type, if large enough, can deplete a bank&apos;s equity buffer and lead to insolvency.
-                  That&apos;s why banks must manage ALL five simultaneously.
+                <p
+                  style={{
+                    fontSize: '13px',
+                    color: 'var(--color-text-secondary)',
+                    margin: 0,
+                    lineHeight: '1.6',
+                  }}
+                >
+                  Any single risk type, if large enough, can deplete a bank&apos;s equity buffer and
+                  lead to insolvency. That&apos;s why banks must manage ALL five simultaneously.
                 </p>
-                <div style={{
-                  marginTop: '16px',
-                  padding: '12px',
-                  backgroundColor: 'rgba(239, 68, 68, 0.08)',
-                  borderRadius: '8px',
-                  fontSize: '12px',
-                  color: 'rgb(239, 68, 68)',
-                }}>
+                <div
+                  style={{
+                    marginTop: '16px',
+                    padding: '12px',
+                    backgroundColor: 'rgba(239, 68, 68, 0.08)',
+                    borderRadius: '8px',
+                    fontSize: '12px',
+                    color: 'rgb(239, 68, 68)',
+                  }}
+                >
                   Click any risk point to explore
                 </div>
               </motion.div>
@@ -530,10 +620,24 @@ export function RiskTypesPentagon({ className }: RiskTypesPentagonProps) {
                 borderRadius: '12px',
               }}
             >
-              <div style={{ fontSize: '14px', fontWeight: 600, color: 'var(--color-text-primary)', marginBottom: '8px' }}>
+              <div
+                style={{
+                  fontSize: '14px',
+                  fontWeight: 600,
+                  color: 'var(--color-text-primary)',
+                  marginBottom: '8px',
+                }}
+              >
                 {selectedBankData.name}: Risk Profile
               </div>
-              <p style={{ fontSize: '13px', color: 'var(--color-text-secondary)', margin: 0, lineHeight: '1.6' }}>
+              <p
+                style={{
+                  fontSize: '13px',
+                  color: 'var(--color-text-secondary)',
+                  margin: 0,
+                  lineHeight: '1.6',
+                }}
+              >
                 {selectedBankData.description}
               </p>
             </motion.div>
@@ -542,12 +646,14 @@ export function RiskTypesPentagon({ className }: RiskTypesPentagonProps) {
       </div>
 
       {/* Quick Reference Cards */}
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(5, 1fr)',
-        gap: '8px',
-        marginTop: '24px',
-      }}>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(5, 1fr)',
+          gap: '8px',
+          marginTop: '24px',
+        }}
+      >
         {riskTypes.map((risk) => (
           <motion.button
             key={risk.id}
@@ -556,32 +662,48 @@ export function RiskTypesPentagon({ className }: RiskTypesPentagonProps) {
             onClick={() => setSelectedRisk(selectedRisk === risk.id ? null : risk.id)}
             style={{
               padding: '12px 8px',
-              backgroundColor: selectedRisk === risk.id ? `rgba(${risk.color}, 0.15)` : 'var(--color-surface-1)',
+              backgroundColor:
+                selectedRisk === risk.id ? `rgba(${risk.color}, 0.15)` : 'var(--color-surface-1)',
               borderRadius: '10px',
-              border: selectedRisk === risk.id ? `2px solid rgba(${risk.color}, 0.4)` : '2px solid transparent',
+              border:
+                selectedRisk === risk.id
+                  ? `2px solid rgba(${risk.color}, 0.4)`
+                  : '2px solid transparent',
               cursor: 'pointer',
               textAlign: 'center',
             }}
           >
-            <div style={{
-              width: '24px',
-              height: '24px',
-              borderRadius: '50%',
-              backgroundColor: `rgb(${risk.color})`,
-              margin: '0 auto 8px',
-            }} />
-            <div style={{
-              fontSize: '11px',
-              fontWeight: 500,
-              color: selectedRisk === risk.id ? `rgb(${risk.color})` : 'var(--color-text-secondary)',
-            }}>
+            <div
+              style={{
+                width: '24px',
+                height: '24px',
+                borderRadius: '50%',
+                backgroundColor: `rgb(${risk.color})`,
+                margin: '0 auto 8px',
+              }}
+            />
+            <div
+              style={{
+                fontSize: '11px',
+                fontWeight: 500,
+                color:
+                  selectedRisk === risk.id ? `rgb(${risk.color})` : 'var(--color-text-secondary)',
+              }}
+            >
               {risk.name.replace(' Risk', '')}
             </div>
           </motion.button>
         ))}
       </div>
 
-      <p style={{ textAlign: 'center', fontSize: '12px', color: 'var(--color-text-muted)', marginTop: '16px' }}>
+      <p
+        style={{
+          textAlign: 'center',
+          fontSize: '12px',
+          color: 'var(--color-text-muted)',
+          marginTop: '16px',
+        }}
+      >
         Click any risk type to see definition, key metric, and management tools
       </p>
     </div>

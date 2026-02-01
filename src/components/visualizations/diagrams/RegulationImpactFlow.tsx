@@ -31,7 +31,8 @@ const regulations: Regulation[] = [
     year: 1933,
     before: {
       title: 'Banking Chaos',
-      description: 'Banks combined commercial and investment activities. Risky speculation led to failures.',
+      description:
+        'Banks combined commercial and investment activities. Risky speculation led to failures.',
     },
     after: {
       title: 'Strict Separation',
@@ -61,7 +62,8 @@ const regulations: Regulation[] = [
     },
     after: {
       title: 'Nationwide Banking',
-      description: 'Banks can branch and acquire across state lines. National bank networks emerge.',
+      description:
+        'Banks can branch and acquire across state lines. National bank networks emerge.',
     },
     impact: {
       positive: [
@@ -83,11 +85,13 @@ const regulations: Regulation[] = [
     year: 1999,
     before: {
       title: 'Separated Activities',
-      description: 'Glass-Steagall barriers kept commercial banking, investment banking, and insurance separate.',
+      description:
+        'Glass-Steagall barriers kept commercial banking, investment banking, and insurance separate.',
     },
     after: {
       title: 'Financial Supermarkets',
-      description: 'Financial Holding Companies can offer banking, securities, and insurance under one roof.',
+      description:
+        'Financial Holding Companies can offer banking, securities, and insurance under one roof.',
     },
     impact: {
       positive: [
@@ -189,7 +193,9 @@ export function RegulationImpactFlow({ className }: RegulationImpactFlowProps) {
                 gap: '4px',
                 padding: '12px 16px',
                 backgroundColor: isActive ? regColor.bg : 'var(--color-surface-1)',
-                border: isActive ? `2px solid ${regColor.primary}` : '2px solid var(--color-surface-2)',
+                border: isActive
+                  ? `2px solid ${regColor.primary}`
+                  : '2px solid var(--color-surface-2)',
                 borderRadius: '12px',
                 cursor: 'pointer',
                 minWidth: '140px',
@@ -312,9 +318,7 @@ export function RegulationImpactFlow({ className }: RegulationImpactFlowProps) {
           {activeReg === 'glass-steagall' && (
             <GlassSteagallDiagram showAfter={showAfter} color={color} />
           )}
-          {activeReg === 'riegle-neal' && (
-            <RiegleNealDiagram showAfter={showAfter} color={color} />
-          )}
+          {activeReg === 'riegle-neal' && <RiegleNealDiagram showAfter={showAfter} color={color} />}
           {activeReg === 'gramm-leach-bliley' && (
             <GrammLeachBlileyDiagram showAfter={showAfter} color={color} />
           )}
@@ -634,11 +638,15 @@ function RiegleNealDiagram({ showAfter, color }: DiagramProps) {
                 minWidth: '80px',
               }}
             >
-              <div style={{ fontSize: '10px', color: 'var(--color-text-muted)', marginBottom: '4px' }}>
+              <div
+                style={{ fontSize: '10px', color: 'var(--color-text-muted)', marginBottom: '4px' }}
+              >
                 {state}
               </div>
               <div style={{ fontSize: '20px' }}>🏦</div>
-              <div style={{ fontSize: '10px', color: 'var(--color-text-secondary)', marginTop: '4px' }}>
+              <div
+                style={{ fontSize: '10px', color: 'var(--color-text-secondary)', marginTop: '4px' }}
+              >
                 Local Bank
               </div>
             </motion.div>
@@ -731,7 +739,9 @@ function GrammLeachBlileyDiagram({ showAfter, color }: DiagramProps) {
   if (!showAfter) {
     // Before: Separated entities (same as Glass-Steagall after)
     return (
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start', gap: '24px' }}>
+      <div
+        style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start', gap: '24px' }}
+      >
         {[
           { icon: '🏦', name: 'Commercial Bank', items: ['Deposits', 'Loans'] },
           { icon: '📈', name: 'Investment Bank', items: ['Securities', 'Trading'] },

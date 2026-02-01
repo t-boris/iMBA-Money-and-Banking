@@ -10,7 +10,8 @@ export const module1Lessons: Lesson[] = [
   {
     id: '1-1',
     title: 'Money and Its Functions',
-    description: 'What makes something "money" — means of payment, unit of account, store of value.',
+    description:
+      'What makes something "money" — means of payment, unit of account, store of value.',
     order: 1,
   },
   {

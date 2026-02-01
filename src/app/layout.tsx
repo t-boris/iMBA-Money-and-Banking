@@ -11,15 +11,12 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: 'iMBA Money and Banking',
-  description: 'Interactive study guide for the Money and Banking course - University of Illinois Urbana-Champaign',
+  description:
+    'Interactive study guide for the Money and Banking course - University of Illinois Urbana-Champaign',
   keywords: ['money', 'banking', 'finance', 'iMBA', 'UIUC', 'economics'],
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={inter.variable} suppressHydrationWarning>
       <head>

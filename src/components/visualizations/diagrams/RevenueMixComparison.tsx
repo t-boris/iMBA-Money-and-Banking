@@ -71,12 +71,14 @@ export function RevenueMixComparison({ className }: RevenueMixComparisonProps) {
     traditional: {
       title: 'Traditional Banking (1935-1999)',
       subtitle: 'The 3-6-3 Rule Era',
-      description: 'Banks relied almost entirely on interest spread. Pay 3% on deposits, lend at 6%, golf by 3 PM.',
+      description:
+        'Banks relied almost entirely on interest spread. Pay 3% on deposits, lend at 6%, golf by 3 PM.',
     },
     modern: {
       title: 'Modern Banking (Post-1999)',
       subtitle: 'Diversified Financial Services',
-      description: 'After Gramm-Leach-Bliley, banks diversified into trading, investment banking, and fee-based services.',
+      description:
+        'After Gramm-Leach-Bliley, banks diversified into trading, investment banking, and fee-based services.',
     },
   };
 
@@ -86,7 +88,14 @@ export function RevenueMixComparison({ className }: RevenueMixComparisonProps) {
     <div className={cn('w-full max-w-4xl mx-auto', className)}>
       {/* Header */}
       <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-        <h3 style={{ fontSize: '20px', fontWeight: 600, color: 'var(--color-text-primary)', marginBottom: '8px' }}>
+        <h3
+          style={{
+            fontSize: '20px',
+            fontWeight: 600,
+            color: 'var(--color-text-primary)',
+            marginBottom: '8px',
+          }}
+        >
           Bank Revenue Mix: Then vs Now
         </h3>
         <p style={{ fontSize: '14px', color: 'var(--color-text-secondary)', lineHeight: '1.6' }}>
@@ -95,12 +104,14 @@ export function RevenueMixComparison({ className }: RevenueMixComparisonProps) {
       </div>
 
       {/* Era Toggle */}
-      <div style={{
-        display: 'flex',
-        justifyContent: 'center',
-        gap: '12px',
-        marginBottom: '24px',
-      }}>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          gap: '12px',
+          marginBottom: '24px',
+        }}
+      >
         {(['traditional', 'modern'] as Era[]).map((era) => (
           <button
             key={era}
@@ -109,7 +120,8 @@ export function RevenueMixComparison({ className }: RevenueMixComparisonProps) {
               padding: '12px 24px',
               borderRadius: '12px',
               border: 'none',
-              backgroundColor: selectedEra === era ? 'rgba(99, 102, 241, 0.15)' : 'var(--color-surface-1)',
+              backgroundColor:
+                selectedEra === era ? 'rgba(99, 102, 241, 0.15)' : 'var(--color-surface-1)',
               color: selectedEra === era ? 'rgb(99, 102, 241)' : 'var(--color-text-secondary)',
               fontWeight: selectedEra === era ? 600 : 400,
               fontSize: '14px',
@@ -135,10 +147,24 @@ export function RevenueMixComparison({ className }: RevenueMixComparisonProps) {
           textAlign: 'center',
         }}
       >
-        <h4 style={{ fontSize: '16px', fontWeight: 600, color: 'var(--color-text-primary)', marginBottom: '4px' }}>
+        <h4
+          style={{
+            fontSize: '16px',
+            fontWeight: 600,
+            color: 'var(--color-text-primary)',
+            marginBottom: '4px',
+          }}
+        >
           {currentInfo.title}
         </h4>
-        <p style={{ fontSize: '13px', color: 'rgb(99, 102, 241)', fontWeight: 500, marginBottom: '8px' }}>
+        <p
+          style={{
+            fontSize: '13px',
+            color: 'rgb(99, 102, 241)',
+            fontWeight: 500,
+            marginBottom: '8px',
+          }}
+        >
           {currentInfo.subtitle}
         </p>
         <p style={{ fontSize: '13px', color: 'var(--color-text-secondary)', lineHeight: '1.6' }}>
@@ -165,31 +191,46 @@ export function RevenueMixComparison({ className }: RevenueMixComparisonProps) {
                 padding: '16px',
                 backgroundColor: 'var(--color-surface-1)',
                 borderRadius: '12px',
-                border: isHovered ? `2px solid rgba(${source.color}, 0.5)` : '2px solid transparent',
+                border: isHovered
+                  ? `2px solid rgba(${source.color}, 0.5)`
+                  : '2px solid transparent',
                 cursor: 'pointer',
                 transition: 'border-color 0.2s',
               }}
             >
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-                <span style={{ fontSize: '14px', fontWeight: 500, color: 'var(--color-text-primary)' }}>
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  marginBottom: '8px',
+                }}
+              >
+                <span
+                  style={{ fontSize: '14px', fontWeight: 500, color: 'var(--color-text-primary)' }}
+                >
                   {source.name}
                 </span>
-                <span style={{
-                  fontSize: '16px',
-                  fontWeight: 700,
-                  color: `rgb(${source.color})`,
-                }}>
+                <span
+                  style={{
+                    fontSize: '16px',
+                    fontWeight: 700,
+                    color: `rgb(${source.color})`,
+                  }}
+                >
                   {value}%
                 </span>
               </div>
 
               {/* Progress Bar */}
-              <div style={{
-                height: '8px',
-                backgroundColor: 'var(--color-surface-2)',
-                borderRadius: '4px',
-                overflow: 'hidden',
-              }}>
+              <div
+                style={{
+                  height: '8px',
+                  backgroundColor: 'var(--color-surface-2)',
+                  borderRadius: '4px',
+                  overflow: 'hidden',
+                }}
+              >
                 <motion.div
                   initial={{ width: 0 }}
                   animate={{ width: `${value}%` }}
@@ -244,18 +285,22 @@ export function RevenueMixComparison({ className }: RevenueMixComparisonProps) {
       </motion.div>
 
       {/* Comparison Summary */}
-      <div style={{
-        marginTop: '20px',
-        display: 'grid',
-        gridTemplateColumns: 'repeat(2, 1fr)',
-        gap: '12px',
-      }}>
-        <div style={{
-          padding: '16px',
-          backgroundColor: 'rgba(99, 102, 241, 0.1)',
-          borderRadius: '12px',
-          textAlign: 'center',
-        }}>
+      <div
+        style={{
+          marginTop: '20px',
+          display: 'grid',
+          gridTemplateColumns: 'repeat(2, 1fr)',
+          gap: '12px',
+        }}
+      >
+        <div
+          style={{
+            padding: '16px',
+            backgroundColor: 'rgba(99, 102, 241, 0.1)',
+            borderRadius: '12px',
+            textAlign: 'center',
+          }}
+        >
           <div style={{ fontSize: '24px', fontWeight: 700, color: 'rgb(99, 102, 241)' }}>
             {selectedEra === 'traditional' ? '85%' : '50%'}
           </div>
@@ -263,12 +308,14 @@ export function RevenueMixComparison({ className }: RevenueMixComparisonProps) {
             Interest Income
           </div>
         </div>
-        <div style={{
-          padding: '16px',
-          backgroundColor: 'rgba(16, 185, 129, 0.1)',
-          borderRadius: '12px',
-          textAlign: 'center',
-        }}>
+        <div
+          style={{
+            padding: '16px',
+            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+            borderRadius: '12px',
+            textAlign: 'center',
+          }}
+        >
           <div style={{ fontSize: '24px', fontWeight: 700, color: 'rgb(16, 185, 129)' }}>
             {selectedEra === 'traditional' ? '15%' : '50%'}
           </div>
@@ -278,7 +325,14 @@ export function RevenueMixComparison({ className }: RevenueMixComparisonProps) {
         </div>
       </div>
 
-      <p style={{ textAlign: 'center', fontSize: '12px', color: 'var(--color-text-muted)', marginTop: '16px' }}>
+      <p
+        style={{
+          textAlign: 'center',
+          fontSize: '12px',
+          color: 'var(--color-text-muted)',
+          marginTop: '16px',
+        }}
+      >
         Click on any revenue source to see its description
       </p>
     </div>

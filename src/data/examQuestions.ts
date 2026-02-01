@@ -12,7 +12,8 @@ export const examQuestions: ExamQuestion[] = [
       'Currency, credit, debit',
     ],
     correctIndex: 0,
-    explanation: 'Money serves three key functions: (1) means of payment to settle transactions, (2) unit of account to measure value, and (3) store of value to preserve purchasing power over time.',
+    explanation:
+      'Money serves three key functions: (1) means of payment to settle transactions, (2) unit of account to measure value, and (3) store of value to preserve purchasing power over time.',
     difficulty: 'easy',
     moduleId: 1,
     conceptId: '1-money',
@@ -20,14 +21,10 @@ export const examQuestions: ExamQuestion[] = [
   {
     id: 'q1-2',
     question: 'Which type of money has intrinsic value from its physical composition?',
-    options: [
-      'Fiat money',
-      'Commodity money',
-      'Representative money',
-      'Digital money',
-    ],
+    options: ['Fiat money', 'Commodity money', 'Representative money', 'Digital money'],
     correctIndex: 1,
-    explanation: 'Commodity money (like gold coins) has intrinsic value because the material itself is valuable. Fiat money has no intrinsic value; representative money is backed by commodities but not made of them.',
+    explanation:
+      'Commodity money (like gold coins) has intrinsic value because the material itself is valuable. Fiat money has no intrinsic value; representative money is backed by commodities but not made of them.',
     difficulty: 'easy',
     moduleId: 1,
     conceptId: '1-commodity-money',
@@ -42,7 +39,8 @@ export const examQuestions: ExamQuestion[] = [
       'Money market funds',
     ],
     correctIndex: 2,
-    explanation: 'M2 includes M1 (currency + checking deposits) plus savings accounts and money market funds. Corporate bonds are NOT part of M2 as they are not liquid enough to function as money.',
+    explanation:
+      'M2 includes M1 (currency + checking deposits) plus savings accounts and money market funds. Corporate bonds are NOT part of M2 as they are not liquid enough to function as money.',
     difficulty: 'medium',
     moduleId: 1,
     conceptId: '1-m2',
@@ -57,7 +55,8 @@ export const examQuestions: ExamQuestion[] = [
       'Avoiding government regulation',
     ],
     correctIndex: 1,
-    explanation: 'Banks solve the maturity mismatch (savers want short-term, borrowers need long-term) and information asymmetry (borrowers know more about their risk than lenders) through professional screening and monitoring.',
+    explanation:
+      'Banks solve the maturity mismatch (savers want short-term, borrowers need long-term) and information asymmetry (borrowers know more about their risk than lenders) through professional screening and monitoring.',
     difficulty: 'medium',
     moduleId: 1,
     conceptId: '1-maturity-mismatch',
@@ -72,7 +71,8 @@ export const examQuestions: ExamQuestion[] = [
       'A government budget deficit',
     ],
     correctIndex: 1,
-    explanation: 'A financial crisis is specifically a disruption in the financial system that impairs credit flow, potentially freezing lending and causing broader economic damage.',
+    explanation:
+      'A financial crisis is specifically a disruption in the financial system that impairs credit flow, potentially freezing lending and causing broader economic damage.',
     difficulty: 'hard',
     moduleId: 1,
     conceptId: '1-financial-crisis',
@@ -89,7 +89,8 @@ export const examQuestions: ExamQuestion[] = [
       'Process 3 loans, take 6 deposits, review 3 applications daily',
     ],
     correctIndex: 0,
-    explanation: 'The 3-6-3 rule described simple traditional banking: pay depositors 3%, lend at 6%, and enjoy an easy lifestyle (golf by 3pm). This model dominated before deregulation.',
+    explanation:
+      'The 3-6-3 rule described simple traditional banking: pay depositors 3%, lend at 6%, and enjoy an easy lifestyle (golf by 3pm). This model dominated before deregulation.',
     difficulty: 'easy',
     moduleId: 2,
   },
@@ -103,7 +104,8 @@ export const examQuestions: ExamQuestion[] = [
       'Allowed interstate banking',
     ],
     correctIndex: 1,
-    explanation: 'Glass-Steagall separated commercial banking (deposits/loans) from investment banking (securities underwriting/trading) to reduce risk after the 1929 crash. It was repealed in 1999 by Gramm-Leach-Bliley.',
+    explanation:
+      'Glass-Steagall separated commercial banking (deposits/loans) from investment banking (securities underwriting/trading) to reduce risk after the 1929 crash. It was repealed in 1999 by Gramm-Leach-Bliley.',
     difficulty: 'medium',
     moduleId: 2,
   },
@@ -117,7 +119,8 @@ export const examQuestions: ExamQuestion[] = [
       'O&D requires collateral; O&H does not',
     ],
     correctIndex: 1,
-    explanation: 'In Originate-and-Distribute, banks create loans then sell or securitize them (transferring risk). In Originate-and-Hold, banks keep loans on their balance sheet (retaining risk). O&D became dominant before 2008.',
+    explanation:
+      'In Originate-and-Distribute, banks create loans then sell or securitize them (transferring risk). In Originate-and-Hold, banks keep loans on their balance sheet (retaining risk). O&D became dominant before 2008.',
     difficulty: 'hard',
     moduleId: 2,
   },
@@ -131,7 +134,8 @@ export const examQuestions: ExamQuestion[] = [
       'They are not FDIC insured',
     ],
     correctIndex: 1,
-    explanation: 'Money center banks (like JPMorgan) rely heavily on wholesale funding markets, while community banks depend primarily on local deposits. This funding difference affects their risk profiles.',
+    explanation:
+      'Money center banks (like JPMorgan) rely heavily on wholesale funding markets, while community banks depend primarily on local deposits. This funding difference affects their risk profiles.',
     difficulty: 'hard',
     moduleId: 2,
   },
@@ -145,7 +149,8 @@ export const examQuestions: ExamQuestion[] = [
       'Derivative positions (notional value)',
     ],
     correctIndex: 2,
-    explanation: 'Treasury securities held are ON the balance sheet as assets. Loan commitments, letters of credit, and derivatives (notional amounts) are off-balance sheet contingent obligations.',
+    explanation:
+      'Treasury securities held are ON the balance sheet as assets. Loan commitments, letters of credit, and derivatives (notional amounts) are off-balance sheet contingent obligations.',
     difficulty: 'hard',
     moduleId: 2,
   },
@@ -161,7 +166,8 @@ export const examQuestions: ExamQuestion[] = [
       'Required reserves',
     ],
     correctIndex: 1,
-    explanation: 'Equity capital is the bank\'s loss-absorbing buffer. When assets decline in value, equity takes the first hit, protecting depositors and the deposit insurance fund.',
+    explanation:
+      "Equity capital is the bank's loss-absorbing buffer. When assets decline in value, equity takes the first hit, protecting depositors and the deposit insurance fund.",
     difficulty: 'easy',
     moduleId: 3,
     conceptId: '3-equity-capital',
@@ -169,14 +175,10 @@ export const examQuestions: ExamQuestion[] = [
   {
     id: 'q3-2',
     question: 'ROE = ROA × Leverage. If a bank has ROA of 1% and leverage of 12x, its ROE is:',
-    options: [
-      '1%',
-      '6%',
-      '12%',
-      '13%',
-    ],
+    options: ['1%', '6%', '12%', '13%'],
     correctIndex: 2,
-    explanation: 'ROE = ROA × Leverage = 1% × 12 = 12%. Higher leverage amplifies ROA to produce higher ROE, but also amplifies risk.',
+    explanation:
+      'ROE = ROA × Leverage = 1% × 12 = 12%. Higher leverage amplifies ROA to produce higher ROE, but also amplifies risk.',
     difficulty: 'medium',
     moduleId: 3,
     conceptId: '3-roe',
@@ -191,7 +193,8 @@ export const examQuestions: ExamQuestion[] = [
       'The risk of fraud',
     ],
     correctIndex: 1,
-    explanation: 'Credit risk (default risk) is the risk that a borrower fails to meet their payment obligations. Banks manage this through credit analysis, diversification, and pricing.',
+    explanation:
+      'Credit risk (default risk) is the risk that a borrower fails to meet their payment obligations. Banks manage this through credit analysis, diversification, and pricing.',
     difficulty: 'easy',
     moduleId: 3,
     conceptId: '3-credit-risk',
@@ -206,7 +209,8 @@ export const examQuestions: ExamQuestion[] = [
       'Operational failures',
     ],
     correctIndex: 1,
-    explanation: 'Interest rate risk comes from maturity mismatch: banks borrow short (deposits) and lend long (loans). When rates rise, funding costs increase faster than asset yields.',
+    explanation:
+      'Interest rate risk comes from maturity mismatch: banks borrow short (deposits) and lend long (loans). When rates rise, funding costs increase faster than asset yields.',
     difficulty: 'medium',
     moduleId: 3,
     conceptId: '3-interest-rate-risk',
@@ -221,7 +225,8 @@ export const examQuestions: ExamQuestion[] = [
       'Reducing staff rapidly',
     ],
     correctIndex: 1,
-    explanation: 'A fire sale occurs when a bank must sell assets quickly to meet obligations, accepting prices below fair value. This can trigger a downward spiral if many banks sell simultaneously.',
+    explanation:
+      'A fire sale occurs when a bank must sell assets quickly to meet obligations, accepting prices below fair value. This can trigger a downward spiral if many banks sell simultaneously.',
     difficulty: 'hard',
     moduleId: 3,
     conceptId: '3-fire-sale',
@@ -236,7 +241,8 @@ export const examQuestions: ExamQuestion[] = [
       'The total value of assets',
     ],
     correctIndex: 1,
-    explanation: 'VaR estimates the maximum loss that should not be exceeded with a given probability (e.g., 99%) over a specific time horizon (e.g., 1 day). It\'s a standard market risk measure.',
+    explanation:
+      "VaR estimates the maximum loss that should not be exceeded with a given probability (e.g., 99%) over a specific time horizon (e.g., 1 day). It's a standard market risk measure.",
     difficulty: 'hard',
     moduleId: 3,
     conceptId: '3-var',
@@ -253,7 +259,8 @@ export const examQuestions: ExamQuestion[] = [
       'The interest rate on loans',
     ],
     correctIndex: 1,
-    explanation: 'Liquidity measures how easily and quickly an asset can be converted into cash without significant loss of value. Cash is the most liquid; real estate is illiquid.',
+    explanation:
+      'Liquidity measures how easily and quickly an asset can be converted into cash without significant loss of value. Cash is the most liquid; real estate is illiquid.',
     difficulty: 'easy',
     moduleId: 1,
     conceptId: '1-liquidity',
@@ -268,7 +275,8 @@ export const examQuestions: ExamQuestion[] = [
       'Only investment banking',
     ],
     correctIndex: 1,
-    explanation: 'FHCs, created by Gramm-Leach-Bliley (1999), can engage in commercial banking, investment banking, and insurance under one corporate umbrella.',
+    explanation:
+      'FHCs, created by Gramm-Leach-Bliley (1999), can engage in commercial banking, investment banking, and insurance under one corporate umbrella.',
     difficulty: 'medium',
     moduleId: 2,
   },
@@ -282,7 +290,8 @@ export const examQuestions: ExamQuestion[] = [
       'Only credit defaults',
     ],
     correctIndex: 1,
-    explanation: 'Operational risk covers losses from inadequate internal processes, people, systems, or external events—including fraud, IT failures, legal issues, and natural disasters.',
+    explanation:
+      'Operational risk covers losses from inadequate internal processes, people, systems, or external events—including fraud, IT failures, legal issues, and natural disasters.',
     difficulty: 'medium',
     moduleId: 3,
     conceptId: '3-operational-risk',
@@ -297,7 +306,8 @@ export const examQuestions: ExamQuestion[] = [
       'Regulators increase requirements',
     ],
     correctIndex: 1,
-    explanation: 'Moral hazard arises when protection (like deposit insurance or bailout expectations) encourages excessive risk-taking. Banks may take more risks knowing they might be "too big to fail."',
+    explanation:
+      'Moral hazard arises when protection (like deposit insurance or bailout expectations) encourages excessive risk-taking. Banks may take more risks knowing they might be "too big to fail."',
     difficulty: 'hard',
     moduleId: 1,
     conceptId: '1-moral-hazard',
@@ -306,7 +316,7 @@ export const examQuestions: ExamQuestion[] = [
 
 // Helper to get questions by difficulty
 export function getQuestionsByDifficulty(difficulty: ExamQuestion['difficulty']): ExamQuestion[] {
-  return examQuestions.filter(q => q.difficulty === difficulty);
+  return examQuestions.filter((q) => q.difficulty === difficulty);
 }
 
 // Helper to get random exam with proper difficulty distribution

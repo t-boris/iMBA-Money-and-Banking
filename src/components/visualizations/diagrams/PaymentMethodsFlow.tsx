@@ -57,7 +57,7 @@ const nonCashMethods: PaymentMethod[] = [
 // Animated connection line component
 function ConnectionLine({
   isActive,
-  direction = 'down'
+  direction = 'down',
 }: {
   isActive: boolean;
   direction?: 'down' | 'left' | 'right';
@@ -65,15 +65,9 @@ function ConnectionLine({
   const isVertical = direction === 'down';
 
   return (
-    <div className={cn(
-      'relative overflow-hidden',
-      isVertical ? 'w-0.5 h-8' : 'h-0.5 w-8'
-    )}>
+    <div className={cn('relative overflow-hidden', isVertical ? 'w-0.5 h-8' : 'h-0.5 w-8')}>
       <motion.div
-        className={cn(
-          'absolute bg-primary-400/50',
-          isVertical ? 'w-full' : 'h-full'
-        )}
+        className={cn('absolute bg-primary-400/50', isVertical ? 'w-full' : 'h-full')}
         initial={isVertical ? { height: 0 } : { width: 0 }}
         animate={isVertical ? { height: '100%' } : { width: '100%' }}
         transition={{ duration: 0.5 }}
@@ -84,10 +78,7 @@ function ConnectionLine({
             'absolute bg-primary-500 rounded-full',
             isVertical ? 'w-1.5 h-1.5 -left-0.5' : 'w-1.5 h-1.5 -top-0.5'
           )}
-          animate={isVertical
-            ? { top: [0, '100%', 0] }
-            : { left: [0, '100%', 0] }
-          }
+          animate={isVertical ? { top: [0, '100%', 0] } : { left: [0, '100%', 0] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: 'linear' }}
         />
       )}
@@ -111,19 +102,20 @@ function BranchCard({
   onClick: () => void;
   color?: 'primary' | 'emerald';
 }) {
-  const colorClasses = color === 'emerald'
-    ? {
-        border: isSelected ? 'border-emerald-500' : 'border-emerald-500/30',
-        bg: isSelected ? 'bg-emerald-500/10' : '',
-        text: isSelected ? 'text-emerald-500' : 'text-text-primary',
-        shadow: isSelected ? 'shadow-emerald-500/20' : '',
-      }
-    : {
-        border: isSelected ? 'border-primary-500' : 'border-primary-500/30',
-        bg: isSelected ? 'bg-primary-500/10' : '',
-        text: isSelected ? 'text-primary-500' : 'text-text-primary',
-        shadow: isSelected ? 'shadow-primary-500/20' : '',
-      };
+  const colorClasses =
+    color === 'emerald'
+      ? {
+          border: isSelected ? 'border-emerald-500' : 'border-emerald-500/30',
+          bg: isSelected ? 'bg-emerald-500/10' : '',
+          text: isSelected ? 'text-emerald-500' : 'text-text-primary',
+          shadow: isSelected ? 'shadow-emerald-500/20' : '',
+        }
+      : {
+          border: isSelected ? 'border-primary-500' : 'border-primary-500/30',
+          bg: isSelected ? 'bg-primary-500/10' : '',
+          text: isSelected ? 'text-primary-500' : 'text-text-primary',
+          shadow: isSelected ? 'shadow-primary-500/20' : '',
+        };
 
   return (
     <motion.button
@@ -148,9 +140,7 @@ function BranchCard({
       >
         {icon}
       </motion.span>
-      <span className={cn('text-sm font-semibold', colorClasses.text)}>
-        {name}
-      </span>
+      <span className={cn('text-sm font-semibold', colorClasses.text)}>{name}</span>
       <span className="text-xs text-text-muted text-center" style={{ lineHeight: '1.4' }}>
         {description}
       </span>
@@ -193,10 +183,9 @@ function MethodCard({
       >
         {method.icon}
       </motion.span>
-      <span className={cn(
-        'text-xs font-medium',
-        isSelected ? 'text-amber-500' : 'text-text-primary'
-      )}>
+      <span
+        className={cn('text-xs font-medium', isSelected ? 'text-amber-500' : 'text-text-primary')}
+      >
         {method.name}
       </span>
     </motion.button>
@@ -217,15 +206,17 @@ function InsightCallout({ text }: { text: string }) {
     >
       <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
         <span style={{ fontSize: '18px', flexShrink: 0 }}>💡</span>
-        <p style={{
-          fontSize: '14px',
-          color: 'rgb(217, 119, 6)',
-          fontWeight: 500,
-          margin: 0,
-          lineHeight: '1.6',
-          display: 'block',
-          width: '100%',
-        }}>
+        <p
+          style={{
+            fontSize: '14px',
+            color: 'rgb(217, 119, 6)',
+            fontWeight: 500,
+            margin: 0,
+            lineHeight: '1.6',
+            display: 'block',
+            width: '100%',
+          }}
+        >
           {text}
         </p>
       </div>
@@ -234,13 +225,7 @@ function InsightCallout({ text }: { text: string }) {
 }
 
 // Detail panel for selected method
-function MethodDetailPanel({
-  method,
-  onClose,
-}: {
-  method: PaymentMethod;
-  onClose: () => void;
-}) {
+function MethodDetailPanel({ method, onClose }: { method: PaymentMethod; onClose: () => void }) {
   return (
     <div
       style={{
@@ -251,10 +236,19 @@ function MethodDetailPanel({
         boxShadow: '0 10px 15px rgba(245, 158, 11, 0.05)',
       }}
     >
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'flex-start',
+          marginBottom: '8px',
+        }}
+      >
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
           <span style={{ fontSize: '24px' }}>{method.icon}</span>
-          <h4 style={{ fontSize: '14px', fontWeight: 600, color: 'rgb(245, 158, 11)', margin: 0 }}>{method.name}</h4>
+          <h4 style={{ fontSize: '14px', fontWeight: 600, color: 'rgb(245, 158, 11)', margin: 0 }}>
+            {method.name}
+          </h4>
         </div>
         <button
           onClick={onClose}
@@ -272,14 +266,16 @@ function MethodDetailPanel({
           ×
         </button>
       </div>
-      <p style={{
-        fontSize: '14px',
-        color: 'var(--color-text-secondary)',
-        margin: 0,
-        lineHeight: '1.6',
-        display: 'block',
-        width: '100%',
-      }}>
+      <p
+        style={{
+          fontSize: '14px',
+          color: 'var(--color-text-secondary)',
+          margin: 0,
+          lineHeight: '1.6',
+          display: 'block',
+          width: '100%',
+        }}
+      >
         {method.description}
       </p>
       {method.insight && <InsightCallout text={method.insight} />}
@@ -306,10 +302,19 @@ function CashDetailPanel({ onClose }: { onClose: () => void }) {
         boxShadow: '0 10px 15px rgba(16, 185, 129, 0.05)',
       }}
     >
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '12px' }}>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'flex-start',
+          marginBottom: '12px',
+        }}
+      >
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
           <span style={{ fontSize: '24px' }}>💵</span>
-          <h4 style={{ fontSize: '14px', fontWeight: 600, color: 'rgb(16, 185, 129)', margin: 0 }}>Cash Characteristics</h4>
+          <h4 style={{ fontSize: '14px', fontWeight: 600, color: 'rgb(16, 185, 129)', margin: 0 }}>
+            Cash Characteristics
+          </h4>
         </div>
         <button
           onClick={onClose}
@@ -441,13 +446,21 @@ export function PaymentMethodsFlow({ className }: PaymentMethodsFlowProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px', width: '100%' }}
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '16px',
+                width: '100%',
+              }}
             >
               {/* Connection line to methods */}
               <ConnectionLine isActive={true} direction="down" />
 
               {/* Non-cash methods grid */}
-              <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '12px' }}>
+              <div
+                style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '12px' }}
+              >
                 {nonCashMethods.map((method) => (
                   <MethodCard
                     key={method.id}
@@ -486,8 +499,8 @@ export function PaymentMethodsFlow({ className }: PaymentMethodsFlowProps) {
         {selectedBranch === null
           ? 'Click on Cash or Non-Cash to explore payment methods'
           : selectedBranch === 'non-cash' && selectedMethod === null
-          ? 'Click on a payment method to learn more'
-          : ''}
+            ? 'Click on a payment method to learn more'
+            : ''}
       </p>
     </div>
   );

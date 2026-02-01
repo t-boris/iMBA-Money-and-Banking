@@ -86,23 +86,38 @@ export function FinancialDevelopment({ className }: FinancialDevelopmentProps) {
     <div className={cn('w-full', className)} style={{ maxWidth: '900px', margin: '0 auto' }}>
       {/* Title */}
       <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-        <h3 style={{ fontSize: '20px', fontWeight: 600, color: 'var(--color-text-primary)', marginBottom: '8px' }}>
+        <h3
+          style={{
+            fontSize: '20px',
+            fontWeight: 600,
+            color: 'var(--color-text-primary)',
+            marginBottom: '8px',
+          }}
+        >
           Financial Development and Economic Growth
         </h3>
         <p style={{ fontSize: '14px', color: 'var(--color-text-secondary)', lineHeight: '1.6' }}>
-          A well-functioning financial system supports economic growth — but finance can also cause harm when it grows too large or unstable.
+          A well-functioning financial system supports economic growth — but finance can also cause
+          harm when it grows too large or unstable.
         </p>
       </div>
 
       {/* View toggle */}
       <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', marginBottom: '24px' }}>
         <button
-          onClick={() => { setActiveView('positive'); setSelectedItem(null); }}
+          onClick={() => {
+            setActiveView('positive');
+            setSelectedItem(null);
+          }}
           style={{
             padding: '12px 24px',
             borderRadius: '8px',
-            border: activeView === 'positive' ? '2px solid rgb(16, 185, 129)' : '2px solid var(--color-surface-2)',
-            backgroundColor: activeView === 'positive' ? 'rgba(16, 185, 129, 0.1)' : 'var(--color-surface-1)',
+            border:
+              activeView === 'positive'
+                ? '2px solid rgb(16, 185, 129)'
+                : '2px solid var(--color-surface-2)',
+            backgroundColor:
+              activeView === 'positive' ? 'rgba(16, 185, 129, 0.1)' : 'var(--color-surface-1)',
             cursor: 'pointer',
             display: 'flex',
             alignItems: 'center',
@@ -111,17 +126,30 @@ export function FinancialDevelopment({ className }: FinancialDevelopmentProps) {
           }}
         >
           <span style={{ fontSize: '20px' }}>✨</span>
-          <span style={{ fontSize: '14px', fontWeight: 500, color: activeView === 'positive' ? 'rgb(16, 185, 129)' : 'var(--color-text-primary)' }}>
+          <span
+            style={{
+              fontSize: '14px',
+              fontWeight: 500,
+              color: activeView === 'positive' ? 'rgb(16, 185, 129)' : 'var(--color-text-primary)',
+            }}
+          >
             Benefits of Finance
           </span>
         </button>
         <button
-          onClick={() => { setActiveView('dark'); setSelectedItem(null); }}
+          onClick={() => {
+            setActiveView('dark');
+            setSelectedItem(null);
+          }}
           style={{
             padding: '12px 24px',
             borderRadius: '8px',
-            border: activeView === 'dark' ? '2px solid rgb(239, 68, 68)' : '2px solid var(--color-surface-2)',
-            backgroundColor: activeView === 'dark' ? 'rgba(239, 68, 68, 0.1)' : 'var(--color-surface-1)',
+            border:
+              activeView === 'dark'
+                ? '2px solid rgb(239, 68, 68)'
+                : '2px solid var(--color-surface-2)',
+            backgroundColor:
+              activeView === 'dark' ? 'rgba(239, 68, 68, 0.1)' : 'var(--color-surface-1)',
             cursor: 'pointer',
             display: 'flex',
             alignItems: 'center',
@@ -130,7 +158,13 @@ export function FinancialDevelopment({ className }: FinancialDevelopmentProps) {
           }}
         >
           <span style={{ fontSize: '20px' }}>⚠️</span>
-          <span style={{ fontSize: '14px', fontWeight: 500, color: activeView === 'dark' ? 'rgb(239, 68, 68)' : 'var(--color-text-primary)' }}>
+          <span
+            style={{
+              fontSize: '14px',
+              fontWeight: 500,
+              color: activeView === 'dark' ? 'rgb(239, 68, 68)' : 'var(--color-text-primary)',
+            }}
+          >
             The Dark Side
           </span>
         </button>
@@ -138,23 +172,38 @@ export function FinancialDevelopment({ className }: FinancialDevelopmentProps) {
 
       {/* Content based on view */}
       {activeView === 'positive' ? (
-        <motion.div
-          key="positive"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-        >
+        <motion.div key="positive" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
           {/* Inverted U curve illustration */}
-          <div style={{
-            padding: '20px',
-            backgroundColor: 'var(--color-surface-1)',
-            borderRadius: '12px',
-            border: '1px solid var(--color-surface-2)',
-            marginBottom: '24px',
-          }}>
-            <h4 style={{ fontSize: '14px', fontWeight: 600, color: 'var(--color-text-primary)', marginBottom: '16px', textAlign: 'center' }}>
+          <div
+            style={{
+              padding: '20px',
+              backgroundColor: 'var(--color-surface-1)',
+              borderRadius: '12px',
+              border: '1px solid var(--color-surface-2)',
+              marginBottom: '24px',
+            }}
+          >
+            <h4
+              style={{
+                fontSize: '14px',
+                fontWeight: 600,
+                color: 'var(--color-text-primary)',
+                marginBottom: '16px',
+                textAlign: 'center',
+              }}
+            >
               Finance and Growth: The Inverted U
             </h4>
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-end', gap: '4px', height: '120px', marginBottom: '16px' }}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'flex-end',
+                gap: '4px',
+                height: '120px',
+                marginBottom: '16px',
+              }}
+            >
               {[20, 45, 70, 90, 100, 95, 85, 70, 55].map((height, i) => (
                 <motion.div
                   key={i}
@@ -170,21 +219,50 @@ export function FinancialDevelopment({ className }: FinancialDevelopmentProps) {
                 />
               ))}
             </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', color: 'var(--color-text-muted)' }}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                fontSize: '12px',
+                color: 'var(--color-text-muted)',
+              }}
+            >
               <span>Less finance</span>
               <span style={{ fontWeight: 500, color: 'rgb(16, 185, 129)' }}>Optimal</span>
               <span>More finance</span>
             </div>
-            <p style={{ fontSize: '13px', color: 'var(--color-text-secondary)', textAlign: 'center', marginTop: '12px', lineHeight: '1.6' }}>
-              Research shows finance helps growth up to a point — but too much financial sector activity can harm the real economy.
+            <p
+              style={{
+                fontSize: '13px',
+                color: 'var(--color-text-secondary)',
+                textAlign: 'center',
+                marginTop: '12px',
+                lineHeight: '1.6',
+              }}
+            >
+              Research shows finance helps growth up to a point — but too much financial sector
+              activity can harm the real economy.
             </p>
           </div>
 
           {/* Positive channels */}
-          <h4 style={{ fontSize: '14px', fontWeight: 600, color: 'rgb(16, 185, 129)', marginBottom: '16px' }}>
+          <h4
+            style={{
+              fontSize: '14px',
+              fontWeight: 600,
+              color: 'rgb(16, 185, 129)',
+              marginBottom: '16px',
+            }}
+          >
             How Finance Helps Growth
           </h4>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '12px' }}>
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+              gap: '12px',
+            }}
+          >
             {positiveChannels.map((channel, index) => (
               <motion.button
                 key={channel.id}
@@ -195,18 +273,41 @@ export function FinancialDevelopment({ className }: FinancialDevelopmentProps) {
                 style={{
                   padding: '16px',
                   borderRadius: '12px',
-                  backgroundColor: selectedItem === channel.id ? 'rgba(16, 185, 129, 0.1)' : 'var(--color-surface-1)',
-                  border: selectedItem === channel.id ? '2px solid rgb(16, 185, 129)' : '2px solid var(--color-surface-2)',
+                  backgroundColor:
+                    selectedItem === channel.id
+                      ? 'rgba(16, 185, 129, 0.1)'
+                      : 'var(--color-surface-1)',
+                  border:
+                    selectedItem === channel.id
+                      ? '2px solid rgb(16, 185, 129)'
+                      : '2px solid var(--color-surface-2)',
                   cursor: 'pointer',
                   textAlign: 'left',
                   transition: 'all 0.2s',
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+                <div
+                  style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}
+                >
                   <span style={{ fontSize: '24px' }}>{channel.icon}</span>
-                  <span style={{ fontSize: '14px', fontWeight: 600, color: 'var(--color-text-primary)' }}>{channel.name}</span>
+                  <span
+                    style={{
+                      fontSize: '14px',
+                      fontWeight: 600,
+                      color: 'var(--color-text-primary)',
+                    }}
+                  >
+                    {channel.name}
+                  </span>
                 </div>
-                <p style={{ fontSize: '12px', color: 'var(--color-text-secondary)', margin: 0, lineHeight: '1.5' }}>
+                <p
+                  style={{
+                    fontSize: '12px',
+                    color: 'var(--color-text-secondary)',
+                    margin: 0,
+                    lineHeight: '1.5',
+                  }}
+                >
                   {channel.description}
                 </p>
                 {selectedItem === channel.id && (
@@ -229,31 +330,50 @@ export function FinancialDevelopment({ className }: FinancialDevelopmentProps) {
           </div>
         </motion.div>
       ) : (
-        <motion.div
-          key="dark"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-        >
+        <motion.div key="dark" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
           {/* Warning banner */}
-          <div style={{
-            padding: '16px',
-            backgroundColor: 'rgba(239, 68, 68, 0.1)',
-            borderRadius: '12px',
-            border: '1px solid rgba(239, 68, 68, 0.3)',
-            marginBottom: '24px',
-            textAlign: 'center',
-          }}>
-            <p style={{ fontSize: '14px', color: 'var(--color-text-secondary)', margin: 0, lineHeight: '1.6' }}>
-              When financial sector profits come from zero-sum trading, excessive leverage, or rent extraction
-              rather than facilitating real economic activity, finance can become a drag on growth.
+          <div
+            style={{
+              padding: '16px',
+              backgroundColor: 'rgba(239, 68, 68, 0.1)',
+              borderRadius: '12px',
+              border: '1px solid rgba(239, 68, 68, 0.3)',
+              marginBottom: '24px',
+              textAlign: 'center',
+            }}
+          >
+            <p
+              style={{
+                fontSize: '14px',
+                color: 'var(--color-text-secondary)',
+                margin: 0,
+                lineHeight: '1.6',
+              }}
+            >
+              When financial sector profits come from zero-sum trading, excessive leverage, or rent
+              extraction rather than facilitating real economic activity, finance can become a drag
+              on growth.
             </p>
           </div>
 
           {/* Dark side issues */}
-          <h4 style={{ fontSize: '14px', fontWeight: 600, color: 'rgb(239, 68, 68)', marginBottom: '16px' }}>
+          <h4
+            style={{
+              fontSize: '14px',
+              fontWeight: 600,
+              color: 'rgb(239, 68, 68)',
+              marginBottom: '16px',
+            }}
+          >
             Potential Problems
           </h4>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '12px' }}>
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+              gap: '12px',
+            }}
+          >
             {darkSideIssues.map((issue, index) => (
               <motion.button
                 key={issue.id}
@@ -264,18 +384,39 @@ export function FinancialDevelopment({ className }: FinancialDevelopmentProps) {
                 style={{
                   padding: '16px',
                   borderRadius: '12px',
-                  backgroundColor: selectedItem === issue.id ? 'rgba(239, 68, 68, 0.1)' : 'var(--color-surface-1)',
-                  border: selectedItem === issue.id ? '2px solid rgb(239, 68, 68)' : '2px solid var(--color-surface-2)',
+                  backgroundColor:
+                    selectedItem === issue.id ? 'rgba(239, 68, 68, 0.1)' : 'var(--color-surface-1)',
+                  border:
+                    selectedItem === issue.id
+                      ? '2px solid rgb(239, 68, 68)'
+                      : '2px solid var(--color-surface-2)',
                   cursor: 'pointer',
                   textAlign: 'left',
                   transition: 'all 0.2s',
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+                <div
+                  style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}
+                >
                   <span style={{ fontSize: '24px' }}>{issue.icon}</span>
-                  <span style={{ fontSize: '14px', fontWeight: 600, color: 'var(--color-text-primary)' }}>{issue.name}</span>
+                  <span
+                    style={{
+                      fontSize: '14px',
+                      fontWeight: 600,
+                      color: 'var(--color-text-primary)',
+                    }}
+                  >
+                    {issue.name}
+                  </span>
                 </div>
-                <p style={{ fontSize: '12px', color: 'var(--color-text-secondary)', margin: 0, lineHeight: '1.5' }}>
+                <p
+                  style={{
+                    fontSize: '12px',
+                    color: 'var(--color-text-secondary)',
+                    margin: 0,
+                    lineHeight: '1.5',
+                  }}
+                >
                   {issue.description}
                 </p>
                 {selectedItem === issue.id && (
@@ -315,18 +456,40 @@ export function FinancialDevelopment({ className }: FinancialDevelopmentProps) {
         <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
           <span style={{ fontSize: '24px' }}>💡</span>
           <div>
-            <h4 style={{ fontSize: '14px', fontWeight: 600, color: 'rgb(99, 102, 241)', marginBottom: '8px' }}>
+            <h4
+              style={{
+                fontSize: '14px',
+                fontWeight: 600,
+                color: 'rgb(99, 102, 241)',
+                marginBottom: '8px',
+              }}
+            >
               Key Takeaway
             </h4>
-            <p style={{ fontSize: '14px', color: 'var(--color-text-secondary)', lineHeight: '1.6', margin: 0 }}>
-              Finance is like medicine: the right dose helps, but too much can be toxic.
-              The goal of financial regulation is to preserve the benefits of finance while limiting its potential for harm.
+            <p
+              style={{
+                fontSize: '14px',
+                color: 'var(--color-text-secondary)',
+                lineHeight: '1.6',
+                margin: 0,
+              }}
+            >
+              Finance is like medicine: the right dose helps, but too much can be toxic. The goal of
+              financial regulation is to preserve the benefits of finance while limiting its
+              potential for harm.
             </p>
           </div>
         </div>
       </motion.div>
 
-      <p style={{ textAlign: 'center', fontSize: '12px', color: 'var(--color-text-muted)', marginTop: '16px' }}>
+      <p
+        style={{
+          textAlign: 'center',
+          fontSize: '12px',
+          color: 'var(--color-text-muted)',
+          marginTop: '16px',
+        }}
+      >
         Click on any item to learn more about its real-world impact
       </p>
     </div>

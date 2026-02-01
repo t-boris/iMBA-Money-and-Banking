@@ -351,7 +351,9 @@ export function BankTypesPyramid({ className }: BankTypesPyramidProps) {
             textAlign: 'center',
           }}
         >
-          <div style={{ fontSize: '24px', fontWeight: 700, color: 'rgb(16, 185, 129)' }}>4,000+</div>
+          <div style={{ fontSize: '24px', fontWeight: 700, color: 'rgb(16, 185, 129)' }}>
+            4,000+
+          </div>
           <div style={{ fontSize: '12px', color: 'var(--color-text-muted)', marginTop: '4px' }}>
             Community Banks
           </div>
@@ -397,9 +399,7 @@ export function BankTypesPyramid({ className }: BankTypesPyramidProps) {
           border: '1px solid var(--color-surface-2)',
         }}
       >
-        <div
-          style={{ fontSize: '13px', color: 'var(--color-text-secondary)', lineHeight: '1.7' }}
-        >
+        <div style={{ fontSize: '13px', color: 'var(--color-text-secondary)', lineHeight: '1.7' }}>
           <strong style={{ color: 'var(--color-text-primary)' }}>Key Insight:</strong> While
           community banks vastly outnumber money center banks, the top 10 banks hold roughly 50% of
           all U.S. banking assets. This concentration increased dramatically after the 2008

@@ -1,7 +1,3 @@
-export default function StudyToolsLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function StudyToolsLayout({ children }: { children: React.ReactNode }) {
   return children;
 }

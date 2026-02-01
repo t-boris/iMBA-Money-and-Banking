@@ -29,8 +29,7 @@ const events: TimelineEvent[] = [
   {
     year: 1930,
     title: 'Great Depression Bank Failures',
-    description:
-      'Over 9,000 banks fail between 1930-1933, wiping out depositors savings.',
+    description: 'Over 9,000 banks fail between 1930-1933, wiping out depositors savings.',
     impact:
       'Complete collapse of public trust in banking system, demand for federal intervention and deposit insurance.',
     era: 'pre-regulation',
@@ -49,8 +48,7 @@ const events: TimelineEvent[] = [
     title: 'Golden Age of Banking (3-6-3 Rule)',
     description:
       'Banks pay 3% on deposits, charge 6% on loans, and bankers are on the golf course by 3 PM.',
-    impact:
-      'Decades of stability and profitability with minimal innovation but also minimal risk.',
+    impact: 'Decades of stability and profitability with minimal innovation but also minimal risk.',
     era: 'regulation',
   },
   {
@@ -74,8 +72,7 @@ const events: TimelineEvent[] = [
   {
     year: 1994,
     title: 'Riegle-Neal Act',
-    description:
-      'Permits interstate banking and branching, ending geographic restrictions.',
+    description: 'Permits interstate banking and branching, ending geographic restrictions.',
     impact:
       'Enabled creation of truly national banks, accelerated consolidation from 14,000+ to fewer banks.',
     era: 'deregulation',
@@ -133,12 +130,8 @@ const eraColors = {
   },
 };
 
-export function BankingEvolutionTimeline({
-  className,
-}: BankingEvolutionTimelineProps) {
-  const [selectedEvent, setSelectedEvent] = useState<TimelineEvent | null>(
-    null
-  );
+export function BankingEvolutionTimeline({ className }: BankingEvolutionTimelineProps) {
+  const [selectedEvent, setSelectedEvent] = useState<TimelineEvent | null>(null);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   const handleEventClick = (event: TimelineEvent, index: number) => {
@@ -235,9 +228,7 @@ export function BankingEvolutionTimeline({
                         : {}
                     }
                     transition={
-                      isSelected
-                        ? { duration: 2, repeat: Infinity, ease: 'easeInOut' }
-                        : {}
+                      isSelected ? { duration: 2, repeat: Infinity, ease: 'easeInOut' } : {}
                     }
                   >
                     {/* Inner dot */}
@@ -262,7 +253,6 @@ export function BankingEvolutionTimeline({
                   >
                     {event.year}
                   </motion.div>
-
                 </motion.button>
               );
             })}
@@ -286,26 +276,14 @@ export function BankingEvolutionTimeline({
             )}
           >
             {/* Header gradient */}
-            <div
-              className={cn(
-                'p-5 bg-gradient-to-r',
-                eraColors[selectedEvent.era].gradient
-              )}
-            >
+            <div className={cn('p-5 bg-gradient-to-r', eraColors[selectedEvent.era].gradient)}>
               <div className="flex items-center justify-between">
                 <div>
                   <div className="flex items-center gap-3">
-                    <span
-                      className={cn(
-                        'text-2xl font-bold',
-                        eraColors[selectedEvent.era].text
-                      )}
-                    >
+                    <span className={cn('text-2xl font-bold', eraColors[selectedEvent.era].text)}>
                       {selectedEvent.year}
                     </span>
-                    <h3 className="text-xl font-bold text-text-primary">
-                      {selectedEvent.title}
-                    </h3>
+                    <h3 className="text-xl font-bold text-text-primary">{selectedEvent.title}</h3>
                   </div>
                   <p className="text-sm text-text-secondary mt-1">
                     {eraColors[selectedEvent.era].label}
@@ -340,9 +318,7 @@ export function BankingEvolutionTimeline({
             <div className="p-5 space-y-5">
               {/* Description */}
               <div>
-                <h4 className="text-sm font-semibold text-text-primary mb-2">
-                  What Happened
-                </h4>
+                <h4 className="text-sm font-semibold text-text-primary mb-2">What Happened</h4>
                 <p className="text-sm text-text-secondary leading-relaxed">
                   {selectedEvent.description}
                 </p>
@@ -359,17 +335,9 @@ export function BankingEvolutionTimeline({
                 transition={{ delay: 0.2 }}
               >
                 <div className="flex items-start gap-3">
-                  <div
-                    className={cn(
-                      'p-2 rounded-lg',
-                      eraColors[selectedEvent.era].bgLight
-                    )}
-                  >
+                  <div className={cn('p-2 rounded-lg', eraColors[selectedEvent.era].bgLight)}>
                     <svg
-                      className={cn(
-                        'w-5 h-5',
-                        eraColors[selectedEvent.era].text
-                      )}
+                      className={cn('w-5 h-5', eraColors[selectedEvent.era].text)}
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -383,9 +351,7 @@ export function BankingEvolutionTimeline({
                     </svg>
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-text-primary mb-1">
-                      Long-term Impact
-                    </p>
+                    <p className="text-sm font-medium text-text-primary mb-1">Long-term Impact</p>
                     <p className="text-sm text-text-secondary leading-relaxed">
                       {selectedEvent.impact}
                     </p>

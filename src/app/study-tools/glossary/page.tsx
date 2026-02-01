@@ -17,7 +17,7 @@ export default function GlossaryPage() {
   const [selectedTerm, setSelectedTerm] = useState<GlossaryTerm | null>(null);
 
   const filteredTerms = useMemo(() => {
-    return glossaryTerms.filter(term => {
+    return glossaryTerms.filter((term) => {
       // Letter filter
       if (selectedLetter && !term.term.toUpperCase().startsWith(selectedLetter)) {
         return false;
@@ -30,8 +30,7 @@ export default function GlossaryPage() {
       if (searchQuery) {
         const query = searchQuery.toLowerCase();
         return (
-          term.term.toLowerCase().includes(query) ||
-          term.definition.toLowerCase().includes(query)
+          term.term.toLowerCase().includes(query) || term.definition.toLowerCase().includes(query)
         );
       }
       return true;
@@ -99,7 +98,7 @@ export default function GlossaryPage() {
             type="text"
             placeholder="Search terms..."
             value={searchQuery}
-            onChange={e => setSearchQuery(e.target.value)}
+            onChange={(e) => setSearchQuery(e.target.value)}
             style={{
               padding: '0.75rem 1rem',
               fontSize: '1rem',
@@ -122,13 +121,14 @@ export default function GlossaryPage() {
                 borderRadius: '0.5rem',
                 border: 'none',
                 cursor: 'pointer',
-                backgroundColor: selectedType === 'all' ? 'var(--color-primary)' : 'var(--color-bg-secondary)',
+                backgroundColor:
+                  selectedType === 'all' ? 'var(--color-primary)' : 'var(--color-bg-secondary)',
                 color: selectedType === 'all' ? 'white' : 'var(--color-text-secondary)',
               }}
             >
               All
             </button>
-            {glossaryTypes.map(type => (
+            {glossaryTypes.map((type) => (
               <button
                 key={type}
                 onClick={() => setSelectedType(type as FilterType)}
@@ -140,7 +140,8 @@ export default function GlossaryPage() {
                   border: 'none',
                   cursor: 'pointer',
                   textTransform: 'capitalize',
-                  backgroundColor: selectedType === type ? 'var(--color-primary)' : 'var(--color-bg-secondary)',
+                  backgroundColor:
+                    selectedType === type ? 'var(--color-primary)' : 'var(--color-bg-secondary)',
                   color: selectedType === type ? 'white' : 'var(--color-text-secondary)',
                 }}
               >
@@ -166,24 +167,34 @@ export default function GlossaryPage() {
             >
               All
             </button>
-            {glossaryLetters.map(letter => (
-              <button
-                key={letter}
-                onClick={() => setSelectedLetter(letter)}
-                style={{
-                  padding: '0.35rem 0.6rem',
-                  fontSize: '0.8rem',
-                  fontWeight: 600,
-                  borderRadius: '0.25rem',
-                  border: 'none',
-                  cursor: 'pointer',
-                  backgroundColor: selectedLetter === letter ? 'var(--color-primary)' : 'transparent',
-                  color: selectedLetter === letter ? 'white' : 'var(--color-text-secondary)',
-                }}
-              >
-                {letter}
-              </button>
-            ))}
+            {'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').map((letter) => {
+              const hasTerms = glossaryLetters.includes(letter);
+              return (
+                <button
+                  key={letter}
+                  onClick={() => hasTerms && setSelectedLetter(letter)}
+                  disabled={!hasTerms}
+                  style={{
+                    padding: '0.35rem 0.6rem',
+                    fontSize: '0.8rem',
+                    fontWeight: 600,
+                    borderRadius: '0.25rem',
+                    border: 'none',
+                    cursor: hasTerms ? 'pointer' : 'default',
+                    backgroundColor:
+                      selectedLetter === letter ? 'var(--color-primary)' : 'transparent',
+                    color: hasTerms
+                      ? selectedLetter === letter
+                        ? 'white'
+                        : 'var(--color-text-secondary)'
+                      : 'var(--color-text-muted)',
+                    opacity: hasTerms ? 1 : 0.4,
+                  }}
+                >
+                  {letter}
+                </button>
+              );
+            })}
           </div>
         </motion.div>
 

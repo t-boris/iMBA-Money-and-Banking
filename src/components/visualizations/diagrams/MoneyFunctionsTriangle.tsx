@@ -47,9 +47,7 @@ const moneyFunctions: MoneyFunction[] = [
   },
 ];
 
-export function MoneyFunctionsTriangle({
-  className,
-}: MoneyFunctionsTriangleProps) {
+export function MoneyFunctionsTriangle({ className }: MoneyFunctionsTriangleProps) {
   const [activeFunction, setActiveFunction] = useState<string | null>(null);
 
   const activeData = moneyFunctions.find((f) => f.id === activeFunction);
@@ -123,9 +121,7 @@ export function MoneyFunctionsTriangle({
           >
             <span className="text-3xl">💵</span>
           </motion.div>
-          <p className="text-center text-sm font-medium text-text-secondary mt-2">
-            Money
-          </p>
+          <p className="text-center text-sm font-medium text-text-secondary mt-2">Money</p>
         </motion.div>
 
         {/* Bottom vertices - Unit of Account & Store of Value */}
@@ -183,12 +179,7 @@ export function MoneyFunctionsTriangle({
             transition={{ duration: 0.2 }}
             className="mt-6"
           >
-            <div
-              className={cn(
-                'p-5 rounded-xl',
-                'bg-surface-1 border border-surface-2 shadow-sm'
-              )}
-            >
+            <div className={cn('p-5 rounded-xl', 'bg-surface-1 border border-surface-2 shadow-sm')}>
               <div className="flex items-center gap-3 mb-3">
                 <span className="text-2xl">{activeData.icon}</span>
                 <h3
@@ -261,9 +252,7 @@ function FunctionCard({ func, isActive, onClick, colorClasses }: FunctionCardPro
       >
         {func.name}
       </span>
-      <span className="text-xs text-text-muted text-center">
-        {func.shortDescription}
-      </span>
+      <span className="text-xs text-text-muted text-center">{func.shortDescription}</span>
     </motion.button>
   );
 }

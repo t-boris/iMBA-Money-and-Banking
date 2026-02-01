@@ -64,9 +64,7 @@ export function Entity({
           className="text-3xl"
           animate={highlighted ? { scale: [1, 1.1, 1] } : undefined}
           transition={
-            highlighted
-              ? { duration: 1.5, repeat: Infinity, ease: 'easeInOut' }
-              : undefined
+            highlighted ? { duration: 1.5, repeat: Infinity, ease: 'easeInOut' } : undefined
           }
         >
           {icon}
@@ -84,15 +82,11 @@ export function Entity({
 
         {/* Value */}
         {value && (
-          <span className="text-lg font-semibold font-mono text-text-primary">
-            {value}
-          </span>
+          <span className="text-lg font-semibold font-mono text-text-primary">{value}</span>
         )}
 
         {/* Subtext */}
-        {subtext && (
-          <span className="text-xs text-text-tertiary">{subtext}</span>
-        )}
+        {subtext && <span className="text-xs text-text-tertiary">{subtext}</span>}
       </div>
     </motion.div>
   );

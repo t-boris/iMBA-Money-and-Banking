@@ -21,7 +21,8 @@ export const module3Concepts: Concept[] = [
   {
     id: 'bank-profit-sources',
     term: 'Bank Profit Sources',
-    definition: 'The main ways banks earn money: net interest income, fee income, and trading profits.',
+    definition:
+      'The main ways banks earn money: net interest income, fee income, and trading profits.',
     category: 'money',
     relatedConcepts: ['net-interest-income', 'fee-income'],
     lessonId: '3-0',
@@ -31,7 +32,8 @@ export const module3Concepts: Concept[] = [
   {
     id: 'bank-equity',
     term: 'Bank Equity',
-    definition: 'The ownership stake in a bank, representing the residual claim after all liabilities are paid.',
+    definition:
+      'The ownership stake in a bank, representing the residual claim after all liabilities are paid.',
     category: 'capital',
     relatedConcepts: ['shareholders', 'residual-claim', 'first-loss-piece'],
     lessonId: '3-1.1',
@@ -47,7 +49,8 @@ export const module3Concepts: Concept[] = [
   {
     id: 'residual-claim',
     term: 'Residual Claim',
-    definition: 'The right of equity holders to receive whatever is left after all other claims are paid.',
+    definition:
+      'The right of equity holders to receive whatever is left after all other claims are paid.',
     category: 'capital',
     relatedConcepts: ['bank-equity', 'first-loss-piece', 'senior-debt'],
     lessonId: '3-1.1',
@@ -55,7 +58,8 @@ export const module3Concepts: Concept[] = [
   {
     id: 'first-loss-piece',
     term: 'First Loss Piece',
-    definition: 'The portion of capital that absorbs losses first, protecting depositors and creditors.',
+    definition:
+      'The portion of capital that absorbs losses first, protecting depositors and creditors.',
     category: 'capital',
     relatedConcepts: ['bank-equity', 'residual-claim'],
     lessonId: '3-1.1',
@@ -63,7 +67,8 @@ export const module3Concepts: Concept[] = [
   {
     id: 'retained-earnings',
     term: 'Retained Earnings',
-    definition: 'Profits that are kept in the bank rather than paid out as dividends, building capital over time.',
+    definition:
+      'Profits that are kept in the bank rather than paid out as dividends, building capital over time.',
     category: 'capital',
     relatedConcepts: ['bank-equity'],
     lessonId: '3-1.1',
@@ -71,7 +76,8 @@ export const module3Concepts: Concept[] = [
   {
     id: 'preferred-stock',
     term: 'Preferred Stock',
-    definition: 'A hybrid security with features of both debt and equity, paying fixed dividends before common shareholders.',
+    definition:
+      'A hybrid security with features of both debt and equity, paying fixed dividends before common shareholders.',
     category: 'capital',
     relatedConcepts: ['bank-equity', 'shareholders'],
     lessonId: '3-1.1',
@@ -79,7 +85,8 @@ export const module3Concepts: Concept[] = [
   {
     id: 'capital-requirements',
     term: 'Capital Requirements',
-    definition: 'Regulatory rules specifying the minimum amount of equity a bank must hold relative to its risk.',
+    definition:
+      'Regulatory rules specifying the minimum amount of equity a bank must hold relative to its risk.',
     category: 'capital',
     relatedConcepts: ['bank-equity', 'leverage'],
     lessonId: '3-1.1',
@@ -89,7 +96,8 @@ export const module3Concepts: Concept[] = [
   {
     id: 'stock-returns',
     term: 'Stock Returns',
-    definition: 'The gain or loss on a bank stock investment, including dividends and price appreciation.',
+    definition:
+      'The gain or loss on a bank stock investment, including dividends and price appreciation.',
     category: 'capital',
     relatedConcepts: ['roe', 'shareholders'],
     lessonId: '3-1.2',
@@ -97,7 +105,8 @@ export const module3Concepts: Concept[] = [
   {
     id: 'roa',
     term: 'ROA (Return on Assets)',
-    definition: 'Net income divided by total assets, measuring how efficiently a bank uses its assets to generate profit.',
+    definition:
+      'Net income divided by total assets, measuring how efficiently a bank uses its assets to generate profit.',
     category: 'capital',
     relatedConcepts: ['roe', 'leverage'],
     lessonId: '3-1.2',
@@ -105,7 +114,8 @@ export const module3Concepts: Concept[] = [
   {
     id: 'roe',
     term: 'ROE (Return on Equity)',
-    definition: 'Net income divided by equity, measuring the return earned on shareholder investment.',
+    definition:
+      'Net income divided by equity, measuring the return earned on shareholder investment.',
     category: 'capital',
     relatedConcepts: ['roa', 'leverage', 'bank-equity'],
     lessonId: '3-1.2',
@@ -113,7 +123,8 @@ export const module3Concepts: Concept[] = [
   {
     id: 'leverage',
     term: 'Leverage',
-    definition: 'The ratio of assets to equity, showing how much a bank has borrowed relative to its capital.',
+    definition:
+      'The ratio of assets to equity, showing how much a bank has borrowed relative to its capital.',
     category: 'capital',
     relatedConcepts: ['roa', 'roe', 'capital-requirements'],
     lessonId: '3-1.2',
@@ -129,7 +140,8 @@ export const module3Concepts: Concept[] = [
   {
     id: 'net-interest-margin',
     term: 'Net Interest Margin',
-    definition: 'Net interest income divided by average earning assets, measuring the spread earned on lending.',
+    definition:
+      'Net interest income divided by average earning assets, measuring the spread earned on lending.',
     category: 'money',
     relatedConcepts: ['roa', 'interest-rate-risk'],
     lessonId: '3-1.2',
@@ -155,7 +167,8 @@ export const module3Concepts: Concept[] = [
   {
     id: 'risk-management',
     term: 'Risk Management',
-    definition: 'The process of identifying, assessing, and controlling threats to a bank\'s capital and earnings.',
+    definition:
+      "The process of identifying, assessing, and controlling threats to a bank's capital and earnings.",
     category: 'risk',
     relatedConcepts: ['risk', 'hedging'],
     lessonId: '3-2.1',
@@ -163,7 +176,8 @@ export const module3Concepts: Concept[] = [
   {
     id: 'insolvency',
     term: 'Insolvency',
-    definition: 'A state where liabilities exceed assets, meaning the bank cannot pay all its debts.',
+    definition:
+      'A state where liabilities exceed assets, meaning the bank cannot pay all its debts.',
     category: 'risk',
     relatedConcepts: ['bank-equity', 'first-loss-piece'],
     lessonId: '3-2.1',
@@ -181,7 +195,8 @@ export const module3Concepts: Concept[] = [
   {
     id: 'credit-risk',
     term: 'Credit Risk',
-    definition: 'The risk that a borrower will fail to repay a loan or meet contractual obligations.',
+    definition:
+      'The risk that a borrower will fail to repay a loan or meet contractual obligations.',
     category: 'risk',
     relatedConcepts: ['default', 'probability-of-default'],
     lessonId: '3-2.2',
@@ -205,7 +220,7 @@ export const module3Concepts: Concept[] = [
   {
     id: 'credit-rating',
     term: 'Credit Rating',
-    definition: 'An assessment of creditworthiness by agencies like Moody\'s, S&P, and Fitch.',
+    definition: "An assessment of creditworthiness by agencies like Moody's, S&P, and Fitch.",
     category: 'risk',
     relatedConcepts: ['probability-of-default', 'fico-score'],
     lessonId: '3-2.2',
@@ -213,7 +228,8 @@ export const module3Concepts: Concept[] = [
   {
     id: 'fico-score',
     term: 'FICO Score',
-    definition: 'A consumer credit score ranging from 300-850 that predicts the likelihood of repayment.',
+    definition:
+      'A consumer credit score ranging from 300-850 that predicts the likelihood of repayment.',
     category: 'risk',
     relatedConcepts: ['credit-rating', 'probability-of-default'],
     lessonId: '3-2.2',
@@ -229,7 +245,8 @@ export const module3Concepts: Concept[] = [
   {
     id: 'loan-commitments',
     term: 'Loan Commitments',
-    definition: 'Promises to lend up to a specified amount, creating credit risk exposure before funds are disbursed.',
+    definition:
+      'Promises to lend up to a specified amount, creating credit risk exposure before funds are disbursed.',
     category: 'risk',
     relatedConcepts: ['credit-risk'],
     lessonId: '3-2.2',
@@ -245,7 +262,7 @@ export const module3Concepts: Concept[] = [
   {
     id: 'recovery-rate',
     term: 'Recovery Rate',
-    definition: 'The percentage of a loan\'s value recovered after a borrower defaults.',
+    definition: "The percentage of a loan's value recovered after a borrower defaults.",
     category: 'risk',
     relatedConcepts: ['default', 'secured-loan'],
     lessonId: '3-2.2',
@@ -261,7 +278,8 @@ export const module3Concepts: Concept[] = [
   {
     id: 'senior-debt',
     term: 'Senior Debt',
-    definition: 'Debt that has priority over other obligations in bankruptcy, increasing recovery rates.',
+    definition:
+      'Debt that has priority over other obligations in bankruptcy, increasing recovery rates.',
     category: 'risk',
     relatedConcepts: ['recovery-rate', 'residual-claim'],
     lessonId: '3-2.2',
@@ -269,7 +287,8 @@ export const module3Concepts: Concept[] = [
   {
     id: 'credit-default-swap',
     term: 'Credit Default Swap (CDS)',
-    definition: 'A derivative that transfers credit risk from one party to another in exchange for periodic payments.',
+    definition:
+      'A derivative that transfers credit risk from one party to another in exchange for periodic payments.',
     category: 'risk',
     relatedConcepts: ['credit-risk', 'hedging'],
     lessonId: '3-2.2',
@@ -277,7 +296,8 @@ export const module3Concepts: Concept[] = [
   {
     id: 'diversification',
     term: 'Diversification',
-    definition: 'Spreading investments across many borrowers or assets to reduce the impact of any single default.',
+    definition:
+      'Spreading investments across many borrowers or assets to reduce the impact of any single default.',
     category: 'risk',
     relatedConcepts: ['credit-risk', 'risk-management'],
     lessonId: '3-2.2',
@@ -287,7 +307,8 @@ export const module3Concepts: Concept[] = [
   {
     id: 'interest-rate-risk',
     term: 'Interest Rate Risk',
-    definition: 'The risk that changes in interest rates will reduce the value of assets or income.',
+    definition:
+      'The risk that changes in interest rates will reduce the value of assets or income.',
     category: 'risk',
     relatedConcepts: ['maturity-mismatch', 'duration'],
     lessonId: '3-2.3',
@@ -295,7 +316,8 @@ export const module3Concepts: Concept[] = [
   {
     id: 'maturity-mismatch',
     term: 'Maturity Mismatch',
-    definition: 'The gap between short-term funding and long-term lending that exposes banks to rate changes.',
+    definition:
+      'The gap between short-term funding and long-term lending that exposes banks to rate changes.',
     category: 'risk',
     relatedConcepts: ['interest-rate-risk', 'refinancing-risk'],
     lessonId: '3-2.3',
@@ -327,7 +349,8 @@ export const module3Concepts: Concept[] = [
   {
     id: 'duration',
     term: 'Duration',
-    definition: 'A measure of how sensitive a bond or loan\'s price is to changes in interest rates.',
+    definition:
+      "A measure of how sensitive a bond or loan's price is to changes in interest rates.",
     category: 'risk',
     relatedConcepts: ['interest-rate-risk', 'maturity-mismatch'],
     lessonId: '3-2.3',
@@ -335,7 +358,8 @@ export const module3Concepts: Concept[] = [
   {
     id: 'interest-rate-swap',
     term: 'Interest Rate Swap',
-    definition: 'A derivative where two parties exchange fixed and floating interest payments to manage rate exposure.',
+    definition:
+      'A derivative where two parties exchange fixed and floating interest payments to manage rate exposure.',
     category: 'risk',
     relatedConcepts: ['hedging', 'interest-rate-risk'],
     lessonId: '3-2.3',
@@ -353,7 +377,8 @@ export const module3Concepts: Concept[] = [
   {
     id: 'liquidity-risk',
     term: 'Liquidity Risk',
-    definition: 'The risk that a bank cannot meet its payment obligations without incurring unacceptable losses.',
+    definition:
+      'The risk that a bank cannot meet its payment obligations without incurring unacceptable losses.',
     category: 'risk',
     relatedConcepts: ['cash-shortfall', 'bank-run'],
     lessonId: '3-2.4',
@@ -361,7 +386,8 @@ export const module3Concepts: Concept[] = [
   {
     id: 'cash-shortfall',
     term: 'Cash Shortfall',
-    definition: 'A situation where a bank does not have enough liquid assets to meet immediate demands.',
+    definition:
+      'A situation where a bank does not have enough liquid assets to meet immediate demands.',
     category: 'risk',
     relatedConcepts: ['liquidity-risk', 'fire-sale'],
     lessonId: '3-2.4',
@@ -385,7 +411,8 @@ export const module3Concepts: Concept[] = [
   {
     id: 'wholesale-funding',
     term: 'Wholesale Funding',
-    definition: 'Short-term borrowing from other financial institutions rather than retail deposits.',
+    definition:
+      'Short-term borrowing from other financial institutions rather than retail deposits.',
     category: 'risk',
     relatedConcepts: ['liability-management', 'rollover-risk'],
     lessonId: '3-2.4',
@@ -401,7 +428,8 @@ export const module3Concepts: Concept[] = [
   {
     id: 'bank-run',
     term: 'Bank Run',
-    definition: 'A rush of depositors withdrawing funds simultaneously due to fears of bank failure.',
+    definition:
+      'A rush of depositors withdrawing funds simultaneously due to fears of bank failure.',
     category: 'risk',
     relatedConcepts: ['liquidity-risk', 'fire-sale'],
     lessonId: '3-2.4',
@@ -419,7 +447,8 @@ export const module3Concepts: Concept[] = [
   {
     id: 'market-risk',
     term: 'Market Risk',
-    definition: 'The risk of losses from changes in market prices of securities in the trading book.',
+    definition:
+      'The risk of losses from changes in market prices of securities in the trading book.',
     category: 'risk',
     relatedConcepts: ['trading-book', 'value-at-risk'],
     lessonId: '3-2.5',
@@ -427,7 +456,8 @@ export const module3Concepts: Concept[] = [
   {
     id: 'trading-book',
     term: 'Trading Book',
-    definition: 'Securities held for short-term trading, subject to daily mark-to-market valuation.',
+    definition:
+      'Securities held for short-term trading, subject to daily mark-to-market valuation.',
     category: 'risk',
     relatedConcepts: ['market-risk', 'bank-book', 'mark-to-market'],
     lessonId: '3-2.5',
@@ -435,7 +465,8 @@ export const module3Concepts: Concept[] = [
   {
     id: 'bank-book',
     term: 'Bank Book',
-    definition: 'Loans and securities held to maturity, valued at historical cost rather than market price.',
+    definition:
+      'Loans and securities held to maturity, valued at historical cost rather than market price.',
     category: 'risk',
     relatedConcepts: ['trading-book'],
     lessonId: '3-2.5',
@@ -443,7 +474,8 @@ export const module3Concepts: Concept[] = [
   {
     id: 'mark-to-market',
     term: 'Mark-to-Market',
-    definition: 'Revaluing assets at current market prices, recognizing gains and losses immediately.',
+    definition:
+      'Revaluing assets at current market prices, recognizing gains and losses immediately.',
     category: 'risk',
     relatedConcepts: ['trading-book', 'market-risk'],
     lessonId: '3-2.5',
@@ -451,7 +483,8 @@ export const module3Concepts: Concept[] = [
   {
     id: 'value-at-risk',
     term: 'Value at Risk (VaR)',
-    definition: 'A statistical measure of the maximum expected loss over a given time period at a confidence level.',
+    definition:
+      'A statistical measure of the maximum expected loss over a given time period at a confidence level.',
     category: 'risk',
     relatedConcepts: ['market-risk', 'risk-measurement', 'fat-tails'],
     lessonId: '3-2.5',
@@ -459,7 +492,8 @@ export const module3Concepts: Concept[] = [
   {
     id: 'fat-tails',
     term: 'Fat Tails',
-    definition: 'The tendency for extreme events to occur more frequently than normal distributions predict.',
+    definition:
+      'The tendency for extreme events to occur more frequently than normal distributions predict.',
     category: 'risk',
     relatedConcepts: ['value-at-risk', 'black-swan'],
     lessonId: '3-2.5',
@@ -477,7 +511,8 @@ export const module3Concepts: Concept[] = [
   {
     id: 'operational-risk',
     term: 'Operational Risk',
-    definition: 'The risk of loss from failed internal processes, people, systems, or external events.',
+    definition:
+      'The risk of loss from failed internal processes, people, systems, or external events.',
     category: 'risk',
     relatedConcepts: ['operational-failure', 'employee-fraud'],
     lessonId: '3-2.6',
@@ -509,7 +544,8 @@ export const module3Concepts: Concept[] = [
   {
     id: 'fintech-risk',
     term: 'Fintech Risk',
-    definition: 'Risks arising from new financial technology, including disruption and cyber threats.',
+    definition:
+      'Risks arising from new financial technology, including disruption and cyber threats.',
     category: 'risk',
     relatedConcepts: ['operational-risk', 'cyber-risk'],
     lessonId: '3-2.6',
@@ -517,7 +553,8 @@ export const module3Concepts: Concept[] = [
   {
     id: 'cyber-risk',
     term: 'Cyber Risk',
-    definition: 'The risk of financial loss from cyberattacks, data breaches, or IT system failures.',
+    definition:
+      'The risk of financial loss from cyberattacks, data breaches, or IT system failures.',
     category: 'risk',
     relatedConcepts: ['operational-risk', 'fintech-risk', 'operational-failure'],
     lessonId: '3-2.6',

@@ -55,7 +55,14 @@ export function LeverageDecomposition({ className }: LeverageDecompositionProps)
     <div className={cn('w-full', className)} style={{ maxWidth: '800px', margin: '0 auto' }}>
       {/* Title */}
       <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-        <h3 style={{ fontSize: '20px', fontWeight: 600, color: 'var(--color-text-primary)', marginBottom: '8px' }}>
+        <h3
+          style={{
+            fontSize: '20px',
+            fontWeight: 600,
+            color: 'var(--color-text-primary)',
+            marginBottom: '8px',
+          }}
+        >
           Leverage: A Double-Edged Sword
         </h3>
         <p style={{ fontSize: '14px', color: 'var(--color-text-secondary)', lineHeight: '1.6' }}>
@@ -65,18 +72,20 @@ export function LeverageDecomposition({ className }: LeverageDecompositionProps)
       </div>
 
       {/* Scenario Toggle */}
-      <div style={{
-        display: 'flex',
-        justifyContent: 'center',
-        gap: '8px',
-        marginBottom: '28px',
-        padding: '4px',
-        backgroundColor: 'var(--color-surface-1)',
-        borderRadius: '12px',
-        border: '1px solid var(--color-surface-2)',
-        width: 'fit-content',
-        margin: '0 auto 28px auto',
-      }}>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          gap: '8px',
+          marginBottom: '28px',
+          padding: '4px',
+          backgroundColor: 'var(--color-surface-1)',
+          borderRadius: '12px',
+          border: '1px solid var(--color-surface-2)',
+          width: 'fit-content',
+          margin: '0 auto 28px auto',
+        }}
+      >
         <motion.button
           onClick={() => setActiveScenario('good')}
           whileHover={{ scale: 1.02 }}
@@ -84,17 +93,23 @@ export function LeverageDecomposition({ className }: LeverageDecompositionProps)
           style={{
             padding: '12px 24px',
             backgroundColor: activeScenario === 'good' ? 'rgba(16, 185, 129, 0.2)' : 'transparent',
-            border: activeScenario === 'good' ? '2px solid rgba(16, 185, 129, 0.4)' : '2px solid transparent',
+            border:
+              activeScenario === 'good'
+                ? '2px solid rgba(16, 185, 129, 0.4)'
+                : '2px solid transparent',
             borderRadius: '8px',
             cursor: 'pointer',
             transition: 'all 0.2s',
           }}
         >
-          <span style={{
-            fontSize: '14px',
-            fontWeight: 600,
-            color: activeScenario === 'good' ? 'rgb(16, 185, 129)' : 'var(--color-text-secondary)',
-          }}>
+          <span
+            style={{
+              fontSize: '14px',
+              fontWeight: 600,
+              color:
+                activeScenario === 'good' ? 'rgb(16, 185, 129)' : 'var(--color-text-secondary)',
+            }}
+          >
             ☀️ Good Times
           </span>
         </motion.button>
@@ -105,17 +120,22 @@ export function LeverageDecomposition({ className }: LeverageDecompositionProps)
           style={{
             padding: '12px 24px',
             backgroundColor: activeScenario === 'bad' ? 'rgba(239, 68, 68, 0.2)' : 'transparent',
-            border: activeScenario === 'bad' ? '2px solid rgba(239, 68, 68, 0.4)' : '2px solid transparent',
+            border:
+              activeScenario === 'bad'
+                ? '2px solid rgba(239, 68, 68, 0.4)'
+                : '2px solid transparent',
             borderRadius: '8px',
             cursor: 'pointer',
             transition: 'all 0.2s',
           }}
         >
-          <span style={{
-            fontSize: '14px',
-            fontWeight: 600,
-            color: activeScenario === 'bad' ? 'rgb(239, 68, 68)' : 'var(--color-text-secondary)',
-          }}>
+          <span
+            style={{
+              fontSize: '14px',
+              fontWeight: 600,
+              color: activeScenario === 'bad' ? 'rgb(239, 68, 68)' : 'var(--color-text-secondary)',
+            }}
+          >
             🌧️ Bad Times
           </span>
         </motion.button>
@@ -148,25 +168,29 @@ export function LeverageDecomposition({ className }: LeverageDecompositionProps)
               borderRadius: '8px',
             }}
           >
-            <span style={{
-              fontSize: '13px',
-              color: isPositive ? 'rgb(16, 185, 129)' : 'rgb(239, 68, 68)',
-              fontWeight: 500,
-            }}>
+            <span
+              style={{
+                fontSize: '13px',
+                color: isPositive ? 'rgb(16, 185, 129)' : 'rgb(239, 68, 68)',
+                fontWeight: 500,
+              }}
+            >
               {currentData.description}
             </span>
           </motion.div>
         </AnimatePresence>
 
         {/* Leverage Amplification Visual */}
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: '16px',
-          flexWrap: 'wrap',
-          marginBottom: '24px',
-        }}>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '16px',
+            flexWrap: 'wrap',
+            marginBottom: '24px',
+          }}
+        >
           {/* ROA Box */}
           <motion.div
             layout
@@ -181,7 +205,14 @@ export function LeverageDecomposition({ className }: LeverageDecompositionProps)
               minWidth: '100px',
             }}
           >
-            <span style={{ fontSize: '12px', color: 'rgb(99, 102, 241)', fontWeight: 500, marginBottom: '8px' }}>
+            <span
+              style={{
+                fontSize: '12px',
+                color: 'rgb(99, 102, 241)',
+                fontWeight: 500,
+                marginBottom: '8px',
+              }}
+            >
               ROA
             </span>
             <AnimatePresence mode="wait">
@@ -198,7 +229,8 @@ export function LeverageDecomposition({ className }: LeverageDecompositionProps)
                   fontFamily: 'monospace',
                 }}
               >
-                {currentData.roa > 0 ? '+' : ''}{currentData.roa.toFixed(1)}%
+                {currentData.roa > 0 ? '+' : ''}
+                {currentData.roa.toFixed(1)}%
               </motion.span>
             </AnimatePresence>
           </motion.div>
@@ -257,16 +289,20 @@ export function LeverageDecomposition({ className }: LeverageDecompositionProps)
               padding: '24px 32px',
               backgroundColor: isPositive ? 'rgba(16, 185, 129, 0.15)' : 'rgba(239, 68, 68, 0.15)',
               borderRadius: '12px',
-              border: isPositive ? '3px solid rgba(16, 185, 129, 0.5)' : '3px solid rgba(239, 68, 68, 0.5)',
+              border: isPositive
+                ? '3px solid rgba(16, 185, 129, 0.5)'
+                : '3px solid rgba(239, 68, 68, 0.5)',
               minWidth: '140px',
             }}
           >
-            <span style={{
-              fontSize: '12px',
-              color: isPositive ? 'rgb(16, 185, 129)' : 'rgb(239, 68, 68)',
-              fontWeight: 500,
-              marginBottom: '8px',
-            }}>
+            <span
+              style={{
+                fontSize: '12px',
+                color: isPositive ? 'rgb(16, 185, 129)' : 'rgb(239, 68, 68)',
+                fontWeight: 500,
+                marginBottom: '8px',
+              }}
+            >
               ROE
             </span>
             <AnimatePresence mode="wait">
@@ -283,21 +319,24 @@ export function LeverageDecomposition({ className }: LeverageDecompositionProps)
                   fontFamily: 'monospace',
                 }}
               >
-                {currentData.roe > 0 ? '+' : ''}{currentData.roe.toFixed(1)}%
+                {currentData.roe > 0 ? '+' : ''}
+                {currentData.roe.toFixed(1)}%
               </motion.span>
             </AnimatePresence>
           </motion.div>
         </div>
 
         {/* Formula display */}
-        <div style={{
-          textAlign: 'center',
-          padding: '12px',
-          backgroundColor: 'var(--color-surface-2)',
-          borderRadius: '8px',
-          fontFamily: 'monospace',
-          fontSize: '14px',
-        }}>
+        <div
+          style={{
+            textAlign: 'center',
+            padding: '12px',
+            backgroundColor: 'var(--color-surface-2)',
+            borderRadius: '8px',
+            fontFamily: 'monospace',
+            fontSize: '14px',
+          }}
+        >
           <span style={{ color: 'rgb(99, 102, 241)' }}>ROE</span>
           <span style={{ color: 'var(--color-text-muted)' }}> = </span>
           <span style={{ color: 'rgb(99, 102, 241)' }}>ROA</span>
@@ -324,12 +363,21 @@ export function LeverageDecomposition({ className }: LeverageDecompositionProps)
       >
         <span style={{ fontSize: '24px' }}>⚖️</span>
         <div>
-          <div style={{ fontWeight: 600, fontSize: '14px', color: 'var(--color-text-primary)', marginBottom: '4px' }}>
+          <div
+            style={{
+              fontWeight: 600,
+              fontSize: '14px',
+              color: 'var(--color-text-primary)',
+              marginBottom: '4px',
+            }}
+          >
             Same Leverage, Opposite Outcomes
           </div>
-          <div style={{ fontSize: '13px', color: 'var(--color-text-secondary)', lineHeight: '1.6' }}>
-            With 12x leverage, a +1% ROA becomes +12% ROE in good times, but a -1% ROA becomes
-            -12% ROE in bad times. This is why bank capital regulation matters - it limits the
+          <div
+            style={{ fontSize: '13px', color: 'var(--color-text-secondary)', lineHeight: '1.6' }}
+          >
+            With 12x leverage, a +1% ROA becomes +12% ROE in good times, but a -1% ROA becomes -12%
+            ROE in bad times. This is why bank capital regulation matters - it limits the
             amplification of losses.
           </div>
         </div>
@@ -347,7 +395,9 @@ export function LeverageDecomposition({ className }: LeverageDecompositionProps)
             width: '100%',
             padding: '16px',
             backgroundColor: showHistory ? 'rgba(99, 102, 241, 0.1)' : 'var(--color-surface-1)',
-            border: showHistory ? '1px solid rgba(99, 102, 241, 0.3)' : '1px solid var(--color-surface-2)',
+            border: showHistory
+              ? '1px solid rgba(99, 102, 241, 0.3)'
+              : '1px solid var(--color-surface-2)',
             borderRadius: '12px',
             cursor: 'pointer',
             textAlign: 'left',
@@ -381,26 +431,40 @@ export function LeverageDecomposition({ className }: LeverageDecompositionProps)
               exit={{ opacity: 0, height: 0 }}
               style={{ overflow: 'hidden' }}
             >
-              <div style={{
-                marginTop: '12px',
-                padding: '20px',
-                backgroundColor: 'var(--color-surface-1)',
-                border: '1px solid var(--color-surface-2)',
-                borderRadius: '12px',
-              }}>
+              <div
+                style={{
+                  marginTop: '12px',
+                  padding: '20px',
+                  backgroundColor: 'var(--color-surface-1)',
+                  border: '1px solid var(--color-surface-2)',
+                  borderRadius: '12px',
+                }}
+              >
                 {/* Table Header */}
-                <div style={{
-                  display: 'grid',
-                  gridTemplateColumns: '60px 80px 80px 80px',
-                  gap: '12px',
-                  marginBottom: '12px',
-                  paddingBottom: '12px',
-                  borderBottom: '1px solid var(--color-surface-2)',
-                }}>
-                  <div style={{ fontSize: '11px', fontWeight: 600, color: 'var(--color-text-muted)' }}>Year</div>
-                  <div style={{ fontSize: '11px', fontWeight: 600, color: 'rgb(99, 102, 241)' }}>ROA</div>
-                  <div style={{ fontSize: '11px', fontWeight: 600, color: 'rgb(16, 185, 129)' }}>ROE</div>
-                  <div style={{ fontSize: '11px', fontWeight: 600, color: 'rgb(245, 158, 11)' }}>Leverage</div>
+                <div
+                  style={{
+                    display: 'grid',
+                    gridTemplateColumns: '60px 80px 80px 80px',
+                    gap: '12px',
+                    marginBottom: '12px',
+                    paddingBottom: '12px',
+                    borderBottom: '1px solid var(--color-surface-2)',
+                  }}
+                >
+                  <div
+                    style={{ fontSize: '11px', fontWeight: 600, color: 'var(--color-text-muted)' }}
+                  >
+                    Year
+                  </div>
+                  <div style={{ fontSize: '11px', fontWeight: 600, color: 'rgb(99, 102, 241)' }}>
+                    ROA
+                  </div>
+                  <div style={{ fontSize: '11px', fontWeight: 600, color: 'rgb(16, 185, 129)' }}>
+                    ROE
+                  </div>
+                  <div style={{ fontSize: '11px', fontWeight: 600, color: 'rgb(245, 158, 11)' }}>
+                    Leverage
+                  </div>
                 </div>
 
                 {/* Table Data */}
@@ -419,50 +483,69 @@ export function LeverageDecomposition({ className }: LeverageDecompositionProps)
                       borderRadius: '4px',
                     }}
                   >
-                    <div style={{
-                      fontSize: '13px',
-                      fontWeight: data.crisis ? 600 : 400,
-                      color: data.crisis ? 'rgb(239, 68, 68)' : 'var(--color-text-primary)',
-                    }}>
+                    <div
+                      style={{
+                        fontSize: '13px',
+                        fontWeight: data.crisis ? 600 : 400,
+                        color: data.crisis ? 'rgb(239, 68, 68)' : 'var(--color-text-primary)',
+                      }}
+                    >
                       {data.year} {data.crisis && '⚠️'}
                     </div>
-                    <div style={{
-                      fontSize: '13px',
-                      fontFamily: 'monospace',
-                      color: data.roa >= 0 ? 'rgb(99, 102, 241)' : 'rgb(239, 68, 68)',
-                    }}>
-                      {data.roa > 0 ? '+' : ''}{data.roa.toFixed(1)}%
+                    <div
+                      style={{
+                        fontSize: '13px',
+                        fontFamily: 'monospace',
+                        color: data.roa >= 0 ? 'rgb(99, 102, 241)' : 'rgb(239, 68, 68)',
+                      }}
+                    >
+                      {data.roa > 0 ? '+' : ''}
+                      {data.roa.toFixed(1)}%
                     </div>
-                    <div style={{
-                      fontSize: '13px',
-                      fontFamily: 'monospace',
-                      fontWeight: 600,
-                      color: data.roe >= 0 ? 'rgb(16, 185, 129)' : 'rgb(239, 68, 68)',
-                    }}>
-                      {data.roe > 0 ? '+' : ''}{data.roe.toFixed(1)}%
+                    <div
+                      style={{
+                        fontSize: '13px',
+                        fontFamily: 'monospace',
+                        fontWeight: 600,
+                        color: data.roe >= 0 ? 'rgb(16, 185, 129)' : 'rgb(239, 68, 68)',
+                      }}
+                    >
+                      {data.roe > 0 ? '+' : ''}
+                      {data.roe.toFixed(1)}%
                     </div>
-                    <div style={{
-                      fontSize: '13px',
-                      fontFamily: 'monospace',
-                      color: 'rgb(245, 158, 11)',
-                    }}>
+                    <div
+                      style={{
+                        fontSize: '13px',
+                        fontFamily: 'monospace',
+                        color: 'rgb(245, 158, 11)',
+                      }}
+                    >
                       {data.leverage.toFixed(1)}x
                     </div>
                   </motion.div>
                 ))}
 
                 {/* Crisis Highlight */}
-                <div style={{
-                  marginTop: '16px',
-                  padding: '12px',
-                  backgroundColor: 'rgba(239, 68, 68, 0.1)',
-                  borderRadius: '8px',
-                  border: '1px solid rgba(239, 68, 68, 0.2)',
-                }}>
-                  <div style={{ fontSize: '13px', color: 'var(--color-text-secondary)', lineHeight: '1.6' }}>
-                    <strong style={{ color: 'rgb(239, 68, 68)' }}>2008 Financial Crisis:</strong> Banks with high leverage
-                    saw small asset losses magnified into devastating equity losses. This led to the Basel III
-                    capital requirements that limit bank leverage.
+                <div
+                  style={{
+                    marginTop: '16px',
+                    padding: '12px',
+                    backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                    borderRadius: '8px',
+                    border: '1px solid rgba(239, 68, 68, 0.2)',
+                  }}
+                >
+                  <div
+                    style={{
+                      fontSize: '13px',
+                      color: 'var(--color-text-secondary)',
+                      lineHeight: '1.6',
+                    }}
+                  >
+                    <strong style={{ color: 'rgb(239, 68, 68)' }}>2008 Financial Crisis:</strong>{' '}
+                    Banks with high leverage saw small asset losses magnified into devastating
+                    equity losses. This led to the Basel III capital requirements that limit bank
+                    leverage.
                   </div>
                 </div>
               </div>

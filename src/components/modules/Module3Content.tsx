@@ -16,6 +16,7 @@ import {
   LiquidityCrisisFlow,
   VaRDistribution,
   RiskTypesPentagon,
+  BankPerformanceMetrics,
 } from '@/components/visualizations';
 import { cn } from '@/lib/utils';
 
@@ -101,7 +102,11 @@ export function Module3Content({ className }: Module3ContentProps) {
       title: 'Measuring Bank Performance',
       description:
         'ROA measures how efficiently a bank uses its assets. ROE shows returns to shareholders. Leverage amplifies both gains and losses. Understanding these metrics is key to evaluating bank health.',
-      visualizations: [<ROECalculator key="roe" />, <LeverageDecomposition key="ld" />],
+      visualizations: [
+        <BankPerformanceMetrics key="bpm" />,
+        <ROECalculator key="roe" />,
+        <LeverageDecomposition key="ld" />,
+      ],
     },
     '3-2': {
       id: '3-2',

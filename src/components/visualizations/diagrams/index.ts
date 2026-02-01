@@ -30,3 +30,4 @@ export { InterestRateSensitivity } from './InterestRateSensitivity';
 export { LiquidityCrisisFlow } from './LiquidityCrisisFlow';
 export { VaRDistribution } from './VaRDistribution';
 export { RiskTypesPentagon } from './RiskTypesPentagon';
+export { BankPerformanceMetrics } from './BankPerformanceMetrics';

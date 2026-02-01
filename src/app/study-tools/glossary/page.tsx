@@ -1,10 +1,10 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { motion } from 'motion/react';
 import Link from 'next/link';
 import { GlossaryTerm } from '@/types';
-import { glossaryTerms, glossaryLetters, glossaryTypes } from '@/data/glossary';
+import { glossaryTerms, glossaryTypes } from '@/data/glossary';
 import { GlossaryCard } from '@/components/study-tools/GlossaryCard';
 import { GlossaryModal } from '@/components/study-tools/GlossaryModal';
 
@@ -16,12 +16,9 @@ export default function GlossaryPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedTerm, setSelectedTerm] = useState<GlossaryTerm | null>(null);
 
-  const filteredTerms = useMemo(() => {
+  // Filter terms by type and search (without letter filter) to determine available letters
+  const termsWithoutLetterFilter = useMemo(() => {
     return glossaryTerms.filter((term) => {
-      // Letter filter
-      if (selectedLetter && !term.term.toUpperCase().startsWith(selectedLetter)) {
-        return false;
-      }
       // Type filter
       if (selectedType !== 'all' && term.type !== selectedType) {
         return false;
@@ -35,7 +32,29 @@ export default function GlossaryPage() {
       }
       return true;
     });
-  }, [selectedLetter, selectedType, searchQuery]);
+  }, [selectedType, searchQuery]);
+
+  // Get available letters from filtered terms
+  const availableLetters = useMemo(() => {
+    return new Set(termsWithoutLetterFilter.map((t) => t.term[0].toUpperCase()));
+  }, [termsWithoutLetterFilter]);
+
+  // Reset selected letter if it becomes unavailable after filter change
+  useEffect(() => {
+    if (selectedLetter && !availableLetters.has(selectedLetter)) {
+      setSelectedLetter(null);
+    }
+  }, [availableLetters, selectedLetter]);
+
+  const filteredTerms = useMemo(() => {
+    return termsWithoutLetterFilter.filter((term) => {
+      // Letter filter
+      if (selectedLetter && !term.term.toUpperCase().startsWith(selectedLetter)) {
+        return false;
+      }
+      return true;
+    });
+  }, [selectedLetter, termsWithoutLetterFilter]);
 
   return (
     <main style={{ minHeight: 'calc(100vh - 64px)', padding: '2rem 1rem' }}>
@@ -168,7 +187,7 @@ export default function GlossaryPage() {
               All
             </button>
             {'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').map((letter) => {
-              const hasTerms = glossaryLetters.includes(letter);
+              const hasTerms = availableLetters.has(letter);
               return (
                 <button
                   key={letter}

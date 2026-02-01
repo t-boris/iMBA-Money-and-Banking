@@ -3,8 +3,18 @@
 import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import Link from 'next/link';
-import { GlossaryTerm } from '@/types';
+import { GlossaryTerm, Lesson } from '@/types';
 import { modules } from '@/data/modules';
+import { module1Lessons } from '@/data/module1';
+import { module2Lessons } from '@/data/module2';
+import { module3Lessons } from '@/data/module3';
+
+// Combine all lessons for lookup
+const allLessons: Record<number, Lesson[]> = {
+  1: module1Lessons,
+  2: module2Lessons,
+  3: module3Lessons,
+};
 
 interface GlossaryModalProps {
   term: GlossaryTerm | null;
@@ -44,6 +54,12 @@ export function GlossaryModal({ term, onClose, allTerms }: GlossaryModalProps) {
   if (!term) return null;
 
   const termModule = modules.find((m) => m.id === term.moduleId);
+  const moduleLessons = allLessons[term.moduleId] || [];
+  // Handle sub-lesson IDs like "1-1.1" by matching the main lesson "1-1"
+  const mainLessonId = term.lessonId.includes('.')
+    ? term.lessonId.split('.')[0]
+    : term.lessonId;
+  const termLesson = moduleLessons.find((l) => l.id === mainLessonId);
   const relatedTerms = term.relatedTerms
     ?.map((id) => allTerms.find((t) => t.id === id))
     .filter(Boolean) as GlossaryTerm[];
@@ -204,7 +220,7 @@ export function GlossaryModal({ term, onClose, allTerms }: GlossaryModalProps) {
                   Source
                 </div>
                 <Link
-                  href={`/modules/${termModule.slug}`}
+                  href={`/modules/${termModule.slug}#lesson-${mainLessonId}`}
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
@@ -218,6 +234,7 @@ export function GlossaryModal({ term, onClose, allTerms }: GlossaryModalProps) {
                   <span>{termModule.icon}</span>
                   <span>
                     Module {termModule.id}: {termModule.title}
+                    {termLesson && ` → ${termLesson.title}`}
                   </span>
                   <span style={{ fontSize: '0.8rem' }}>→</span>
                 </Link>

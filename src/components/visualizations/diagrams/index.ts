@@ -19,3 +19,5 @@ export { BankBalanceSheetDetailed } from './BankBalanceSheetDetailed';
 export { OffBalanceSheetIceberg } from './OffBalanceSheetIceberg';
 export { IncomeStatementWaterfall } from './IncomeStatementWaterfall';
 export { BankLendingContent } from './BankLendingContent';
+export { RiskReturnTradeoff } from './RiskReturnTradeoff';
+export { BankCapitalStructure } from './BankCapitalStructure';

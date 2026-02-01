@@ -17,6 +17,7 @@ import {
   VaRDistribution,
   RiskTypesPentagon,
   BankPerformanceMetrics,
+  LoanContractDesign,
 } from '@/components/visualizations';
 import { cn } from '@/lib/utils';
 
@@ -127,7 +128,11 @@ export function Module3Content({ className }: Module3ContentProps) {
       title: 'Credit Risk',
       description:
         'Credit risk is the possibility that a borrower will default on their obligation. Banks use credit ratings, FICO scores, collateral requirements, and loan covenants to assess and manage this risk.',
-      visualizations: [<CreditRiskFlow key="crf" />, <FICOScoreScale key="fss" />],
+      visualizations: [
+        <CreditRiskFlow key="crf" />,
+        <LoanContractDesign key="lcd" />,
+        <FICOScoreScale key="fss" />,
+      ],
     },
     '3-2.3': {
       id: '3-2.3',

@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { ThemeToggle } from './ThemeProvider';
 
 export function Header() {
@@ -25,7 +26,7 @@ export function Header() {
           justifyContent: 'space-between',
         }}
       >
-        <a
+        <Link
           href="/"
           style={{
             fontWeight: 600,
@@ -35,8 +36,24 @@ export function Header() {
           }}
         >
           iMBA Money & Banking
-        </a>
-        <ThemeToggle />
+        </Link>
+        <nav style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+          <Link
+            href="/study-tools"
+            style={{
+              fontSize: '14px',
+              fontWeight: 500,
+              color: 'var(--color-text-secondary)',
+              textDecoration: 'none',
+              transition: 'color 0.2s',
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-text-primary)'}
+            onMouseLeave={(e) => e.currentTarget.style.color = 'var(--color-text-secondary)'}
+          >
+            Study Tools
+          </Link>
+          <ThemeToggle />
+        </nav>
       </div>
     </header>
   );

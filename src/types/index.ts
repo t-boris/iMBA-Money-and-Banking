@@ -56,3 +56,50 @@ export interface ModuleContent {
   lessons: Lesson[];
   concepts: Concept[];
 }
+
+// Glossary types
+export interface GlossaryTerm {
+  id: string;
+  term: string;
+  definition: string;
+  category: Concept['category'];
+  type: 'term' | 'concept' | 'formula' | 'regulation';
+  moduleId: number;
+  lessonId: string;
+  relatedTerms?: string[];
+}
+
+// Exam types
+export type QuestionDifficulty = 'easy' | 'medium' | 'hard';
+
+export interface ExamQuestion {
+  id: string;
+  question: string;
+  options: string[];
+  correctIndex: number;
+  explanation: string;
+  difficulty: QuestionDifficulty;
+  moduleId: number;
+  conceptId?: string;
+}
+
+// Progress tracking for study tools
+export interface StudyProgress {
+  // Exam progress
+  totalQuestions: number;
+  correctAnswers: number;
+  currentStreak: number;
+  bestStreak: number;
+  points: number;
+  badges: string[];
+  // Session history
+  lastExamDate?: string;
+  examHistory: ExamResult[];
+}
+
+export interface ExamResult {
+  date: string;
+  questionCount: number;
+  correctCount: number;
+  pointsEarned: number;
+}

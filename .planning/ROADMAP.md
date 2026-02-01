@@ -235,8 +235,8 @@ Style: Consistent with existing modules - playful animations, interactive calcul
 **Plans**: 5 plans in 4 waves
 
 Plans:
-- [ ] 08-01: Study tools types & data (glossary aggregation, exam questions)
-- [ ] 08-02: Header navigation + Study Tools landing page
+- [x] 08-01: Study tools types & data (glossary aggregation, exam questions)
+- [x] 08-02: Header navigation + Study Tools landing page
 - [ ] 08-03: Glossary page with card grid, filters, and detail modal
 - [ ] 08-04: Exam practice with setup, quiz mode, timer, and gamification
 - [ ] 08-05: Integration + visual verification
@@ -277,10 +277,10 @@ Style: Consistent with existing modules - glass morphism, playful animations, en
 | 5.1. Module 2 Content | 7/7 | Complete | 2026-01-21 |
 | 6. Module 2 Complete | 6/6 | Complete | 2026-02-01 |
 | 7. Module 3 Content | 7/7 | Complete | 2026-02-01 |
-| 8. Study Tools | 0/5 | Not started | — |
+| 8. Study Tools | 2/5 | In progress | — |
 
 ## Next Steps
 
-Phase 7 complete (7/7 plans). Phase 8 planned with 5 plans in 4 waves.
+Phase 8 in progress (2/5 plans). Next up: 08-03 (Glossary page with card grid, filters, and detail modal).
 
-Run `/gsd:execute-phase 8` to build study tools (glossary and exam practice).
+Run `/gsd:execute-plan 08-03` to continue.

@@ -232,27 +232,39 @@ Style: Consistent with existing modules - playful animations, interactive calcul
 **Goal**: Build cross-module study tools: searchable glossary with filtering and exam practice system with difficulty levels.
 **Depends on**: Phase 7 (all module content complete)
 **Research**: Unlikely (standard UI patterns)
-**Plans**: TBD (run /gsd:plan-phase 8 to break down)
+**Plans**: 5 plans in 4 waves
+
+Plans:
+- [ ] 08-01: Study tools types & data (glossary aggregation, exam questions)
+- [ ] 08-02: Header navigation + Study Tools landing page
+- [ ] 08-03: Glossary page with card grid, filters, and detail modal
+- [ ] 08-04: Exam practice with setup, quiz mode, timer, and gamification
+- [ ] 08-05: Integration + visual verification
+
+Wave structure:
+- Wave 1: 08-01 (data foundation)
+- Wave 2 (parallel): 08-02, 08-03
+- Wave 3: 08-04 (exam depends on types from 01)
+- Wave 4: 08-05 (integration + checkpoint)
 
 **Key Features:**
 
 *Glossary*
-- Comprehensive list of all definitions from all lectures
-- Explanation text with link to source lecture
-- Filter by definition type (term, concept, formula, regulation, etc.)
+- Card grid with 90+ terms from all modules
+- Filter by definition type (term, concept, formula, regulation)
 - Filter by first letter (A-Z index)
-- Auto-updates when new module content is added
 - Search functionality
+- Modal popup with full definition and source link
 
 *Exam Practice*
-- User selects question count: 5, 10, 15, or 20
-- Multiple choice questions with 4 options
-- Immediate feedback with answer explanation after each question
+- Question count selection: 5, 10, 15, or 20
+- Focused quiz mode (one question, full screen, 30s timer)
+- Immediate feedback with explanation after each answer
 - Difficulty distribution: Hard (40%), Medium (40%), Easy (20%)
-- Questions drawn from all completed modules
-- Track score and progress
+- Gamification: points, streaks, badges
+- LocalStorage progress persistence
 
-Style: Consistent with existing modules - clean, focused UI for study context.
+Style: Consistent with existing modules - glass morphism, playful animations, engaging micro-interactions.
 
 ## Progress
 
@@ -265,10 +277,10 @@ Style: Consistent with existing modules - clean, focused UI for study context.
 | 5.1. Module 2 Content | 7/7 | Complete | 2026-01-21 |
 | 6. Module 2 Complete | 6/6 | Complete | 2026-02-01 |
 | 7. Module 3 Content | 1/7 | In progress | — |
-| 8. Study Tools | 0/? | Not started | — |
+| 8. Study Tools | 0/5 | Not started | — |
 
 ## Next Steps
 
-Phase 7 in progress (1/7 plans complete). Data foundation ready.
+Phase 7 in progress (1/7 plans complete). Phase 8 planned with 5 plans in 4 waves.
 
-Run `/gsd:execute-plan 07-02` to continue Module 3, or `/gsd:plan-phase 8` to plan study tools.
+Run `/gsd:execute-phase 7` to continue Module 3, or `/gsd:execute-phase 8` to build study tools.

@@ -47,6 +47,27 @@ export function Module3Content({ className }: Module3ContentProps) {
     setActiveLesson(newLessonId);
   };
 
+  // Handle URL hash navigation (e.g., #lesson-3-1)
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      if (hash.startsWith('#lesson-')) {
+        const lessonId = hash.replace('#lesson-', '');
+        const lessonExists = module3Lessons.some((l) => l.id === lessonId);
+        if (lessonExists && lessonId !== activeLesson) {
+          handleLessonChange(lessonId);
+        }
+      }
+    };
+
+    // Check hash on mount
+    handleHashChange();
+
+    // Listen for hash changes
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
   // Scroll to top when lesson changes
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });

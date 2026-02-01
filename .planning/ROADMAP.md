@@ -8,6 +8,7 @@ Build an interactive study web application for the Money and Banking course. Fou
 
 Module 1: Money and Finance — course content provided
 Module 2: Modern Banking — course content provided
+Module 3: Risk and Return — course content provided
 
 ## Phases
 
@@ -21,6 +22,7 @@ Module 2: Modern Banking — course content provided
 - [x] **Phase 4: Module 1 Content** - Interactive visualizations for Money and Finance
 - [x] **Phase 5.1: Module 2 Content** - Interactive visualizations for Modern Banking (INSERTED)
 - [ ] **Phase 6: Module 2 Complete** - Bank organization, lending, investment banking, and financial statements
+- [ ] **Phase 7: Module 3 Content** - Risk and return: bank capital, profitability metrics, and risk management
 
 *Future modules to be added as course content is provided*
 
@@ -169,6 +171,62 @@ Wave structure:
 
 Style: Consistent with existing modules - playful animations, interactive exploration, clear visual hierarchy.
 
+### Phase 7: Module 3 Content
+**Goal**: Build interactive visualizations for Module 3 (Risk and Return) - bank capital structure, profitability metrics (ROA, ROE, Leverage), risk types (credit, interest rate, liquidity, market, operational), and risk management tools.
+**Depends on**: Phase 6
+**Research**: Unlikely (course content provided, reuse existing visualization patterns)
+**Plans**: 7 plans in 4 waves
+
+Plans:
+- [ ] 07-01: Module 3 data & types (lessons 3-0 to 3-2.6, concepts)
+- [ ] 07-02: Risk-Return Tradeoff Curve + Bank Capital Structure
+- [ ] 07-03: ROA/ROE/Leverage Calculator + Performance Decomposition
+- [ ] 07-04: Credit Risk Flow (Rating → PD → Pricing) + FICO Scale
+- [ ] 07-05: Interest Rate Risk (Maturity Mismatch + Duration Gap)
+- [ ] 07-06: Liquidity Crisis Flow (Bank Run → Fire Sale) + VaR Distribution
+- [ ] 07-07: Module page integration + visual verification
+
+Wave structure:
+- Wave 1: 07-01 (data foundation)
+- Wave 2 (parallel): 07-02, 07-03
+- Wave 3 (parallel): 07-04, 07-05
+- Wave 4 (parallel): 07-06, 07-07
+
+**Key Content Areas:**
+
+*Lesson 3-0: Overview*
+- Risk–Return Tradeoff
+- Risk-Adjusted Return
+- Bank Performance ≠ Profit Only
+
+*Lesson 3-1: Bank Capital and Profitability*
+- 3-1.1: Bank Equity Capital (ownership, residual claim, loss absorber)
+- 3-1.2: Measuring Performance (ROA, ROE, Leverage, Stock Returns)
+
+*Lesson 3-2: Bank Risks and Risk Management*
+- 3-2.1: Overview of Risk (measurement, management, insolvency threshold)
+- 3-2.2: Credit Risk (default, PD, credit ratings, FICO, covenants, CDS)
+- 3-2.3: Interest Rate Risk (maturity mismatch, cash flow vs valuation channel, swaps)
+- 3-2.4: Liquidity Risk (cash shortfall, bank run, fire sale, asset/liability management)
+- 3-2.5: Market Risk (trading book, mark-to-market, VaR, fat tails, black swan)
+- 3-2.6: Operational Risk (system failures, fraud, fines, fintech disruption)
+
+**Visualization Ideas:**
+- Risk-Return Tradeoff Curve (interactive slider showing risk vs expected return)
+- Bank Capital Structure (equity as loss absorber, waterfall of claims)
+- ROA/ROE/Leverage Calculator (interactive with real bank examples)
+- Performance Decomposition (ROE = ROA × Leverage breakdown)
+- Credit Risk Flow (loan application → rating → PD → pricing → monitoring)
+- FICO Score Scale (with default probability overlay)
+- Interest Rate Sensitivity (bond price vs rate, duration visualization)
+- Maturity Mismatch Diagram (short liabilities vs long assets)
+- Liquidity Crisis Flow (deposit run → cash shortfall → fire sale → equity loss)
+- VaR Distribution (P&L histogram with confidence interval cutoff)
+- Five Risk Types Pentagon (credit, interest rate, liquidity, market, operational)
+- Hedging Before/After (unhedged vs hedged profit line)
+
+Style: Consistent with existing modules - playful animations, interactive calculators, clear visual hierarchy. Emphasis on formulas and quantitative relationships.
+
 ## Progress
 
 | Phase | Plans Complete | Status | Completed |
@@ -179,9 +237,10 @@ Style: Consistent with existing modules - playful animations, interactive explor
 | 4. Module 1 Content | 7/7 | Complete | 2026-01-20 |
 | 5.1. Module 2 Content | 7/7 | Complete | 2026-01-21 |
 | 6. Module 2 Complete | 5/6 | In progress | — |
+| 7. Module 3 Content | 0/7 | Not started | — |
 
 ## Next Steps
 
-Phase 6 planned with 6 plans in 4 waves.
+Phase 6 in progress (5/6 plans complete). Phase 7 planned with 7 plans in 4 waves.
 
-Run `/gsd:execute-phase 6` to build remaining Module 2 visualizations.
+Run `/gsd:execute-phase 6` to complete Module 2, then `/gsd:plan-phase 7` to detail Module 3 plans.

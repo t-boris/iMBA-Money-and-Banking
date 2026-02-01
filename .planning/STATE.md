@@ -10,11 +10,11 @@ See: .planning/PROJECT.md (updated 2026-01-17)
 ## Current Position
 
 Phase: 7 of 7 (Module 3 Content)
-Plan: 4 of 7 in current phase
+Plan: 5 of 7 in current phase
 Status: In progress
-Last activity: 2026-02-01 — Completed 07-04-PLAN.md (Credit Risk Flow + FICO Score Scale)
+Last activity: 2026-02-01 — Completed 07-05-PLAN.md (Maturity Mismatch + Interest Rate Sensitivity)
 
-Progress: ██████████████████████████░░░░░ 92% (34/37 plans complete)
+Progress: ███████████████████████████░░░░ 95% (35/37 plans complete)
 
 ## Performance Metrics
 
@@ -33,10 +33,10 @@ Progress: ███████████████████████�
 | 4. Module 1 Content | 7/7 | 20 min | 3 min |
 | 5.1. Module 2 History | 7/7 | 21 min | 3 min |
 | 6. Module 2 Complete | 6/6 | 30 min | 5 min |
-| 7. Module 3 Content | 4/7 | 26 min | 6.5 min |
+| 7. Module 3 Content | 5/7 | 34 min | 6.8 min |
 
 **Recent Trend:**
-- Last 5 plans: 07-01 (5 min), 07-02 (8 min), 07-03 (5 min), 07-04 (8 min)
+- Last 5 plans: 07-02 (8 min), 07-03 (5 min), 07-04 (8 min), 07-05 (8 min)
 - Trend: Stable
 
 ## Accumulated Context
@@ -100,6 +100,11 @@ Recent decisions affecting current work:
 - 6-step credit risk flow with collapsible risk management tools panel
 - Linear interpolation for PD calculation based on FICO score
 - Expandable factors panels with toggle button pattern
+- Rate scenario toggle (stable/rise/fall) for interest rate visualizations
+- Weighted average duration calculation for maturity bars
+- Modified duration with convexity adjustment for price changes
+- Dual slider pattern for rate change simulation
+- Before/after balance sheet comparison for equity impact
 
 ### Deferred Issues
 
@@ -122,7 +127,7 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-01
-Stopped at: Completed 07-04-PLAN.md (Credit Risk Flow + FICO Score Scale)
+Stopped at: Completed 07-05-PLAN.md (Maturity Mismatch + Interest Rate Sensitivity)
 Resume file: None
 
 ## Notes
@@ -158,6 +163,8 @@ Module 3 progress:
 - LeverageDecomposition with Good/Bad times toggle complete
 - CreditRiskFlow with 6-step process and risk tools panel complete
 - FICOScoreScale with interactive slider and PD calculation complete
+- MaturityMismatchDiagram with rate scenarios and cash flow animation complete
+- InterestRateSensitivity with bond price curves and equity impact demo complete
 
-Next: Execute 07-05-PLAN.md.
+Next: Execute 07-06-PLAN.md.
 - Phase 8 added: Study Tools - Cross-module glossary and exam practice system

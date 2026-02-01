@@ -25,3 +25,5 @@ export { ROECalculator } from './ROECalculator';
 export { LeverageDecomposition } from './LeverageDecomposition';
 export { CreditRiskFlow } from './CreditRiskFlow';
 export { FICOScoreScale } from './FICOScoreScale';
+export { MaturityMismatchDiagram } from './MaturityMismatchDiagram';
+export { InterestRateSensitivity } from './InterestRateSensitivity';

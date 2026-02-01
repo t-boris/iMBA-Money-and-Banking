@@ -97,15 +97,14 @@ export function GlossaryModal({ term, onClose, allTerms }: GlossaryModalProps) {
               width: '90%',
               maxWidth: '560px',
               maxHeight: '85vh',
-              backgroundColor: '#ffffff',
-              border: '1px solid #e5e7eb',
+              backgroundColor: 'var(--color-surface-1)',
+              border: '1px solid var(--color-surface-2)',
               borderRadius: '1rem',
               padding: '2rem',
               zIndex: 101,
               overflow: 'auto',
               boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
             }}
-            className="dark:!bg-[#1a1a2e] dark:!border-[#2d2d44]"
           >
             {/* Close button */}
             <button

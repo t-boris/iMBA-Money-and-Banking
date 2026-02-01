@@ -109,6 +109,120 @@ export function BankCapitalStructure({ className }: BankCapitalStructureProps) {
         </p>
       </div>
 
+      {/* Definition Box */}
+      <div
+        style={{
+          padding: '20px',
+          backgroundColor: 'var(--color-surface-1)',
+          borderRadius: '12px',
+          border: '1px solid var(--color-surface-2)',
+          marginBottom: '24px',
+        }}
+      >
+        <h4
+          style={{
+            fontSize: '16px',
+            fontWeight: 700,
+            color: 'rgb(16, 185, 129)',
+            marginBottom: '12px',
+          }}
+        >
+          What is Bank Equity Capital?
+        </h4>
+        <p
+          style={{
+            fontSize: '14px',
+            color: 'var(--color-text-secondary)',
+            lineHeight: '1.7',
+            marginBottom: '16px',
+          }}
+        >
+          <strong style={{ color: 'var(--color-text-primary)' }}>Bank Equity</strong> (also called
+          capital or net worth) is the difference between a bank&apos;s assets and its liabilities.
+          It represents the ownership stake held by shareholders — the residual value that would
+          remain if all assets were sold and all debts paid off.
+        </p>
+
+        {/* Formula */}
+        <div
+          style={{
+            padding: '12px 16px',
+            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+            borderRadius: '8px',
+            textAlign: 'center',
+            marginBottom: '16px',
+          }}
+        >
+          <span style={{ fontFamily: 'monospace', fontSize: '15px', fontWeight: 600 }}>
+            <span style={{ color: 'rgb(16, 185, 129)' }}>Equity</span>
+            <span style={{ color: 'var(--color-text-muted)' }}> = </span>
+            <span style={{ color: 'rgb(59, 130, 246)' }}>Assets</span>
+            <span style={{ color: 'var(--color-text-muted)' }}> − </span>
+            <span style={{ color: 'rgb(245, 158, 11)' }}>Liabilities</span>
+          </span>
+        </div>
+
+        {/* Key Functions */}
+        <div style={{ marginBottom: '12px' }}>
+          <div
+            style={{
+              fontSize: '13px',
+              fontWeight: 600,
+              color: 'var(--color-text-primary)',
+              marginBottom: '8px',
+            }}
+          >
+            Key Functions of Bank Equity:
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            {[
+              {
+                icon: '🛡️',
+                title: 'Loss Absorber (First-Loss Piece)',
+                desc: 'Equity absorbs losses first, protecting depositors and creditors from default',
+              },
+              {
+                icon: '📊',
+                title: 'Residual Claim',
+                desc: 'Shareholders are paid last in liquidation — only after all debts are settled',
+              },
+              {
+                icon: '⚖️',
+                title: 'Regulatory Buffer',
+                desc: 'Minimum capital requirements ensure banks can survive unexpected losses',
+              },
+            ].map((item) => (
+              <div
+                key={item.title}
+                style={{
+                  display: 'flex',
+                  gap: '10px',
+                  padding: '10px 12px',
+                  backgroundColor: 'var(--color-surface-2)',
+                  borderRadius: '8px',
+                }}
+              >
+                <span style={{ fontSize: '16px' }}>{item.icon}</span>
+                <div>
+                  <div
+                    style={{
+                      fontSize: '13px',
+                      fontWeight: 600,
+                      color: 'var(--color-text-primary)',
+                    }}
+                  >
+                    {item.title}
+                  </div>
+                  <div style={{ fontSize: '12px', color: 'var(--color-text-muted)' }}>
+                    {item.desc}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
       {/* Scenario Selector */}
       <div
         style={{

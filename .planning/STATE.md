@@ -10,11 +10,11 @@ See: .planning/PROJECT.md (updated 2026-01-17)
 ## Current Position
 
 Phase: 7 of 7 (Module 3 Content)
-Plan: 2 of 7 in current phase
+Plan: 3 of 7 in current phase
 Status: In progress
-Last activity: 2026-02-01 — Completed 07-02-PLAN.md (Risk-Return + Capital Structure visualizations)
+Last activity: 2026-02-01 — Completed 07-03-PLAN.md (ROE Calculator + Leverage Decomposition)
 
-Progress: ████████████████████████░░░░░░░ 86% (32/37 plans complete)
+Progress: █████████████████████████░░░░░░ 89% (33/37 plans complete)
 
 ## Performance Metrics
 
@@ -33,10 +33,10 @@ Progress: ███████████████████████�
 | 4. Module 1 Content | 7/7 | 20 min | 3 min |
 | 5.1. Module 2 History | 7/7 | 21 min | 3 min |
 | 6. Module 2 Complete | 6/6 | 30 min | 5 min |
-| 7. Module 3 Content | 2/7 | 13 min | 6.5 min |
+| 7. Module 3 Content | 3/7 | 18 min | 6 min |
 
 **Recent Trend:**
-- Last 5 plans: 06-05 (5 min), 06-06 (15 min), 07-01 (5 min), 07-02 (8 min)
+- Last 5 plans: 06-06 (15 min), 07-01 (5 min), 07-02 (8 min), 07-03 (5 min)
 - Trend: Stable
 
 ## Accumulated Context
@@ -94,6 +94,9 @@ Recent decisions affecting current work:
 - Scenario selector pattern for state-driven visualization
 - Color gradient on risk-return curve (green to red) representing risk spectrum
 - Expandable liquidation waterfall for payment priority education
+- Bank presets with real-world financial data (JPMorgan, Bank of America, Community Bank)
+- Good/Bad times toggle for scenario comparison visualizations
+- Pulsing multiplier animation for leverage amplification zone
 
 ### Deferred Issues
 
@@ -116,7 +119,7 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-01
-Stopped at: Completed 07-02-PLAN.md (Risk-Return + Capital Structure visualizations)
+Stopped at: Completed 07-03-PLAN.md (ROE Calculator + Leverage Decomposition)
 Resume file: None
 
 ## Notes
@@ -148,6 +151,8 @@ Module 3 progress:
 - 63 concepts with risk and capital categories
 - RiskReturnTradeoff visualization complete
 - BankCapitalStructure visualization complete
+- ROECalculator with bank presets complete
+- LeverageDecomposition with Good/Bad times toggle complete
 
-Next: Execute 07-03-PLAN.md (additional Module 3 visualizations).
+Next: Execute 07-04-PLAN.md (Risk Types Matrix or additional visualizations).
 - Phase 8 added: Study Tools - Cross-module glossary and exam practice system

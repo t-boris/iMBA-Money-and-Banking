@@ -10,11 +10,11 @@ See: .planning/PROJECT.md (updated 2026-01-17)
 ## Current Position
 
 Phase: 8 of 8 (Study Tools)
-Plan: 3 of 5 in current phase (COMPLETE)
-Status: Plan 08-03 complete, ready for 08-04
-Last activity: 2026-02-01 — Completed 08-03-PLAN.md (Glossary page and components)
+Plan: 4 of 5 in current phase (COMPLETE)
+Status: Plan 08-04 complete, ready for 08-05
+Last activity: 2026-02-01 — Completed 08-04-PLAN.md (Exam practice page)
 
-Progress: █████████████████████████████████░ 98% (40/42 plans complete)
+Progress: █████████████████████████████████░ 98% (41/42 plans complete)
 
 ## Performance Metrics
 
@@ -34,10 +34,10 @@ Progress: ███████████████████████�
 | 5.1. Module 2 History | 7/7 | 21 min | 3 min |
 | 6. Module 2 Complete | 6/6 | 30 min | 5 min |
 | 7. Module 3 Content | 7/7 | 55 min | 8 min |
-| 8. Study Tools | 3/5 | 10 min | 3.3 min |
+| 8. Study Tools | 4/5 | 14 min | 3.5 min |
 
 **Recent Trend:**
-- Last 5 plans: 07-07 (8 min), 08-01 (4 min), 08-02 (1 min), 08-03 (5 min)
+- Last 5 plans: 08-01 (4 min), 08-02 (1 min), 08-03 (5 min), 08-04 (4 min)
 - Trend: Consistent speed for UI component plans
 
 ## Accumulated Context
@@ -119,6 +119,10 @@ Recent decisions affecting current work:
 - Color-coded type badges for glossary (primary, emerald, amber, rose)
 - Three filter mechanisms: search, type buttons, A-Z index
 - Modal with escape key and backdrop click to close
+- Quiz flow state machine (setup → quiz → results)
+- 30 seconds per question timer with auto-submit
+- LocalStorage for study progress persistence
+- Badge system: first-exam, perfect-score, streak-5, streak-10
 
 ### Deferred Issues
 
@@ -141,14 +145,14 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-01
-Stopped at: Plan 08-03 complete
+Stopped at: Plan 08-04 complete
 Resume file: None
 
 **Phase 8 Progress:**
 - Plan 08-01: Study tools data foundation - COMPLETE
 - Plan 08-02: Study Tools navigation and landing page - COMPLETE
 - Plan 08-03: Glossary page and components - COMPLETE
-- Plan 08-04: Exam practice page - PENDING
+- Plan 08-04: Exam practice page - COMPLETE
 - Plan 08-05: Progress tracking and gamification - PENDING
 
 ## Notes
@@ -195,5 +199,9 @@ Phase 8 in progress:
   - GlossaryCard with type badges and animations
   - GlossaryModal with source link and related terms
   - /study-tools/glossary with search, type, and A-Z filters
+- Plan 08-04: Exam practice page complete
+  - ExamSetup with question count selector
+  - QuizQuestion with timer and feedback
+  - /study-tools/exam with full quiz flow and results
 
-Next: Plan 08-04 (Exam practice page)
+Next: Plan 08-05 (Progress tracking and gamification)

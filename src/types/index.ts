@@ -45,7 +45,7 @@ export interface Concept {
   id: string;
   term: string;
   definition: string;   // English definition
-  category: 'money' | 'payment' | 'financial-system' | 'institutions' | 'economy';
+  category: 'money' | 'payment' | 'financial-system' | 'institutions' | 'economy' | 'risk' | 'capital';
   relatedConcepts?: string[];  // IDs of related concepts
   lessonId: string;     // which lesson this concept belongs to
 }

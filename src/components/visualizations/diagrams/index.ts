@@ -21,3 +21,5 @@ export { IncomeStatementWaterfall } from './IncomeStatementWaterfall';
 export { BankLendingContent } from './BankLendingContent';
 export { RiskReturnTradeoff } from './RiskReturnTradeoff';
 export { BankCapitalStructure } from './BankCapitalStructure';
+export { ROECalculator } from './ROECalculator';
+export { LeverageDecomposition } from './LeverageDecomposition';

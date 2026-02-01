@@ -21,8 +21,9 @@ Module 3: Risk and Return — course content provided
 - [x] **Phase 3: Module Navigation** - Card-based module selection for 8 modules
 - [x] **Phase 4: Module 1 Content** - Interactive visualizations for Money and Finance
 - [x] **Phase 5.1: Module 2 Content** - Interactive visualizations for Modern Banking (INSERTED)
-- [ ] **Phase 6: Module 2 Complete** - Bank organization, lending, investment banking, and financial statements
-- [ ] **Phase 7: Module 3 Content** - Risk and return: bank capital, profitability metrics, and risk management
+- [x] **Phase 6: Module 2 Complete** - Bank organization, lending, investment banking, and financial statements
+- [ ] **Phase 7: Module 3 Content** - Risk and return: bank capital, profitability metrics, and risk management (In progress)
+- [ ] **Phase 8: Study Tools** - Cross-module glossary and exam practice system
 
 *Future modules to be added as course content is provided*
 
@@ -178,7 +179,7 @@ Style: Consistent with existing modules - playful animations, interactive explor
 **Plans**: 7 plans in 4 waves
 
 Plans:
-- [ ] 07-01: Module 3 data & types (lessons 3-0 to 3-2.6, concepts)
+- [x] 07-01: Module 3 data & types (lessons 3-0 to 3-2.6, concepts)
 - [ ] 07-02: Risk-Return Tradeoff Curve + Bank Capital Structure
 - [ ] 07-03: ROA/ROE/Leverage Calculator + Performance Decomposition
 - [ ] 07-04: Credit Risk Flow (Rating → PD → Pricing) + FICO Scale
@@ -227,6 +228,32 @@ Wave structure:
 
 Style: Consistent with existing modules - playful animations, interactive calculators, clear visual hierarchy. Emphasis on formulas and quantitative relationships.
 
+### Phase 8: Study Tools
+**Goal**: Build cross-module study tools: searchable glossary with filtering and exam practice system with difficulty levels.
+**Depends on**: Phase 7 (all module content complete)
+**Research**: Unlikely (standard UI patterns)
+**Plans**: TBD (run /gsd:plan-phase 8 to break down)
+
+**Key Features:**
+
+*Glossary*
+- Comprehensive list of all definitions from all lectures
+- Explanation text with link to source lecture
+- Filter by definition type (term, concept, formula, regulation, etc.)
+- Filter by first letter (A-Z index)
+- Auto-updates when new module content is added
+- Search functionality
+
+*Exam Practice*
+- User selects question count: 5, 10, 15, or 20
+- Multiple choice questions with 4 options
+- Immediate feedback with answer explanation after each question
+- Difficulty distribution: Hard (40%), Medium (40%), Easy (20%)
+- Questions drawn from all completed modules
+- Track score and progress
+
+Style: Consistent with existing modules - clean, focused UI for study context.
+
 ## Progress
 
 | Phase | Plans Complete | Status | Completed |
@@ -236,11 +263,12 @@ Style: Consistent with existing modules - playful animations, interactive calcul
 | 3. Module Navigation | 3/3 | Complete | 2026-01-18 |
 | 4. Module 1 Content | 7/7 | Complete | 2026-01-20 |
 | 5.1. Module 2 Content | 7/7 | Complete | 2026-01-21 |
-| 6. Module 2 Complete | 5/6 | In progress | — |
-| 7. Module 3 Content | 0/7 | Not started | — |
+| 6. Module 2 Complete | 6/6 | Complete | 2026-02-01 |
+| 7. Module 3 Content | 1/7 | In progress | — |
+| 8. Study Tools | 0/? | Not started | — |
 
 ## Next Steps
 
-Phase 6 in progress (5/6 plans complete). Phase 7 planned with 7 plans in 4 waves.
+Phase 7 in progress (1/7 plans complete). Data foundation ready.
 
-Run `/gsd:execute-phase 6` to complete Module 2, then `/gsd:plan-phase 7` to detail Module 3 plans.
+Run `/gsd:execute-plan 07-02` to continue Module 3, or `/gsd:plan-phase 8` to plan study tools.

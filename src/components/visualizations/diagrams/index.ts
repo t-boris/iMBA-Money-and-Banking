@@ -18,3 +18,4 @@ export { InvestmentBankStructure } from './InvestmentBankStructure';
 export { BankBalanceSheetDetailed } from './BankBalanceSheetDetailed';
 export { OffBalanceSheetIceberg } from './OffBalanceSheetIceberg';
 export { IncomeStatementWaterfall } from './IncomeStatementWaterfall';
+export { BankLendingContent } from './BankLendingContent';

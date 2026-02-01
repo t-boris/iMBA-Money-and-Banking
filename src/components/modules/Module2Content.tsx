@@ -18,6 +18,7 @@ import {
   BankBalanceSheetDetailed,
   OffBalanceSheetIceberg,
   IncomeStatementWaterfall,
+  BankLendingContent,
 } from '@/components/visualizations';
 import { cn } from '@/lib/utils';
 
@@ -124,7 +125,7 @@ export function Module2Content({ className }: Module2ContentProps) {
       title: 'Bank Lending',
       description:
         'Consumer credit, commercial lending, and the importance of relationship banking for information-opaque borrowers.',
-      visualizations: [], // Text-based lesson - lending types overview
+      visualizations: [<BankLendingContent key="blc" />],
     },
     '2-9': {
       id: '2-9',

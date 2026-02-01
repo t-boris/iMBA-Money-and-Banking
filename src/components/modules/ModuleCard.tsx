@@ -33,7 +33,7 @@ export function ModuleCard({ module, index = 0 }: ModuleCardProps) {
         <Card
           variant="glass"
           hover
-          className="h-full min-h-[200px] flex flex-col group relative overflow-hidden"
+          className="h-[280px] flex flex-col group relative overflow-hidden"
         >
           {/* Animated background gradient on hover */}
           <div
@@ -44,10 +44,10 @@ export function ModuleCard({ module, index = 0 }: ModuleCardProps) {
             )}
           />
 
-          <CardHeader className="relative flex-1">
+          <CardHeader className="relative">
             {/* Icon with pulse animation on hover */}
             <motion.span
-              className="text-4xl mb-3 block"
+              className="text-3xl mb-2 block"
               whileHover={{ scale: 1.1 }}
               transition={{ type: 'spring', stiffness: 400, damping: 10 }}
             >
@@ -59,13 +59,13 @@ export function ModuleCard({ module, index = 0 }: ModuleCardProps) {
               Module {module.id}
             </span>
 
-            <CardTitle className="group-hover:text-primary-500 transition-colors">
+            <CardTitle className="group-hover:text-primary-500 transition-colors text-lg">
               {module.title}
             </CardTitle>
-            <CardDescription>{module.description}</CardDescription>
+            <CardDescription className="line-clamp-3 mt-2">{module.description}</CardDescription>
           </CardHeader>
 
-          <CardContent className="relative">
+          <CardContent className="relative mt-auto">
             {/* Preview hint that appears on hover */}
             <motion.div
               className="flex items-center gap-2 text-primary-500 text-sm font-medium"

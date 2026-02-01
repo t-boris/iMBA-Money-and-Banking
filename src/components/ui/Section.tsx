@@ -6,11 +6,11 @@ interface SectionProps extends HTMLAttributes<HTMLElement> {
   as?: 'section' | 'div' | 'article';
 }
 
-export const Section = forwardRef<HTMLElement, SectionProps>(
+export const Section = forwardRef<HTMLDivElement, SectionProps>(
   ({ className, spacing = 'lg', as: Component = 'section', children, ...props }, ref) => {
     return (
       <Component
-        ref={ref as any}
+        ref={ref}
         className={cn(
           spacing === 'sm' && 'py-8',
           spacing === 'md' && 'py-12',

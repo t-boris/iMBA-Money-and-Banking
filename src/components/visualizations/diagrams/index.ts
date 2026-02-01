@@ -27,3 +27,6 @@ export { CreditRiskFlow } from './CreditRiskFlow';
 export { FICOScoreScale } from './FICOScoreScale';
 export { MaturityMismatchDiagram } from './MaturityMismatchDiagram';
 export { InterestRateSensitivity } from './InterestRateSensitivity';
+export { LiquidityCrisisFlow } from './LiquidityCrisisFlow';
+export { VaRDistribution } from './VaRDistribution';
+export { RiskTypesPentagon } from './RiskTypesPentagon';

@@ -10,11 +10,11 @@ See: .planning/PROJECT.md (updated 2026-01-17)
 ## Current Position
 
 Phase: 7 of 7 (Module 3 Content)
-Plan: 1 of 7 in current phase
+Plan: 2 of 7 in current phase
 Status: In progress
-Last activity: 2026-02-01 — Completed 07-01-PLAN.md (Module 3 data foundation)
+Last activity: 2026-02-01 — Completed 07-02-PLAN.md (Risk-Return + Capital Structure visualizations)
 
-Progress: ███████████████████████░░░░░░░░ 84% (31/37 plans complete)
+Progress: ████████████████████████░░░░░░░ 86% (32/37 plans complete)
 
 ## Performance Metrics
 
@@ -33,10 +33,10 @@ Progress: ███████████████████████�
 | 4. Module 1 Content | 7/7 | 20 min | 3 min |
 | 5.1. Module 2 History | 7/7 | 21 min | 3 min |
 | 6. Module 2 Complete | 6/6 | 30 min | 5 min |
-| 7. Module 3 Content | 1/7 | 5 min | 5 min |
+| 7. Module 3 Content | 2/7 | 13 min | 6.5 min |
 
 **Recent Trend:**
-- Last 5 plans: 06-04 (5 min), 06-05 (5 min), 06-06 (15 min), 07-01 (5 min)
+- Last 5 plans: 06-05 (5 min), 06-06 (15 min), 07-01 (5 min), 07-02 (8 min)
 - Trend: Stable
 
 ## Accumulated Context
@@ -90,6 +90,10 @@ Recent decisions affecting current work:
 - Waterfall chart with running totals for income statement flow
 - Bank type toggle (JPMorgan vs Community Bank) for comparison
 - BankLendingContent as text-based lesson with expandable sections
+- SVG viewBox (600x350) for responsive curve rendering
+- Scenario selector pattern for state-driven visualization
+- Color gradient on risk-return curve (green to red) representing risk spectrum
+- Expandable liquidation waterfall for payment priority education
 
 ### Deferred Issues
 
@@ -112,7 +116,7 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-01
-Stopped at: Completed 07-01-PLAN.md (Module 3 data foundation)
+Stopped at: Completed 07-02-PLAN.md (Risk-Return + Capital Structure visualizations)
 Resume file: None
 
 ## Notes
@@ -139,10 +143,11 @@ Completed phases:
 - Phase 5.1: Module 2 Content (History) ✓
 - Phase 6: Module 2 Complete ✓
 
-Module 3 data foundation complete:
+Module 3 progress:
 - 11 lessons (3-0 through 3-2.6)
 - 63 concepts with risk and capital categories
-- Ready for visualization components
+- RiskReturnTradeoff visualization complete
+- BankCapitalStructure visualization complete
 
-Next: Execute 07-02-PLAN.md (Risk-Return Tradeoff Curve + Bank Capital Structure).
+Next: Execute 07-03-PLAN.md (additional Module 3 visualizations).
 - Phase 8 added: Study Tools - Cross-module glossary and exam practice system

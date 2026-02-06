@@ -32,3 +32,6 @@ export { VaRDistribution } from './VaRDistribution';
 export { RiskTypesPentagon } from './RiskTypesPentagon';
 export { BankPerformanceMetrics } from './BankPerformanceMetrics';
 export { LoanContractDesign } from './LoanContractDesign';
+export { ExternalityDiagram } from './ExternalityDiagram';
+export { SafetyNetFlow } from './SafetyNetFlow';
+export { ContagionNetwork } from './ContagionNetwork';

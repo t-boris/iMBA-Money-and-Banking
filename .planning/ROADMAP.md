@@ -287,7 +287,7 @@ Style: Consistent with existing modules - glass morphism, playful animations, en
 **Plans**: 9 plans in 6 waves
 
 Plans:
-- [ ] 09-01: Module 4 data & types (lessons, concepts)
+- [x] 09-01: Module 4 data & types (lessons, concepts)
 - [ ] 09-02: ExternalityDiagram + SafetyNetFlow + ContagionNetwork
 - [ ] 09-03: TEDSpreadTimeline + CapitalRequirementsCalculator + CAMELSRadar
 - [ ] 09-04: StressTestSimulator + TBTFConcentration
@@ -350,6 +350,6 @@ Style: Consistent with existing modules — playful animations, interactive expl
 | 6. Module 2 Complete | 6/6 | Complete | 2026-02-01 |
 | 7. Module 3 Content | 7/7 | Complete | 2026-02-01 |
 | 8. Study Tools | 5/5 | Complete | 2026-02-01 |
-| 9. Module 4 Content | 0/9 | Planned | — |
+| 9. Module 4 Content | 1/9 | In progress | — |
 
 Run `npm run dev` to start the development server.

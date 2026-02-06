@@ -24,6 +24,7 @@ const categoryLabels: Record<GlossaryTerm['category'], string> = {
   economy: 'Economy',
   risk: 'Risk',
   capital: 'Capital',
+  regulation: 'Regulation',
 };
 
 export function GlossaryCard({ term, onClick, index }: GlossaryCardProps) {

@@ -26,10 +26,11 @@ export const modules: Module[] = [
   },
   {
     id: 4,
-    title: 'Banking and Financial Intermediation',
-    description: 'How banks operate, manage risk, and their role in the economy.',
-    icon: '🏦',
-    slug: 'banking-intermediation',
+    title: 'Regulation',
+    description:
+      'Why banks are regulated, the government safety net, supervision and stress testing, too big to fail, and shadow banking.',
+    icon: '⚖️',
+    slug: 'regulation',
   },
   {
     id: 5,

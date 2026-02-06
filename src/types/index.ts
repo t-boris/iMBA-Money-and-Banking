@@ -52,7 +52,8 @@ export interface Concept {
     | 'institutions'
     | 'economy'
     | 'risk'
-    | 'capital';
+    | 'capital'
+    | 'regulation';
   relatedConcepts?: string[]; // IDs of related concepts
   lessonId: string; // which lesson this concept belongs to
 }

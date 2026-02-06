@@ -24,6 +24,7 @@ Module 3: Risk and Return — course content provided
 - [x] **Phase 6: Module 2 Complete** - Bank organization, lending, investment banking, and financial statements
 - [x] **Phase 7: Module 3 Content** - Risk and return: bank capital, profitability metrics, and risk management
 - [x] **Phase 8: Study Tools** - Cross-module glossary and exam practice system
+- [ ] **Phase 9: Module 4 Content** - Regulation: goals, safety net, supervision, stress testing, TBTF, shadow banking
 
 *Future modules to be added as course content is provided*
 
@@ -279,15 +280,76 @@ Style: Consistent with existing modules - glass morphism, playful animations, en
 | 7. Module 3 Content | 7/7 | Complete | 2026-02-01 |
 | 8. Study Tools | 5/5 | Complete | 2026-02-01 |
 
-## Project Complete
+### Phase 9: Module 4 Content
+**Goal**: Build interactive visualizations for Module 4 (Regulation) — regulation goals, government safety net, bank supervision, stress testing, too big to fail, shadow banking, and money market funds.
+**Depends on**: Phase 8
+**Research**: Unlikely (course content provided, reuse existing visualization patterns)
+**Plans**: 9 plans in 6 waves
 
-All 8 phases and 42 plans successfully completed.
+Plans:
+- [ ] 09-01: Module 4 data & types (lessons, concepts)
+- [ ] 09-02: ExternalityDiagram + SafetyNetFlow + ContagionNetwork
+- [ ] 09-03: TEDSpreadTimeline + CapitalRequirementsCalculator + CAMELSRadar
+- [ ] 09-04: StressTestSimulator + TBTFConcentration
+- [ ] 09-05: ShadowBankingComparison + MoneyMarketRunChart
+- [ ] 09-06: RegulationOverviewFlow + SupervisoryProcessFlow
+- [ ] 09-07: Module page integration (Module4Content + routing)
+- [ ] 09-08: Glossary + exam questions update
+- [ ] 09-09: Visual verification
 
-**Final Application:**
-- 3 interactive course modules (Money, Banking, Risk)
-- 30+ interactive visualizations
-- 148 glossary terms
-- 20 exam practice questions
-- Cross-module study tools
+Wave structure:
+- Wave 1: 09-01 (data foundation)
+- Wave 2 (parallel): 09-02, 09-03
+- Wave 3 (parallel): 09-04, 09-05
+- Wave 4: 09-06
+- Wave 5 (parallel): 09-07, 09-08
+- Wave 6: 09-09 (integration + checkpoint)
+
+**Key Content Areas:**
+
+*Lesson 4-1: Goals of Financial Regulation*
+- 4-1.1: Goals (market failure, externalities, microprudential vs macroprudential, moral hazard)
+- 4-1.2: Government Safety Net (bank fragility, runs, deposit insurance, LOLR)
+- 4-1.3: 2007-2009 Crisis Interventions (TED spread, TARP, facility expansion)
+
+*Lesson 4-2: Regulation and Supervision in Practice*
+- 4-2.1: Bank Regulation Rules (competition, activities, capital, Basel Accord, risk-weighted assets)
+- 4-2.2: Supervisory Process (examination, CAMELS, enforcement actions, problem bank list)
+- 4-2.3: Stress Testing (SCAP, CCAR, scenario design, stressed capital ratio)
+
+*Lesson 4-3: 21st Century Challenges*
+- 4-3.1: Too Big to Fail (bank concentration, systemic risk, G-SIB, surcharges, FSOC/SIFI)
+- 4-3.2: Shadow Banking (definition, regulatory arbitrage, repos, MBS)
+- 4-3.3: Money Market Funds Case Study (2008 run, floating NAV, gates, 2020 repeat)
+
+**Visualization Ideas:**
+- Externality Diagram (private vs social cost, micro/macro prudential)
+- Safety Net Flow (FDIC + LOLR before/after crisis)
+- Contagion Network (animated bank failure spread)
+- TED Spread Crisis Timeline (2006-2010)
+- Capital Requirements Calculator (Basel risk-weighted assets)
+- CAMELS Radar (hexagon rating with bank presets)
+- Stress Test Simulator (scenario selection + capital waterfall)
+- TBTF Bank Concentration (G-SIB buckets + surcharge ladder)
+- Shadow Banking Comparison (bank vs shadow side-by-side)
+- Money Market Run Chart (crisis narrative + reform paradox)
+- Regulation Overview Flow (three pillars + US structure)
+- Supervisory Process Flow (examination → CAMELS → enforcement)
+
+Style: Consistent with existing modules — playful animations, interactive exploration, clear visual hierarchy.
+
+## Progress
+
+| Phase | Plans Complete | Status | Completed |
+|-------|----------------|--------|-----------|
+| 1. Foundation | 3/3 | Complete | 2026-01-18 |
+| 2. Design System | 4/4 | Complete | 2026-01-18 |
+| 3. Module Navigation | 3/3 | Complete | 2026-01-18 |
+| 4. Module 1 Content | 7/7 | Complete | 2026-01-20 |
+| 5.1. Module 2 Content | 7/7 | Complete | 2026-01-21 |
+| 6. Module 2 Complete | 6/6 | Complete | 2026-02-01 |
+| 7. Module 3 Content | 7/7 | Complete | 2026-02-01 |
+| 8. Study Tools | 5/5 | Complete | 2026-02-01 |
+| 9. Module 4 Content | 0/9 | Planned | — |
 
 Run `npm run dev` to start the development server.

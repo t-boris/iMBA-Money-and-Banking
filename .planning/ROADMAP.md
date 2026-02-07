@@ -294,7 +294,7 @@ Plans:
 - [x] 09-05: ShadowBankingComparison + MoneyMarketRunChart
 - [x] 09-06: RegulationOverviewFlow + SupervisoryProcessFlow
 - [ ] 09-07: Module page integration (Module4Content + routing)
-- [ ] 09-08: Glossary + exam questions update
+- [x] 09-08: Glossary + exam questions update
 - [ ] 09-09: Visual verification
 
 Wave structure:
@@ -350,6 +350,6 @@ Style: Consistent with existing modules — playful animations, interactive expl
 | 6. Module 2 Complete | 6/6 | Complete | 2026-02-01 |
 | 7. Module 3 Content | 7/7 | Complete | 2026-02-01 |
 | 8. Study Tools | 5/5 | Complete | 2026-02-01 |
-| 9. Module 4 Content | 6/9 | In progress | — |
+| 9. Module 4 Content | 8/9 | In progress | — |
 
 Run `npm run dev` to start the development server.

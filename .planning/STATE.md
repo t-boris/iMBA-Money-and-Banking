@@ -10,16 +10,16 @@ See: .planning/PROJECT.md (updated 2026-01-17)
 ## Current Position
 
 Phase: 9 of 9 (Module 4 Content) - In progress
-Plan: 6 of 9 in current phase
+Plan: 8 of 9 in current phase
 Status: In progress
-Last activity: 2026-02-06 — Completed 09-06-PLAN.md
+Last activity: 2026-02-07 — Completed 09-08-PLAN.md
 
-Progress: ██████████████████████████████████████░░░ 94% (48/51 plans complete)
+Progress: ███████████████████████████████████████░░ 96% (49/51 plans complete)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 48
+- Total plans completed: 49
 - Average duration: 3.3 min
 - Total execution time: ~2.7 hours
 
@@ -37,8 +37,8 @@ Progress: ███████████████████████�
 | 8. Study Tools | 5/5 | 16 min | 3.2 min |
 
 **Recent Trend:**
-- Last 5 plans: 09-02 (5 min), 09-03 (7 min), 09-04 (4 min), 09-05 (8 min), 09-06 (8 min)
-- Trend: Consistent speed for visualization component plans
+- Last 5 plans: 09-04 (4 min), 09-05 (8 min), 09-06 (8 min), 09-07 (?), 09-08 (2 min)
+- Trend: Data-only plans execute fastest
 
 ## Accumulated Context
 
@@ -160,8 +160,8 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-02-06
-Stopped at: Completed 09-06-PLAN.md
+Last session: 2026-02-07
+Stopped at: Completed 09-08-PLAN.md
 Resume file: None
 
 **Phase 9 Progress:**
@@ -171,6 +171,7 @@ Resume file: None
 - Plan 09-04: StressTestSimulator + TBTFConcentration - COMPLETE
 - Plan 09-05: ShadowBankingComparison + MoneyMarketRunChart - COMPLETE
 - Plan 09-06: RegulationOverviewFlow + SupervisoryProcessFlow - COMPLETE
+- Plan 09-08: Glossary + exam questions update - COMPLETE
 
 ## Notes
 
@@ -217,8 +218,8 @@ The iMBA Money and Banking interactive study application is complete with:
 - Module 3: Risk and Return (11 lessons, 63 concepts, 11 visualizations)
 
 **Study Tools:**
-- Glossary: 148 searchable terms with filters and detail modals
-- Exam Practice: 20 questions with quiz mode, timer, and gamification
+- Glossary: 236 searchable terms with filters and detail modals
+- Exam Practice: 30 questions with quiz mode, timer, and gamification
 
 **Technical Stack:**
 - Next.js 16.1.3 with Turbopack

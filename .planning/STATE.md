@@ -10,18 +10,18 @@ See: .planning/PROJECT.md (updated 2026-01-17)
 ## Current Position
 
 Phase: 9 of 9 (Module 4 Content) - In progress
-Plan: 4 of 9 in current phase
+Plan: 5 of 9 in current phase
 Status: In progress
-Last activity: 2026-02-06 — Completed 09-04-PLAN.md
+Last activity: 2026-02-06 — Completed 09-05-PLAN.md
 
-Progress: █████████████████████████████████████░░░ 90% (46/51 plans complete)
+Progress: █████████████████████████████████████░░░░ 92% (47/51 plans complete)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 46
+- Total plans completed: 47
 - Average duration: 3.3 min
-- Total execution time: ~2.5 hours
+- Total execution time: ~2.6 hours
 
 **By Phase:**
 
@@ -37,7 +37,7 @@ Progress: ███████████████████████�
 | 8. Study Tools | 5/5 | 16 min | 3.2 min |
 
 **Recent Trend:**
-- Last 5 plans: 09-01 (4 min), 09-02 (5 min), 09-03 (7 min), 09-04 (4 min)
+- Last 5 plans: 09-01 (4 min), 09-02 (5 min), 09-03 (7 min), 09-04 (4 min), 09-05 (8 min)
 - Trend: Consistent speed for visualization component plans
 
 ## Accumulated Context
@@ -133,6 +133,9 @@ Recent decisions affecting current work:
 - Three-step stress test layout (scenario -> waterfall -> results) for progressive disclosure
 - Efficiency vs Subsidy toggle for TBTF with opposing visual metaphors
 - G-SIB bucket ladder with narrowing width representing increasing systemic importance
+- Side-by-side comparison panel with regulatory status indicators for shadow banking
+- Reform effectiveness cards with backfired/partially-effective labels
+- Preemptive run paradox as multi-panel insight card
 
 ### Deferred Issues
 
@@ -155,7 +158,7 @@ None.
 ## Session Continuity
 
 Last session: 2026-02-06
-Stopped at: Completed 09-04-PLAN.md
+Stopped at: Completed 09-05-PLAN.md
 Resume file: None
 
 **Phase 9 Progress:**
@@ -163,6 +166,7 @@ Resume file: None
 - Plan 09-02: ExternalityDiagram + SafetyNetFlow + ContagionNetwork - COMPLETE
 - Plan 09-03: TEDSpreadTimeline + CapitalRequirementsCalculator + CAMELSRadar - COMPLETE
 - Plan 09-04: StressTestSimulator + TBTFConcentration - COMPLETE
+- Plan 09-05: ShadowBankingComparison + MoneyMarketRunChart - COMPLETE
 
 ## Notes
 

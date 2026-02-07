@@ -312,6 +312,171 @@ export const examQuestions: ExamQuestion[] = [
     moduleId: 1,
     conceptId: '1-moral-hazard',
   },
+
+  // Module 4 - Regulation (10 questions)
+  {
+    id: 'q4-1',
+    question: 'Why are banks more regulated than most industries?',
+    options: [
+      'Because they are more profitable',
+      'Because their failure creates systemic spillovers',
+      'Because they are government-owned',
+      'Because they have monopoly power',
+    ],
+    correctIndex: 1,
+    explanation:
+      'Bank failures create negative externalities — lost credit, lost savings, taxpayer costs, and contagion to other institutions — that justify government intervention.',
+    difficulty: 'easy',
+    moduleId: 4,
+    conceptId: '4-negative-externality',
+  },
+  {
+    id: 'q4-2',
+    question: 'What is the primary purpose of FDIC deposit insurance?',
+    options: [
+      'To increase bank profits',
+      'To prevent bank runs by guaranteeing deposits',
+      'To replace bank regulation',
+      'To fund government spending',
+    ],
+    correctIndex: 1,
+    explanation:
+      'Deposit insurance removes the incentive for depositors to rush and withdraw funds, preventing self-fulfilling bank runs.',
+    difficulty: 'easy',
+    moduleId: 4,
+    conceptId: '4-deposit-insurance',
+  },
+  {
+    id: 'q4-3',
+    question:
+      'What is the difference between microprudential and macroprudential regulation?',
+    options: [
+      'Domestic vs international',
+      'Individual bank risk vs system-wide risk',
+      'Small vs large banks',
+      'Short-term vs long-term regulation',
+    ],
+    correctIndex: 1,
+    explanation:
+      'Microprudential focuses on the safety of individual banks. Macroprudential addresses system-wide risk and spillovers, with stricter requirements for systemically important institutions.',
+    difficulty: 'medium',
+    moduleId: 4,
+    conceptId: '4-macroprudential-regulation',
+  },
+  {
+    id: 'q4-4',
+    question: 'What does the TED Spread measure?',
+    options: [
+      'The difference between stock and bond returns',
+      'The gap between interbank lending rate and Treasury bill rate',
+      'The spread between mortgage rates and deposit rates',
+      'The inflation rate minus GDP growth',
+    ],
+    correctIndex: 1,
+    explanation:
+      'TED = Interbank Rate - Treasury Rate. A wide spread indicates banks distrust each other, signaling financial system stress.',
+    difficulty: 'medium',
+    moduleId: 4,
+    conceptId: '4-ted-spread',
+  },
+  {
+    id: 'q4-5',
+    question:
+      'Why does the Basel Accord use risk-weighted assets instead of total assets?',
+    options: [
+      'To simplify calculations',
+      'To recognize that different assets carry different risk levels',
+      'To reduce bank profitability',
+      'To standardize accounting rules',
+    ],
+    correctIndex: 1,
+    explanation:
+      'Risk-weighting ensures banks hold more capital against risky assets (like corporate loans at 100%) and less against safe assets (government bonds at 0%), making capital requirements proportional to actual risk.',
+    difficulty: 'medium',
+    moduleId: 4,
+    conceptId: '4-risk-weighted-assets',
+  },
+  {
+    id: 'q4-6',
+    question: 'What are the six dimensions of the CAMELS rating system?',
+    options: [
+      'Cost, Assets, Management, Efficiency, Loans, Safety',
+      'Capital, Assets, Management, Earnings, Liquidity, Sensitivity',
+      'Credit, Auditing, Monitoring, Equity, Leverage, Stability',
+      'Capital, Activities, Markets, Exposure, Losses, Solvency',
+    ],
+    correctIndex: 1,
+    explanation:
+      'CAMELS rates banks on: Capital adequacy, Asset quality, Management quality, Earnings sustainability, Liquidity position, and Sensitivity to market risk.',
+    difficulty: 'medium',
+    moduleId: 4,
+    conceptId: '4-camels-score',
+  },
+  {
+    id: 'q4-7',
+    question: "What problem does the 'Too Big To Fail' doctrine create?",
+    options: [
+      'It makes small banks more competitive',
+      'It creates moral hazard by encouraging risk-taking in large banks',
+      'It reduces banking system efficiency',
+      'It increases interest rates for consumers',
+    ],
+    correctIndex: 1,
+    explanation:
+      'If large banks expect government rescue, they take excessive risks — keeping profits in good times while shifting losses to taxpayers in bad times. This implicit guarantee also gives them cheaper funding.',
+    difficulty: 'hard',
+    moduleId: 4,
+    conceptId: '4-too-big-to-fail',
+  },
+  {
+    id: 'q4-8',
+    question: 'What is shadow banking and why is it a regulatory concern?',
+    options: [
+      'Illegal banking operations',
+      'Bank-like intermediation outside traditional regulation, creating hidden systemic risk',
+      'Online-only banking without branches',
+      'Foreign banks operating without local licenses',
+    ],
+    correctIndex: 1,
+    explanation:
+      'Shadow banks (like money market funds, repo markets) perform bank-like functions — illiquid assets funded by demand-like liabilities — but operate with weaker regulation and no safety net, creating fragility.',
+    difficulty: 'hard',
+    moduleId: 4,
+    conceptId: '4-shadow-banking',
+  },
+  {
+    id: 'q4-9',
+    question:
+      'Why might redemption gates on money market funds actually increase run risk?',
+    options: [
+      'They are too expensive to implement',
+      'Investors run earlier to avoid being locked out',
+      'They reduce fund profitability',
+      'Regulators cannot enforce them',
+    ],
+    correctIndex: 1,
+    explanation:
+      'The preemptive run incentive: if investors expect gates may be imposed, they rationally withdraw earlier to avoid being trapped. The tool designed to stop runs paradoxically accelerates them.',
+    difficulty: 'hard',
+    moduleId: 4,
+    conceptId: '4-preemptive-run-incentive',
+  },
+  {
+    id: 'q4-10',
+    question: 'What is the purpose of a systemic risk surcharge for G-SIBs?',
+    options: [
+      'To punish large banks',
+      'To make large banks hold extra capital proportional to their systemic footprint',
+      'To fund deposit insurance',
+      'To prevent banks from growing',
+    ],
+    correctIndex: 1,
+    explanation:
+      "The surcharge works like a 'pollution tax' — the more systemic risk a bank creates, the more capital it must hold. This reduces failure probability for banks whose collapse would damage the entire system.",
+    difficulty: 'hard',
+    moduleId: 4,
+    conceptId: '4-systemic-risk-surcharge',
+  },
 ];
 
 // Helper to get questions by difficulty

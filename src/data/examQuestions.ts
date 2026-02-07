@@ -479,13 +479,30 @@ export const examQuestions: ExamQuestion[] = [
   },
 ];
 
+// Helper to get unique sorted module IDs that have questions
+export function getModulesWithQuestions(): number[] {
+  const moduleIds = new Set(examQuestions.map((q) => q.moduleId));
+  return Array.from(moduleIds).sort((a, b) => a - b);
+}
+
+// Helper to get question count for a set of modules
+export function getQuestionCountForModules(moduleIds: number[]): number {
+  return examQuestions.filter((q) => moduleIds.includes(q.moduleId)).length;
+}
+
 // Helper to get questions by difficulty
 export function getQuestionsByDifficulty(difficulty: ExamQuestion['difficulty']): ExamQuestion[] {
   return examQuestions.filter((q) => q.difficulty === difficulty);
 }
 
 // Helper to get random exam with proper difficulty distribution
-export function generateExam(count: 5 | 10 | 15 | 20): ExamQuestion[] {
+export function generateExam(count: 5 | 10 | 15 | 20, moduleIds?: number[]): ExamQuestion[] {
+  // Filter by modules if provided
+  const pool =
+    moduleIds && moduleIds.length > 0
+      ? examQuestions.filter((q) => moduleIds.includes(q.moduleId))
+      : examQuestions;
+
   const hardCount = Math.round(count * 0.4);
   const mediumCount = Math.round(count * 0.4);
   const easyCount = count - hardCount - mediumCount;
@@ -499,9 +516,18 @@ export function generateExam(count: 5 | 10 | 15 | 20): ExamQuestion[] {
     return shuffled;
   };
 
-  const hardQuestions = shuffleArray(getQuestionsByDifficulty('hard')).slice(0, hardCount);
-  const mediumQuestions = shuffleArray(getQuestionsByDifficulty('medium')).slice(0, mediumCount);
-  const easyQuestions = shuffleArray(getQuestionsByDifficulty('easy')).slice(0, easyCount);
+  const hardQuestions = shuffleArray(pool.filter((q) => q.difficulty === 'hard')).slice(
+    0,
+    hardCount,
+  );
+  const mediumQuestions = shuffleArray(pool.filter((q) => q.difficulty === 'medium')).slice(
+    0,
+    mediumCount,
+  );
+  const easyQuestions = shuffleArray(pool.filter((q) => q.difficulty === 'easy')).slice(
+    0,
+    easyCount,
+  );
 
   return shuffleArray([...hardQuestions, ...mediumQuestions, ...easyQuestions]);
 }

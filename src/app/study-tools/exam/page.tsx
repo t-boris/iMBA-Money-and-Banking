@@ -60,8 +60,8 @@ export default function ExamPage() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(newProgress));
   }, []);
 
-  const handleStart = (count: 5 | 10 | 15 | 20) => {
-    const exam = generateExam(count);
+  const handleStart = (count: 5 | 10 | 15 | 20, moduleIds: number[]) => {
+    const exam = generateExam(count, moduleIds);
     setQuestions(exam);
     setCurrentIndex(0);
     setCorrectCount(0);

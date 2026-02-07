@@ -24,7 +24,7 @@ Module 3: Risk and Return — course content provided
 - [x] **Phase 6: Module 2 Complete** - Bank organization, lending, investment banking, and financial statements
 - [x] **Phase 7: Module 3 Content** - Risk and return: bank capital, profitability metrics, and risk management
 - [x] **Phase 8: Study Tools** - Cross-module glossary and exam practice system
-- [ ] **Phase 9: Module 4 Content** - Regulation: goals, safety net, supervision, stress testing, TBTF, shadow banking
+- [x] **Phase 9: Module 4 Content** - Regulation: goals, safety net, supervision, stress testing, TBTF, shadow banking
 
 *Future modules to be added as course content is provided*
 
@@ -295,7 +295,7 @@ Plans:
 - [x] 09-06: RegulationOverviewFlow + SupervisoryProcessFlow
 - [x] 09-07: Module page integration (Module4Content + routing)
 - [x] 09-08: Glossary + exam questions update
-- [ ] 09-09: Visual verification
+- [x] 09-09: Visual verification
 
 Wave structure:
 - Wave 1: 09-01 (data foundation)
@@ -350,6 +350,6 @@ Style: Consistent with existing modules — playful animations, interactive expl
 | 6. Module 2 Complete | 6/6 | Complete | 2026-02-01 |
 | 7. Module 3 Content | 7/7 | Complete | 2026-02-01 |
 | 8. Study Tools | 5/5 | Complete | 2026-02-01 |
-| 9. Module 4 Content | 8/9 | In progress | — |
+| 9. Module 4 Content | 9/9 | Complete | 2026-02-06 |
 
 Run `npm run dev` to start the development server.

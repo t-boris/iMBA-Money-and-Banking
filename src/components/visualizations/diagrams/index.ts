@@ -38,3 +38,5 @@ export { ContagionNetwork } from './ContagionNetwork';
 export { TEDSpreadTimeline } from './TEDSpreadTimeline';
 export { CapitalRequirementsCalculator } from './CapitalRequirementsCalculator';
 export { CAMELSRadar } from './CAMELSRadar';
+export { StressTestSimulator } from './StressTestSimulator';
+export { TBTFConcentration } from './TBTFConcentration';

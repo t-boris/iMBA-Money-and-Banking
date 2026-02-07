@@ -293,7 +293,7 @@ Plans:
 - [x] 09-04: StressTestSimulator + TBTFConcentration
 - [x] 09-05: ShadowBankingComparison + MoneyMarketRunChart
 - [x] 09-06: RegulationOverviewFlow + SupervisoryProcessFlow
-- [ ] 09-07: Module page integration (Module4Content + routing)
+- [x] 09-07: Module page integration (Module4Content + routing)
 - [x] 09-08: Glossary + exam questions update
 - [ ] 09-09: Visual verification
 

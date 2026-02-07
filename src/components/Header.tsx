@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { version } from '../../package.json';
 import { ThemeToggle } from './ThemeProvider';
 
 export function Header() {
@@ -49,7 +50,7 @@ export function Header() {
               borderRadius: '4px',
             }}
           >
-            v1.1.0
+            v{version}
           </span>
         </Link>
         <nav style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>

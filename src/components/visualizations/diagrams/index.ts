@@ -40,3 +40,5 @@ export { CapitalRequirementsCalculator } from './CapitalRequirementsCalculator';
 export { CAMELSRadar } from './CAMELSRadar';
 export { StressTestSimulator } from './StressTestSimulator';
 export { TBTFConcentration } from './TBTFConcentration';
+export { ShadowBankingComparison } from './ShadowBankingComparison';
+export { MoneyMarketRunChart } from './MoneyMarketRunChart';

@@ -1,7 +1,7 @@
 import { modules } from '@/data/modules';
 import { notFound } from 'next/navigation';
 import { Container, Section, Card, CardHeader, CardTitle, CardContent } from '@/components/ui';
-import { Module1Content, Module2Content, Module3Content } from '@/components/modules';
+import { Module1Content, Module2Content, Module3Content, Module4Content } from '@/components/modules';
 import Link from 'next/link';
 
 // Generate static params for all modules (required for static export)
@@ -78,6 +78,8 @@ export default async function ModulePage({ params }: { params: Promise<{ slug: s
             <Module2Content />
           ) : currentModule.id === 3 ? (
             <Module3Content />
+          ) : currentModule.id === 4 ? (
+            <Module4Content />
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               <Card variant="default">

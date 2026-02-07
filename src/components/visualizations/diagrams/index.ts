@@ -35,3 +35,6 @@ export { LoanContractDesign } from './LoanContractDesign';
 export { ExternalityDiagram } from './ExternalityDiagram';
 export { SafetyNetFlow } from './SafetyNetFlow';
 export { ContagionNetwork } from './ContagionNetwork';
+export { TEDSpreadTimeline } from './TEDSpreadTimeline';
+export { CapitalRequirementsCalculator } from './CapitalRequirementsCalculator';
+export { CAMELSRadar } from './CAMELSRadar';

@@ -2,6 +2,7 @@ import { GlossaryTerm } from '@/types';
 import { module1Concepts } from './module1/concepts';
 import { module2Concepts } from './module2/concepts';
 import { module3Concepts } from './module3/concepts';
+import { module4Concepts } from './module4/concepts';
 
 // Examples for key terms to enhance understanding
 const termExamples: Record<string, string> = {
@@ -61,6 +62,38 @@ const termExamples: Record<string, string> = {
     'A bond with a duration of 5 years will lose approximately 5% in value if interest rates rise by 1%.',
   'capital-adequacy':
     'Basel III requires banks to maintain at least 8% total capital ratio to absorb potential losses.',
+
+  // Module 4 - Regulation
+  'bank-regulation':
+    'Capital requirements forcing banks to hold at least 8% equity is an example of bank regulation constraining risk-taking.',
+  'negative-externality':
+    'When a bank fails, local businesses lose credit access and households lose savings — costs the bank did not consider when taking risks.',
+  'moral-hazard':
+    'After FDIC insurance was introduced, some banks took riskier bets knowing depositors would be made whole by the government.',
+  'deposit-insurance':
+    'If your bank fails, FDIC pays back your deposits up to $250,000 — so there is no reason to rush and withdraw.',
+  'bank-run':
+    'In 2008, customers lined up outside Northern Rock in the UK to withdraw deposits after hearing the bank had liquidity problems.',
+  'financial-contagion':
+    'When Lehman Brothers collapsed, money market funds, insurance companies, and other banks all suffered losses from their exposure.',
+  'ted-spread':
+    'The TED spread spiked from ~50 basis points to over 450 basis points during the peak of the 2008 crisis, signaling extreme interbank distrust.',
+  'basel-accord':
+    'Under Basel III, banks must hold at least 8% capital relative to their risk-weighted assets.',
+  'risk-weighted-assets':
+    'Government bonds carry 0% risk weight while corporate loans carry 100% — a $100M government bond portfolio adds $0 to RWA.',
+  'camels-score':
+    'A bank scoring poorly on the CAMELS exam may be placed on the confidential Problem Bank List and face restrictions.',
+  'stress-testing':
+    'In the annual CCAR test, banks must show their capital would survive a scenario with 10% unemployment and 25% drop in house prices.',
+  'too-big-to-fail':
+    'JPMorgan Chase holds over $3 trillion in assets — its failure would freeze credit markets and trigger a global crisis.',
+  'shadow-banking':
+    'Money market funds accept deposits and invest in debt securities, functioning like banks but without FDIC insurance or Fed oversight.',
+  'regulatory-arbitrage':
+    'By operating as a money market fund instead of a bank, firms avoid capital requirements while offering deposit-like products.',
+  'systemic-risk-surcharge':
+    'JPMorgan faces an additional 3.5% capital surcharge on top of Basel minimums due to its systemic importance.',
 };
 
 // Helper to determine term type based on term content
@@ -116,6 +149,7 @@ export const glossaryTerms: GlossaryTerm[] = [
   ...module1Concepts.map((c) => conceptToGlossaryTerm(c, 1)),
   ...module2Concepts.map((c) => conceptToGlossaryTerm(c, 2)),
   ...module3Concepts.map((c) => conceptToGlossaryTerm(c, 3)),
+  ...module4Concepts.map((c) => conceptToGlossaryTerm(c, 4)),
 ].sort((a, b) => a.term.localeCompare(b.term));
 
 // Get unique first letters for A-Z index

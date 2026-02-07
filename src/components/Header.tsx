@@ -49,7 +49,7 @@ export function Header() {
               borderRadius: '4px',
             }}
           >
-            v1.0.0
+            v1.1.0
           </span>
         </Link>
         <nav style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>

@@ -25,6 +25,7 @@ Module 3: Risk and Return — course content provided
 - [x] **Phase 7: Module 3 Content** - Risk and return: bank capital, profitability metrics, and risk management
 - [x] **Phase 8: Study Tools** - Cross-module glossary and exam practice system
 - [x] **Phase 9: Module 4 Content** - Regulation: goals, safety net, supervision, stress testing, TBTF, shadow banking
+- [ ] **Phase 10: Exam Module Filter** - Module selection for exam practice (single module, first 4, last 4, or all)
 
 *Future modules to be added as course content is provided*
 
@@ -338,6 +339,18 @@ Wave structure:
 
 Style: Consistent with existing modules — playful animations, interactive exploration, clear visual hierarchy.
 
+### Phase 10: Exam Module Filter
+**Goal**: Add module selection to the exam practice setup screen. Users can filter questions by individual module, first 4 modules, last 4 modules, or all modules.
+**Depends on**: Phase 9
+**Research**: Unlikely (extend existing exam UI)
+**Plans**: 0 plans
+
+Plans:
+- [ ] TBD (run /gsd:plan-phase 10 to break down)
+
+**Details:**
+[To be added during planning]
+
 ## Progress
 
 | Phase | Plans Complete | Status | Completed |
@@ -351,5 +364,6 @@ Style: Consistent with existing modules — playful animations, interactive expl
 | 7. Module 3 Content | 7/7 | Complete | 2026-02-01 |
 | 8. Study Tools | 5/5 | Complete | 2026-02-01 |
 | 9. Module 4 Content | 9/9 | Complete | 2026-02-06 |
+| 10. Exam Module Filter | 0/0 | Not planned | — |
 
 Run `npm run dev` to start the development server.

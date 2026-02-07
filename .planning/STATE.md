@@ -158,6 +158,7 @@ None.
 - Phase 5.1 inserted after Phase 4: Module 2 Content - Modern Banking (INSERTED)
 - Phase 6 added: Module 2 Complete - Bank Organization, Lending, Investment Banking, Financial Statements
 - Phase 7 added: Module 3 Content - Risk and Return (bank capital, profitability, risk types, risk management)
+- Phase 10 added: Exam Module Filter - module selection for exam practice
 
 ## Session Continuity
 

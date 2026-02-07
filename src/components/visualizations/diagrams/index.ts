@@ -42,3 +42,5 @@ export { StressTestSimulator } from './StressTestSimulator';
 export { TBTFConcentration } from './TBTFConcentration';
 export { ShadowBankingComparison } from './ShadowBankingComparison';
 export { MoneyMarketRunChart } from './MoneyMarketRunChart';
+export { RegulationOverviewFlow } from './RegulationOverviewFlow';
+export { SupervisoryProcessFlow } from './SupervisoryProcessFlow';

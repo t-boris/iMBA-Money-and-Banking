@@ -44,3 +44,6 @@ export { ShadowBankingComparison } from './ShadowBankingComparison';
 export { MoneyMarketRunChart } from './MoneyMarketRunChart';
 export { RegulationOverviewFlow } from './RegulationOverviewFlow';
 export { SupervisoryProcessFlow } from './SupervisoryProcessFlow';
+export { ShortTermFundingDashboard } from './ShortTermFundingDashboard';
+export { InterestRateLab } from './InterestRateLab';
+export { SecuritizationPipeline } from './SecuritizationPipeline';

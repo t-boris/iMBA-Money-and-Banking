@@ -232,6 +232,7 @@ export function RevenueMixComparison({ className }: RevenueMixComparisonProps) {
                 }}
               >
                 <motion.div
+                  key={`${source.name}-${selectedEra}`}
                   initial={{ width: 0 }}
                   animate={{ width: `${value}%` }}
                   transition={{ duration: 0.5, delay: index * 0.05 }}

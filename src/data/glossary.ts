@@ -3,6 +3,7 @@ import { module1Concepts } from './module1/concepts';
 import { module2Concepts } from './module2/concepts';
 import { module3Concepts } from './module3/concepts';
 import { module4Concepts } from './module4/concepts';
+import { module5Concepts } from './module5/concepts';
 
 // Examples for key terms to enhance understanding
 const termExamples: Record<string, string> = {
@@ -150,6 +151,7 @@ export const glossaryTerms: GlossaryTerm[] = [
   ...module2Concepts.map((c) => conceptToGlossaryTerm(c, 2)),
   ...module3Concepts.map((c) => conceptToGlossaryTerm(c, 3)),
   ...module4Concepts.map((c) => conceptToGlossaryTerm(c, 4)),
+  ...module5Concepts.map((c) => conceptToGlossaryTerm(c, 5)),
 ].sort((a, b) => a.term.localeCompare(b.term));
 
 // Get unique first letters for A-Z index

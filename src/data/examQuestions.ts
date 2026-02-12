@@ -1,4 +1,5 @@
 import { ExamQuestion } from '@/types';
+import { module5ExamQuestions } from './module5/questions';
 
 export const examQuestions: ExamQuestion[] = [
   // Module 1 - Money and Finance (10 questions)
@@ -477,6 +478,7 @@ export const examQuestions: ExamQuestion[] = [
     moduleId: 4,
     conceptId: '4-systemic-risk-surcharge',
   },
+  ...module5ExamQuestions,
 ];
 
 // Helper to get unique sorted module IDs that have questions

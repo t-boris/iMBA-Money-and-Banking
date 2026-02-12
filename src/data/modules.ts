@@ -34,9 +34,10 @@ export const modules: Module[] = [
   },
   {
     id: 5,
-    title: 'Central Banking and the Fed',
-    description: 'The Federal Reserve system, monetary policy tools, and central bank operations.',
-    icon: '🏛️',
+    title: 'Interest Rates and Funding Markets',
+    description:
+      'Federal funds, repo, LIBOR/SOFR transition, Treasury yield decomposition, money market funds, and securitization.',
+    icon: '📈',
     slug: 'central-banking-fed',
   },
   {

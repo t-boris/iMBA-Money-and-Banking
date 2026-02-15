@@ -122,7 +122,34 @@ export function InterestRateLab({ className, initialView = 'fisher', singleView 
 
       {activeTab === 'fisher' && (
         <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}>
+          <ExplainerBlock
+            items={[
+              {
+                term: 'What is this dashboard?',
+                text: 'It lets you explore the Fisher equation \u2014 the fundamental relationship between nominal interest rates, real interest rates, and inflation. Every interest rate you see quoted (a mortgage, a savings account, a bond yield) is a nominal rate. This dashboard shows you what is actually inside that number.',
+              },
+              {
+                term: 'Nominal interest rate',
+                text: 'The rate you see advertised \u2014 e.g. "your savings account pays 5%." This is the raw number in current dollars, before accounting for inflation. If prices are rising at 3%, your 5% nominal return only gives you ~2% more purchasing power.',
+              },
+              {
+                term: 'Real interest rate',
+                text: 'What you actually earn in terms of purchasing power after stripping out inflation. If a bond pays 5% nominal and inflation is 3%, the real return is roughly 2%. This is the true reward for lending your money. TIPS (Treasury Inflation-Protected Securities) directly pay a real rate because their principal adjusts with the CPI.',
+              },
+              {
+                term: 'Fisher equation',
+                text: 'Nominal rate \u2248 Real rate + Expected inflation (the approximation). The exact formula is (1 + nominal) = (1 + real) \u00d7 (1 + inflation). The approximation is close when rates are low, but the gap grows at higher rates \u2014 try setting both sliders above 5% to see the two cards diverge.',
+              },
+              {
+                term: 'Breakeven inflation',
+                text: 'In real markets this is the difference between a regular Treasury yield (nominal) and a TIPS yield (real) of the same maturity. It represents the market\u2019s best guess of future inflation. Here it equals nominal minus real \u2014 exactly the expected inflation you set.',
+              },
+            ]}
+          />
           <Panel>
+            <SliderHint
+              text='The real interest rate \u2014 the purchasing-power return an investor earns. Determined by economic fundamentals: productivity growth, savings supply, and central bank policy. When the economy is strong, real rates tend to be higher (more demand for capital). TIPS yields directly measure this in practice.'
+            />
             <RangeInput
               label='Real Rate (r)'
               value={realRate}
@@ -132,8 +159,11 @@ export function InterestRateLab({ className, initialView = 'fisher', singleView 
               onChange={setRealRate}
               format={(v) => `${v.toFixed(1)}%`}
             />
+            <SliderHint
+              text='What the market expects inflation to average over the life of the bond. Central bank credibility matters here: if the Fed is trusted to keep inflation near 2%, this number stays anchored. If credibility weakens (e.g. after a large fiscal expansion), inflation expectations drift up and nominal rates follow.'
+            />
             <RangeInput
-              label='Expected Inflation (pi)'
+              label='Expected Inflation (\u03C0)'
               value={expectedInflation}
               min={-1}
               max={8}
@@ -142,6 +172,23 @@ export function InterestRateLab({ className, initialView = 'fisher', singleView 
               format={(v) => `${v.toFixed(1)}%`}
             />
           </Panel>
+
+          <ExplainerBlock
+            items={[
+              {
+                term: 'Nominal (Approx) \u2014 blue card',
+                text: 'Simply real + inflation. This is the Fisher approximation, which works well at low rates. For example: 1.6% real + 2.3% inflation \u2248 3.9% nominal.',
+              },
+              {
+                term: 'Nominal (Exact) \u2014 green card',
+                text: 'Uses the exact formula: (1 + r) \u00d7 (1 + \u03C0) \u2212 1. This is slightly higher than the approximation because of the cross-term r \u00d7 \u03C0. The difference is tiny at low rates but becomes visible when you push both sliders above 5%.',
+              },
+              {
+                term: 'Breakeven Inflation \u2014 amber card',
+                text: 'The inflation rate that makes a nominal Treasury and a TIPS of the same maturity give equal returns. If actual inflation exceeds breakeven, TIPS holders win; if inflation is lower, regular Treasuries win.',
+              },
+            ]}
+          />
 
           <div
             style={{
@@ -165,6 +212,14 @@ export function InterestRateLab({ className, initialView = 'fisher', singleView 
               padding: '14px',
             }}
           >
+            <ExplainerBlock
+              items={[
+                {
+                  term: 'Reading the bar chart',
+                  text: 'Green bar = real rate (purchasing-power return). Amber bar = expected inflation (the part that gets eaten by rising prices). Blue bar = their sum, the nominal rate. Notice that the blue bar is always roughly as long as green + amber combined.',
+                },
+              ]}
+            />
             <div style={{ display: 'grid', gridTemplateColumns: '120px 1fr', gap: '8px', alignItems: 'center' }}>
               <span style={{ fontSize: '12px', color: 'var(--color-text-muted)' }}>Real Rate</span>
               <StackBar value={realRate} max={12} color='rgb(16, 185, 129)' />
@@ -179,7 +234,26 @@ export function InterestRateLab({ className, initialView = 'fisher', singleView 
 
       {activeTab === 'treasury' && (
         <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}>
+          <ExplainerBlock
+            items={[
+              {
+                term: 'What is this dashboard?',
+                text: 'It breaks down a long-term Treasury bond yield into its three building blocks. When you see "the 10-year Treasury yields 4.8%," this dashboard shows you where that number comes from and what each component means.',
+              },
+              {
+                term: 'Why Treasuries are the benchmark',
+                text: 'US Treasury bonds are considered the risk-free asset because the US government can always print dollars to repay. Every other rate in the economy (corporate bonds, mortgages, student loans) is priced as "Treasury yield + a spread for extra risk." Understanding Treasuries is the foundation for understanding all interest rates.',
+              },
+              {
+                term: 'The decomposition formula',
+                text: 'Long-term nominal yield = Real rate + Expected inflation + Term premium. This is an extension of the Fisher equation: the first two pieces are the same (purchasing-power return + inflation compensation), and the third piece \u2014 the term premium \u2014 is the extra reward for locking your money up for a long time.',
+              },
+            ]}
+          />
           <Panel>
+            <SliderHint
+              text='The compensation an investor receives for giving up purchasing power today. Driven by the same fundamentals as in the Fisher tab: productivity growth, savings supply, and central bank policy. In practice, this is observable through TIPS yields. After the 2008 crisis, real rates fell near zero (or below) as central banks cut rates aggressively.'
+            />
             <RangeInput
               label='Real Rate Component'
               value={realRate}
@@ -189,6 +263,9 @@ export function InterestRateLab({ className, initialView = 'fisher', singleView 
               onChange={setRealRate}
               format={(v) => `${v.toFixed(1)}%`}
             />
+            <SliderHint
+              text='The inflation rate the market expects over the bond\u2019s life. If investors believe the Fed will keep inflation at 2%, this stays near 2%. If a supply shock or fiscal policy shakes confidence, this rises \u2014 pushing the nominal yield up even if the real rate hasn\u2019t changed.'
+            />
             <RangeInput
               label='Expected Inflation Component'
               value={expectedInflation}
@@ -197,6 +274,9 @@ export function InterestRateLab({ className, initialView = 'fisher', singleView 
               step={0.1}
               onChange={setExpectedInflation}
               format={(v) => `${v.toFixed(1)}%`}
+            />
+            <SliderHint
+              text='The extra yield investors demand for holding a long-maturity bond instead of rolling over short-term bills. Why does it exist? Longer bonds carry more interest-rate risk (if rates rise, the bond\u2019s price drops more), more inflation uncertainty, and more exposure to unknown future events. In calm periods the term premium is small (~0.5\u20131%). In volatile periods or when government debt supply surges, it can rise above 2%.'
             />
             <RangeInput
               label='Term Premium Component'
@@ -218,9 +298,18 @@ export function InterestRateLab({ className, initialView = 'fisher', singleView 
               padding: '16px',
             }}
           >
-            <p style={{ fontSize: '12px', color: 'var(--color-text-muted)', marginBottom: '10px' }}>
-              Long-term nominal yield decomposition: real rate + expected inflation + term premium.
-            </p>
+            <ExplainerBlock
+              items={[
+                {
+                  term: 'Reading the stacked bar',
+                  text: 'Green = real rate, amber = expected inflation, purple = term premium. The total width is the implied long-term nominal yield. Drag each slider to see how its segment grows or shrinks \u2014 and how the total yield responds.',
+                },
+                {
+                  term: 'Try this experiment',
+                  text: 'Set real rate to 2%, inflation to 2%, term premium to 0%. You get a 4% yield with no term premium \u2014 the market is indifferent between short and long bonds. Now raise term premium to 1.5%: the yield jumps to 5.5%, reflecting the extra compensation investors demand for duration risk.',
+                },
+              ]}
+            />
             <div style={{ display: 'flex', gap: '8px', alignItems: 'stretch', height: '36px' }}>
               <Segment value={realRate} total={longTermYield} color='rgb(16, 185, 129)' label='Real' />
               <Segment
@@ -240,7 +329,34 @@ export function InterestRateLab({ className, initialView = 'fisher', singleView 
 
       {activeTab === 'yield-curve' && (
         <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}>
+          <ExplainerBlock
+            items={[
+              {
+                term: 'What is this dashboard?',
+                text: 'It lets you build a yield curve from scratch by controlling three forces: where the Fed has set rates today, where the market expects rates to go, and how much extra compensation investors demand for holding longer bonds. The resulting curve shape is one of the most watched signals in all of finance.',
+              },
+              {
+                term: 'What is a yield curve?',
+                text: 'A snapshot of interest rates across different maturities at a single point in time. The x-axis shows time to maturity (3 months to 30 years), and the y-axis shows the yield. It answers the question: "If I lend to the US government for X years, what annual rate do I earn?"',
+              },
+              {
+                term: 'Upward sloping (normal)',
+                text: 'Long-term rates are higher than short-term rates. This is the typical shape during economic expansions: investors demand extra compensation (term premium) for locking money away longer, and the market expects the economy to grow steadily.',
+              },
+              {
+                term: 'Inverted',
+                text: 'Short-term rates exceed long-term rates. This is rare and historically one of the most reliable recession predictors. It usually happens when the Fed has raised short rates aggressively, but the market expects it will have to cut soon because the economy is weakening. Every US recession since the 1960s was preceded by an inversion of the 10Y\u20132Y spread.',
+              },
+              {
+                term: '10Y\u20132Y spread',
+                text: 'The most-watched measure of curve slope. Positive = normal curve, negative = inverted. When this goes negative, bond traders, central bankers, and the financial press all pay attention because of its recession-forecasting track record.',
+              },
+            ]}
+          />
           <Panel>
+            <SliderHint
+              text='Where the Fed has set the overnight policy rate right now. This anchors the left end of the curve (short maturities). When the Fed is tightening (raising rates to fight inflation), this is high. When easing (cutting rates to support growth), this is low.'
+            />
             <RangeInput
               label='Current Short Rate (near policy rate)'
               value={shortRate}
@@ -250,6 +366,9 @@ export function InterestRateLab({ className, initialView = 'fisher', singleView 
               onChange={setShortRate}
               format={(v) => `${v.toFixed(1)}%`}
             />
+            <SliderHint
+              text='What the bond market expects the Fed to do over the coming years. Negative values mean the market expects rate cuts (the Fed will ease because the economy is slowing). Positive values mean the market expects rate hikes (tightening to fight inflation). This is the single biggest driver of curve shape: strongly negative expectations pull long rates below short rates, creating an inversion.'
+            />
             <RangeInput
               label='Expected Future Policy Path'
               value={futurePolicyPath}
@@ -258,6 +377,9 @@ export function InterestRateLab({ className, initialView = 'fisher', singleView 
               step={0.1}
               onChange={setFuturePolicyPath}
               format={(v) => `${v >= 0 ? '+' : ''}${v.toFixed(1)} pts`}
+            />
+            <SliderHint
+              text='How much extra yield investors demand per unit of maturity for bearing duration risk. Higher values steepen the curve (long bonds pay more). This reflects uncertainty about the future: when fiscal deficits are large, inflation is unpredictable, or bond supply is surging, investors demand a bigger premium. When central banks buy long bonds (QE), they compress this premium.'
             />
             <RangeInput
               label='Term Premium Slope Factor'
@@ -279,6 +401,22 @@ export function InterestRateLab({ className, initialView = 'fisher', singleView 
               padding: '16px',
             }}
           >
+            <ExplainerBlock
+              items={[
+                {
+                  term: 'Reading the chart',
+                  text: 'Each dot is a Treasury maturity (3M, 1Y, 2Y, 5Y, 10Y, 30Y). The line connecting them is the yield curve. Green = upward sloping (normal expansion). Red = inverted (recession signal). Amber = flat / transitional. Watch the color change as you adjust the sliders.',
+                },
+                {
+                  term: 'Try this: create an inversion',
+                  text: 'Set the short rate high (e.g. 5.5%), the future policy path strongly negative (e.g. \u22123.0), and the term premium low (e.g. 0.1). The curve inverts \u2014 short rates sit above long rates because the market is pricing in aggressive rate cuts. This is exactly what happened in 2006\u20132007 before the financial crisis.',
+                },
+                {
+                  term: 'Try this: create a steep curve',
+                  text: 'Set the short rate low (e.g. 1.0%), the future policy path positive (e.g. +2.0), and the term premium high (e.g. 1.0). The curve slopes steeply upward \u2014 characteristic of early economic recoveries when the Fed is still keeping rates low but the market expects tightening ahead.',
+                },
+              ]}
+            />
             <svg viewBox='0 0 680 260' style={{ width: '100%', height: '220px' }}>
               {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((tick) => {
                 const y = 220 - (tick / 8) * 175;
@@ -321,6 +459,19 @@ export function InterestRateLab({ className, initialView = 'fisher', singleView 
                 );
               })}
             </svg>
+
+            <ExplainerBlock
+              items={[
+                {
+                  term: 'Curve Shape',
+                  text: 'Classified by the 10Y\u20132Y spread. Upward Sloping (green) when spread > 0.45%. Inverted (red) when spread < \u22120.15%. Flat/Transition (amber) in between.',
+                },
+                {
+                  term: 'Signal card',
+                  text: 'When the spread goes negative (inverted), the signal switches to "Recession Risk Elevated." This is not a guarantee \u2014 but historically, inversions have preceded every US recession with a lead time of roughly 6\u201318 months.',
+                },
+              ]}
+            />
 
             <div
               style={{
@@ -461,6 +612,52 @@ function Segment({
     >
       {label}
     </div>
+  );
+}
+
+function ExplainerBlock({ items }: { items: Array<{ term: string; text: string }> }) {
+  return (
+    <div
+      style={{
+        borderRadius: '12px',
+        border: '1px solid color-mix(in srgb, var(--color-primary) 18%, transparent)',
+        backgroundColor: 'color-mix(in srgb, var(--color-primary) 5%, var(--color-surface-1))',
+        padding: '14px 16px',
+        marginBottom: '14px',
+      }}
+    >
+      <div style={{ fontSize: '12px', fontWeight: 700, color: 'var(--color-primary)', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+        Key concepts
+      </div>
+      <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '6px' }}>
+        {items.map((item) => (
+          <li key={item.term} style={{ fontSize: '13px', color: 'var(--color-text-secondary)', lineHeight: '1.55' }}>
+            <strong style={{ color: 'var(--color-text-primary)' }}>{item.term}</strong>
+            {' \u2014 '}
+            {item.text}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function SliderHint({ text }: { text: string }) {
+  return (
+    <p
+      style={{
+        fontSize: '12px',
+        lineHeight: '1.55',
+        color: 'var(--color-text-muted)',
+        margin: '0 0 4px 0',
+        padding: '6px 8px',
+        borderLeft: '2px solid color-mix(in srgb, var(--color-primary) 30%, transparent)',
+        backgroundColor: 'color-mix(in srgb, var(--color-primary) 3%, transparent)',
+        borderRadius: '0 6px 6px 0',
+      }}
+    >
+      {text}
+    </p>
   );
 }
 

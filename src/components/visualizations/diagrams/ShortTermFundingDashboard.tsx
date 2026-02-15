@@ -290,20 +290,20 @@ export function ShortTermFundingDashboard({
           <ExplainerBlock
             items={[
               {
+                term: 'What is this dashboard?',
+                text: 'It simulates a single repo transaction so you can see how haircuts protect (or fail to protect) the lender when collateral prices drop. In real markets, trillions of dollars flow through repo every day \u2014 it is the largest source of overnight secured funding.',
+              },
+              {
                 term: 'Repo (repurchase agreement)',
-                text: 'A short-term secured loan. The borrower sells a security (e.g. a Treasury bond) to the lender today and agrees to buy it back tomorrow at a slightly higher price. The price difference is the interest.',
+                text: 'A short-term secured loan disguised as two trades. Step 1: the borrower sells a security (typically a Treasury bond) to the lender and receives cash. Step 2: the next day, the borrower buys the security back at a slightly higher price. The price difference is the interest. The lender holds the security overnight as collateral \u2014 if the borrower defaults, the lender keeps it.',
+              },
+              {
+                term: 'Why repo exists',
+                text: 'Banks, hedge funds, and dealers constantly need short-term cash to finance their bond portfolios. Meanwhile, money market funds and corporations have idle cash they want to park safely overnight. Repo connects the two: the cash provider gets collateral protection, and the borrower gets cheap funding because the loan is secured.',
               },
               {
                 term: 'Haircut',
-                text: 'The percentage discount applied to the collateral\u2019s market value when calculating the loan amount. If collateral is worth $100 and the haircut is 2%, the borrower receives only $98. This buffer protects the lender if the collateral loses value before the repo matures.',
-              },
-              {
-                term: 'Collateral price shock',
-                text: 'Simulates a sudden drop in the market price of the pledged securities. If the post-shock collateral value falls below the loan amount, the lender suffers a residual loss \u2014 the haircut was not large enough.',
-              },
-              {
-                term: 'How the sliders work',
-                text: 'Set the collateral value, choose a haircut size, then apply a price shock to see whether the haircut provides enough protection. Watch the bar chart and "Lender Residual Loss" card turn red when the buffer is breached.',
+                text: 'The percentage discount applied to the collateral\u2019s market value when calculating how much cash the borrower can receive. If collateral is worth $100 and the haircut is 2%, the borrower receives only $98. The remaining $2 is a safety buffer: even if the collateral drops in price by up to 2% overnight, the lender can sell it and still recover the full $98 loan.',
               },
             ]}
           />
@@ -316,6 +316,9 @@ export function ShortTermFundingDashboard({
               marginBottom: '14px',
             }}
           >
+            <SliderHint
+              text='The market value of securities the borrower pledges as collateral. In practice this is often US Treasuries (lowest haircuts, ~2%), agency MBS (~3\u20135%), or corporate bonds (~5\u201310%). Higher-quality collateral means smaller haircuts.'
+            />
             <RangeRow
               label='Collateral Value'
               value={collateralValue}
@@ -325,6 +328,9 @@ export function ShortTermFundingDashboard({
               onChange={setCollateralValue}
               formatter={(value) => `$${value.toFixed(0)}m`}
             />
+            <SliderHint
+              text='The safety buffer. A 2% haircut on $200m collateral means the loan is only $196m \u2014 the lender is protected against a price drop of up to 2%. In calm markets, Treasury haircuts are tiny (~2%). In a crisis, haircuts on riskier collateral can spike to 20\u201350%, choking off funding for firms that depend on repo.'
+            />
             <RangeRow
               label='Haircut'
               value={haircut}
@@ -333,6 +339,9 @@ export function ShortTermFundingDashboard({
               step={0.25}
               onChange={setHaircut}
               formatter={(value) => `${value.toFixed(2)}%`}
+            />
+            <SliderHint
+              text='Simulates a sudden drop in the market price of the pledged security (e.g. a bond sell-off or credit downgrade). If the post-shock collateral value falls below the loan amount, the haircut was not large enough and the lender takes a residual loss. This is exactly what happened to repo lenders holding mortgage-backed securities in 2007\u20132008.'
             />
             <RangeRow
               label='Collateral Price Shock'
@@ -344,6 +353,23 @@ export function ShortTermFundingDashboard({
               formatter={(value) => `-${value.toFixed(1)}%`}
             />
           </div>
+
+          <ExplainerBlock
+            items={[
+              {
+                term: 'Repo Loan Amount (blue card)',
+                text: 'Collateral Value \u00d7 (1 \u2212 Haircut%). This is how much cash the borrower actually receives. The rest is the lender\u2019s safety margin.',
+              },
+              {
+                term: 'Post-Shock Collateral (amber card)',
+                text: 'Collateral Value \u00d7 (1 \u2212 Price Shock%). What the collateral would be worth if the market moved against the borrower overnight.',
+              },
+              {
+                term: 'Lender Residual Loss (red/green card)',
+                text: 'If Post-Shock Collateral < Repo Loan, the lender cannot recover the full loan by selling the collateral \u2014 the card turns red. If the haircut was large enough, the loss is zero and the card stays green. Try setting the price shock above the haircut to see the loss appear.',
+              },
+            ]}
+          />
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '12px' }}>
             <MetricCard label='Repo Loan Amount' value={`$${repoLoan.toFixed(1)}m`} tone='blue' />
@@ -368,9 +394,14 @@ export function ShortTermFundingDashboard({
               padding: '16px',
             }}
           >
-            <p style={{ fontSize: '12px', color: 'var(--color-text-muted)', marginBottom: '10px' }}>
-              Haircuts protect the cash lender by forcing collateral value to exceed the loan amount.
-            </p>
+            <ExplainerBlock
+              items={[
+                {
+                  term: 'Reading the bar chart',
+                  text: 'Blue bar = full collateral value. Green bar = the actual loan (always shorter than blue because of the haircut). Amber bar = collateral value after the price shock. When the amber bar is shorter than the green bar, the lender is underwater \u2014 that gap is the residual loss.',
+                },
+              ]}
+            />
             <div style={{ display: 'grid', gridTemplateColumns: '120px 1fr', gap: '10px', alignItems: 'center' }}>
               <span style={{ fontSize: '12px', color: 'var(--color-text-muted)' }}>Collateral</span>
               <Bar value={collateralValue} max={500} color='rgb(59, 130, 246)' />
@@ -388,24 +419,24 @@ export function ShortTermFundingDashboard({
           <ExplainerBlock
             items={[
               {
+                term: 'What is this dashboard?',
+                text: 'It compares three key overnight interest rates and shows how they behave differently under market stress. These rates are the benchmarks that price trillions of dollars of loans, derivatives, and bonds worldwide.',
+              },
+              {
+                term: 'Why reference rates matter',
+                text: 'When a bank offers you a floating-rate mortgage or a corporation issues a floating-rate bond, the contract says "pay reference rate + X%." The choice of which reference rate is used determines how the borrower\u2019s cost behaves. A rate that spikes during crises (LIBOR) transmits stress directly to borrowers; a rate that stays stable (SOFR) does not.',
+              },
+              {
                 term: 'EFFR (Effective Federal Funds Rate)',
-                text: 'The volume-weighted average rate on actual overnight unsecured reserve loans between banks. This is the Fed\u2019s primary policy rate.',
+                text: 'The volume-weighted average rate on actual overnight unsecured reserve loans between banks. This is the Fed\u2019s primary policy rate \u2014 the one the FOMC announces after each meeting. It anchors the entire short-term rate complex.',
               },
               {
                 term: 'LIBOR (London Interbank Offered Rate)',
-                text: 'A now-retired benchmark based on surveys: large banks submitted estimates of what they would charge each other for unsecured loans. Because it relied on self-reported quotes rather than real transactions, banks were able to manipulate it. LIBOR was phased out after 2023.',
+                text: 'For decades the world\u2019s dominant benchmark. Every day, a panel of large banks in London submitted estimates of what they would charge each other for unsecured loans at various maturities (overnight, 1 month, 3 months, etc.). The problem: submissions were self-reported, not based on actual transactions. During 2008 and again in 2012, banks were caught manipulating their quotes \u2014 understating rates to look healthier or to profit on derivatives tied to LIBOR. After a global scandal, regulators mandated a transition to transaction-based rates. LIBOR was officially phased out after June 2023.',
               },
               {
                 term: 'SOFR (Secured Overnight Financing Rate)',
-                text: 'The replacement for LIBOR. It is calculated from actual overnight repo transactions backed by Treasury securities \u2014 roughly $1 trillion per day. Because it is secured (collateral-backed) and transaction-based, it is harder to manipulate and carries less credit risk.',
-              },
-              {
-                term: 'Why LIBOR spikes more under stress',
-                text: 'LIBOR reflects unsecured lending between banks, so it includes bank credit risk. When markets are stressed, banks distrust each other, and the unsecured rate jumps. SOFR stays closer to EFFR because Treasury collateral keeps it insulated from counterparty fears.',
-              },
-              {
-                term: 'Funding Stress Index',
-                text: 'The slider simulates rising market stress (0 = calm, 100 = crisis). Drag it right to see how the three rates diverge \u2014 especially the widening gap between LIBOR and SOFR.',
+                text: 'The replacement for USD LIBOR, published daily by the New York Fed since 2018. It is calculated from real overnight repo transactions backed by US Treasury securities \u2014 roughly $1 trillion in daily volume. Because it is secured (the loan has Treasury collateral) and transaction-based (no self-reporting), SOFR is essentially manipulation-proof and carries almost no credit risk. The trade-off: SOFR is overnight only, so building a term structure (30-day, 90-day SOFR) requires additional market infrastructure.',
               },
             ]}
           />
@@ -418,6 +449,9 @@ export function ShortTermFundingDashboard({
               marginBottom: '14px',
             }}
           >
+            <SliderHint
+              text='Simulates rising financial stress from 0 (calm markets, low counterparty fear) to 100 (full-blown crisis like 2008). As stress rises, banks become reluctant to lend to each other without collateral. This pushes the unsecured rate (LIBOR) sharply higher, while the secured rate (SOFR) rises only modestly because Treasury collateral keeps it insulated. Drag the slider right and watch the gap between the amber and green lines widen \u2014 that spread is the market\u2019s price of bank credit risk.'
+            />
             <RangeRow
               label='Funding Stress Index'
               value={stress}
@@ -439,6 +473,23 @@ export function ShortTermFundingDashboard({
               <MetricCard label='LIBOR-like (unsecured)' value={`${referenceRates.libor.toFixed(2)}%`} tone='amber' />
             </div>
           </div>
+
+          <ExplainerBlock
+            items={[
+              {
+                term: 'Reading the cards',
+                text: 'Blue = EFFR (the Fed\u2019s policy rate). Green = SOFR (secured, collateral-backed). Amber = LIBOR-style unsecured rate. At low stress all three are close together. As stress rises, the amber card pulls away \u2014 that gap is the credit-risk premium banks charge each other for unsecured lending.',
+              },
+              {
+                term: 'Reading the chart',
+                text: 'The three colored lines show the same rates over a 12-month horizon. Blue (EFFR) and green (SOFR) stay close together because both are anchored to Fed policy and/or secured transactions. The amber line (LIBOR) sits above and diverges further under stress. The vertical distance between amber and green is the secured\u2013unsecured spread \u2014 a real-time measure of how much banks distrust each other.',
+              },
+              {
+                term: 'Try this experiment',
+                text: 'Set stress to 0 and note how tightly the three lines cluster. Then slowly drag to 100. The amber line rises steeply while blue and green barely move. This is exactly what happened in 2007\u20132008: LIBOR spiked because banks feared lending to each other without collateral, while repo rates (the basis for SOFR) stayed relatively calm.',
+              },
+            ]}
+          />
 
           <div
             style={{

@@ -157,21 +157,21 @@ export function Module5Content({ className }: Module5ContentProps) {
       title: 'Nominal and Real Interest Rates',
       description:
         'Use Fisher decomposition and TIPS logic to separate purchasing-power return from inflation compensation.',
-      visualizations: [<InterestRateLab key='fisher' initialView='fisher' />],
+      visualizations: [<InterestRateLab key='fisher' initialView='fisher' singleView />],
     },
     '5-2.2': {
       id: '5-2.2',
       title: 'Treasury Securities and the Risk-Free Rate',
       description:
         'Treasuries are used as risk-free benchmarks because of low default risk and deep liquidity, but still carry inflation and duration-related price risk.',
-      visualizations: [<InterestRateLab key='treasury' initialView='treasury' />],
+      visualizations: [<InterestRateLab key='treasury' initialView='treasury' singleView />],
     },
     '5-2.3': {
       id: '5-2.3',
       title: 'Term Structure of Interest Rates',
       description:
         'Yield-curve shape reflects expectations and term premia. Inversions (negative 10Y-2Y spread) often precede recessions.',
-      visualizations: [<InterestRateLab key='curve' initialView='yield-curve' />],
+      visualizations: [<InterestRateLab key='curve' initialView='yield-curve' singleView />],
     },
     '5-3': {
       id: '5-3',

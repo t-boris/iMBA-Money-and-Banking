@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils';
 interface InterestRateLabProps {
   className?: string;
   initialView?: 'fisher' | 'treasury' | 'yield-curve';
+  singleView?: boolean;
 }
 
 const tabs: Array<{ id: 'fisher' | 'treasury' | 'yield-curve'; label: string }> = [
@@ -33,7 +34,7 @@ function tabColor(shape: string) {
   return 'rgb(245, 158, 11)';
 }
 
-export function InterestRateLab({ className, initialView = 'fisher' }: InterestRateLabProps) {
+export function InterestRateLab({ className, initialView = 'fisher', singleView = false }: InterestRateLabProps) {
   const [activeTab, setActiveTab] = useState<'fisher' | 'treasury' | 'yield-curve'>(initialView);
 
   const [realRate, setRealRate] = useState(1.6);
@@ -70,50 +71,54 @@ export function InterestRateLab({ className, initialView = 'fisher' }: InterestR
 
   return (
     <div className={cn('w-full max-w-5xl mx-auto', className)}>
-      <div
-        style={{
-          borderRadius: '14px',
-          border: '1px solid var(--color-surface-2)',
-          padding: '18px',
-          background:
-            'linear-gradient(145deg, color-mix(in srgb, var(--color-emerald) 10%, transparent), var(--color-surface-1))',
-          marginBottom: '16px',
-        }}
-      >
-        <h3 style={{ fontSize: '19px', fontWeight: 700, color: 'var(--color-text-primary)' }}>
-          Interest Rate Lab
-        </h3>
-        <p style={{ fontSize: '14px', color: 'var(--color-text-secondary)', marginTop: '6px' }}>
-          Interactively connect nominal vs real rates, Treasury decomposition, and yield-curve shape.
-        </p>
-      </div>
+      {!singleView && (
+        <div
+          style={{
+            borderRadius: '14px',
+            border: '1px solid var(--color-surface-2)',
+            padding: '18px',
+            background:
+              'linear-gradient(145deg, color-mix(in srgb, var(--color-emerald) 10%, transparent), var(--color-surface-1))',
+            marginBottom: '16px',
+          }}
+        >
+          <h3 style={{ fontSize: '19px', fontWeight: 700, color: 'var(--color-text-primary)' }}>
+            Interest Rate Lab
+          </h3>
+          <p style={{ fontSize: '14px', color: 'var(--color-text-secondary)', marginTop: '6px' }}>
+            Interactively connect nominal vs real rates, Treasury decomposition, and yield-curve shape.
+          </p>
+        </div>
+      )}
 
-      <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '14px' }}>
-        {tabs.map((tab) => (
-          <button
-            key={tab.id}
-            onClick={() => setActiveTab(tab.id)}
-            style={{
-              borderRadius: '999px',
-              border:
-                activeTab === tab.id
-                  ? '1px solid color-mix(in srgb, var(--color-primary) 60%, transparent)'
-                  : '1px solid var(--color-surface-2)',
-              padding: '8px 14px',
-              cursor: 'pointer',
-              background:
-                activeTab === tab.id
-                  ? 'color-mix(in srgb, var(--color-primary) 14%, transparent)'
-                  : 'var(--color-surface-1)',
-              color: activeTab === tab.id ? 'var(--color-primary)' : 'var(--color-text-secondary)',
-              fontSize: '13px',
-              fontWeight: 600,
-            }}
-          >
-            {tab.label}
-          </button>
-        ))}
-      </div>
+      {!singleView && (
+        <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '14px' }}>
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              style={{
+                borderRadius: '999px',
+                border:
+                  activeTab === tab.id
+                    ? '1px solid color-mix(in srgb, var(--color-primary) 60%, transparent)'
+                    : '1px solid var(--color-surface-2)',
+                padding: '8px 14px',
+                cursor: 'pointer',
+                background:
+                  activeTab === tab.id
+                    ? 'color-mix(in srgb, var(--color-primary) 14%, transparent)'
+                    : 'var(--color-surface-1)',
+                color: activeTab === tab.id ? 'var(--color-primary)' : 'var(--color-text-secondary)',
+                fontSize: '13px',
+                fontWeight: 600,
+              }}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+      )}
 
       {activeTab === 'fisher' && (
         <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}>

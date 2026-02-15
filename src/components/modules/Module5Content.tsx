@@ -99,14 +99,14 @@ export function Module5Content({ className }: Module5ContentProps) {
       title: 'The Market for Federal Funds',
       description:
         'Reserves are redistributed overnight between banks. The federal funds rate is the key operational target influenced by reserve supply and demand.',
-      visualizations: [<ShortTermFundingDashboard key='ff' initialView='federal-funds' />],
+      visualizations: [<ShortTermFundingDashboard key='ff' initialView='federal-funds' singleView />],
     },
     '5-1.2': {
       id: '5-1.2',
       title: 'The Repo Market',
       description:
         'Repo funding is collateralized and large in scale. Haircuts are central to lender protection under collateral price uncertainty.',
-      visualizations: [<ShortTermFundingDashboard key='repo' initialView='repo' />],
+      visualizations: [<ShortTermFundingDashboard key='repo' initialView='repo' singleView />],
     },
     '5-1.3': {
       id: '5-1.3',
@@ -114,7 +114,7 @@ export function Module5Content({ className }: Module5ContentProps) {
       description:
         'LIBOR and SOFR represent unsecured vs secured funding benchmarks. Their spread behavior reflects stress and benchmark design differences.',
       visualizations: [
-        <ShortTermFundingDashboard key='rates' initialView='reference-rates' />,
+        <ShortTermFundingDashboard key='rates' initialView='reference-rates' singleView />,
         <TEDSpreadTimeline key='ted' />,
       ],
     },

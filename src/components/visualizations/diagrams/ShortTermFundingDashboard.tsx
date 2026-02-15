@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils';
 interface ShortTermFundingDashboardProps {
   className?: string;
   initialView?: 'federal-funds' | 'repo' | 'reference-rates';
+  singleView?: boolean;
 }
 
 const views: Array<{
@@ -31,6 +32,7 @@ function linePath(points: Array<{ x: number; y: number }>) {
 export function ShortTermFundingDashboard({
   className,
   initialView = 'federal-funds',
+  singleView = false,
 }: ShortTermFundingDashboardProps) {
   const [activeView, setActiveView] = useState<'federal-funds' | 'repo' | 'reference-rates'>(
     initialView,
@@ -90,50 +92,54 @@ export function ShortTermFundingDashboard({
 
   return (
     <div className={cn('w-full max-w-5xl mx-auto', className)}>
-      <div
-        style={{
-          padding: '18px',
-          borderRadius: '14px',
-          border: '1px solid var(--color-surface-2)',
-          background:
-            'linear-gradient(140deg, color-mix(in srgb, var(--color-primary) 10%, transparent), var(--color-surface-1))',
-          marginBottom: '18px',
-        }}
-      >
-        <h3 style={{ fontSize: '19px', fontWeight: 700, color: 'var(--color-text-primary)' }}>
-          Short-Term Funding Dashboard
-        </h3>
-        <p style={{ color: 'var(--color-text-secondary)', fontSize: '14px', marginTop: '6px' }}>
-          Track how reserve liquidity, collateral quality, and stress shift policy-sensitive rates.
-        </p>
-      </div>
+      {!singleView && (
+        <div
+          style={{
+            padding: '18px',
+            borderRadius: '14px',
+            border: '1px solid var(--color-surface-2)',
+            background:
+              'linear-gradient(140deg, color-mix(in srgb, var(--color-primary) 10%, transparent), var(--color-surface-1))',
+            marginBottom: '18px',
+          }}
+        >
+          <h3 style={{ fontSize: '19px', fontWeight: 700, color: 'var(--color-text-primary)' }}>
+            Short-Term Funding Dashboard
+          </h3>
+          <p style={{ color: 'var(--color-text-secondary)', fontSize: '14px', marginTop: '6px' }}>
+            Track how reserve liquidity, collateral quality, and stress shift policy-sensitive rates.
+          </p>
+        </div>
+      )}
 
-      <div style={{ display: 'flex', gap: '8px', marginBottom: '18px', flexWrap: 'wrap' }}>
-        {views.map((view) => (
-          <button
-            key={view.id}
-            onClick={() => setActiveView(view.id)}
-            style={{
-              borderRadius: '999px',
-              padding: '8px 14px',
-              border:
-                activeView === view.id
-                  ? '1px solid color-mix(in srgb, var(--color-primary) 60%, transparent)'
-                  : '1px solid var(--color-surface-2)',
-              color: activeView === view.id ? 'var(--color-primary)' : 'var(--color-text-secondary)',
-              background:
-                activeView === view.id
-                  ? 'color-mix(in srgb, var(--color-primary) 14%, transparent)'
-                  : 'var(--color-surface-1)',
-              fontSize: '13px',
-              fontWeight: 600,
-              cursor: 'pointer',
-            }}
-          >
-            {view.label}
-          </button>
-        ))}
-      </div>
+      {!singleView && (
+        <div style={{ display: 'flex', gap: '8px', marginBottom: '18px', flexWrap: 'wrap' }}>
+          {views.map((view) => (
+            <button
+              key={view.id}
+              onClick={() => setActiveView(view.id)}
+              style={{
+                borderRadius: '999px',
+                padding: '8px 14px',
+                border:
+                  activeView === view.id
+                    ? '1px solid color-mix(in srgb, var(--color-primary) 60%, transparent)'
+                    : '1px solid var(--color-surface-2)',
+                color: activeView === view.id ? 'var(--color-primary)' : 'var(--color-text-secondary)',
+                background:
+                  activeView === view.id
+                    ? 'color-mix(in srgb, var(--color-primary) 14%, transparent)'
+                    : 'var(--color-surface-1)',
+                fontSize: '13px',
+                fontWeight: 600,
+                cursor: 'pointer',
+              }}
+            >
+              {view.label}
+            </button>
+          ))}
+        </div>
+      )}
 
       {activeView === 'federal-funds' && (
         <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}>

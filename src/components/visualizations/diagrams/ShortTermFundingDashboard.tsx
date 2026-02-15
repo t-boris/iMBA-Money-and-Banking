@@ -140,20 +140,16 @@ export function ShortTermFundingDashboard({
           <ExplainerBlock
             items={[
               {
+                term: 'What is this dashboard?',
+                text: 'It simulates the market where the Federal Reserve\u2019s key interest rate \u2014 the federal funds rate \u2014 is determined. In real life this rate emerges from overnight lending of reserves between banks. Here you control the three forces that drive it.',
+              },
+              {
                 term: 'Bank reserves',
-                text: 'Deposits that commercial banks hold at the Federal Reserve. Banks need them to settle payments and meet regulatory requirements.',
+                text: 'Every commercial bank holds an account at the Federal Reserve. The balance in that account is the bank\u2019s reserves. Banks use reserves to settle payments between each other (e.g. when your bank transfers money to someone else\u2019s bank) and to satisfy regulatory requirements. Reserves are the most fundamental form of "bank money."',
               },
               {
                 term: 'Federal funds market',
-                text: 'An overnight market where banks with excess reserves lend to banks that need more. The interest rate on these loans is the federal funds rate \u2014 the Fed\u2019s main policy target.',
-              },
-              {
-                term: 'Interest on Reserves (IOR)',
-                text: 'The rate the Fed pays banks on their reserve balances. It acts as a floor: no rational bank would lend reserves to another bank at a rate lower than what the Fed already pays them.',
-              },
-              {
-                term: 'How the sliders work',
-                text: 'Raising reserve supply pushes the fed funds rate down (more cash chasing borrowers). Raising demand pressure pushes it up (more borrowers competing for scarce reserves). The IOR slider shifts the floor.',
+                text: 'At the end of each business day, some banks have more reserves than they need, while others are short. They lend/borrow reserves overnight in the federal funds market. The interest rate on these loans is the federal funds rate \u2014 the single most important rate in the economy, because almost every other rate (mortgages, corporate bonds, savings accounts) is priced relative to it.',
               },
             ]}
           />
@@ -182,6 +178,9 @@ export function ShortTermFundingDashboard({
               padding: '16px',
             }}
           >
+            <SliderHint
+              text='How many reserves are available in the banking system overall. The Fed controls this through open market operations: when the Fed buys bonds from banks, it credits their reserve accounts (supply goes up); when it sells bonds, reserves drain out (supply goes down). More supply means banks compete to lend out their excess cash, pushing rates down.'
+            />
             <RangeRow
               label='Reserve Supply Index'
               value={reserveSupply}
@@ -190,6 +189,9 @@ export function ShortTermFundingDashboard({
               step={1}
               onChange={setReserveSupply}
             />
+            <SliderHint
+              text='How urgently banks need to borrow reserves. Demand rises when banks face large payment outflows, when regulatory requirements increase, or during quarter-end reporting dates when banks want to look well-capitalized. Higher demand means more banks are competing for the same pool of reserves, pushing rates up.'
+            />
             <RangeRow
               label='Reserve Demand Pressure'
               value={reserveDemand}
@@ -197,6 +199,9 @@ export function ShortTermFundingDashboard({
               max={90}
               step={1}
               onChange={setReserveDemand}
+            />
+            <SliderHint
+              text='Since 2008 the Fed pays banks interest on the reserves they hold. This creates a floor for the fed funds rate: why would Bank A lend to Bank B at 4% if the Fed is already paying 4.35% risk-free? In practice the floor is not perfectly tight (some lenders like government-sponsored enterprises cannot earn IOR), but it anchors the lower bound. The dashed green line on the chart shows this floor.'
             />
             <RangeRow
               label='Interest on Reserves (IOR)'
@@ -209,9 +214,18 @@ export function ShortTermFundingDashboard({
             />
 
             <div style={{ marginTop: '16px' }}>
-              <p style={{ fontSize: '12px', color: 'var(--color-text-muted)', marginBottom: '8px' }}>
-                Stylized reserve-supply curve: higher reserves generally push fed funds lower.
-              </p>
+              <ExplainerBlock
+                items={[
+                  {
+                    term: 'Reading the chart',
+                    text: 'The blue curve shows how the fed funds rate changes as reserve supply increases (left to right). The purple dot is the current equilibrium implied by your slider positions. The dashed green line is the IOR floor. Try dragging Reserve Supply to the right \u2014 the dot slides down the curve (cheaper to borrow). Try raising IOR \u2014 the entire floor shifts up.',
+                  },
+                  {
+                    term: 'Liquidity Gap card',
+                    text: 'Shows demand minus supply. When positive (amber), banks are scrambling for reserves and rates are under upward pressure. When negative (green), the system has ample liquidity.',
+                  },
+                ]}
+              />
               <svg viewBox='0 0 680 260' style={{ width: '100%', height: '220px' }}>
                 <rect x='0' y='0' width='680' height='260' fill='transparent' />
 
@@ -580,6 +594,25 @@ function MetricCard({
       <div style={{ fontSize: '11px', color: 'var(--color-text-muted)', marginBottom: '6px' }}>{label}</div>
       <div style={{ fontSize: '21px', fontWeight: 700, color: colorByTone[tone] }}>{value}</div>
     </div>
+  );
+}
+
+function SliderHint({ text }: { text: string }) {
+  return (
+    <p
+      style={{
+        fontSize: '12px',
+        lineHeight: '1.55',
+        color: 'var(--color-text-muted)',
+        margin: '0 0 4px 0',
+        padding: '6px 8px',
+        borderLeft: '2px solid color-mix(in srgb, var(--color-primary) 30%, transparent)',
+        backgroundColor: 'color-mix(in srgb, var(--color-primary) 3%, transparent)',
+        borderRadius: '0 6px 6px 0',
+      }}
+    >
+      {text}
+    </p>
   );
 }
 

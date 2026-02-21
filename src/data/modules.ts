@@ -42,10 +42,11 @@ export const modules: Module[] = [
   },
   {
     id: 6,
-    title: 'Money Supply Process',
-    description: 'How money is created, the money multiplier, and factors affecting money supply.',
-    icon: '💵',
-    slug: 'money-supply-process',
+    title: 'Central Banks and Monetary Policy',
+    description:
+      'The Federal Reserve: history, structure, dual mandate, open market operations, discount window, forward guidance, QE, and the abundant reserves framework.',
+    icon: '🏛️',
+    slug: 'central-banking-monetary-policy',
   },
   {
     id: 7,

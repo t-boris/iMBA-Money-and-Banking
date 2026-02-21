@@ -47,3 +47,15 @@ export { SupervisoryProcessFlow } from './SupervisoryProcessFlow';
 export { ShortTermFundingDashboard } from './ShortTermFundingDashboard';
 export { InterestRateLab } from './InterestRateLab';
 export { SecuritizationPipeline } from './SecuritizationPipeline';
+
+// Module 6 — Central Banks and Monetary Policy
+export { default as CentralBankTimeline } from './CentralBankTimeline';
+export { default as FedStructureOrgChart } from './FedStructureOrgChart';
+export { default as FedFunctionsPentagon } from './FedFunctionsPentagon';
+export { default as MoneySupplyCalculator } from './MoneySupplyCalculator';
+export { default as FedBalanceSheetExplorer } from './FedBalanceSheetExplorer';
+export { default as OpenMarketOperationsFlow } from './OpenMarketOperationsFlow';
+export { default as DiscountWindowCalculator } from './DiscountWindowCalculator';
+export { default as ForwardGuidanceDashboard } from './ForwardGuidanceDashboard';
+export { default as QEProgramsTimeline } from './QEProgramsTimeline';
+export { default as AbundantReservesFloor } from './AbundantReservesFloor';

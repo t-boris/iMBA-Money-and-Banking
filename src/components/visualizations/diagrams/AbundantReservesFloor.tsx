@@ -692,187 +692,200 @@ function ZoneBracket({
 // ---------- Pre-2008 View ----------
 
 function PreCrisisView() {
+  const discRate = 6.25;
+  const targetRate = 5.25;
+  const effRate = 5.24;
+
   return (
     <div>
+      {/* Rate Corridor Ladder */}
       <div className={cn(glassPanel, 'mb-6')}>
         <h4 style={sectionH4}>Scarce Reserves Corridor (Pre-2008)</h4>
-        <div
+        <p
           style={{
-            borderRadius: '12px',
-            border: '1px solid var(--color-surface-2)',
-            backgroundColor: 'var(--color-surface-1)',
-            padding: '12px',
-            overflow: 'hidden',
-            marginBottom: '14px',
+            fontSize: '13px',
+            color: 'var(--color-text-secondary)',
+            lineHeight: '1.6',
+            marginBottom: '20px',
           }}
         >
-          <svg
-            viewBox="0 0 520 320"
-            style={{
-              width: '100%',
-              minWidth: '340px',
-              height: 'auto',
-              display: 'block',
-            }}
-          >
-            <line
-              x1="60"
-              y1="270"
-              x2="480"
-              y2="270"
-              stroke="var(--color-text-muted)"
-              strokeWidth="1.5"
-            />
-            <line
-              x1="60"
-              y1="40"
-              x2="60"
-              y2="270"
-              stroke="var(--color-text-muted)"
-              strokeWidth="1.5"
-            />
-            <text
-              x="270"
-              y="300"
-              textAnchor="middle"
-              fill="var(--color-text-muted)"
-              fontSize="11"
-            >
-              Reserves
-            </text>
-            <text
-              x="16"
-              y="155"
-              textAnchor="middle"
-              fill="var(--color-text-muted)"
-              fontSize="11"
-              transform="rotate(-90, 16, 155)"
-            >
-              Federal Funds Rate
-            </text>
-            {/* Discount rate ceiling */}
-            <line
-              x1="60"
-              y1="60"
-              x2="480"
-              y2="60"
-              stroke="rgb(239, 68, 68)"
-              strokeWidth="2"
-              strokeDasharray="8,4"
-            />
-            <text x="66" y="54" fill="rgb(239, 68, 68)" fontSize="10" fontWeight="600">
-              Discount Rate (Ceiling)
-            </text>
-            {/* Demand curve */}
-            <path
-              d="M 100 80 Q 160 100 200 150 Q 240 200 300 240 Q 360 255 460 262"
-              fill="none"
-              stroke="rgb(59, 130, 246)"
-              strokeWidth="2.5"
-            />
-            <text x="310" y="230" fill="rgb(59, 130, 246)" fontSize="10" fontWeight="600">
-              Reserve Demand
-            </text>
-            {/* Supply */}
-            <line
-              x1="180"
-              y1="60"
-              x2="180"
-              y2="270"
-              stroke="rgb(16, 185, 129)"
-              strokeWidth="2.5"
-            />
-            <text x="186" y="78" fill="rgb(16, 185, 129)" fontSize="10" fontWeight="600">
-              Supply (~$14B)
-            </text>
-            {/* Equilibrium */}
-            <circle cx="180" cy="140" r="6" fill="rgb(245, 158, 11)" stroke="white" strokeWidth="2" />
-            <text x="192" y="136" fill="rgb(245, 158, 11)" fontSize="10" fontWeight="600">
-              Equilibrium
-            </text>
-            {/* OMO arrows */}
-            <defs>
-              <marker id="arrowR" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
-                <path d="M 0 0 L 8 3 L 0 6 Z" fill="var(--color-text-muted)" />
-              </marker>
-              <marker id="arrowL" markerWidth="8" markerHeight="6" refX="0" refY="3" orient="auto">
-                <path d="M 8 0 L 0 3 L 8 6 Z" fill="var(--color-text-muted)" />
-              </marker>
-            </defs>
-            <line
-              x1="165"
-              y1="260"
-              x2="195"
-              y2="260"
-              stroke="var(--color-text-muted)"
-              strokeWidth="1.5"
-              markerStart="url(#arrowL)"
-              markerEnd="url(#arrowR)"
-            />
-            <text
-              x="180"
-              y="252"
-              textAnchor="middle"
-              fill="var(--color-text-muted)"
-              fontSize="9"
-            >
-              Small OMO
-            </text>
-          </svg>
-        </div>
+          Before 2008, the Fed controlled rates by adjusting a <strong>tiny</strong> supply of
+          reserves (~$14B). Small open market operations shifted supply enough to move the rate.
+          Only two boundaries existed: the discount rate ceiling and zero.
+        </p>
 
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
+          {/* Discount Rate — Ceiling */}
+          <CorridorRow
+            rate={discRate}
+            label="Discount Rate"
+            role="CEILING"
+            roleDescription="Penalty rate — banks avoid borrowing here due to stigma (signals weakness to the market)"
+            color={TONES.red}
+            dashed
+            showConnector={false}
+          />
+
+          {/* Zone: Stigma zone */}
+          <ZoneBracket
+            label="Stigma zone — banks avoid this range"
+            color={TONES.red}
+            height={32}
+          />
+
+          {/* Target Rate */}
+          <CorridorRow
+            rate={targetRate}
+            label="Fed Funds Target"
+            role="FOMC TARGET"
+            roleDescription="The single target rate (not a range). NY Fed uses daily OMOs to push the market rate toward this exact value."
+            color={TONES.blue}
+            dashed={false}
+            showConnector
+          />
+
+          {/* Zone: Where EFFR trades */}
+          <ZoneBracket
+            label="Market trading zone"
+            color={TONES.green}
+            height={56}
+            highlighted
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={SPRING}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '10px',
+                padding: '6px 14px',
+                borderRadius: '999px',
+                backgroundColor: `color-mix(in srgb, ${TONES.green} 15%, transparent)`,
+                border: `2px solid ${TONES.green}`,
+                width: 'fit-content',
+                margin: '0 auto',
+              }}
+            >
+              <motion.div
+                animate={{ scale: [1, 1.3, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                style={{
+                  width: '12px',
+                  height: '12px',
+                  borderRadius: '50%',
+                  backgroundColor: TONES.green,
+                }}
+              />
+              <span style={{ fontSize: '14px', fontWeight: 700, color: TONES.green }}>
+                EFFR ~{effRate}% — actual market rate (very close to target)
+              </span>
+            </motion.div>
+          </ZoneBracket>
+
+          {/* Zero bound */}
+          <CorridorRow
+            rate={0}
+            label="Zero Bound"
+            role="FLOOR"
+            roleDescription="Banks won't lend at negative rates. No administered floor existed — the rate stayed above zero only because reserves were scarce."
+            color={TONES.amber}
+            dashed
+            showConnector
+          />
+        </div>
+      </div>
+
+      {/* How it worked */}
+      <div className={cn(glassPanel, 'mb-6')}>
+        <h4 style={sectionH4}>How the Fed Moved Rates</h4>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '12px',
+          }}
+        >
+          {[
+            {
+              icon: '📉',
+              title: 'To lower the rate',
+              desc: 'NY Fed buys Treasuries → injects reserves → supply shifts right → EFFR falls toward target',
+              color: TONES.green,
+            },
+            {
+              icon: '📈',
+              title: 'To raise the rate',
+              desc: 'NY Fed sells Treasuries → drains reserves → supply shifts left → EFFR rises toward target',
+              color: TONES.red,
+            },
+            {
+              icon: '⚖️',
+              title: 'Why it worked',
+              desc: 'With only ~$14B in total reserves, even small OMOs ($2-5B) caused meaningful shifts in the supply-demand equilibrium',
+              color: TONES.blue,
+            },
+          ].map((item, idx) => (
+            <motion.div
+              key={item.title}
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: idx * 0.08, ...SPRING }}
+              style={{
+                display: 'flex',
+                alignItems: 'flex-start',
+                gap: '12px',
+                padding: '14px 16px',
+                borderRadius: '10px',
+                border: `1px solid color-mix(in srgb, ${item.color} 25%, transparent)`,
+                backgroundColor: `color-mix(in srgb, ${item.color} 5%, var(--color-surface-1))`,
+              }}
+            >
+              <span style={{ fontSize: '20px', lineHeight: 1, flexShrink: 0 }}>{item.icon}</span>
+              <div>
+                <div
+                  style={{
+                    fontSize: '14px',
+                    fontWeight: 600,
+                    color: 'var(--color-text-primary)',
+                    marginBottom: '4px',
+                  }}
+                >
+                  {item.title}
+                </div>
+                <p
+                  style={{
+                    margin: 0,
+                    fontSize: '13px',
+                    color: 'var(--color-text-secondary)',
+                    lineHeight: '1.55',
+                  }}
+                >
+                  {item.desc}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
+      {/* Key metrics */}
+      <div className={cn(glassPanel, 'mb-6')}>
+        <h4 style={sectionH4}>Key Numbers</h4>
         <div
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
             gap: '10px',
-            marginBottom: '12px',
           }}
         >
           <MetricCard label="Total Reserves (2007)" value="~$14B" tone="amber" />
-          <MetricCard label="Primary Tool" value="OMOs" tone="blue" />
+          <MetricCard label="Primary Tool" value="Daily OMOs" tone="blue" />
           <MetricCard label="Backup Tool" value="Discount Window" tone="red" />
-        </div>
-
-        <div
-          style={{
-            padding: '12px 16px',
-            borderRadius: '10px',
-            backgroundColor:
-              'color-mix(in srgb, rgb(245, 158, 11) 6%, var(--color-surface-1))',
-            border:
-              '1px solid color-mix(in srgb, rgb(245, 158, 11) 18%, transparent)',
-          }}
-        >
-          <ul
-            style={{
-              margin: 0,
-              padding: '0 0 0 16px',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '6px',
-            }}
-          >
-            <li style={liStyle}>
-              <strong style={{ color: 'var(--color-text-primary)' }}>Steep demand curve:</strong>{' '}
-              With scarce reserves, small changes in supply caused large rate movements.
-            </li>
-            <li style={liStyle}>
-              <strong style={{ color: 'var(--color-text-primary)' }}>Daily fine-tuning:</strong>{' '}
-              The NY Fed trading desk conducted open market operations every day to hit the target
-              rate.
-            </li>
-            <li style={liStyle}>
-              <strong style={{ color: 'var(--color-text-primary)' }}>
-                Discount window stigma:
-              </strong>{' '}
-              Banks avoided borrowing at the discount window because it signaled financial weakness
-              to the market.
-            </li>
-          </ul>
         </div>
       </div>
 
+      {/* Bottom insight */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -880,10 +893,10 @@ function PreCrisisView() {
         style={insightBox}
       >
         <strong style={{ color: 'var(--color-text-primary)' }}>Why did this change?</strong> After
-        the 2008 crisis, QE flooded the banking system with trillions in reserves. The old approach
-        of fine-tuning a tiny supply no longer worked. The Fed needed a new framework — one that
-        controls rates through administered prices (IORB, ON RRP) rather than reserve quantities.
-        Switch to the Post-2008 view to see how.
+        the 2008 crisis, QE flooded the banking system with trillions in reserves ($14B → $3.2T+).
+        Small OMOs could no longer move the rate. The Fed needed a new framework — administered
+        rates (IORB, ON RRP) instead of reserve quantities. Switch to the Post-2008 view to see
+        how.
       </motion.div>
     </div>
   );

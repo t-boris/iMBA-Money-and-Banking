@@ -4,6 +4,7 @@ import { module2Concepts } from './module2/concepts';
 import { module3Concepts } from './module3/concepts';
 import { module4Concepts } from './module4/concepts';
 import { module5Concepts } from './module5/concepts';
+import { module6Concepts } from './module6/concepts';
 
 // Examples for key terms to enhance understanding
 const termExamples: Record<string, string> = {
@@ -95,6 +96,48 @@ const termExamples: Record<string, string> = {
     'By operating as a money market fund instead of a bank, firms avoid capital requirements while offering deposit-like products.',
   'systemic-risk-surcharge':
     'JPMorgan faces an additional 3.5% capital surcharge on top of Basel minimums due to its systemic importance.',
+
+  // Module 6 - Central Banking & Monetary Policy
+  '6-dual-mandate':
+    'The Fed targets ~2% inflation and maximum employment — every policy tool connects back to these two goals',
+  '6-central-bank':
+    'The Swedish Riksbank (1668) was the world\'s first; the Fed was founded in 1913 after the Panic of 1907',
+  '6-money-multiplier':
+    'Deposit $1,000 with 10% reserve ratio → banks create ~$10,000 in total deposits through repeated lending',
+  '6-open-market-operations':
+    'FOMC decides target rate → NY Fed buys Treasuries from primary dealers → reserves increase → fed funds rate falls',
+  '6-discount-window':
+    'Banks can borrow from the Fed at the discount rate (~0.25% above target range) — acts as rate corridor ceiling',
+  '6-iorb':
+    'Fed pays banks interest on reserves, creating a floor for the fed funds rate even with $3T+ in reserves',
+  '6-on-rrp':
+    'Money market funds can invest overnight with the Fed — ensures non-banks don\'t push rates below target',
+  '6-quantitative-easing':
+    'QE1 bought $1.25T in MBS + $300B Treasuries; 30-year mortgage rate fell from 6.5% to 4.85%',
+  '6-forward-guidance':
+    'The Dot Plot shows where each FOMC member expects rates to go — markets pay close attention',
+  '6-abundant-reserves':
+    'After QE, reserves grew from $14B (2007) to $3.2T+ — traditional OMOs couldn\'t move rates anymore',
+  '6-fomc':
+    'The 12-member committee (7 governors + NY Fed + 4 rotating) that meets 8 times per year to set monetary policy',
+  '6-federal-funds-rate':
+    'The overnight rate banks charge each other for reserve lending — the Fed\'s primary policy target',
+  '6-monetary-base':
+    'Currency in circulation plus bank reserves — the "high-powered money" that gets multiplied through lending',
+  '6-m1':
+    'Currency + demand deposits + other checkable deposits — the narrowest measure of money in active circulation',
+  '6-m2':
+    'M1 + savings deposits + small time deposits + retail MMFs — the broader measure the Fed watches most closely',
+  '6-fed-balance-sheet':
+    'Grew from $630B (pre-2008) to $7.3T (2021) through massive purchases of Treasuries and MBS',
+  '6-primary-dealers':
+    'About 24 firms (Goldman Sachs, J.P. Morgan, etc.) authorized to trade directly with the NY Fed',
+  '6-operation-twist':
+    'Sold short-term Treasuries, bought long-term — flattened the yield curve without expanding the balance sheet',
+  '6-floor-system':
+    'IORB + ON RRP create rate boundaries even when reserves are abundant — no need for daily OMOs',
+  '6-panic-of-1907':
+    'J.P. Morgan organized private bailouts when banks failed — proved the U.S. needed a central bank',
 };
 
 // Helper to determine term type based on term content
@@ -152,6 +195,7 @@ export const glossaryTerms: GlossaryTerm[] = [
   ...module3Concepts.map((c) => conceptToGlossaryTerm(c, 3)),
   ...module4Concepts.map((c) => conceptToGlossaryTerm(c, 4)),
   ...module5Concepts.map((c) => conceptToGlossaryTerm(c, 5)),
+  ...module6Concepts.map((c) => conceptToGlossaryTerm(c, 6)),
 ].sort((a, b) => a.term.localeCompare(b.term));
 
 // Get unique first letters for A-Z index

@@ -22,16 +22,16 @@ export default function Home() {
               animate={{ scale: [1, 1.05, 1] }}
               transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }}
             >
-              🎓
+              📚
             </motion.span>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-text-primary mb-6">
-              Master <span className="text-gradient">Money & Banking</span>
+              Money & Banking <span className="text-gradient">Notes</span>
             </h1>
 
             <p className="text-xl md:text-2xl text-text-secondary leading-relaxed">
-              Interactive study guide designed for visual learners. Explore complex financial
-              concepts through animations, calculators, and engaging exercises.
+              Personal notes with interactive visuals. Review key financial concepts through
+              animations, calculators, and practice exercises.
             </p>
 
             <motion.div
@@ -41,7 +41,7 @@ export default function Home() {
               transition={{ delay: 0.5 }}
             >
               <span className="flex items-center gap-2">
-                <span className="w-2 h-2 bg-primary-500 rounded-full" />8 Modules
+                <span className="w-2 h-2 bg-primary-500 rounded-full" />8 Topics
               </span>
               <span className="flex items-center gap-2">
                 <span className="w-2 h-2 bg-primary-500 rounded-full" />
@@ -66,7 +66,7 @@ export default function Home() {
               transition={{ delay: 0.3 }}
               className="text-2xl md:text-3xl font-bold text-text-primary mb-3"
             >
-              Course Modules
+              Topics
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -75,8 +75,8 @@ export default function Home() {
               className="text-text-secondary"
               style={{ maxWidth: '600px', margin: '0 auto', lineHeight: '1.6' }}
             >
-              Click any module to start learning. Each contains interactive diagrams, calculators,
-              quizzes, and more.
+              Open any topic to review the material. Each includes interactive diagrams,
+              calculators, quizzes, and more.
             </motion.p>
           </div>
 
@@ -100,11 +100,10 @@ export default function Home() {
             className="text-center"
           >
             <h3 className="text-xl font-semibold text-text-primary mb-3">
-              Ready to start learning?
+              Ready to review?
             </h3>
             <p className="text-text-secondary mb-6">
-              Begin with Module 1 for a structured approach, or jump to any topic that interests
-              you.
+              Start with Topic 1 for a step-by-step path, or jump straight to what you need.
             </p>
             <div className="text-4xl">👆</div>
           </motion.div>

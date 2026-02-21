@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!currentModule) return { title: 'Module Not Found' };
 
   return {
-    title: `${currentModule.title} | iMBA Money & Banking`,
+    title: `${currentModule.title} | Money & Banking Notes`,
     description: currentModule.description,
   };
 }

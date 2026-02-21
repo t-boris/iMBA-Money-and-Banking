@@ -10,10 +10,10 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'iMBA Money and Banking',
+  title: 'Money & Banking Notes',
   description:
-    'Interactive study guide for the Money and Banking course - University of Illinois Urbana-Champaign',
-  keywords: ['money', 'banking', 'finance', 'iMBA', 'UIUC', 'economics'],
+    'Personal study notes on money and banking concepts with interactive visualizations.',
+  keywords: ['money', 'banking', 'finance', 'study notes', 'economics'],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -42,7 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <main className="flex-1">{children}</main>
             <footer className="border-t border-surface-2 py-8">
               <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center text-text-muted text-sm">
-                University of Illinois Urbana-Champaign
+                Personal notes. Not affiliated with any university.
               </div>
             </footer>
           </div>

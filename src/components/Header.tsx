@@ -39,7 +39,7 @@ export function Header() {
             gap: '8px',
           }}
         >
-          iMBA Money & Banking
+          Money & Banking Notes
           <span
             style={{
               fontSize: '10px',

@@ -26,6 +26,7 @@ Module 3: Risk and Return — course content provided
 - [x] **Phase 8: Study Tools** - Cross-module glossary and exam practice system
 - [x] **Phase 9: Module 4 Content** - Regulation: goals, safety net, supervision, stress testing, TBTF, shadow banking
 - [x] **Phase 10: Exam Module Filter** - Module selection for exam practice (single module, first 4, last 4, or all)
+- [ ] **Phase 11: Module 6 Content** - Interactive visualizations for Central Banks and Monetary Policy
 
 *Future modules to be added as course content is provided*
 
@@ -347,6 +348,52 @@ Style: Consistent with existing modules — playful animations, interactive expl
 
 Plans:
 - [x] 10-01: Add module filter to exam practice setup + visual verification
+
+### Phase 11: Module 6 Content
+**Goal**: Build interactive visualizations for Module 6 (Central Banks and Monetary Policy) — central bank origins, Fed structure and functions, money supply and multiplier, Fed balance sheet, open market operations, discount window, forward guidance, large-scale asset purchases (QE), and abundant reserves framework (IORB/ON RRP).
+**Depends on**: Phase 10
+**Research**: Unlikely (course content provided, reuse existing visualization patterns)
+**Plans**: 0 plans
+
+Plans:
+- [ ] TBD (run /gsd:plan-phase 11 to break down)
+
+**Key Content Areas:**
+
+*Lesson 6-0: Overview*
+- Dual Mandate (maximum employment + stable prices)
+- Price of money = interest rate
+- Traditional tools: Open Market Operations, Federal Funds Market, Discount Window
+- Unconventional tools: Forward Guidance, Large-Scale Asset Purchases, ON RRP
+
+*Lesson 6-1: The Federal Reserve*
+- 6-1.1: History and Structure (Swedish Riksbank case study, bank run mechanics, Panic of 1907, Federal Reserve Act 1913, Board of Governors, 12 Reserve Banks, FOMC composition)
+- 6-1.2: Purpose and Functions (five functions: monetary policy, financial stability, regulation & supervision, payment system, consumer protection; micro vs macro prudential; Truth in Lending Act, ACH, Community Reinvestment Act)
+
+*Lesson 6-2: Traditional Monetary Policy*
+- 6-2.1: Money Supply and Monetary Policy (Monetary Base, M1, M2, M3 aggregates, Bank Reserves, Loanable Funds, Money Multiplier mechanism, Quantity Theory of Money, Reserve Requirements)
+- 6-2.2: The Federal Reserve's Balance Sheet (assets vs liabilities, Government Securities, Currency in Circulation, Monetary Base as Fed liability, Treasury General Account, pre-2008 vs 2021 composition, MBS, Crisis Facilities, 10x growth)
+- 6-2.3: Open Market Operations (Federal Funds Market, supply/demand for reserves, FOMC → NY Fed → SOMA → Primary Dealers implementation chain, balance sheet mechanics, post-2008 structural break)
+- 6-2.4: The Discount Window (discount loan mechanics, Primary Credit, collateral and margins/haircuts, upper bound logic for rate corridor)
+
+*Lesson 6-3: Non-traditional Monetary Policy*
+- 6-3.1: Forward Guidance (Summary of Economic Projections, Dot Plot, expectations channel, emerged 2009)
+- 6-3.2: Large-Scale Asset Purchases (QE1/QE2/QE3/Operation Twist, demand shock → bond prices ↑ → yields ↓, MBS/GSE debt, yield evidence, COVID-19 reprise)
+- 6-3.3: Monetary Policy With Abundant Reserves (reserves explosion post-2008, IORB floor for banks, ON RRP floor for non-banks, floor system framework, arbitrage logic)
+
+**Visualization Ideas:**
+- Central Bank Origins Timeline (Swedish Riksbank 1668, bank run mechanics, Panic of 1907, Fed founding 1913)
+- Fed Structure Org Chart (Board of Governors + 12 Reserve Banks + FOMC composition with interactive exploration)
+- Five Functions Pentagon (monetary policy, financial stability, regulation, payment system, consumer protection)
+- Money Supply Aggregates Calculator (Monetary Base → M1 → M2 → M3 nesting, money multiplier with deposit/loan cycle animation)
+- Fed Balance Sheet Explorer (pre-2008 vs 2021 comparison, asset/liability breakdown, growth timeline)
+- Open Market Operations Flow (reserves supply/demand diagram, 4-step implementation chain, equilibrium rate shift)
+- Discount Window Calculator (discount loan mechanics with face value/rate inputs, rate corridor visualization with upper bound logic)
+- Forward Guidance Dashboard (SEP projections with range fans, interactive Dot Plot with participant expectations)
+- QE Programs Timeline (QE1-QE3 + Operation Twist with yield impact charts, demand shock mechanism animation)
+- Abundant Reserves Floor System (IORB + ON RRP dual floor diagram, before/after reserves comparison, arbitrage logic animation)
+
+Style: Consistent with existing modules — playful animations, interactive exploration, clear visual hierarchy. Emphasis on monetary policy mechanics and rate determination.
 
 ## Progress
 

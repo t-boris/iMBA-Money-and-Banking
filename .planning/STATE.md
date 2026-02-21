@@ -159,6 +159,7 @@ None.
 - Phase 6 added: Module 2 Complete - Bank Organization, Lending, Investment Banking, Financial Statements
 - Phase 7 added: Module 3 Content - Risk and Return (bank capital, profitability, risk types, risk management)
 - Phase 10 added: Exam Module Filter - module selection for exam practice
+- Phase 11 added: Module 6 Content - Central Banks and Monetary Policy (Fed structure, money supply, OMOs, discount window, forward guidance, QE, IORB/ON RRP)
 
 ## Session Continuity
 

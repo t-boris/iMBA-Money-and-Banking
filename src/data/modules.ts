@@ -50,8 +50,9 @@ export const modules: Module[] = [
   },
   {
     id: 7,
-    title: 'Monetary Policy',
-    description: 'Goals of monetary policy, transmission mechanisms, and policy implementation.',
+    title: 'Economic Impacts of Monetary Policy',
+    description:
+      'Okun\'s Law, the Phillips Curve, the Taylor Rule, transmission through banks and markets, and the limits of monetary policy: stagflation, jobless recoveries, and risk-taking.',
     icon: '⚖️',
     slug: 'monetary-policy',
   },

@@ -5,6 +5,7 @@ import { module3Concepts } from './module3/concepts';
 import { module4Concepts } from './module4/concepts';
 import { module5Concepts } from './module5/concepts';
 import { module6Concepts } from './module6/concepts';
+import { module7Concepts } from './module7/concepts';
 
 // Examples for key terms to enhance understanding
 const termExamples: Record<string, string> = {
@@ -138,6 +139,28 @@ const termExamples: Record<string, string> = {
     'IORB + ON RRP create rate boundaries even when reserves are abundant — no need for daily OMOs',
   '6-panic-of-1907':
     'J.P. Morgan organized private bailouts when banks failed — proved the U.S. needed a central bank',
+
+  // Module 7 - Economic Impacts of Monetary Policy
+  '7-okuns-law':
+    'U.S. GDP grew 3% above trend in 1984 — unemployment fell by ~1.5 points, right on Okun\'s prediction',
+  '7-phillips-curve':
+    'In the 1960s, 3% unemployment came with ~5% inflation; pushing unemployment lower meant even more inflation',
+  '7-taylor-rule':
+    'With 3% inflation, 2% target, 2% real rate, and no output gap: Taylor Rule prescribes i = 2 + 3 + 0.5(1) + 0 = 5.5%',
+  '7-stagflation':
+    '1970s oil shocks: inflation hit 13% while unemployment reached 9% — the worst of both worlds',
+  '7-net-interest-margin':
+    'A bank earning 5% on loans and paying 1.5% on deposits has a NIM of 3.5% — rate hikes can compress this',
+  '7-transmission-lag':
+    'The Fed raised rates in 2022, but inflation didn\'t peak until mid-2022 and fell slowly through 2023',
+  '7-natural-rate-unemployment':
+    'Estimated at ~4-5% for the U.S. — below this, inflation pressure builds; above it, the economy has slack',
+  '7-inflation-expectations':
+    'When expectations are anchored at 2%, a temporary oil shock doesn\'t spiral into permanent inflation',
+  '7-jobless-recovery':
+    'After the 2008 crisis, GDP returned to pre-recession levels by 2011, but unemployment stayed above 8% until 2013',
+  '7-risk-taking-channel':
+    'Fed funds at 1% (2003-2004) fueled HELOCs, subprime lending, and the housing bubble that burst in 2007',
 };
 
 // Helper to determine term type based on term content
@@ -196,6 +219,7 @@ export const glossaryTerms: GlossaryTerm[] = [
   ...module4Concepts.map((c) => conceptToGlossaryTerm(c, 4)),
   ...module5Concepts.map((c) => conceptToGlossaryTerm(c, 5)),
   ...module6Concepts.map((c) => conceptToGlossaryTerm(c, 6)),
+  ...module7Concepts.map((c) => conceptToGlossaryTerm(c, 7)),
 ].sort((a, b) => a.term.localeCompare(b.term));
 
 // Get unique first letters for A-Z index

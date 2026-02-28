@@ -59,3 +59,12 @@ export { default as DiscountWindowCalculator } from './DiscountWindowCalculator'
 export { default as ForwardGuidanceDashboard } from './ForwardGuidanceDashboard';
 export { default as QEProgramsTimeline } from './QEProgramsTimeline';
 export { default as AbundantReservesFloor } from './AbundantReservesFloor';
+
+// Module 7 — Economic Impacts of Monetary Policy
+export { default as OkunsLawChart } from './OkunsLawChart';
+export { default as PhillipsCurveDashboard } from './PhillipsCurveDashboard';
+export { default as TaylorRuleCalculator } from './TaylorRuleCalculator';
+export { default as TransmissionMechanismFlow } from './TransmissionMechanismFlow';
+export { default as BankTransmissionChannels } from './BankTransmissionChannels';
+export { default as BusinessHouseholdTransmission } from './BusinessHouseholdTransmission';
+export { default as PolicyLimitsDashboard } from './PolicyLimitsDashboard';

@@ -68,3 +68,12 @@ export { default as TransmissionMechanismFlow } from './TransmissionMechanismFlo
 export { default as BankTransmissionChannels } from './BankTransmissionChannels';
 export { default as BusinessHouseholdTransmission } from './BusinessHouseholdTransmission';
 export { default as PolicyLimitsDashboard } from './PolicyLimitsDashboard';
+
+// Module 8 — Financial Crises
+export { default as BankRunSimulator } from './BankRunSimulator';
+export { default as Panic1907Timeline } from './Panic1907Timeline';
+export { default as GreatDepressionDashboard } from './GreatDepressionDashboard';
+export { default as CrisisPatternMatrix } from './CrisisPatternMatrix';
+export { default as AutoLoanCrisisFlow } from './AutoLoanCrisisFlow';
+export { default as LenderLastResortExplorer } from './LenderLastResortExplorer';
+export { default as FiscalResponseDashboard } from './FiscalResponseDashboard';

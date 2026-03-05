@@ -6,6 +6,7 @@ import { module4Concepts } from './module4/concepts';
 import { module5Concepts } from './module5/concepts';
 import { module6Concepts } from './module6/concepts';
 import { module7Concepts } from './module7/concepts';
+import { module8Concepts } from './module8/concepts';
 
 // Examples for key terms to enhance understanding
 const termExamples: Record<string, string> = {
@@ -161,6 +162,36 @@ const termExamples: Record<string, string> = {
     'After the 2008 crisis, GDP returned to pre-recession levels by 2011, but unemployment stayed above 8% until 2013',
   '7-risk-taking-channel':
     'Fed funds at 1% (2003-2004) fueled HELOCs, subprime lending, and the housing bubble that burst in 2007',
+
+  // Module 8 - Financial Crises
+  '8-bank-run':
+    'In 2008, customers lined up outside Northern Rock in the UK to withdraw deposits after hearing the bank had liquidity problems',
+  '8-maturity-mismatch':
+    "A bank holds 30-year mortgages but depositors can withdraw instantly — if everyone withdraws, the bank can't sell mortgages fast enough",
+  '8-illiquidity':
+    'Bear Stearns had $400B in assets but couldn\'t sell them overnight to meet $75B in withdrawals — illiquid but arguably solvent',
+  '8-insolvency':
+    'After losses on subprime MBS wiped out all equity, Lehman\'s liabilities exceeded its assets — true insolvency',
+  '8-deposit-insurance':
+    'After FDIC insurance began in 1934, bank runs essentially disappeared from the U.S. for 75 years',
+  '8-deflation':
+    'During the Great Depression, CPI fell 25% from 1929-1933 — a loaf of bread cost less, but so did wages, making debts unbearable',
+  '8-bagehots-dictum':
+    "Bagehot (1873): 'Lend freely at a penalty rate against good collateral' — the central bank stops panic but doesn't subsidize risk-taking",
+  '8-gdp-identity':
+    "In 2020, U.S. consumption fell ~10%, investment fell ~15%, but government spending rose ~20%, partially offsetting the GDP decline",
+  '8-government-spending-multiplier':
+    'A multiplier of 1.5 means $200B in government spending generates $300B in total GDP impact',
+  '8-stimulus-checks':
+    'Three rounds of COVID stimulus totaling $3,200/person: research shows ~1/3 spent, ~1/3 saved, ~1/3 used for debt',
+  '8-abcp':
+    'ABCP outstanding fell from $1.2T to $700B in just 6 months during 2007-2008 as investors refused to roll over',
+  '8-gold-standard':
+    'Under the gold standard, the Fed had to raise rates to prevent gold outflows — even as the economy collapsed',
+  '8-glass-steagall':
+    'Glass-Steagall (1933) separated JPMorgan into a commercial bank (JPMorgan) and investment bank (Morgan Stanley)',
+  '8-financial-crisis':
+    'The 2008 crisis froze credit markets: LIBOR-OIS spread spiked from 10bp to 350bp, signaling complete interbank distrust',
 };
 
 // Helper to determine term type based on term content
@@ -220,6 +251,7 @@ export const glossaryTerms: GlossaryTerm[] = [
   ...module5Concepts.map((c) => conceptToGlossaryTerm(c, 5)),
   ...module6Concepts.map((c) => conceptToGlossaryTerm(c, 6)),
   ...module7Concepts.map((c) => conceptToGlossaryTerm(c, 7)),
+  ...module8Concepts.map((c) => conceptToGlossaryTerm(c, 8)),
 ].sort((a, b) => a.term.localeCompare(b.term));
 
 // Get unique first letters for A-Z index

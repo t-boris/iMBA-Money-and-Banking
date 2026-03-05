@@ -58,9 +58,10 @@ export const modules: Module[] = [
   },
   {
     id: 8,
-    title: 'International Finance',
-    description: 'Exchange rates, balance of payments, and international monetary systems.',
-    icon: '🌍',
-    slug: 'international-finance',
+    title: 'Financial Crises',
+    description:
+      'Bank runs, the Great Depression, crisis patterns, the 2008 auto loan crisis, the Fed as lender of last resort, and fiscal responses to financial crises.',
+    icon: '🔥',
+    slug: 'financial-crises',
   },
 ];

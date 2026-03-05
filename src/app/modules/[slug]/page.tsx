@@ -9,6 +9,7 @@ import {
   Module5Content,
   Module6Content,
   Module7Content,
+  Module8Content,
 } from '@/components/modules';
 import Link from 'next/link';
 
@@ -94,6 +95,8 @@ export default async function ModulePage({ params }: { params: Promise<{ slug: s
             <Module6Content />
           ) : currentModule.id === 7 ? (
             <Module7Content />
+          ) : currentModule.id === 8 ? (
+            <Module8Content />
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               <Card variant="default">
